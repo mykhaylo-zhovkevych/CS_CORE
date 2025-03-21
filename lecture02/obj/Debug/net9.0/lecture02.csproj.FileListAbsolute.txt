@@ -1,0 +1,15 @@
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\bin\Debug\net9.0\lecture02.exe
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\bin\Debug\net9.0\lecture02.deps.json
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\bin\Debug\net9.0\lecture02.runtimeconfig.json
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\bin\Debug\net9.0\lecture02.dll
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\bin\Debug\net9.0\lecture02.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.dll
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\refint\lecture02.dll
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.genruntimeconfig.cache
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\ref\lecture02.dll
+C:\Users\mzovk\Visual Studio\repos\C#\lecture02\obj\Debug\net9.0\lecture02.sourcelink.json

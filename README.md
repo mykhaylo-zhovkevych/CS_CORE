@@ -23,10 +23,10 @@
 - [x] 28:30 Formatting Output
 
 ## Lecture 04: Strings and String Manipulation
-- [ ] 30:49 String Functions
-- [ ] 41:00 Format
-- [ ] 42:45 Escape Characters
-- [ ] 43:20 Verbatim Strings
+- [x] 30:49 String Functions
+- [x] 41:00 Format
+- [x] 42:45 Escape Characters
+- [x] 43:20 Verbatim Strings
 
 ## Lecture 05: Control Structures
 - [ ] 44:35 Arrays

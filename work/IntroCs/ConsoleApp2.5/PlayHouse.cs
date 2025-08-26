@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2._5
+{
+    internal class PlayHouse
+    {
+        public string PlayHouseName { get; set; }
+        public string Loation { get; set; }
+
+        public List<Hall> Halls { get; set; } = new List<Hall>();
+        public List<Play> Plays { get; set; } = new List<Play>();
+    }
+}

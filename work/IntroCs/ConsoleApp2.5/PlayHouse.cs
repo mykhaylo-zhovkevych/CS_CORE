@@ -11,7 +11,6 @@ namespace ConsoleApp2._5
         public string PlayHouseName { get; set; }
         public string Loation { get; set; }
 
-        // Association, weil kennt Plays und Halls
         public List<Hall> Halls { get; set; } = new List<Hall>();
         public List<Play> Plays { get; set; } = new List<Play>();
     }

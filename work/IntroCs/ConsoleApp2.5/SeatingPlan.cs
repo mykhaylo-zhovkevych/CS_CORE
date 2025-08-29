@@ -10,42 +10,33 @@ namespace ConsoleApp2._5
     {
         public int Id { get; set; }
         public List<Seat> Seats { get; set; } = new List<Seat>();
-        public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
         public Ticket BuyTicket(string UserName, int amount, Play play)
         {
-            var availableSeats = Seats.Where(s => s.IsAvailable).ToList();
-           
+            var availableSeats = Seats.Where(s => s.IsAvailable).Take(amount).ToList();
 
-            if (availableSeats.Count <= amount)
+            if (availableSeats.Count < amount)
             {
                 throw new ArgumentException("Not enough seats available.");
             }
 
+
             int totalPrice = 0;
 
-            for (int i = 0; amount > i; i++) 
+            foreach (var seat in availableSeats)
             {
-
-                var seat = availableSeats[i];
                 seat.IsAvailable = false;
 
-                switch (seat.Type)
+                int seatPrice = seat.Type switch
                 {
-                    case SeatType.REGULAR:
-                        totalPrice += 51;
-                        break;
-                    case SeatType.BALCONY:
-                        totalPrice += 80;
-                        break;
-                    
-                    case SeatType.WHEELCHAIR:
-                        totalPrice += 30;
-                        break;
-                }
+                    SeatType.BALCONY => 80,
+                    SeatType.REGULAR => 51,
+                    SeatType.WHEELCHAIR => 30,
+                };
+
+                totalPrice += seatPrice;
 
             }
-
 
             Ticket ticket = new Ticket(
                 GenerateNewId(),
@@ -56,8 +47,8 @@ namespace ConsoleApp2._5
                 saleDate: DateTime.Now,
                 play: play
                 );
-
-            Tickets.Add(ticket);
+            
+            play.Tickets.Add(ticket);
 
             return ticket;
         }

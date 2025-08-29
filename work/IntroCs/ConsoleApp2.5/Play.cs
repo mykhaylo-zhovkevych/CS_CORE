@@ -13,7 +13,7 @@ namespace ConsoleApp2._5
         public string Title { get; private set; }
         public string Author { get; private set; }
         public int Duration { get; private set; }
-        //public List<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
         public Play(int id, string title, string author, int duration)
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ConsoleApp2._5
 {
@@ -36,13 +32,19 @@ namespace ConsoleApp2._5
                 Id = GenerateNewId(),
                 Seats = new List<Seat>
                 {
-                    new Seat { SeatNumber = 1, IsAvailable = false },
+                    new Seat { SeatNumber = 1, IsAvailable = true },
                     new Seat { SeatNumber = 2, IsAvailable = true },
                     new Seat { SeatNumber = 3, IsAvailable = true },
+                    new Seat { SeatNumber = 4, IsAvailable = true },
+                    new Seat { SeatNumber = 33, IsAvailable = true },
+                    new Seat { SeatNumber = 5, IsAvailable = true },
+                    new Seat { SeatNumber = 6, IsAvailable = true },
+                    new Seat { SeatNumber = 7, IsAvailable = true },
                 }
             };
 
-            Ticket ticket02 = seatingPlan.BuyTicket("Mustermann", 2, play02);
+            Ticket ticket02 = seatingPlan.BuyTicket("Mustermann", 7, play02);
+            Ticket ticket03 = seatingPlan.BuyTicket("Mustermann", 2, play02);
 
             if (ticket02 != null)
             {

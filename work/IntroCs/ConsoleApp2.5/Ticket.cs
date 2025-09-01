@@ -11,11 +11,13 @@ namespace ConsoleApp2._5
         public int Id { get; private set; }
         public string TicketName { get; private set; }
         public int Price { get; private set; }
+        public SeatType Type { get; set; }
         public int Amount { get; private set; }
         public string GuestName { get; private set; }
         public DateTime SaleDate { get; private set; }
         public Play Play { get; set; }
 
+        // later
         public Ticket(int id, string ticketName, int price, int amount, string guestName, DateTime saleDate, Play play)
         {
             Id = id;

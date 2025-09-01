@@ -49,6 +49,9 @@ namespace ConsoleApp3._2
             string reserveMessage2 = library.ReserveObject(externalUser1, book1);
             Console.WriteLine(reserveMessage2);
 
+            string reserveBoardGame1Message2 = library.ReserveObject(externalUser1, boardGame1);
+            Console.WriteLine(reserveBoardGame1Message2);
+
             string reserveMessage3 = library.ReserveObject(externalUser2, book1);
             Console.WriteLine(reserveMessage3);
 
@@ -58,14 +61,6 @@ namespace ConsoleApp3._2
             string returnMessage3 = library.ReturnObject(book1);
             Console.WriteLine(returnMessage3);
 
-            string returnMessage4 = library.ReturnObject(book1);
-            Console.WriteLine(returnMessage4);
-
-            string returnMessage5 = library.ReturnObject(book1);
-            Console.WriteLine(returnMessage5);
-
-            string returnMessage6 = library.ReturnObject(book1);
-            Console.WriteLine(returnMessage6);
 
             string reserveMessage4 = library.ReserveObject(student1, book1);
             Console.WriteLine(reserveMessage4);

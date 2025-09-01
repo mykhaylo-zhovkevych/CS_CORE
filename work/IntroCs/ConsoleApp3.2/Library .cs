@@ -12,7 +12,7 @@ namespace ConsoleApp3._2
         public string Address { get; set; }
 
         private List<Shelf> _shelves;
-        private List<User> _users;
+
         private List<(Object Obj, User ReservedBy)> _reservations;
 
         public Library(string name, string address)
@@ -20,7 +20,6 @@ namespace ConsoleApp3._2
             Name = name;
             Address = address;
             _shelves = new List<Shelf>();
-            _users = new List<User>();
             _reservations = new List<(Object, User)>();
         }
 
@@ -30,7 +29,6 @@ namespace ConsoleApp3._2
             return (obj.ReturnDate == null) || (obj.ReturnDate < DateTime.Today);
         }
 
-        // returns the message instead of printing it 
         internal string BorrowObject(User user, Object obj)
         {
             var firstReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
@@ -66,8 +64,9 @@ namespace ConsoleApp3._2
         {
             if (obj.ReturnDate.HasValue)
             {
-                DateTime maxRentDate = obj.ReturnDate.Value.AddDays(30);
-                obj.ReturnDate = maxRentDate;
+                // between variable is not necessary, but it makes the code more readable
+                obj.ReturnDate = obj.ReturnDate.Value.AddDays(30);
+
                 return $"Return Date has been extended, until: {obj.ReturnDate.Value.ToShortDateString()}";
             }
             else
@@ -78,17 +77,15 @@ namespace ConsoleApp3._2
 
         internal string ReserveObject(User user, Object obj)
         {
-            bool alreadyReserved = _reservations.Any(r => r.Obj == obj && r.ReservedBy == user);
-            if (!alreadyReserved)
+            var existingReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
+            if (existingReservation.Obj != null)
             {
-                obj.IsReserved = true;
-                _reservations.Add((obj, user));
-                return $"{user.Name} has reserved {obj.Name}";
+                return $"{obj.Name} is already reserved by {existingReservation.ReservedBy.Name}, Sorry {user.Name}";
             }
-            else
-            {
-                return $"{user.Name} already has reserved {obj.Name}";
-            }
+            obj.IsReserved = true;
+            _reservations.Add((obj, user));
+            return $"{user.Name} has reserved {obj.Name}";
+
         }
 
 
@@ -111,7 +108,6 @@ namespace ConsoleApp3._2
                 obj.ReturnDate = null;
                 return $"{obj.Name} is now available";
             }
-
         }
 
         // Hilfsklasse

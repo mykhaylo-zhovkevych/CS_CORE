@@ -13,14 +13,17 @@ namespace ConsoleApp3._2
 
         private List<Shelf> _shelves;
 
-        private List<(Object Obj, User ReservedBy)> _reservations;
+        private List<(User ReservedBy, Object Obj)> _reservations;
+        private List<(User BorrowedBy, Object Obj)> _borrowed;
+
 
         public Library(string name, string address)
         {
             Name = name;
             Address = address;
             _shelves = new List<Shelf>();
-            _reservations = new List<(Object, User)>();
+            _reservations = new List<(User, Object)>();
+            _borrowed = new List<(User, Object)>();
         }
 
         internal bool IsObjectAvailable(Object obj)
@@ -29,13 +32,13 @@ namespace ConsoleApp3._2
             return (obj.ReturnDate == null) || (obj.ReturnDate < DateTime.Today);
         }
 
-        internal string BorrowObject(User user, Object obj)
+        internal void BorrowObject(User user, Object obj)
         {
             var firstReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
 
             if ( firstReservation.Obj != null && firstReservation.ReservedBy != user)
             {
-                return $"{obj.Name} is reserved for {firstReservation.ReservedBy.Name} + Another {user.Name} cannot borrow it";
+                Console.WriteLine($"{obj.Name} is reserved for {firstReservation.ReservedBy.Name} + User: {user.Name} cannot borrow it");
             }
 
             if (IsObjectAvailable(obj))
@@ -43,70 +46,90 @@ namespace ConsoleApp3._2
                 _reservations.RemoveAll(r => r.Obj == obj && r.ReservedBy == user);
 
                 int maxDays = GetMaxRentingDays(user);
-                DateTime maxRentDate = DateTime.Today.AddDays(maxDays);
-                obj.ReturnDate = maxRentDate;
+                obj.ReturnDate = DateTime.Today.AddDays(maxDays);
 
-                
-                double totalPrice = obj.CalcObjectPrice();
-                if (user is Teacher)
-                    totalPrice *= 1.3;
-                else if (user is Student)
-                    totalPrice *= 0.8;
-                else if (user is ExternalUser)
-                    totalPrice *= 1.1;
+                double totalPrice = obj.CalcObjectPrice() * user.PriceFactor;
+                _borrowed.Add((user, obj));
 
-                return $"{user.Name} has booked {obj.Name} until {maxRentDate.ToShortDateString()}\nTotal rental price: {totalPrice:F2}";
+                Console.WriteLine($"{user.Name} has booked {obj.Name} until {obj.ReturnDate}\nTotal rental price: {totalPrice:F2}");
             }
-            return $"{obj.Name} is not available for {user.Name}";
+  
         }
 
-        internal string ExtendRentPeriod(Object obj)
+        internal void ExtendRentPeriod(Object obj)
         {
-            if (obj.ReturnDate.HasValue)
-            {
-                // between variable is not necessary, but it makes the code more readable
-                obj.ReturnDate = obj.ReturnDate.Value.AddDays(30);
+            var borrowedEntry = _borrowed.FirstOrDefault(b => b.Obj == obj);
 
-                return $"Return Date has been extended, until: {obj.ReturnDate.Value.ToShortDateString()}";
+            if (borrowedEntry.Obj != null || obj.ReturnDate.HasValue)
+            {
+                if (DateTime.Today > obj.ReturnDate.Value)
+                {
+                    Console.WriteLine(obj.Name + " is already overdue, cannot extend.");
+                    return;
+                }
+                
+                // pseudo test if already extended
+                int maxDays = GetMaxRentingDays(borrowedEntry.BorrowedBy);
+                DateTime initialReturnDate = DateTime.Today.AddDays(maxDays);
+
+                if (obj.ReturnDate > initialReturnDate)
+                {
+                    Console.WriteLine($"{borrowedEntry.BorrowedBy.Name} cannot extend again for {obj.Name}");
+                    return;
+                }
+
+                obj.ReturnDate = obj.ReturnDate.Value.AddDays(maxDays);
+                Console.WriteLine($"Return date extended by {maxDays} days, until {obj.ReturnDate.Value.ToShortDateString()}");
             }
             else
             {
-                return "Error: Cannot extend rent period";
+                Console.WriteLine("Error: Cannot extend rent period (not borrowed).");
             }
         }
 
-        internal string ReserveObject(User user, Object obj)
+        internal void ReserveObject(User user, Object obj)
         {
             var existingReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
             if (existingReservation.Obj != null)
             {
-                return $"{obj.Name} is already reserved by {existingReservation.ReservedBy.Name}, Sorry {user.Name}";
+                Console.WriteLine($"{obj.Name} is already reserved by {existingReservation.ReservedBy.Name}, Sorry {user.Name}");
             }
             obj.IsReserved = true;
-            _reservations.Add((obj, user));
-            return $"{user.Name} has reserved {obj.Name}";
+            _reservations.Add((user, obj));
+            Console.WriteLine($"{user.Name} has reserved {obj.Name}");
 
         }
 
 
-        internal string ReturnObject(Object obj)
+        internal void ReturnObject(Object obj)
         {
-            var firstReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
+            var borrowedEntry = _borrowed.FirstOrDefault(b => b.Obj == obj);
+            if (borrowedEntry.Obj != null)
+                _borrowed.Remove(borrowedEntry);
 
+            var firstReservation = _reservations.FirstOrDefault(r => r.Obj == obj);
             if (firstReservation.Obj != null)
             {
                 var nextUser = firstReservation.ReservedBy;
-
                 _reservations.Remove(firstReservation);
-                string borrowMessage= BorrowObject(nextUser, obj);
+                BorrowObject(nextUser, obj);
 
-                return $"{obj.Name} has been returned. {borrowMessage}";
+                Console.WriteLine($"{obj.Name} has been returned.");
             }
             else
             {
                 obj.IsReserved = false;
                 obj.ReturnDate = null;
-                return $"{obj.Name} is now available";
+                Console.WriteLine($"{obj.Name} is now available");
+            }
+        }
+
+        internal void PrintBorrowedObjects()
+        {
+            Console.WriteLine("Borrowed Objects:\n");
+            foreach (var entry in _borrowed)
+            {
+                Console.WriteLine($"- {entry.Obj.Name}, borrowed by {entry.BorrowedBy.Name}, return by {entry.Obj.ReturnDate?.ToShortDateString()}");
             }
         }
 
@@ -114,11 +137,11 @@ namespace ConsoleApp3._2
         internal int GetMaxRentingDays(User user)
         {
             if (user is Teacher)
-                return 60;
+                return 10;
             else if (user is Student)
-                return 14;
+                return 8;
             else if (user is ExternalUser)
-                return 7;
+                return 6;
             else
                 return 0;
         }

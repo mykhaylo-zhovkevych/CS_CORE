@@ -8,6 +8,7 @@ namespace ConsoleApp3._2.Users
 {
     internal class Student : User
     {
-        public Student(int id, string name) : base(id, name) { }
+        public Student(Guid id, string name) : base(id, name) { }
+        public override double PriceFactor => 1.3;
     }
 }

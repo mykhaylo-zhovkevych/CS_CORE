@@ -11,7 +11,7 @@ namespace ConsoleApp3._2.Objects
         public int Iban { get; set; }
         public string Publisher { get; set; }
 
-        public Book(int id, string name, double basicPrice, double surcharge, int iban, string publisher)
+        public Book(Guid id, string name, double basicPrice, double surcharge, int iban, string publisher)
             : base(id, name, basicPrice, surcharge)
         {
             Iban = iban;

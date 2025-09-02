@@ -8,8 +8,7 @@ namespace ConsoleApp3._2.Users
 {
     internal class ExternalUser : User
     {
-        public ExternalUser(int id, string name) : base(id, name)
-        {
-        }
+        public ExternalUser(Guid id, string name) : base(id, name) { }
+        public override double PriceFactor => 2;
     }
 }

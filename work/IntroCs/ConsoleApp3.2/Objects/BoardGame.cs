@@ -11,7 +11,7 @@ namespace ConsoleApp3._2.Objects
         public int AgeRating { get; set; }
         public GameType Genre { get; set; }
 
-        public BoardGame(int id, string name, double basicPrice, double surcharge, int ageRating, GameType genre)
+        public BoardGame(Guid id, string name, double basicPrice, double surcharge, int ageRating, GameType genre)
             : base(id, name, basicPrice, surcharge)
         {
             AgeRating = ageRating;

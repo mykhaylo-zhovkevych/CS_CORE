@@ -9,12 +9,14 @@ namespace ConsoleApp3._2
 {
     internal abstract class User
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public User(int id, string name)
+        public abstract double PriceFactor { get; }
+
+        public User(Guid id, string name)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Name = name;
         }
     }

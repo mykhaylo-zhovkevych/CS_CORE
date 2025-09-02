@@ -36,18 +36,25 @@ namespace ConsoleApp3._2
             library.BorrowObject(student1, book1);
             Console.WriteLine();
             library.ExtendRentPeriod(book1);
-            library.ExtendRentPeriod(book1);
 
 
             Console.WriteLine($"Is {book1.Name} available? {library.IsObjectAvailable(book1)}");
 
             library.ReserveObject(teacher1, book1);
+            library.ReserveObject(teacher1, book1);
+            
+            library.BorrowObject(teacher1, book1);
 
-
-            library.ReserveObject(teacher1, boardGame1);
-            library.BorrowObject(teacher1, boardGame1);
+            library.ReserveObject(externalUser1, book1);
 
             library.PrintBorrowedObjects();
+
+
+            library.ReturnObject(book1);
+
+            library.ReserveObject(externalUser2, book1);
+            library.ReserveObject(externalUser1, book1);
+
 
         }
     }

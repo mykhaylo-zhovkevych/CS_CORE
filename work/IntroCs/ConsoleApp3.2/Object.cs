@@ -14,6 +14,9 @@ namespace ConsoleApp3._2
         public double Surcharge { get; set; }
         public bool IsReserved { get; set; }
         public DateTime? ReturnDate { get; set; }
+        public DateTime? BorrowDate { get; set; }
+        public DateTime? ReservationStart { get; set; }
+        public DateTime? ReservationEnd { get; set; }
 
         public double CalcObjectPrice()
         {
@@ -28,6 +31,9 @@ namespace ConsoleApp3._2
             Surcharge = surcharge;
             IsReserved = false;
             ReturnDate = null;
+            BorrowDate = null;
+            ReservationStart = null;
+            ReservationEnd = null;
         }
     }
 }

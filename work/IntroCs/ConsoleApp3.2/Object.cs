@@ -17,6 +17,7 @@ namespace ConsoleApp3._2
         public DateTime? BorrowDate { get; set; }
         public DateTime? ReservationStart { get; set; }
         public DateTime? ReservationEnd { get; set; }
+        public int ReservationExtensionCount { get; set; } = 0;
 
         public double CalcObjectPrice()
         {

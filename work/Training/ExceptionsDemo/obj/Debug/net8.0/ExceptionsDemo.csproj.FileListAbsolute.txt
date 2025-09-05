@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\bin\Debug\net8.0\ExceptionsDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\bin\Debug\net8.0\ExceptionsDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\bin\Debug\net8.0\ExceptionsDemo.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\bin\Debug\net8.0\ExceptionsDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\bin\Debug\net8.0\ExceptionsDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\refint\ExceptionsDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ExceptionsDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ExceptionsDemo\obj\Debug\net8.0\ref\ExceptionsDemo.dll

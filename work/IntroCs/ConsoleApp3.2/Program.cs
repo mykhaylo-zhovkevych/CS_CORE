@@ -55,6 +55,12 @@ namespace ConsoleApp3._2
             library.ReserveObject(externalUser2, book1);
             library.ReserveObject(externalUser1, book1);
 
+            Console.WriteLine("\f---");
+
+            library.BorrowObject(teacher1, boardGame1);
+            library.ReserveObject(student1, boardGame1);
+            library.ReserveObject(student1, boardGame1);
+
 
         }
     }

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\bin\Debug\net8.0\StringBuilderDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\StringBuilderDemo\bin\Debug\net8.0\StringBuilderDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\StringBuilderDemo\bin\Debug\net8.0\StringBuilderDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\bin\Debug\net8.0\StringBuilderDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\bin\Debug\net8.0\StringBuilderDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\refint\StringBuilderDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\StringBuilderDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\StringBuilderDemo\obj\Debug\net8.0\ref\StringBuilderDemo.dll

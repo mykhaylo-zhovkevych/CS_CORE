@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\bin\Debug\net8.0\ConsoleApp4.3.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\bin\Debug\net8.0\ConsoleApp4.3.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\bin\Debug\net8.0\ConsoleApp4.3.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\bin\Debug\net8.0\ConsoleApp4.3.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\bin\Debug\net8.0\ConsoleApp4.3.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\refint\ConsoleApp4.3.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ConsoleApp4.3.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp4.3\obj\Debug\net8.0\ref\ConsoleApp4.3.dll

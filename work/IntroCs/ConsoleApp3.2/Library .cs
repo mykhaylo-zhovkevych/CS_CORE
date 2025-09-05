@@ -13,8 +13,6 @@ namespace ConsoleApp3._2
         private List<(User ReservedBy, Object Obj)> _reservations;
         private List<(User BorrowedBy, Object Obj)> _borrowed;
 
-        private static int reservationExtensionCount = 0;
-
         public string Name { get; set; }
         public string Address { get; set; }
 
@@ -131,10 +129,10 @@ namespace ConsoleApp3._2
                     if (obj.ReservationStart.HasValue && obj.ReservationEnd.HasValue)
                     {
 
-                        if (reservationExtensionCount < 1)
+                        if (obj.ReservationExtensionCount < 1)
                         {
                             obj.ReservationEnd = obj.ReservationEnd.Value.AddDays(10);
-                            reservationExtensionCount++;
+                            obj.ReservationExtensionCount++;
                             Console.WriteLine($"{user.Name} extends reservation for {obj.Name} until {obj.ReservationEnd.Value.ToShortDateString()}");
                         }
                         else

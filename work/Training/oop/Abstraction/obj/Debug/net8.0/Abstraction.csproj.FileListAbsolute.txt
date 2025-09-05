@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\bin\Debug\net8.0\Abstraction.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\bin\Debug\net8.0\Abstraction.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\bin\Debug\net8.0\Abstraction.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\bin\Debug\net8.0\Abstraction.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\bin\Debug\net8.0\Abstraction.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\refint\Abstraction.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\Abstraction.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\oop\Abstraction\obj\Debug\net8.0\ref\Abstraction.dll

@@ -11,13 +11,17 @@
 
             player.PickUpItem();
 
-            game.MovePlayer(1, 0);
+            player.Move(Direction.East);  
+            player.Move(Direction.East);  
+            player.PickUpItem();        
 
-            player.PickUpItem();
-            foreach (var item in player.Inventory)
-            {
-                Console.WriteLine(item.Name);
-            }
+            player.Move(Direction.North);
+            player.Move(Direction.West);
+
+            player.Move(Direction.South);
+            // Door unlocked
+            player.Move(Direction.South);
+
 
         }
     }

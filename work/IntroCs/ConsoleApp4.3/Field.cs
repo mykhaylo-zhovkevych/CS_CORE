@@ -22,6 +22,11 @@ namespace ConsoleApp4._3
         public Field North, East, South, West;
         public Field(string name) { Name = name; }
 
+        public override string ToString()
+        {
+            return $"{Name} {(IsWall ? "[Wall]": "")}";
+        }
+
     }
 
     public class Item

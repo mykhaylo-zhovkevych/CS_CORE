@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\lecture01\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{342839F3-45F3-459E-B962-494B828E1F01}|lecture01\\lecture01.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\lecture01\\lecture01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{342839F3-45F3-459E-B962-494B828E1F01}|lecture01\\lecture01.csproj|solutionrelative:lecture01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\lecture01\\lecture01\\Program.cs",
+              "RelativeDocumentMoniker": "lecture01\\Program.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\lecture01\\lecture01\\Program.cs",
+              "RelativeToolTip": "lecture01\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T20:03:01.333Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

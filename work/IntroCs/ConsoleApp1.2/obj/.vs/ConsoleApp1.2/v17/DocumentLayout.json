@@ -1,0 +1,148 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp1.2\\obj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{924C495C-53C7-4E2F-ACE2-7804E4D742AC}|..\\..\\ConsoleApp3.1\\ConsoleApp3.1.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\consoleapp3.1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Em.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\AutomaticWagon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\ProcessOrders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\TransportOrder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp3.1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp3.1\\Program.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp3.1\\Program.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp3.1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T12:59:41.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Game.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.2\\Game.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Game.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.2\\Game.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T12:30:25.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Em.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Em.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.2\\Em.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.2\\Em.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.2\\Em.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T12:30:22.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProcessOrders.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\ProcessOrders.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.3\\ProcessOrders.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\ProcessOrders.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.3\\ProcessOrders.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T11:58:24.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransportOrder.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\TransportOrder.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.3\\TransportOrder.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\TransportOrder.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.3\\TransportOrder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T11:58:22.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Product.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.3\\Product.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Product.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.3\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T11:53:15.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AutomaticWagon.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\AutomaticWagon.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.3\\AutomaticWagon.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\AutomaticWagon.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.3\\AutomaticWagon.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T11:45:44.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\ConsoleApp2.3\\Program.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp2.3\\Program.cs",
+              "RelativeToolTip": "..\\..\\ConsoleApp2.3\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T10:59:07.608Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

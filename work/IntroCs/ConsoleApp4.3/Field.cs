@@ -16,17 +16,14 @@ namespace ConsoleApp4._3
         public bool IsWall { get; set; } = false;
         public bool IsDoor { get; set; } = false;
         public bool IsLocked { get; set; } = false;
-
         public (int x, int y) DoorTarget { get; set; }
 
-        public Field North, East, South, West;
-        public Field(string name) { Name = name; }
+        public Field(string name) { Id = Guid.NewGuid(); Name = name; }
 
         public override string ToString()
         {
             return $"{Name} {(IsWall ? "[Wall]": "")}";
         }
-
     }
 
     public class Item

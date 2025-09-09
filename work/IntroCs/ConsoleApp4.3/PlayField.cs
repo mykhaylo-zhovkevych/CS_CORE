@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +32,6 @@ namespace ConsoleApp4._3
         /// </summary>
         public void StartGame()
         {
-            
 
             for (int x = -3; x <= 3; x++)
             {
@@ -47,6 +49,7 @@ namespace ConsoleApp4._3
 
             fields[(2, 0)].Items.Add(new Key());
             fields[(0, 0)].Items.Add(new Sword());
+            fields[(0, 0)].Items.Add(new Box());
             fields[(1, 0)].Items.Add(new Box());
             fields[(3, 3)].Items.Add(new Sword());
 
@@ -86,7 +89,7 @@ namespace ConsoleApp4._3
                     items.Remove(keyToRemove);
 
                     Player.Inventory.Clear();
-                    for (int i = items.Count - 1; i > 0; i--)
+                    for (int i = items.Count - 1; i >= 0; i--) 
                     {
                         Player.Inventory.Push(items[i]);
                     }
@@ -109,15 +112,39 @@ namespace ConsoleApp4._3
             Player.CurrentField = target;
             Player.Energy -= 1;
 
-            Console.WriteLine($"Player moved to {Player.Position} ({Player.CurrentField.Name})");
+            Console.WriteLine($"Player moved to {Player.Position} ({Player.CurrentField})");
 
         }
 
-        public void PrintPlayerStack()
+        public void PrintPlayerInfo()
         {
-               
-            
-            
+
+            var playerName = Player.Name;
+            var remainingEnergy = Player.Energy;
+            var position = Player.Position;
+            var itemCount = Player.Inventory.Count();
+
+            Console.WriteLine($"=== Player Info ===");
+            Console.WriteLine($"Name: {playerName}");
+            Console.WriteLine($"Energy: {remainingEnergy}");
+            Console.WriteLine($"Position: {position}");
+            Console.Write($"Items in Inventory: {itemCount} ");
+
+            try
+            {
+                var topItem = Player.Inventory.Peek();
+                Console.WriteLine($"Top Item: {topItem.Name}");
+
+                Console.WriteLine("All Items (top to bottom):");
+                foreach (var item in Player.Inventory)
+                {
+                    Console.WriteLine($" -  {item.Name}");
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Inventory is empty");
+            }
         }
     }
 }

@@ -31,6 +31,21 @@ namespace ConsoleApp2._2
             if ((DateTime.Now - game.Date).TotalHours >= 48)
             {
                 return allGames.Sum(g => g.IncidentDecisions.Count(IncidentDecision => IncidentDecision.isWrongDecision));
+
+                //int wrongCount = 0;
+
+                //foreach (var g in allGames)  
+                //{
+                //    foreach (var decision in g.IncidentDecisions)  
+                //    {
+                //        if (decision.isWrongDecision)
+                //        {
+                //            wrongCount++;
+                //        }
+                //    }
+                //}
+
+                //return wrongCount;
             }
             return 0;
         }

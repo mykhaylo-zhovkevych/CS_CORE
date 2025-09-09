@@ -10,6 +10,7 @@
             Player player = game.Player;
 
             player.PickUpItem();
+            player.PickUpItem();
 
             player.Move(Direction.East);  
             player.Move(Direction.East);  
@@ -21,8 +22,10 @@
             player.Move(Direction.South);
             // Door unlocked
             player.Move(Direction.South);
+            player.DropItem();
+            player.DropItem();
 
-
+            game.PrintPlayerInfo();
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\bin\Debug\net8.0\Delegates&AnonymousDemo.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\bin\Debug\net8.0\Delegates&AnonymousDemo.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\bin\Debug\net8.0\Delegates&AnonymousDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\bin\Debug\net8.0\Delegates&AnonymousDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\bin\Debug\net8.0\Delegates&AnonymousDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\refint\Delegates&AnonymousDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\Delegates&AnonymousDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\Delegates&AnonymousDemo\obj\Debug\net8.0\ref\Delegates&AnonymousDemo.dll

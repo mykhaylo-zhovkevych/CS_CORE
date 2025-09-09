@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\bin\Debug\net8.0\ContravarianceDemo.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\bin\Debug\net8.0\ContravarianceDemo.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\bin\Debug\net8.0\ContravarianceDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\bin\Debug\net8.0\ContravarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\bin\Debug\net8.0\ContravarianceDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\refint\ContravarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ContravarianceDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\ContravarianceDemo\obj\Debug\net8.0\ref\ContravarianceDemo.dll

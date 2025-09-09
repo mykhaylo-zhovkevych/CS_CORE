@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\bin\Debug\net8.0\CovarianceDemo.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\bin\Debug\net8.0\CovarianceDemo.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\bin\Debug\net8.0\CovarianceDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\bin\Debug\net8.0\CovarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\bin\Debug\net8.0\CovarianceDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\refint\CovarianceDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\CovarianceDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\CovarianceDemo\obj\Debug\net8.0\ref\CovarianceDemo.dll

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\bin\Debug\net8.0\LINQDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\bin\Debug\net8.0\LINQDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\bin\Debug\net8.0\LINQDemo.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\bin\Debug\net8.0\LINQDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\bin\Debug\net8.0\LINQDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\refint\LINQDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\LINQDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\LINQDemo\obj\Debug\net8.0\ref\LINQDemo.dll

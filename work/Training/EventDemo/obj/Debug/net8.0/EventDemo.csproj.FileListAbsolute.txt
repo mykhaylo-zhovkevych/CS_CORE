@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\bin\Debug\net8.0\EventDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\bin\Debug\net8.0\EventDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\bin\Debug\net8.0\EventDemo.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\bin\Debug\net8.0\EventDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\bin\Debug\net8.0\EventDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\refint\EventDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\EventDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\EventDemo\obj\Debug\net8.0\ref\EventDemo.dll

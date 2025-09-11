@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\bin\Debug\net8.0\Partial&Extension.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\bin\Debug\net8.0\Partial&Extension.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\bin\Debug\net8.0\Partial&Extension.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\bin\Debug\net8.0\Partial&Extension.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\bin\Debug\net8.0\Partial&Extension.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\refint\Partial&Extension.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\Partial&Extension.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\Partial&Extension\obj\Debug\net8.0\ref\Partial&Extension.dll

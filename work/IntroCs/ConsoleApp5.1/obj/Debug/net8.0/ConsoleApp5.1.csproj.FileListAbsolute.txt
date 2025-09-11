@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\bin\Debug\net8.0\ConsoleApp5.1.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\bin\Debug\net8.0\ConsoleApp5.1.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\bin\Debug\net8.0\ConsoleApp5.1.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\bin\Debug\net8.0\ConsoleApp5.1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\bin\Debug\net8.0\ConsoleApp5.1.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\refint\ConsoleApp5.1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ConsoleApp5.1.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.1\obj\Debug\net8.0\ref\ConsoleApp5.1.dll

@@ -1,0 +1,10 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\bin\Debug\net8.0\TCPData.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\bin\Debug\net8.0\TCPData.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\bin\Debug\net8.0\TCPData.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\TCPData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\TCPData.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\TCPData.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\TCPData.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\refint\TCPData.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\TCPData.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPData\obj\Debug\net8.0\ref\TCPData.dll

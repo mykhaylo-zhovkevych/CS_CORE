@@ -1,0 +1,10 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\bin\Debug\net8.0\TCPExtensions.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\bin\Debug\net8.0\TCPExtensions.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\bin\Debug\net8.0\TCPExtensions.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\TCPExtensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\TCPExtensions.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\TCPExtensions.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\TCPExtensions.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\refint\TCPExtensions.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\TCPExtensions.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part01\TCPExtensions\obj\Debug\net8.0\ref\TCPExtensions.dll

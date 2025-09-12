@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\bin\Debug\net8.0\Part02.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\bin\Debug\net8.0\Part02.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\bin\Debug\net8.0\Part02.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\bin\Debug\net8.0\Part02.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\bin\Debug\net8.0\Part02.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\refint\Part02.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\Part02.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\LINQExtended\Part02\obj\Debug\net8.0\ref\Part02.dll

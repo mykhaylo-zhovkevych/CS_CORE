@@ -112,11 +112,48 @@ namespace Part02
                 DepartmentId = 5,
             });
 
-     
-            foreach (var item in results03)
+            Console.Write("\n:)\n");
+
+            // Join Operation Example - Method Syntax
+            //foreach (var item in results03)
+            //{
+            //    Console.WriteLine($"{item.FullName,-20}{item.AnnualSalary,10}");
+            //}
+
+
+            //var results04 = departmentList.Join(employeeList,
+            //    department => department.Id,
+            //    employee => employee.DepartmentId,
+            //    ( department, employee) => new { 
+            //        FullName = employee.FirstName + " " + employee.LastName,
+            //        AnnualSalary = employee.AnnualSalary,
+            //        DepartmentName = department.LongName,
+            //        }
+            //    );
+
+            //foreach (var item in results04 )
+            //{
+            //    Console.WriteLine($"{item.FullName, -20}{item.AnnualSalary, 10}\t{item.DepartmentName}");
+            //}
+
+            // Join Operation Example that is far easier to read 
+            var result05 = from dept in departmentList
+                           join emp in employeeList
+                           on dept.Id equals emp.DepartmentId
+                           select new
+                           {
+                               FullName = emp.FirstName + " " + emp.LastName,
+                               AnnualSalary = emp.AnnualSalary,
+                               DepartmentName = dept.LongName,
+                           };
+
+
+            foreach (var item in result05)
             {
-                Console.WriteLine($"{item.FullName,-20}{item.AnnualSalary,10}");
+                Console.WriteLine($"{item.FullName,-20}{item.AnnualSalary,10}\t{item.DepartmentName}");
             }
+
+            Console.ReadKey();
         }
 
 

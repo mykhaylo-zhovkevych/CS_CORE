@@ -6,12 +6,15 @@
         {
             StackStorage<int> cellar = new StackStorage<int>(5);
 
-            cellar.PushStackStorage(2);
-            cellar.PushStackStorage(3);
+            cellar.Push(2);
+            cellar.Push(3);
+            cellar.Pop();
+            cellar.Push(3);
+            cellar.Push(123);
+            cellar.Pop();
 
-            cellar.RemoveStackStorage();
+            Console.WriteLine(cellar.ToString());
 
-            cellar.PrintAll();
 
         }
     }

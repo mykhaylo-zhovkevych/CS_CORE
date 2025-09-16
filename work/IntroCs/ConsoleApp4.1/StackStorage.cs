@@ -26,40 +26,51 @@ namespace ConsoleApp4._1
             _items = new T[capacity];
         }
  
-        public void PushStackStorage(T value)
+        public void Push(T value)
         {
             if(IsFull)
             {
-                throw new InvalidOperationException("Cellar is full");
+               
+                throw new StackExceptions.StackFullException("Cellar is full");
             }
-            // getting index of the current position place
+
             _items[_count] = value;
             _count++;
         }
 
-        public T RemoveStackStorage()
+        public T Pop()
         {
             if(IsEmpty)
             {
-                throw new InvalidOperationException("Cellar is empty");
+                throw new StackExceptions.StackEmptyException("Cellar is empty");
             }
 
             _count--;
             T removed = _items[_count];
             // This keyword handels both referance and values types
+            // Not really needed
             _items[_count] = default;
 
             return removed;
         }
 
-        public void PrintAll()
+
+        public override string ToString()
         {
-            Console.WriteLine("Current items in cellar: ");
-            foreach (var item in _items)
+            StringBuilder sb = new StringBuilder();
+            for (int i = _count - 1; i >= 0; i--)
             {
-                Console.WriteLine(item);
+                sb.Append(_items[i]).Append('\n');
             }
+            return sb.ToString();
         }
+
+
+        //foreach (var item in _items)
+        //{
+        //    Console.WriteLine(item);
+        //}
+
 
         /// <summary>
         /// Returns an Enumerator, which allows the use of a foreach loop without needing to implement it manually

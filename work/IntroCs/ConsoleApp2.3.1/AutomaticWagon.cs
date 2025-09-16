@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static ConsoleApp2._3._1.Warehouse;
@@ -18,36 +19,35 @@ namespace ConsoleApp2._3._1
         public int WagonNumber { get; }
         public List<Cell> Cells { get; set; } = new List<Cell>();
 
-        // constructor
-        public AutomaticWagon(int number) => WagonNumber = number;
-        
 
-        // Hilfsfunktion
+        public AutomaticWagon(int number) => WagonNumber = number;
         public void PreProcess(Order order)
         {
             _orderQueue.Enqueue(order, order.Priority);
             Console.WriteLine($"Added Order {order.OrderNumber} (Priority {order.Priority})");
         }
 
-
-        public void ExecuteOrder(Order order)
+        public void ExecuteOrder()
         {
             
-            if (_orderQueue.Count == 0)
+            while (_orderQueue.Count > 0)
             {
-                Console.WriteLine("No orders to execute");
-                return;
+
+                _currentOrder = _orderQueue.Dequeue();
+                Console.WriteLine($"Executing Order {_currentOrder.OrderNumber} (Priority {_currentOrder.Priority})");
+                _currentOrder.ExecuteOn(this);
+                _currentOrder = null;
+
             }
-            _currentOrder = _orderQueue.Dequeue();
-            Console.WriteLine($"Executing Order {_currentOrder.OrderNumber} (Priority {_currentOrder.Priority})");
-            _currentOrder.ExecuteOn(this);
-            _currentOrder = null;
+            if (_orderQueue.Count < 0)
+            {
+                throw new InvalidOperationException("");
+                
+            }
         }
 
-        // needs a new Sorting Algorithm 
         public void ProcessOrder(Order order)
         {
-          
             var sourceCell = Cells.FirstOrDefault(c => c.HasEnoughProduct(order.Product, order.Quantity));
             if (sourceCell == null)
                 throw new InvalidOperationException($"No cell has enough of product {order.Product.Name} (Order {order.OrderNumber}).");
@@ -55,8 +55,15 @@ namespace ConsoleApp2._3._1
             MoveToCell(sourceCell);
             Load(order.Product, order.Quantity, sourceCell);
 
-        }
+            var targetCell = Cells.FirstOrDefault(c => c.HasEnoughFreeSpace(order.Quantity));
+            if (targetCell == null)
+                throw new InvalidOperationException($"No cell has enough of free space for {order.Product.Name}.");
+            Unload(order.Product, order.Quantity, targetCell);
 
+            //Console.WriteLine($"Moving {order.Quantity} of {order.Product.Name} from Cell {sourceCell.Id} to Cell {targetCell.Id}");
+
+
+        }
 
         private void Load(Product product, int qunatity, Cell cell)
         {
@@ -65,7 +72,11 @@ namespace ConsoleApp2._3._1
 
         private void Unload(Product product, int quantity, Cell cell)
         {
-            cell.StoreProduct(new Product(product.ProductNumber, product.Name, quantity));
+            var type = product.GetType();
+            var newProduct = (Product)Activator.CreateInstance(type, product.Id, product.Name, quantity);
+
+            cell.StoreProduct(newProduct);
+
         }
 
         private void MoveToCell(Cell cell)
@@ -73,6 +84,5 @@ namespace ConsoleApp2._3._1
             if (ReferenceEquals(_currentCell, cell)) return;
             _currentCell = cell;
         }
-
     }
 }

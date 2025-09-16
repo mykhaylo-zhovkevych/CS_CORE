@@ -4,49 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using static ConsoleApp2._3._1.Warehouse;
 
 namespace ConsoleApp2._3._1
 {
     internal class Cell
     {
-
-        public int CellNumber { get; private set; }
         private List<Product> Products = new List<Product>();
 
-        // cunstructor
-        public Cell(int number) => CellNumber = number;
-  
+        public int Id { get; private set; }
+        public int MaxCapacity { get; private set; }
 
-        public void StoreProduct(Product product)
+        public Cell (int id, int maxCapacity)
         {
-            Products.Add(product);
+            this.Id = id;
+            this.MaxCapacity = maxCapacity;
+
         }
 
+        public void StoreProduct(Product product) => Products.Add(product);
+        
         public Product RemoveProduct(Product product, int quantity)
         {
-            var existing = Products.FirstOrDefault(p => p.ProductNumber == product.ProductNumber);
+            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
 
             if (existing != null && existing.ProductAmount >= quantity)
             {
                 existing.ProductAmount -= quantity;
-                return new Product(existing.ProductNumber, existing.Name, quantity);
+
+                var type = existing.GetType();
+                return (Product)Activator.CreateInstance(type, existing.Id, existing.Name, quantity);
             }
 
             throw new InvalidOperationException("Not enough product in cell to remove.");
         }
 
+
         public bool HasEnoughProduct(Product product, int quantity)
         {
-            var existing = Products.FirstOrDefault(p => p.ProductNumber == product.ProductNumber);
+            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
             return existing != null && existing.ProductAmount >= quantity;
         }
 
-        public bool HasSpaceForProduct(int quantity)
+        public bool HasEnoughFreeSpace(int quantity)
         {
-            var total = Products.Sum(p => p.ProductAmount);
-            return total > quantity;
-        }
-
+            var usedSpace = Products.Sum(p => p.ProductAmount);
+            return (usedSpace + quantity) <= MaxCapacity;
+        }  
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._3._1
 {
-    internal interface IOrderExecutor<in T>
+    internal class AppException 
     {
-        void ExecuteOrder();
+
     }
+
+
 }

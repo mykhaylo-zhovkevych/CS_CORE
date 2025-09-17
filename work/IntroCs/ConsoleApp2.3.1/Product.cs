@@ -19,7 +19,7 @@ namespace ConsoleApp2._3._1
             ProductAmount = amount;
         }
 
-        public virtual int SumAmountOfType<T>(IEnumerable<Product> products) where T : Product
+        public static int SumAmountOfType<T>(IEnumerable<Product> products) where T : Product
         {
             return products.OfType<T>().Sum(p => p.ProductAmount);
         }

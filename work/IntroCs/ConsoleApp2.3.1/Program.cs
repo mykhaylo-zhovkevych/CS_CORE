@@ -21,9 +21,9 @@ namespace ConsoleApp2._3._1
             cell2.StoreProduct(material);
             cell3.StoreProduct(cloth);
 
-            wagon.Cells.Add(cell1);
-            wagon.Cells.Add(cell2);
-            wagon.Cells.Add(cell3);
+            wagon.AddCell(cell1);
+            wagon.AddCell(cell2);
+            wagon.AddCell(cell3);
 
           
             var order1 = new HighPriorityOrder(1001, 2, material);
@@ -40,6 +40,18 @@ namespace ConsoleApp2._3._1
             Console.WriteLine($"Zelle 1 (Food) Restmenge: {food.ProductAmount}");
             Console.WriteLine($"Zelle 2 (Material) Restmenge: {material.ProductAmount}");
             Console.WriteLine($"Zelle 3 (Cloth) Restmenge: {cloth.ProductAmount}");
+
+
+            //var products = new List<Product>
+            //{
+            //    new Food(1, "Burger", 5),
+            //    new Food(2, "Pizza", 3),
+            //    new Material(3, "Stone", 10),
+            //    new Cloth(4, "Shirt", 2)
+            //};
+
+            //int totalFood = Product.SumAmountOfType<Food>(products);
+            //Console.WriteLine(totalFood);
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
@@ -13,7 +14,6 @@ namespace ConsoleApp4._3
 {
     internal class PlayField
     {
-
         public Guid Id { get; }
         public string Name { get; }
 
@@ -63,13 +63,18 @@ namespace ConsoleApp4._3
         {
 
             var newPos = (Player.Position.x + dx, Player.Position.y + dy);
-            Field target = fields[newPos];
+            Field target;
 
-            if (!fields.ContainsKey(newPos))
+            try 
+            {
+                // When does a error occurs it will not be assigned
+                target = fields[newPos];
+            }
+            catch (KeyNotFoundException)
             {
                 Console.WriteLine("Out of the Map");
                 return;
-            }
+            } 
 
             if (target.IsWall)
             {

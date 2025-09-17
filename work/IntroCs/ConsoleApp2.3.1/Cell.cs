@@ -21,7 +21,13 @@ namespace ConsoleApp2._3._1
 
         }
 
-        public void StoreProduct(Product product) => Products.Add(product);
+        public void StoreProduct(Product product)
+        {
+            if (!HasEnoughFreeSpace(product.ProductAmount))
+                throw new InvalidOperationException($"Cannot store {product.ProductAmount} of {product.Name} in Cell {Id}: not enough space");
+
+            Products.Add(product);
+        }
         
         public Product RemoveProduct(Product product, int quantity)
         {

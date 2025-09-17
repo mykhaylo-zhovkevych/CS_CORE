@@ -15,11 +15,10 @@ namespace ConsoleApp2._3._1
         private Order? _currentOrder;
         private Cell? _currentCell;
         private PriorityQueue<Order, int> _orderQueue = new PriorityQueue<Order, int>();
+        private List<Cell> _cells { get; set; } = new List<Cell>();
 
         public int WagonNumber { get; }
-        public List<Cell> Cells { get; set; } = new List<Cell>();
-
-
+        
         public AutomaticWagon(int number) => WagonNumber = number;
         public void PreProcess(Order order)
         {
@@ -29,33 +28,26 @@ namespace ConsoleApp2._3._1
 
         public void ExecuteOrder()
         {
-            
             while (_orderQueue.Count > 0)
             {
-
                 _currentOrder = _orderQueue.Dequeue();
                 Console.WriteLine($"Executing Order {_currentOrder.OrderNumber} (Priority {_currentOrder.Priority})");
                 _currentOrder.ExecuteOn(this);
-                _currentOrder = null;
+                _currentOrder = default;
 
-            }
-            if (_orderQueue.Count < 0)
-            {
-                throw new InvalidOperationException("");
-                
             }
         }
 
         public void ProcessOrder(Order order)
         {
-            var sourceCell = Cells.FirstOrDefault(c => c.HasEnoughProduct(order.Product, order.Quantity));
+            var sourceCell = _cells.FirstOrDefault(c => c.HasEnoughProduct(order.Product, order.Quantity));
             if (sourceCell == null)
                 throw new InvalidOperationException($"No cell has enough of product {order.Product.Name} (Order {order.OrderNumber}).");
 
             MoveToCell(sourceCell);
             Load(order.Product, order.Quantity, sourceCell);
 
-            var targetCell = Cells.FirstOrDefault(c => c.HasEnoughFreeSpace(order.Quantity));
+            var targetCell = _cells.FirstOrDefault(c => c.HasEnoughFreeSpace(order.Quantity));
             if (targetCell == null)
                 throw new InvalidOperationException($"No cell has enough of free space for {order.Product.Name}.");
             Unload(order.Product, order.Quantity, targetCell);
@@ -84,5 +76,11 @@ namespace ConsoleApp2._3._1
             if (ReferenceEquals(_currentCell, cell)) return;
             _currentCell = cell;
         }
+
+        public void AddCell(Cell cell)
+        {
+            _cells.Add(cell);
+        }
+
     }
 }

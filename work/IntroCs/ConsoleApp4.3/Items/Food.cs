@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Items
 {
-    internal class Food : Item
+    internal class Food : Item, IConsumable
     {
         public Food()
         {
@@ -14,7 +14,7 @@ namespace ConsoleApp4._3.Items
             Name = "Food";
         }
 
-        public override void Use(Player player)
+        public void Consume(Player player)
         {
             player.Energy += 5;
             Console.WriteLine($"{player.Name} are a food and gained 5 energy");

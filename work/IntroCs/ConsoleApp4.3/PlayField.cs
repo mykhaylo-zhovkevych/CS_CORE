@@ -62,7 +62,7 @@ namespace ConsoleApp4._3
 
         }
 
-        public void MovePlayer(int dx, int dy)
+        private void SetPlayerPosition(int dx, int dy)
         {
             var newPos = (Player.Position.x + dx, Player.Position.y + dy);
             Field target;
@@ -72,6 +72,8 @@ namespace ConsoleApp4._3
                 // When does a error occurs it will not be assigned
                 target = fields[newPos];
             }
+            // Another way of validating the correctness of the methods
+            // The Field can be thighted up with Interface and liek be asked if the next Field is free 
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Out of the Map");
@@ -116,7 +118,7 @@ namespace ConsoleApp4._3
 
             }
 
-            if (Player.Energy < 10)
+            if (Player.Energy < 1)
             {
                 Console.WriteLine($"{Player.Name} cannot keep moving");
                 return;
@@ -140,7 +142,8 @@ namespace ConsoleApp4._3
             }
 
             var item = field.Items.Last();
-            field.Items.RemoveAt(field.Items.Count - 1);
+            field.Items.Remove(item);
+           
             Player.Inventory.Add(item);
 
             Console.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
@@ -166,14 +169,14 @@ namespace ConsoleApp4._3
 
         }
 
-        public void Move(Direction dir)
+        public void MovePlayer(Direction dir)
         {
             switch (dir)
             {
-                case Direction.North: MovePlayer(0, -1); break;
-                case Direction.South: MovePlayer(0, 1); break;
-                case Direction.East: MovePlayer(1, 0); break;
-                case Direction.West: MovePlayer(-1, 0); break;
+                case Direction.North: SetPlayerPosition(0, -1); break;
+                case Direction.South: SetPlayerPosition(0, 1); break;
+                case Direction.East: SetPlayerPosition(1, 0); break;
+                case Direction.West: SetPlayerPosition(-1, 0); break;
             }
         }
 

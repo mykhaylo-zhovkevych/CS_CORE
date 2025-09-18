@@ -39,14 +39,16 @@ namespace ConsoleApp4._3
 
             var item = Inventory[_inventoryIndex];
 
-            item.Use(this);
-
-            if (item is Food)
+            if (item is IConsumable consumable)
             {
-                Inventory.RemoveAt(_inventoryIndex);
+                // dependent on user 
+                consumable.Consume(this);
+                _inventoryIndex++;
             }
-            else
+
+            else if (item is IUsable usable)
             {
+                usable.Use(this);
                 _inventoryIndex++;
             }
         }

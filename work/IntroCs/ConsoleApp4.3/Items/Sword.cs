@@ -1,13 +1,13 @@
 ﻿namespace ConsoleApp4._3.Items
 {
-    internal class Sword : Item 
+    internal class Sword : Item, IUsable
     { 
         public Sword() 
         {
             Guid Id = Guid.NewGuid();
             Name = "Sword";
         }
-        public override void Use(Player player)
+        public void Use(Player player)
         {
             bool sure = true;
             Console.WriteLine("You can trage your Sword for one Food");

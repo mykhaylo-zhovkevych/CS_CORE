@@ -20,17 +20,19 @@ namespace ConsoleApp4._3
 
             player.UseTopItem();
 
+            //Food food = new Food();
+            //food.Use(player);
 
-            game.Move(Direction.East);
-            game.Move(Direction.East);
+            game.MovePlayer(Direction.East);
+            game.MovePlayer(Direction.East);
             game.PickUpItem();
 
-            game.Move(Direction.North);
-            game.Move(Direction.West);
+            game.MovePlayer(Direction.North);
+            game.MovePlayer(Direction.West);
 
-            game.Move(Direction.South);
+            game.MovePlayer(Direction.South);
      
-            game.Move(Direction.South);
+            game.MovePlayer(Direction.South);
             game.DropItem();
             game.DropItem();
 

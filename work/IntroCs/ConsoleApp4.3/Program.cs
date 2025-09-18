@@ -1,29 +1,38 @@
-﻿namespace ConsoleApp4._3
+﻿using ConsoleApp4._3.Items;
+
+namespace ConsoleApp4._3
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             PlayField game = new PlayField("Quest");
-            game.StartGame();
 
             Player player = game.Player;
 
-            player.PickUpItem();
-            player.PickUpItem();
+            game.PickUpItem(); 
+            game.PickUpItem();
+            game.PickUpItem();
+            game.PickUpItem();
+            player.UseTopItem();
+            player.UseTopItem();
+            player.UseTopItem();
 
-            player.Move(Direction.East);  
-            player.Move(Direction.East);  
-            player.PickUpItem();        
+            player.UseTopItem();
 
-            player.Move(Direction.North);
-            player.Move(Direction.West);
 
-            player.Move(Direction.South);
-            // Door unlocked
-            player.Move(Direction.South);
-            player.DropItem();
-            player.DropItem();
+            game.Move(Direction.East);
+            game.Move(Direction.East);
+            game.PickUpItem();
+
+            game.Move(Direction.North);
+            game.Move(Direction.West);
+
+            game.Move(Direction.South);
+     
+            game.Move(Direction.South);
+            game.DropItem();
+            game.DropItem();
 
             game.PrintPlayerInfo();
         }

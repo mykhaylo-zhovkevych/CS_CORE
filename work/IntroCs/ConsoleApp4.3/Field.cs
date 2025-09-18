@@ -25,17 +25,4 @@ namespace ConsoleApp4._3
             return $"{Name} {(IsWall ? "[Wall]": "")}";
         }
     }
-
-    public class Item
-    {
-        public Guid Id { get; } = Guid.NewGuid();
-        public string Name { get; set; }
-        public override string ToString() => Name;
-    }
-
-    public class Key : Item { public Key() { Name = "Key"; } }
-    public class Sword : Item { public Sword() { Name = "Sword";  } }
-    public class Box : Item { public Box() { Name = "Box"; } }    
-    
-
 }

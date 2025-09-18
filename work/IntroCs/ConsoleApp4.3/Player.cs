@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp4._3.Items;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,67 +8,46 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    enum Direction { North, South, East, West }
-
     internal class Player 
     {
+        private int _inventoryIndex = 0;
         public string Name { get; }
         public int Energy { get; set; }
         public (int x, int y) Position { get; set; }
+        public List<Item> Inventory { get; set; } = new List<Item>();
 
-        public Field CurrentField { get; set; }
-
-        public Stack<Item> Inventory { get; } = new Stack<Item>();
-
-        private PlayField playfield;
-
-        public Player(string name, int energy, PlayField field)
+        public Player(string name, int energy)
         {
             Name = name;
             Energy = energy;
-            playfield = field;
+           
         }
 
-        public void PickUpItem()
+        public void UseTopItem()
         {
-
-            if (CurrentField.Items.Count == 0 )
+            if (!Inventory.Any())
             {
-                Console.WriteLine("Inventory is empty. Nothing to pickup.");
+                Console.WriteLine("Inventory is empty");
                 return;
             }
 
-            Item item = CurrentField.Items[^1];
-            CurrentField.Items.RemoveAt(CurrentField.Items.Count - 1);
-            Inventory.Push(item);
-
-            Console.WriteLine($"{Name} has taken {item.Name}.");
-        }
-
-        public void DropItem()
-        {
-
-            if (Inventory.Count == 0)
+            if (_inventoryIndex >= Inventory.Count)
             {
-                Console.WriteLine("Inventory is empty. Nothing to drop.");
-                return;
+                // reset
+                _inventoryIndex = 0;
             }
 
-            Item item = Inventory.Pop();
-            CurrentField.Items.Add(item);
+            var item = Inventory[_inventoryIndex];
 
-            Console.WriteLine($"{Name} has dropped {item.Name}.");
-        }
+            item.Use(this);
 
-
-        public void Move(Direction dir)
-        {
-            switch(dir)
+            if (item is Food)
             {
-                case Direction.North: playfield.MovePlayer(0, -1); break;
-                case Direction.South: playfield.MovePlayer(0, 1); break;
-                case Direction.East: playfield.MovePlayer(1, 0); break;
-                case Direction.West: playfield.MovePlayer(-1, 0); break;
+                Inventory.RemoveAt(_inventoryIndex);
+            }
+            else
+            {
+                _inventoryIndex++;
             }
         }
     }

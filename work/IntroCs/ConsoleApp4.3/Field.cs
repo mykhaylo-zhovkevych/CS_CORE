@@ -9,16 +9,13 @@ namespace ConsoleApp4._3
 {
     internal abstract class Field
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; }
-        public List<Item> Items { get; set; } = new List<Item>();
-
-        //public bool IsWall { get; set; } = false;
-        //public bool IsDoor { get; set; } = false;
-        //public bool IsLocked { get; set; } = false;
-        //public (int x, int y) DoorTarget { get; set; }
+        public Guid Id { get; } = Guid.NewGuid();
+        public string Name { get; }
+        public List<Item> Items { get; } = new List<Item>();
+        public abstract bool CanEnter(Player player);
 
         public Field(string name) { Id = Guid.NewGuid(); Name = name; }
 
+        public virtual void OnEnter(Player player) { }
     }
 }

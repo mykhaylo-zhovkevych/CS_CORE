@@ -1,4 +1,5 @@
-﻿using ConsoleApp4._3.Items;
+﻿using ConsoleApp4._3.Fields;
+using ConsoleApp4._3.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,14 +41,13 @@ namespace ConsoleApp4._3
             {
                 for (int y = -3; y <= 3; y++)
                 {
-                    fields[(x, y)] = new Field($"Field ({x},{y})") { IsWall = false};
+                    fields[(x, y)] = new Grass($"Field ({x},{y})");
                 }
             }
 
-            fields[(0, 1)].IsWall = true;
-            fields[(1, 1)].IsDoor = true;
-            fields[(1, 1)].IsLocked = true;
-            fields[(1, 1)].DoorTarget = (3, 3);
+            fields[(0, 1)] = new Wall("Wall");
+            fields[(1, 1)] = new Door("Door", (3, 3));
+            fields[(2, 2)] = new Enemy("Enemy");
 
             fields[(2, 0)].Items.Add(new Key());
             fields[(0, 0)].Items.Add(new Food());
@@ -64,72 +64,48 @@ namespace ConsoleApp4._3
 
         private void SetPlayerPosition(int dx, int dy)
         {
-            var newPos = (Player.Position.x + dx, Player.Position.y + dy);
-            Field target;
+            try
+            {
+                var newPos = (Player.Position.x + dx, Player.Position.y + dy);
 
-            try 
-            {
-                // When does a error occurs it will not be assigned
-                target = fields[newPos];
-            }
-            // Another way of validating the correctness of the methods
-            // The Field can be thighted up with Interface and liek be asked if the next Field is free 
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Out of the Map");
-                Player.Position = (0, 0);
-                Console.WriteLine("You was teleported to the start");
-                return;
-            } 
-
-            if (target.IsWall)
-            {
-                Console.WriteLine("Is a Wall");
-                return;
-            }
-
-            if (target.IsDoor )
-            {
-                if (target.IsLocked)
+                if (!fields.TryGetValue(newPos, out Field target))
                 {
-                    if (Player.Inventory.Any(item => item is Key))
-                    {
-                        target.IsLocked = false;
-                        Console.WriteLine($"{Player.Name} has unlocked the Door");
-
-                        var items = Player.Inventory;
-                        var keyToRemove = items.First(item => item is Key);
-                        items.Remove(keyToRemove);
-
-
-                        Player.Position = target.DoorTarget;
-                        Console.WriteLine($"{Player.Name} was teleported to {target.DoorTarget}");
-                        return;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Door is locked.");
-                        return;
-                    }
+                    Console.WriteLine("Out of the map.");
+                    Player.Position = (0, 0);
+                    return;
                 }
 
-                Console.WriteLine("Door is not closed, you can move on");
+                if (!target.CanEnter(Player))
+                    return;
 
+                if (Player.Energy < 1)
+                {
+                    Console.WriteLine($"{Player.Name} not enough energy.");
+                    return;
+                }
+
+                Player.Energy -= 5;
+                Player.Position = newPos;
+
+                target.OnEnter(Player);
+
+                Console.WriteLine($"Palyer moved to {Player.Position}");
             }
-
-            if (Player.Energy < 1)
+            catch (InvalidOperationException ex)
             {
-                Console.WriteLine($"{Player.Name} cannot keep moving");
-                return;
+                Console.WriteLine($"Inventar error: {ex.Message}");
             }
-
-            Player.Position = newPos;
-            Player.Energy -= 1;
-
-            Console.WriteLine($"Player moved to {Player.Position}");
-
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Invalid position - Player is teleported to start");
+                Player.Position = (0, 0);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Error: {ex.Message}");
+            }
         }
+
 
 
         public void PickUpItem()

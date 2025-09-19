@@ -8,6 +8,9 @@ namespace ConsoleApp4._3
 {
     internal enum Direction
     {
-        North, South, East, West
+        North, 
+        South, 
+        East, 
+        West
     }
 }

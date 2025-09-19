@@ -14,9 +14,10 @@ namespace ConsoleApp4._3.Fields
 
         public override bool CanEnter => false;
 
-        public override void OnEnter(Player player)
+        public override bool MovePlayerToField(Player player)
         {
             Console.WriteLine($"Is a Wall,{player.Name} can go further");
+            return CanEnter;
         }
     }
 }

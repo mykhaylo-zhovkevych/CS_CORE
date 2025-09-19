@@ -9,32 +9,32 @@ namespace ConsoleApp4._3.Fields
 {
     internal class Door : Field
     {
-        public bool IsLocked { get; set; } = true;
         public (int x, int y) DoorTarget { get; }
         public override char Symbol => '╬';
         public Door(string name, (int, int) target) : base(name) => DoorTarget = target;
 
-        public override bool CanEnter => true;
+        public override bool CanEnter => false;
         
-        public override void OnEnter(Player player) 
+        public override bool MovePlayerToField(Player player) 
         {
-            if (IsLocked)
+            if (!CanEnter)
             {
                 var key = player.Inventory.OfType<Key>().FirstOrDefault();
                 if (key == null)
                 {
                     Console.WriteLine("Door is closed.");
-                    CanEnter = false;
-                    return;
+                    return CanEnter;
                 }
-                IsLocked = false;
+                
                 player.Inventory.Remove(key);
                 Console.WriteLine($"{player.Name} has opened the door");
+                CanEnter = true;
             }
 
             // teleport after unlocking
             player.Position = DoorTarget;
             Console.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+            return CanEnter;
         }
     }
 }

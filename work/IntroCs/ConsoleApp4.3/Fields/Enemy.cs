@@ -14,7 +14,7 @@ namespace ConsoleApp4._3.Fields
 
         public override bool CanEnter => true;
 
-        public override void OnEnter(Player player)
+        public override bool MovePlayerToField(Player player)
         {
             var sword = player.Inventory.OfType<Sword>().FirstOrDefault();
 
@@ -28,6 +28,7 @@ namespace ConsoleApp4._3.Fields
                 player.Energy -= 10;
                 Console.WriteLine($"{player.Name} dont have sword, demage is -10!");
             }
+            return CanEnter;
         }
     }
 }

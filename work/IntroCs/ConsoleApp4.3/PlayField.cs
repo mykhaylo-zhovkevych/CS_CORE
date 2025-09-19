@@ -166,8 +166,10 @@ namespace ConsoleApp4._3
                     return;
                 }
 
-                if (!target.CanEnter)
+                if (!target.MovePlayerToField(Player))
+                {
                     return;
+                }
 
                 if (Player.Energy < 1)
                 {
@@ -178,7 +180,6 @@ namespace ConsoleApp4._3
                 Player.Energy -= 5;
                 Player.Position = newPos;
 
-                target.OnEnter(Player);
 
                 Console.WriteLine($"Palyer moved to {Player.Position}");
             }
@@ -211,8 +212,6 @@ namespace ConsoleApp4._3
             Console.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
         }
 
-
-
         public void DropItem()
         {
             if (!Player.Inventory.Any())
@@ -230,6 +229,5 @@ namespace ConsoleApp4._3
             Console.WriteLine($"{Player.Name} dropped {item.Name} at {Player.Position}");
 
         }
-
     }
 }

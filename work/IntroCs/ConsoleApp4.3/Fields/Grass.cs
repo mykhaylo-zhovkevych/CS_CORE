@@ -13,5 +13,7 @@ namespace ConsoleApp4._3.Fields
         public Grass(string name) : base(name) { }
         public override bool CanEnter => true;
 
+        
+
     }
 }

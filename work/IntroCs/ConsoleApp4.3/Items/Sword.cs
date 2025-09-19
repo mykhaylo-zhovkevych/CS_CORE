@@ -13,8 +13,9 @@ namespace ConsoleApp4._3.Items
         {
             bool sure = true;
             Console.WriteLine("You can trage your Sword for one Food");
-
+            
             int index = player.Inventory.IndexOf(this);
+
 
             if (sure)
             {

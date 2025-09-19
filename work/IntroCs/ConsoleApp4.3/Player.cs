@@ -1,4 +1,5 @@
-﻿using ConsoleApp4._3.Items;
+﻿using ConsoleApp4._3.Interfaces;
+using ConsoleApp4._3.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,5 +53,22 @@ namespace ConsoleApp4._3
                 _inventoryIndex++;
             }
         }
+
+        public void PrintPlayerInventory()
+        {
+            try
+            {
+                Console.WriteLine("All Items (top to bottom):");
+                foreach (var item in Inventory)
+                {
+                    Console.WriteLine($" -  {item.Name}");
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Inventory is empty");
+            }
+        }
+
     }
 }

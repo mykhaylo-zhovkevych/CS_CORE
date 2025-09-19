@@ -1,4 +1,5 @@
 ﻿using ConsoleApp4._3.Fields;
+using ConsoleApp4._3.Interfaces;
 using ConsoleApp4._3.Items;
 using System;
 using System.Collections.Generic;
@@ -12,54 +13,144 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp4._3
 {
-    internal class PlayField
+    internal class PlayField 
     {
+
+        private readonly IController _controller;
         public Guid Id { get; }
         public string Name { get; }
-
-        private Dictionary<(int x, int y), Field> fields;
+        // look at the Implantation 
+        private Dictionary<(int x, int y), Field> _fields;
         // Hard coded Player, secound option with dependency 
         public Player Player { get; set; }
 
-        public PlayField(string name)
+        public PlayField(string name, IController controller)
         {
             Name = name;
-            fields = new Dictionary<(int x, int y), Field>();
-            StartGame();
+            _controller = controller;
+            _fields = new Dictionary<(int x, int y), Field>();
+            InitGame();
         }
 
         /// <summary>
         /// Starts game with conditions
         /// Player spwons at the random field
         /// </summary>
-        private void StartGame()
+        private void InitGame()
         {
 
-            for (int x = -3; x <= 3; x++)
+            for (int x = -6; x <= 6; x++)
             {
                 for (int y = -3; y <= 3; y++)
                 {
-                    fields[(x, y)] = new Grass($"Field ({x},{y})");
+                    _fields[(x, y)] = new Grass($"Field ({x},{y})");
                 }
             }
 
-            fields[(0, 1)] = new Wall("Wall");
-            fields[(1, 1)] = new Door("Door", (3, 3));
-            fields[(2, 2)] = new Enemy("Enemy");
+            _fields[(0, 1)] = new Wall("Wall");
+            _fields[(1, 3)] = new Door("Door", (3, 3));
+            _fields[(6, 2)] = new Enemy("Enemy");
 
-            fields[(2, 0)].Items.Add(new Key());
-            fields[(0, 0)].Items.Add(new Food());
-            fields[(0, 0)].Items.Add(new Sword());
-            fields[(0, 0)].Items.Add(new Bag());
-            fields[(0, 0)].Items.Add(new Key());
-            fields[(1, 0)].Items.Add(new Food());
-            fields[(3, 3)].Items.Add(new Sword());
+            _fields[(2, 0)].Items.Add(new Key());
+            _fields[(0, 0)].Items.Add(new Food());
+            _fields[(0, 0)].Items.Add(new Sword());
+            _fields[(0, 0)].Items.Add(new Bag());
+            _fields[(0, 0)].Items.Add(new Key());
+            _fields[(1, 0)].Items.Add(new Food());
+            _fields[(3, 3)].Items.Add(new Sword());
 
-            Player = new Player("Held", energy: 20);
+            Player = new Player("Held", energy: 200);
             Player.Position = (0, 0);
 
+        }
+
+        public void Run()
+        {
+            bool running = true;
+
+            while (running)
+            {
+                DrawFields();
+
+                var action = _controller.GetNextAction();
+
+                switch (action) 
+                {
+                    case PlayerAction.PrintInventory: Player.PrintPlayerInventory(); break;
+                    case PlayerAction.MoveNorth: MovePlayer(Direction.North); break;
+                    case PlayerAction.MoveSouth: MovePlayer(Direction.South); break;
+                    case PlayerAction.MoveWest: MovePlayer(Direction.West); break;
+                    case PlayerAction.MoveEast: MovePlayer(Direction.East); break;
+                    case PlayerAction.Use: Player.UseTopItem(); break;
+                    case PlayerAction.PickUp: PickUpItem(); break;
+                    case PlayerAction.Drop: DropItem(); break;
+                    case PlayerAction.Quit: running = false; break;
+                }
+            }
+        }
+
+        public void MovePlayer(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.North: SetPlayerPosition(0, -1); break;
+                case Direction.South: SetPlayerPosition(0, 1); break;
+                case Direction.East: SetPlayerPosition(1, 0); break;
+                case Direction.West: SetPlayerPosition(-1, 0); break;
+            }
+        }
+
+        private void DrawFields()
+        {
+            
+            var playerPos = Player.Position;
+            var allCoords = _fields.Keys;
+
+            int minX = allCoords.Min(c => c.x);
+            int maxX = allCoords.Max(c => c.x);
+            int minY = allCoords.Min(c => c.y);
+            int maxY = allCoords.Max(c => c.y);
+
+            for (int y = minY; y <= maxY; y++)
+            {
+
+                for (int x = minX; x <= maxX; x++)
+                {
+                    Console.Write("+---");
+                }
+                Console.WriteLine("+");
+
+                for (int x = minX; x <= maxX; x++)
+                {
+                    char c = ' ';
+                    if ((x, y) == playerPos)
+                    {
+                        c = 'P';
+                    }
+                       
+                    else if (TryGetField((x, y), out var field))
+                    {
+                        c = field.Symbol;
+                    }
+
+                    Console.Write($"| {c} ");
+                }
+                Console.WriteLine("|");
+            }
+
+            for (int x = minX; x <= maxX; x++)
+            {
+                Console.Write("+---");
+            }
+            Console.WriteLine("+");
+        }
+
+        private bool TryGetField((int x, int y) pos, out Field field)
+        {
+            return _fields.TryGetValue(pos, out field);
         }
 
         private void SetPlayerPosition(int dx, int dy)
@@ -68,19 +159,19 @@ namespace ConsoleApp4._3
             {
                 var newPos = (Player.Position.x + dx, Player.Position.y + dy);
 
-                if (!fields.TryGetValue(newPos, out Field target))
+                if (!_fields.TryGetValue(newPos, out Field target))
                 {
                     Console.WriteLine("Out of the map.");
                     Player.Position = (0, 0);
                     return;
                 }
 
-                if (!target.CanEnter(Player))
+                if (!target.CanEnter)
                     return;
 
                 if (Player.Energy < 1)
                 {
-                    Console.WriteLine($"{Player.Name} not enough energy.");
+                    Console.WriteLine($"{Player.Name} has not enough energy.");
                     return;
                 }
 
@@ -90,10 +181,6 @@ namespace ConsoleApp4._3
                 target.OnEnter(Player);
 
                 Console.WriteLine($"Palyer moved to {Player.Position}");
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine($"Inventar error: {ex.Message}");
             }
             catch (KeyNotFoundException)
             {
@@ -110,7 +197,7 @@ namespace ConsoleApp4._3
 
         public void PickUpItem()
         {
-            var field = fields[Player.Position];
+            var field = _fields[Player.Position];
             if (!field.Items.Any())
             {
                 Console.WriteLine("Nothing to pick up.");
@@ -119,7 +206,6 @@ namespace ConsoleApp4._3
 
             var item = field.Items.Last();
             field.Items.Remove(item);
-           
             Player.Inventory.Add(item);
 
             Console.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
@@ -135,7 +221,7 @@ namespace ConsoleApp4._3
                 return;
             }
 
-            var field = fields[Player.Position];
+            var field = _fields[Player.Position];
 
             var item = Player.Inventory.Last();
             field.Items.Add(item);
@@ -145,43 +231,5 @@ namespace ConsoleApp4._3
 
         }
 
-        public void MovePlayer(Direction dir)
-        {
-            switch (dir)
-            {
-                case Direction.North: SetPlayerPosition(0, -1); break;
-                case Direction.South: SetPlayerPosition(0, 1); break;
-                case Direction.East: SetPlayerPosition(1, 0); break;
-                case Direction.West: SetPlayerPosition(-1, 0); break;
-            }
-        }
-
-        public void PrintPlayerInfo()
-        {
-
-            var playerName = Player.Name;
-            var remainingEnergy = Player.Energy;
-            var position = Player.Position;
-            var itemCount = Player.Inventory.Count();
-
-            Console.WriteLine($"=== Player Info ===");
-            Console.WriteLine($"Name: {playerName}");
-            Console.WriteLine($"Energy: {remainingEnergy}");
-            Console.WriteLine($"Position: {position}");
-            Console.Write($"Items in Inventory: {itemCount} ");
-
-            try
-            {
-                Console.WriteLine("All Items (top to bottom):");
-                foreach (var item in Player.Inventory)
-                {
-                    Console.WriteLine($" -  {item.Name}");
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                Console.WriteLine("Inventory is empty");
-            }
-        }
     }
 }

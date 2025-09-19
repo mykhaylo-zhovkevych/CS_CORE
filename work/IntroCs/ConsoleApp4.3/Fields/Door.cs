@@ -11,30 +11,30 @@ namespace ConsoleApp4._3.Fields
     {
         public bool IsLocked { get; set; } = true;
         public (int x, int y) DoorTarget { get; }
+        public override char Symbol => '╬';
         public Door(string name, (int, int) target) : base(name) => DoorTarget = target;
 
-        public override bool CanEnter(Player player)
+        public override bool CanEnter => true;
+        
+        public override void OnEnter(Player player) 
         {
-            if(IsLocked)
+            if (IsLocked)
             {
                 var key = player.Inventory.OfType<Key>().FirstOrDefault();
                 if (key == null)
                 {
                     Console.WriteLine("Door is closed.");
-                    return false;
+                    CanEnter = false;
+                    return;
                 }
                 IsLocked = false;
                 player.Inventory.Remove(key);
-                Console.WriteLine($"{player.Name} has opened a door ");
+                Console.WriteLine($"{player.Name} has opened the door");
             }
-            return true;
-        }
-        
-        public override void OnEnter(Player player) 
-        {
 
+            // teleport after unlocking
             player.Position = DoorTarget;
-            Console.WriteLine($"{player.Name}was to {DoorTarget} teleported");
+            Console.WriteLine($"{player.Name} was teleported to {DoorTarget}");
         }
     }
 }

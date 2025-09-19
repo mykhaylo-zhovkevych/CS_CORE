@@ -8,8 +8,10 @@ namespace ConsoleApp4._3.Fields
 {
     internal class Grass : Field
     {
+
+        public override char Symbol => '.';
         public Grass(string name) : base(name) { }
-        public override bool CanEnter(Player player) => true;
+        public override bool CanEnter => true;
 
     }
 }

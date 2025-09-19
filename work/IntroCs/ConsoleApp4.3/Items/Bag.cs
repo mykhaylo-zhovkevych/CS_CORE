@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp4._3.Items
+﻿using ConsoleApp4._3.Interfaces;
+
+namespace ConsoleApp4._3.Items
 {
     internal class Bag : Item, IUsable
     { 
@@ -9,7 +11,7 @@
         }
         public void Use(Player player)
         {
-            Console.WriteLine("Inventory: " + string
+            Console.WriteLine("Your bag has: " + string
                 .Join(", ", player.Inventory
                 .Select(i => i.Name)));
 

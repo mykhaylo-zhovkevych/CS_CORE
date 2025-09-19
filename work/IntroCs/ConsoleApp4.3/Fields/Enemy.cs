@@ -9,9 +9,10 @@ namespace ConsoleApp4._3.Fields
 {
     internal class Enemy : Field
     {
+        public override char Symbol => '☠';
         public Enemy(string name) : base(name) { }
 
-        public override bool CanEnter(Player player) => true;
+        public override bool CanEnter => true;
 
         public override void OnEnter(Player player)
         {

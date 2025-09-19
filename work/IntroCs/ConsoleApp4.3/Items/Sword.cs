@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp4._3.Items
+﻿using ConsoleApp4._3.Interfaces;
+
+namespace ConsoleApp4._3.Items
 {
     internal class Sword : Item, IUsable
     { 

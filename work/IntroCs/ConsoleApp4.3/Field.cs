@@ -11,11 +11,13 @@ namespace ConsoleApp4._3
     {
         public Guid Id { get; } = Guid.NewGuid();
         public string Name { get; }
+        public abstract char Symbol { get; }
         public List<Item> Items { get; } = new List<Item>();
-        public abstract bool CanEnter(Player player);
+
+        public virtual bool CanEnter { get; set;  }
+        public virtual void OnEnter(Player player) { }
 
         public Field(string name) { Id = Guid.NewGuid(); Name = name; }
 
-        public virtual void OnEnter(Player player) { }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Interfaces
 {
-    internal interface IController
+    public interface IController
     {
         PlayerAction GetNextAction();
     }

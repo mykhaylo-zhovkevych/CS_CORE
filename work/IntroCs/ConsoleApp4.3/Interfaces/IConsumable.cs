@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Interfaces
 {
-    internal interface IConsumable
+    public interface IConsumable
     {
         public abstract void Consume(Player player);
 

@@ -2,7 +2,7 @@
 
 namespace ConsoleApp4._3
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    internal enum Direction
+    public enum Direction
     {
         North, 
         South, 

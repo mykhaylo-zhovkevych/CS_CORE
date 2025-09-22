@@ -2,8 +2,8 @@
 
 namespace ConsoleApp4._3.Items
 {
-    internal class Sword : Item, IUsable
-    { 
+    public class Sword : Item, IUsable
+    {
         public Sword() 
         {
             Guid Id = Guid.NewGuid();

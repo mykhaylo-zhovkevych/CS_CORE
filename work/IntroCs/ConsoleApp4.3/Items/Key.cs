@@ -2,7 +2,7 @@
 
 namespace ConsoleApp4._3.Items
 {
-    internal class Key : Item, IUsable
+    public class Key : Item, IUsable
     { 
         public Key() 
         {

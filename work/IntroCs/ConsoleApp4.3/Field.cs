@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    internal abstract class Field
+    public abstract class Field
     {
         public Guid Id { get; } = Guid.NewGuid();
         public string Name { get; }

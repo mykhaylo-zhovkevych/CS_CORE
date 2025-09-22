@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    internal class Player 
+    public class Player 
     {
         private int _inventoryIndex = 0;
         public string Name { get; }

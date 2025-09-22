@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Items
 {
-    internal class Food : Item, IConsumable
+    public class Food : Item, IConsumable
     {
         public Food()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Fields
 {
-    internal class Grass : Field
+    public class Grass : Field
     {
 
         public override char Symbol => '.';

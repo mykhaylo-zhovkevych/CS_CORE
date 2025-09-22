@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Interfaces
 {
-    internal interface IUsable
+    public interface IUsable
     {
         public abstract void Use(Player player);
 

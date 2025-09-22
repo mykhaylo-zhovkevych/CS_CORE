@@ -1,4 +1,5 @@
-﻿using ConsoleApp4._3.Fields;
+﻿using ConsoleApp4._3.Exceptions;
+using ConsoleApp4._3.Fields;
 using ConsoleApp4._3.Interfaces;
 using ConsoleApp4._3.Items;
 using System;
@@ -12,18 +13,18 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static ConsoleApp4._3.Exceptions.OutOfBoundsException;
 
 
 namespace ConsoleApp4._3
 {
-    internal class PlayField 
+    public class PlayField 
     {
-
         private readonly IController _controller;
         public Guid Id { get; }
         public string Name { get; }
         // look at the Implantation 
-        private Dictionary<(int x, int y), Field> _fields;
+        public Dictionary<(int x, int y), Field> Fields { get; }
         // Hard coded Player, secound option with dependency 
         public Player Player { get; set; }
 
@@ -31,7 +32,7 @@ namespace ConsoleApp4._3
         {
             Name = name;
             _controller = controller;
-            _fields = new Dictionary<(int x, int y), Field>();
+            Fields = new Dictionary<(int x, int y), Field>();
             InitGame();
         }
 
@@ -46,21 +47,21 @@ namespace ConsoleApp4._3
             {
                 for (int y = -3; y <= 3; y++)
                 {
-                    _fields[(x, y)] = new Grass($"Field ({x},{y})");
+                    Fields[(x, y)] = new Grass($"Field ({x},{y})");
                 }
             }
 
-            _fields[(0, 1)] = new Wall("Wall");
-            _fields[(1, 3)] = new Door("Door", (3, 3));
-            _fields[(6, 2)] = new Enemy("Enemy");
+            Fields[(0, 1)] = new Wall("Wall");
+            Fields[(1, 3)] = new Door("Door", (3, 3));
+            Fields[(6, 2)] = new Enemy("Enemy");
 
-            _fields[(2, 0)].Items.Add(new Key());
-            _fields[(0, 0)].Items.Add(new Food());
-            _fields[(0, 0)].Items.Add(new Sword());
-            _fields[(0, 0)].Items.Add(new Bag());
-            _fields[(0, 0)].Items.Add(new Key());
-            _fields[(1, 0)].Items.Add(new Food());
-            _fields[(3, 3)].Items.Add(new Sword());
+            Fields[(2, 0)].Items.Add(new Key());
+            Fields[(0, 0)].Items.Add(new Food());
+            Fields[(0, 0)].Items.Add(new Sword());
+            Fields[(0, 0)].Items.Add(new Bag());
+            Fields[(0, 0)].Items.Add(new Key());
+            Fields[(1, 0)].Items.Add(new Food());
+            Fields[(3, 3)].Items.Add(new Sword());
 
             Player = new Player("Held", energy: 200);
             Player.Position = (0, 0);
@@ -107,7 +108,7 @@ namespace ConsoleApp4._3
         {
             
             var playerPos = Player.Position;
-            var allCoords = _fields.Keys;
+            var allCoords = Fields.Keys;
 
             int minX = allCoords.Min(c => c.x);
             int maxX = allCoords.Max(c => c.x);
@@ -150,7 +151,7 @@ namespace ConsoleApp4._3
 
         private bool TryGetField((int x, int y) pos, out Field field)
         {
-            return _fields.TryGetValue(pos, out field);
+            return Fields.TryGetValue(pos, out field);
         }
 
         private void SetPlayerPosition(int dx, int dy)
@@ -159,11 +160,9 @@ namespace ConsoleApp4._3
             {
                 var newPos = (Player.Position.x + dx, Player.Position.y + dy);
 
-                if (!_fields.TryGetValue(newPos, out Field target))
+                if (!Fields.TryGetValue(newPos, out Field target))
                 {
-                    Console.WriteLine("Out of the map.");
-                    Player.Position = (0, 0);
-                    return;
+                    throw new OutOfBoundsException(newPos);
                 }
 
                 if (!target.MovePlayerToField(Player))
@@ -183,10 +182,10 @@ namespace ConsoleApp4._3
 
                 Console.WriteLine($"Palyer moved to {Player.Position}");
             }
-            catch (KeyNotFoundException)
+            catch (OutOfBoundsException ex)
             {
-                Console.WriteLine("Invalid position - Player is teleported to start");
-                Player.Position = (0, 0);
+                Console.WriteLine($"{ex.Message}");
+                //Player.Position = (0, 0);
             }
             catch (Exception ex)
             {
@@ -194,11 +193,9 @@ namespace ConsoleApp4._3
             }
         }
 
-
-
         public void PickUpItem()
         {
-            var field = _fields[Player.Position];
+            var field = Fields[Player.Position];
             if (!field.Items.Any())
             {
                 Console.WriteLine("Nothing to pick up.");
@@ -220,7 +217,7 @@ namespace ConsoleApp4._3
                 return;
             }
 
-            var field = _fields[Player.Position];
+            var field = Fields[Player.Position];
 
             var item = Player.Inventory.Last();
             field.Items.Add(item);

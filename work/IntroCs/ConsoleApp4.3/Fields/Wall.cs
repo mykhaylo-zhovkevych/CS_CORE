@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Fields
 {
-    internal class Wall : Field
+    public class Wall : Field
     {
 
         public override char Symbol => '█';

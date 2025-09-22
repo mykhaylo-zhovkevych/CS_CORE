@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    internal class KeyboardController : IController
+    public class KeyboardController : IController
     {
         public PlayerAction GetNextAction()
         {

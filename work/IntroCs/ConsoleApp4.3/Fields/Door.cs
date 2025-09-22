@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Fields
 {
-    internal class Door : Field
+    public class Door : Field
     {
         public (int x, int y) DoorTarget { get; }
         public override char Symbol => '╬';

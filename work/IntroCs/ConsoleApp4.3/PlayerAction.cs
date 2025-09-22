@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp4._3
 {
-    internal enum PlayerAction
+    public enum PlayerAction
     {
         PrintInventory,
         MoveNorth,

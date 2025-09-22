@@ -2,7 +2,7 @@
 
 namespace ConsoleApp4._3.Items
 {
-    internal class Bag : Item, IUsable
+    public class Bag : Item, IUsable
     { 
         public Bag() 
         {

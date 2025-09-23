@@ -69,6 +69,5 @@ namespace ConsoleApp4._3
                 Console.WriteLine("Inventory is empty");
             }
         }
-
     }
 }

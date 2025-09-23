@@ -136,6 +136,10 @@
             "Microsoft.Testing.Extensions.TrxReport": {
               "target": "Package",
               "version": "[1.4.3, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
             }
           },
           "imports": [

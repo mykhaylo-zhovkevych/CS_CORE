@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Exceptions
 {
-    public class OutOfBoundsException : Exception
+    public class PlayerOutOfBoundsException : Exception
     {
         public (int x, int y) AttemptedPosition { get; }
 
-        public OutOfBoundsException((int x, int y) pos) : base($"Attempted to move out of bounds to position {pos}.")
+        public PlayerOutOfBoundsException((int x, int y) pos) : base($"Attempted to move out of bounds to position {pos}.")
         {
             AttemptedPosition = pos;
         }

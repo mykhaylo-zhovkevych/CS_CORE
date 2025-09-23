@@ -9,11 +9,11 @@ namespace ConsoleApp4._3.Fields
 {
     public class Door : Field
     {
-        public (int x, int y) DoorTarget { get; }
+        public (int x, int y) DoorTarget { get; set; }
         public override char Symbol => '╬';
         public Door(string name, (int, int) target) : base(name) => DoorTarget = target;
 
-        public override bool CanEnter => false;
+        public override bool CanEnter { get; set; } 
         
         public override bool MovePlayerToField(Player player) 
         {

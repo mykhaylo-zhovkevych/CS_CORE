@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleApp4._3.Exceptions.OutOfBoundsException;
+using static ConsoleApp4._3.Exceptions.PlayerOutOfBoundsException;
 
 
 namespace ConsoleApp4._3
@@ -162,7 +162,7 @@ namespace ConsoleApp4._3
 
                 if (!Fields.TryGetValue(newPos, out Field target))
                 {
-                    throw new OutOfBoundsException(newPos);
+                    throw new PlayerOutOfBoundsException(newPos);
                 }
 
                 if (!target.MovePlayerToField(Player))
@@ -182,7 +182,7 @@ namespace ConsoleApp4._3
 
                 Console.WriteLine($"Palyer moved to {Player.Position}");
             }
-            catch (OutOfBoundsException ex)
+            catch (PlayerOutOfBoundsException ex)
             {
                 Console.WriteLine($"{ex.Message}");
                 //Player.Position = (0, 0);

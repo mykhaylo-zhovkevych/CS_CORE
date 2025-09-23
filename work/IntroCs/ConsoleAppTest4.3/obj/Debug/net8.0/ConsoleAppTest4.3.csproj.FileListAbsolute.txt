@@ -259,3 +259,8 @@ C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\obj\Debug\n
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\obj\Debug\net8.0\ConsoleAppTest4.3.pdb
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\obj\Debug\net8.0\ConsoleAppTest4.3.genruntimeconfig.cache
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\obj\Debug\net8.0\ref\ConsoleAppTest4.3.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\bin\Debug\net8.0\Moq.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest4.3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll

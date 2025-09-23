@@ -6,7 +6,7 @@ using ConsoleApp4._3.Items;
 namespace ConsoleAppTest4._3
 {
     [TestClass]
-    public sealed class UnitTest
+    public sealed class PlayFieldTest
     {
         // Test01
         // Move() Player can correct move with correct coordinate like (North South West East)
@@ -20,19 +20,19 @@ namespace ConsoleAppTest4._3
         // Statement: Player can interact with Objects (Items) Pick Up, Drop
         // Player can pick up/ drop etc... an item from the field (If there Items is)
 
-        PlayField game;
+        ConsoleApp4._3.PlayField game;
         
         [TestInitialize]
         public void Initialize()
         {
-            game = new PlayField("Quest", new KeyboardController());
-            game.Player.Inventory.Add(new Key());
+            game = new ConsoleApp4._3.PlayField("Quest", new KeyboardController());
             game.Fields[(0, 2)] = new Wall("Wall");
-            game.Fields[(1, 1)] = new Door("Door", (4, 4));
+            game.Fields[(1, 1)] = new Door("Door01", (2, 2));
+            game.Fields[(2, 3)] = new Door("Door02", (2, 5));
 
         }
         [TestMethod]
-        public void GameMovePlayerToSpecificField()
+        public void GameMovePlayer_ToSpecificField()
         {
             // Act 
             game.MovePlayer(Direction.East);
@@ -41,7 +41,7 @@ namespace ConsoleAppTest4._3
             Assert.AreEqual((1, 0), game.Player.Position);
         }
         [TestMethod]
-        public void GameMovePlayerOutOfBoundaries()
+        public void GameMovePlayer_OutOfBoundaries()
         {
             // Arrage
             game.Player.Position = (6, 0);
@@ -57,7 +57,7 @@ namespace ConsoleAppTest4._3
 
         }
         [TestMethod] 
-        public void GameMovePlayerIntoNonAccesibleField()
+        public void GameMovePlayer_IntoNonAccesibleField()
         {
             // Arrage
             game.Player.Position = (0, 1);
@@ -66,18 +66,40 @@ namespace ConsoleAppTest4._3
             game.MovePlayer(Direction.South);
             var afterWall = game.Player.Position;
 
-            // Through the Door
-
-            game.MovePlayer(Direction.East);
-            var afterDoor = game.Player.Position;
-
             // Assert
             Assert.AreEqual((0, 1), afterWall, "Player should not move into a wall.");
 
-            Assert.AreEqual((4, 4), afterDoor, "Player should had been teleported through the door after unlocking it.");
         }
+
         [TestMethod]
-        public void PlayerPickUpItemIntoInventory()
+        public void PlayerTryPass_ThroughDoor01_WithKey()
+        {
+            // Arrange
+            game.Player.Inventory.Add(new Key());
+            game.Player.Position = (1, 0);
+
+            // Act
+            game.MovePlayer(Direction.South);
+
+            // Assert
+            Assert.AreEqual((2, 2), game.Player.Position);
+        }
+
+        [TestMethod]
+        public void PlayerTryPass_ThroughDoor02_WithoutKey()
+        {
+            // Arrange
+            game.Player.Position = (2, 2);
+
+            // Act
+            game.MovePlayer(Direction.South);
+
+            // Assert
+            Assert.AreNotEqual((2, 5), game.Player.Position);
+        }
+
+        [TestMethod]
+        public void PlayerPickUp_ItemIntoInventory()
         {
             // Arrange
             var startPos = game.Player.Position; 
@@ -94,14 +116,13 @@ namespace ConsoleAppTest4._3
             // Assert
             Assert.AreEqual(initialInventoryCount + 1, game.Player.Inventory.Count);
             Assert.AreEqual(initialFieldItemCount - 1, field.Items.Count);
-            Assert.IsTrue(game.Player.Inventory.Contains(item), "Player inventory must contain picked up item");
-            Assert.IsFalse(field.Items.Contains(item), "Field must no longer contain the picked item");
+            Assert.IsTrue(game.Player.Inventory.Contains(item), "Player inventory must contain picked up item.");
+            Assert.IsFalse(field.Items.Contains(item), "Field must no longer contain the picked item.");
         }
         [TestMethod]
-        public void PlayerDropDownItemFromInventory()
+        public void PlayerDropDown_ItemFromInventory()
         {
             // Arrange
-
             var startPos = game.Player.Position;
             var field = game.Fields[startPos];
             var item = new Food();

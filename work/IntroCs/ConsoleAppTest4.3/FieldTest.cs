@@ -11,18 +11,6 @@ using System.Threading.Tasks;
 namespace ConsoleAppTest4._3
 {
 
-    public class TestDoor : Field
-    {
-        public TestDoor() : base("TestDoor") { }
-
-        public override char Symbol => throw new NotImplementedException();
-
-        public override bool MovePlayerToField(Player player)
-        {
-            return player.Inventory.OfType<Key>().Any();
-        }
-    }
-
     [TestClass]
     public class FieldTest
     {

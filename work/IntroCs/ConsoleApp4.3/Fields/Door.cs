@@ -31,9 +31,15 @@ namespace ConsoleApp4._3.Fields
                 CanEnter = true;
             }
 
-            // teleport after unlocking
-            player.Position = DoorTarget;
-            Console.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+            if (DoorTarget != default)
+            {
+                player.Position = DoorTarget;
+                Console.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+            }
+            else
+            {
+                Console.WriteLine($"{player.Name} passed through {Name} normally");
+            }
             return CanEnter;
         }
     }

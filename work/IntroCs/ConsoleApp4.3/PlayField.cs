@@ -165,6 +165,7 @@ namespace ConsoleApp4._3
                     throw new PlayerOutOfBoundsException(newPos);
                 }
 
+
                 if (!target.MovePlayerToField(Player))
                 {
                     return;
@@ -177,21 +178,23 @@ namespace ConsoleApp4._3
                 }
 
                 Player.Energy -= 5;
-                Player.Position = newPos;
 
-
-                Console.WriteLine($"Palyer moved to {Player.Position}");
+                
+                if (!(target is Door))
+                {
+                    Player.Position = newPos;
+                }
             }
             catch (PlayerOutOfBoundsException ex)
             {
                 Console.WriteLine($"{ex.Message}");
-                //Player.Position = (0, 0);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Unexpected Error: {ex.Message}");
             }
         }
+
 
         public void PickUpItem()
         {

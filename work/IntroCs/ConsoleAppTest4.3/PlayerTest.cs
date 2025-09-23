@@ -31,45 +31,19 @@ namespace ConsoleAppTest4._3
             player = new Player("Jonny", 100);
         }
 
-        public class TestConsumable : Item, IConsumable
-        {
-            public bool WasConsumed { get; private set; } = false;
-
-            public TestConsumable() : base() { }
-
-            public void Consume(Player player)
-            {
-                WasConsumed = true;
-            }
-        }
-
-        public class TestUsable : Item, IUsable
-        {
-            public bool WasUsed { get; private set; } = false;
-
-            public TestUsable() : base() { }
-
-            public void Use(Player player)
-            {
-                WasUsed = true;
-            }
-        }
-
 
         [TestMethod]
         public void Player_ConsumeItem()
         {
 
             // Arrange
-            var consumable = new TestConsumable();
-            //player.Inventory.Add(consumable);
-            player.Inventory.Add(new Food());
+            var food = new Food();
+            player.Inventory.Add(food);
 
             // Act
             player.UseTopItem();
 
             // Assert
-            //Assert.IsTrue(consumable.WasConsumed, "The consumable item must be consumed.");
             Assert.IsTrue(player.Energy > 100, "Player energy must increase after consuming food.");
         }
 
@@ -77,14 +51,14 @@ namespace ConsoleAppTest4._3
         public void Player_UseItem()
         {
             // Arrange
-            var usable = new TestUsable();
-            player.Inventory.Add(usable);
+            var sword = new Sword();
+            player.Inventory.Add(sword);
 
             // Act
             player.UseTopItem();
 
             // Assert
-            Assert.IsTrue(usable.WasUsed, "The usable item must be used.");
+            Assert.AreNotEqual(sword, player.Inventory.First(), "Sword should be replaced by Food after use.");
 
         }
 

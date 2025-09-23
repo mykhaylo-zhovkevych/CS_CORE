@@ -75,14 +75,16 @@ namespace ConsoleAppTest4._3
         public void PlayerTryPass_ThroughDoor01_WithKey()
         {
             // Arrange
-            game.Player.Inventory.Add(new Key());
+            var key = new Key();
+            game.Player.Inventory.Add(key);
             game.Player.Position = (1, 0);
 
             // Act
             game.MovePlayer(Direction.South);
+            var afterDoor = game.Player.Position;
 
             // Assert
-            Assert.AreEqual((2, 2), game.Player.Position);
+            Assert.AreEqual((2, 2), afterDoor);
         }
 
         [TestMethod]

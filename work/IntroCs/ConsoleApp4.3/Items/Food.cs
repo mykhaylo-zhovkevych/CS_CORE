@@ -19,7 +19,7 @@ namespace ConsoleApp4._3.Items
         public void Consume(Player player)
         {
             player.Energy += 5;
-            Console.WriteLine($"{player.Name} are a food and gained 5 energy");
+            outputService.WriteLine($"{player.Name} are a food and gained 5 energy");
         }
     }
 }

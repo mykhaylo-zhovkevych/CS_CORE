@@ -22,23 +22,23 @@ namespace ConsoleApp4._3.Fields
                 var key = player.Inventory.OfType<Key>().FirstOrDefault();
                 if (key == null)
                 {
-                    Console.WriteLine("Door is closed.");
+                    outputService.WriteLine("Door is closed.");
                     return CanEnter;
                 }
                 
                 player.Inventory.Remove(key);
-                Console.WriteLine($"{player.Name} has opened the door");
+                outputService.WriteLine($"{player.Name} has opened the door");
                 CanEnter = true;
             }
 
             if (DoorTarget != default)
             {
                 player.Position = DoorTarget;
-                Console.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+                outputService.WriteLine($"{player.Name} was teleported to {DoorTarget}");
             }
             else
             {
-                Console.WriteLine($"{player.Name} passed through {Name} normally");
+                outputService.WriteLine($"{player.Name} passed through {Name} normally");
             }
             return CanEnter;
         }

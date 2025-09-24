@@ -21,12 +21,12 @@ namespace ConsoleApp4._3.Fields
             if (sword != null)
             {
                 player.Inventory.Remove(sword);
-                Console.WriteLine("You have protected yourslef with sword");
+                outputService.WriteLine("You have protected yourslef with sword");
             }
             else
             {
                 player.Energy -= 10;
-                Console.WriteLine($"{player.Name} dont have sword, demage is -10!");
+                outputService.WriteLine($"{player.Name} dont have sword, demage is -10!");
             }
             return CanEnter;
         }

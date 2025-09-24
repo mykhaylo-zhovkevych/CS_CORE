@@ -16,7 +16,7 @@ namespace ConsoleApp4._3.Fields
 
         public override bool MovePlayerToField(Player player)
         {
-            Console.WriteLine($"Is a Wall,{player.Name} cannot go further");
+            outputService.WriteLine($"Is a Wall,{player.Name} cannot go further");
             return CanEnter;
         }
     }

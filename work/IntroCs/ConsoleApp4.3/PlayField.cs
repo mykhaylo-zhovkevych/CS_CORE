@@ -18,7 +18,7 @@ using static ConsoleApp4._3.Exceptions.PlayerOutOfBoundsException;
 
 namespace ConsoleApp4._3
 {
-    public class PlayField 
+    public class PlayField
     {
         private readonly IController _controller;
         public Guid Id { get; }
@@ -27,11 +27,13 @@ namespace ConsoleApp4._3
         public Dictionary<(int x, int y), Field> Fields { get; }
         // Hard coded Player, secound option with dependency 
         public Player Player { get; set; }
+        private readonly IOutputService _outputService;
 
-        public PlayField(string name, IController controller)
+        public PlayField(string name, IController controller, IOutputService output)
         {
             Name = name;
             _controller = controller;
+            _outputService = output;
             Fields = new Dictionary<(int x, int y), Field>();
             InitGame();
         }
@@ -173,7 +175,7 @@ namespace ConsoleApp4._3
 
                 if (Player.Energy < 1)
                 {
-                    Console.WriteLine($"{Player.Name} has not enough energy.");
+                    _outputService.WriteLine($"{Player.Name} has not enough energy.");
                     return;
                 }
 
@@ -187,11 +189,11 @@ namespace ConsoleApp4._3
             }
             catch (PlayerOutOfBoundsException ex)
             {
-                Console.WriteLine($"{ex.Message}");
+                _outputService.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected Error: {ex.Message}");
+                _outputService.WriteLine($"Unexpected Error: {ex.Message}");
             }
         }
 
@@ -201,7 +203,7 @@ namespace ConsoleApp4._3
             var field = Fields[Player.Position];
             if (!field.Items.Any())
             {
-                Console.WriteLine("Nothing to pick up.");
+                _outputService.WriteLine("Nothing to pick up.");
                 return;
             }
 
@@ -209,14 +211,14 @@ namespace ConsoleApp4._3
             field.Items.Remove(item);
             Player.Inventory.Add(item);
 
-            Console.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
+            _outputService.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
         }
 
         public void DropItem()
         {
             if (!Player.Inventory.Any())
             {
-                Console.WriteLine("Nothing to drop.");
+                _outputService.WriteLine("Nothing to drop.");
                 return;
             }
 
@@ -226,7 +228,7 @@ namespace ConsoleApp4._3
             field.Items.Add(item);
             Player.Inventory.Remove(item);
 
-            Console.WriteLine($"{Player.Name} dropped {item.Name} at {Player.Position}");
+            _outputService.WriteLine($"{Player.Name} dropped {item.Name} at {Player.Position}");
 
         }
     }

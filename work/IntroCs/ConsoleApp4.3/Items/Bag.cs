@@ -4,14 +4,14 @@ namespace ConsoleApp4._3.Items
 {
     public class Bag : Item, IUsable
     { 
-        public Bag() 
+        public Bag() : base() 
         {
             Guid Id = Guid.NewGuid();
             Name = "Box"; 
         }
         public void Use(Player player)
         {
-            Console.WriteLine("Your bag has: " + string
+            outputService.WriteLine("Your bag has: " + string
                 .Join(", ", player.Inventory
                 .Select(i => i.Name)));
 

@@ -12,7 +12,7 @@ namespace ConsoleApp4._3.Items
         }
         public void Use(Player player)
         {
-            Console.WriteLine("This is a Key. You can use it to unlock a door.");
+            outputService.WriteLine("This is a Key. You can use it to unlock a door.");
         }
     }
 }

@@ -12,7 +12,7 @@ namespace ConsoleApp4._3.Items
         public void Use(Player player)
         {
             bool sure = true;
-            Console.WriteLine("You can trage your Sword for one Food");
+            outputService.WriteLine("You can trage your Sword for one Food");
             
             int index = player.Inventory.IndexOf(this);
 
@@ -20,11 +20,11 @@ namespace ConsoleApp4._3.Items
             if (sure)
             {
                 player.Inventory[index] = new Food();
-                Console.WriteLine("You traded a sword for one item of Food");
+                outputService.WriteLine("You traded a sword for one item of Food");
             }
             else
             {
-                Console.WriteLine("You keep your Sword.");
+                outputService.WriteLine("You keep your Sword.");
             }
 
         }

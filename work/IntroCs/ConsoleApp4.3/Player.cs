@@ -1,5 +1,6 @@
 ﻿using ConsoleApp4._3.Interfaces;
 using ConsoleApp4._3.Items;
+using ConsoleApp4._3.OutputServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace ConsoleApp4._3
         public int Energy { get; set; }
         public (int x, int y) Position { get; set; }
         public List<Item> Inventory { get; set; } = new List<Item>();
+        private readonly IOutputService _outputService = new ConsoleOutputService();
 
         public Player(string name, int energy)
         {
@@ -28,7 +30,7 @@ namespace ConsoleApp4._3
         {
             if (!Inventory.Any())
             {
-                Console.WriteLine("Inventory is empty");
+                _outputService.WriteLine("Inventory is empty");
                 return;
             }
 
@@ -58,15 +60,15 @@ namespace ConsoleApp4._3
         {
             try
             {
-                Console.WriteLine("All Items (top to bottom):");
+                _outputService.WriteLine("All Items (top to bottom):");
                 foreach (var item in Inventory)
                 {
-                    Console.WriteLine($" -  {item.Name}");
+                    _outputService.WriteLine($" -  {item.Name}");
                 }
             }
             catch (InvalidOperationException)
             {
-                Console.WriteLine("Inventory is empty");
+                _outputService.WriteLine("Inventory is empty");
             }
         }
     }

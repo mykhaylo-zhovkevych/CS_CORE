@@ -14,20 +14,11 @@ namespace ConsoleAppTest4._3
     [TestClass]
     public class PlayerTest
     {
-
-        private Bag bag;
-        private Food food;
-        private Key key;
-        private Sword sword;
         private Player player;
 
         [TestInitialize] 
         public void init()
         {
-            bag = new Bag();
-            food = new Food();
-            key = new Key();
-            sword = new Sword();
             player = new Player("Jonny", 100);
         }
 
@@ -44,7 +35,7 @@ namespace ConsoleAppTest4._3
             player.UseTopItem();
 
             // Assert
-            Assert.IsTrue(player.Energy > 100, "Player energy must increase after consuming food.");
+            Assert.AreEqual(105, player.Energy);
         }
 
         [TestMethod]
@@ -52,6 +43,7 @@ namespace ConsoleAppTest4._3
         {
             // Arrange
             var sword = new Sword();
+            var food = new Food();
             player.Inventory.Add(sword);
 
             // Act
@@ -59,30 +51,55 @@ namespace ConsoleAppTest4._3
 
             // Assert
             Assert.AreNotEqual(sword, player.Inventory.First(), "Sword should be replaced by Food after use.");
+            Assert.IsTrue(player.Inventory.First() is Food);
 
         }
 
+
         [TestMethod]
-        public void Player_PrintInventory()
+        public void Player_PrintInventory_IsNotEmpty()
         {
             // Arrange
-            var player = new Player("Hero", 200);
+   
             player.Inventory.Add(new Food());
             player.Inventory.Add(new Sword());
 
-            var stringWriter = new StringWriter();
-            Console.SetOut(stringWriter);
+            string expectedOutput =
+@"All Items (top to bottom):
+ -  Food
+ -  Sword";
+
+
+            var sw = new StringWriter();
+            Console.SetOut(sw);
 
             // Act
             player.PrintPlayerInventory();
 
-            var output = stringWriter.ToString();
-
             // Assert
-            StringAssert.Contains(output, "All Items (top to bottom):");
-            StringAssert.Contains(output, "Food");
-            StringAssert.Contains(output, "Sword");
+            string actualOutput = sw.ToString().Trim(); 
+            Assert.AreEqual(expectedOutput, actualOutput);
 
         }
+
+        [TestMethod]
+        public void Player_PrintInvenotry_IsEmpty()
+        {
+            // Arrage 
+
+            string expectedOutput = "Inventory is Empty";
+
+            var sw = new StringWriter();
+            Console.SetOut(sw);
+
+            // Act 
+            player.PrintPlayerInventory();
+
+            // Assert
+            string actualOutput = sw.ToString().Trim();
+            Assert.AreEqual(expectedOutput, actualOutput);
+
+        }
+
     }
 }

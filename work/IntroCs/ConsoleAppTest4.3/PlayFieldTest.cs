@@ -2,6 +2,7 @@
 using ConsoleApp4._3.Exceptions;
 using ConsoleApp4._3.Fields;
 using ConsoleApp4._3.Items;
+using ConsoleApp4._3.OutputServices;
 
 namespace ConsoleAppTest4._3
 {
@@ -20,12 +21,12 @@ namespace ConsoleAppTest4._3
         // Statement: Player can interact with Objects (Items) Pick Up, Drop
         // Player can pick up/ drop etc... an item from the field (If there Items is)
 
-        ConsoleApp4._3.PlayField game;
+        PlayField game;
         
         [TestInitialize]
         public void Initialize()
         {
-            game = new ConsoleApp4._3.PlayField("Quest", new KeyboardController());
+            game = new PlayField("Quest", new KeyboardController(), new ConsoleOutputService());
             game.Fields[(0, 2)] = new Wall("Wall");
             game.Fields[(1, 1)] = new Door("Door01", (2, 2));
             game.Fields[(2, 3)] = new Door("Door02", (2, 5));

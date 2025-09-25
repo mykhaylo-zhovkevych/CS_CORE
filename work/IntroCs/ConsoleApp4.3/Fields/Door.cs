@@ -31,15 +31,9 @@ namespace ConsoleApp4._3.Fields
                 CanEnter = true;
             }
 
-            if (DoorTarget != default)
-            {
-                player.Position = DoorTarget;
-                outputService.WriteLine($"{player.Name} was teleported to {DoorTarget}");
-            }
-            else
-            {
-                outputService.WriteLine($"{player.Name} passed through {Name} normally");
-            }
+            player.Position = DoorTarget;
+            outputService.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+
             return CanEnter;
         }
     }

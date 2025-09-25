@@ -54,7 +54,8 @@ namespace ConsoleApp4._3
             }
 
             Fields[(0, 1)] = new Wall("Wall");
-            Fields[(1, 3)] = new Door("Door", (3, 3));
+            Fields[(1, 3)] = new Door("Door", (3,3));
+            Fields[(2, 2)] = new FakeDoor("FakeDoor");
             Fields[(6, 2)] = new Enemy("Enemy");
 
             Fields[(2, 0)].Items.Add(new Key());
@@ -181,11 +182,12 @@ namespace ConsoleApp4._3
 
                 Player.Energy -= 5;
 
-                
-                if (!(target is Door))
+                if (!(target is Door door && !(door is FakeDoor)))
                 {
                     Player.Position = newPos;
                 }
+
+
             }
             catch (PlayerOutOfBoundsException ex)
             {

@@ -4,6 +4,7 @@ using ConsoleApp4._3.OutputServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace ConsoleApp4._3
 
         public void PrintPlayerInventory()
         {
-            try
+            if (Inventory.Count != 0)
             {
                 _outputService.WriteLine("All Items (top to bottom):");
                 foreach (var item in Inventory)
@@ -66,9 +67,9 @@ namespace ConsoleApp4._3
                     _outputService.WriteLine($" -  {item.Name}");
                 }
             }
-            catch (InvalidOperationException)
+            else
             {
-                _outputService.WriteLine("Inventory is empty");
+                _outputService.WriteLine("Inventory is Empty");
             }
         }
     }

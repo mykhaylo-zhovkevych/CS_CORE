@@ -15,7 +15,6 @@ namespace ConsoleAppTest4._3
     public class FieldTest
     {
 
-        private Wall wall;
         private Door door;
         private Enemy enemy;
         private Player player;
@@ -23,7 +22,7 @@ namespace ConsoleAppTest4._3
         [TestInitialize]
         public void Init()
         {
-            wall = new Wall("Wall");
+          
             door = new Door("Door", (1,1));
             enemy = new Enemy("Spider");
             player = new Player("Hero", default);
@@ -34,8 +33,11 @@ namespace ConsoleAppTest4._3
         public void Wall_MustBlockEntering()
         {
             // Arrange
+        
+            Wall wall = new Wall("Wall");
 
             // Act
+            // better naming 
             var result = wall.MovePlayerToField(player);
 
             // Assert 
@@ -44,7 +46,7 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
-        public void Door_MustBlockEntering_IfNotKey()
+        public void Enter_Door_Without_Key_Should_Blocked()
         {
             // Arrange
 
@@ -56,8 +58,8 @@ namespace ConsoleAppTest4._3
 
         }
 
-       [TestMethod]
-        public void Door_MustAllowEntering_IfKey()
+        [TestMethod]
+        public void Enter_Door_With_Key_Should_BeAllowed()
         {
             // Arrange
             var key = new Key();
@@ -73,6 +75,35 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
+        public void FakeDoor_MustAllowEntering_IfKey()
+        {
+            // Arrange 
+            var key = new Key();
+            player.Inventory.Add(key);
+            FakeDoor fakeDoor = new FakeDoor("FakeDoor");
+
+            // Act
+            var result = fakeDoor.MovePlayerToField(player);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void FakeDoor_MustBlockEntering_IfNoKey()
+        {
+            // Arrange
+            FakeDoor fakeDoor = new FakeDoor("FakeDoor");
+
+            // Act 
+            var result = fakeDoor.MovePlayerToField(player);
+
+            // Assert 
+            Assert.IsFalse(result);
+        }
+
+
+        [TestMethod]
         public void Grass_CanEnter_MustAllowEntering()
         {
             // Arrange
@@ -80,8 +111,10 @@ namespace ConsoleAppTest4._3
 
             // Act
 
+            var passed = field.MovePlayerToField(player);
+
             // Assert
-            Assert.IsTrue(field.CanEnter);
+            Assert.IsTrue(passed);
         }
 
         [TestMethod] 
@@ -98,7 +131,7 @@ namespace ConsoleAppTest4._3
 
             // Assert
 
-            Assert.AreEqual(initialEnergy - 10, player.Energy, "The enemy must harm the player if no sword is present.");
+            Assert.AreEqual(90, player.Energy, "The enemy must harm the player if no sword is present.");
 
         }
 

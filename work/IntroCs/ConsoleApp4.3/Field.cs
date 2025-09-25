@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConsoleApp4._3.Interfaces;
+using ConsoleApp4._3.OutputServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -7,35 +9,22 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3
 {
-    internal class Field
-    {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; }
-        public List<Item> Items { get; set; } = new List<Item>();
-
-        public bool IsWall { get; set; } = false;
-        public bool IsDoor { get; set; } = false;
-        public bool IsLocked { get; set; } = false;
-        public (int x, int y) DoorTarget { get; set; }
-
-        public Field(string name) { Id = Guid.NewGuid(); Name = name; }
-
-        public override string ToString()
-        {
-            return $"{Name} {(IsWall ? "[Wall]": "")}";
-        }
-    }
-
-    public class Item
+    public abstract class Field
     {
         public Guid Id { get; } = Guid.NewGuid();
-        public string Name { get; set; }
-        public override string ToString() => Name;
+        public string Name { get; }
+        public abstract char Symbol { get; }
+        public List<Item> Items { get; } = new List<Item>();
+        public virtual bool CanEnter { get; set; }
+        protected readonly IOutputService outputService;
+
+        public Field(string name, IOutputService output = null) 
+        { 
+            Id = Guid.NewGuid(); 
+            Name = name;
+            outputService = output ?? new StringBuilderOutputService();
+        }
+        public virtual bool MovePlayerToField(Player player) { return CanEnter; }
+
     }
-
-    public class Key : Item { public Key() { Name = "Key"; } }
-    public class Sword : Item { public Sword() { Name = "Sword";  } }
-    public class Box : Item { public Box() { Name = "Box"; } }    
-    
-
 }

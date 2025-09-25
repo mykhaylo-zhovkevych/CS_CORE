@@ -1,31 +1,19 @@
-﻿namespace ConsoleApp4._3
+﻿using ConsoleApp4._3.Items;
+using ConsoleApp4._3.OutputServices;
+
+namespace ConsoleApp4._3
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            PlayField game = new PlayField("Quest");
-            game.StartGame();
+            KeyboardController controller = new KeyboardController();
+            ConsoleOutputService output = new ConsoleOutputService();
+            StringBuilderOutputService stringOutput = new StringBuilderOutputService();
 
-            Player player = game.Player;
+            PlayField game = new PlayField("Quest", controller, stringOutput);
+            game.Run();
 
-            player.PickUpItem();
-            player.PickUpItem();
-
-            player.Move(Direction.East);  
-            player.Move(Direction.East);  
-            player.PickUpItem();        
-
-            player.Move(Direction.North);
-            player.Move(Direction.West);
-
-            player.Move(Direction.South);
-            // Door unlocked
-            player.Move(Direction.South);
-            player.DropItem();
-            player.DropItem();
-
-            game.PrintPlayerInfo();
         }
     }
 }

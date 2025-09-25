@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ConsoleApp4._3.Exceptions;
+using ConsoleApp4._3.Fields;
+using ConsoleApp4._3.Interfaces;
+using ConsoleApp4._3.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,147 +13,225 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static ConsoleApp4._3.Exceptions.PlayerOutOfBoundsException;
+
 
 namespace ConsoleApp4._3
 {
-    internal class PlayField
+    public class PlayField
     {
+        private readonly IController _controller;
         public Guid Id { get; }
         public string Name { get; }
-
-        private Dictionary<(int x, int y), Field> fields;
+        // look at the Implantation 
+        public Dictionary<(int x, int y), Field> Fields { get; }
+        // Hard coded Player, secound option with dependency 
         public Player Player { get; set; }
+        private readonly IOutputService _outputService;
 
-        public PlayField(string name)
+        public PlayField(string name, IController controller, IOutputService output)
         {
             Name = name;
-            fields = new Dictionary<(int x, int y), Field>();
+            _controller = controller;
+            _outputService = output;
+            Fields = new Dictionary<(int x, int y), Field>();
+            InitGame();
         }
 
         /// <summary>
         /// Starts game with conditions
         /// Player spwons at the random field
         /// </summary>
-        public void StartGame()
+        private void InitGame()
         {
 
-            for (int x = -3; x <= 3; x++)
+            for (int x = -6; x <= 6; x++)
             {
                 for (int y = -3; y <= 3; y++)
                 {
-                    fields[(x, y)] = new Field($"Field ({x},{y})") { IsWall = false};
-                    // Console.WriteLine(fields[(x, y)]);
+                    Fields[(x, y)] = new Grass($"Field ({x},{y})");
                 }
             }
 
-            fields[(0, 1)].IsWall = true;
-            fields[(1, 1)].IsDoor = true;
-            fields[(1, 1)].IsLocked = true;
-            fields[(1, 1)].DoorTarget = (0, 0);
+            Fields[(0, 1)] = new Wall("Wall");
+            Fields[(1, 3)] = new Door("Door", (3,3));
+            Fields[(2, 2)] = new FakeDoor("FakeDoor");
+            Fields[(6, 2)] = new Enemy("Enemy");
 
-            fields[(2, 0)].Items.Add(new Key());
-            fields[(0, 0)].Items.Add(new Sword());
-            fields[(0, 0)].Items.Add(new Box());
-            fields[(1, 0)].Items.Add(new Box());
-            fields[(3, 3)].Items.Add(new Sword());
+            Fields[(2, 0)].Items.Add(new Key());
+            Fields[(0, 0)].Items.Add(new Food());
+            Fields[(0, 0)].Items.Add(new Sword());
+            Fields[(0, 0)].Items.Add(new Bag());
+            Fields[(0, 0)].Items.Add(new Key());
+            Fields[(1, 0)].Items.Add(new Food());
+            Fields[(3, 3)].Items.Add(new Sword());
 
-            Player = new Player("Held", energy: 20, this);
+            Player = new Player("Held", energy: 200);
             Player.Position = (0, 0);
-            Player.CurrentField = fields[(0, 0)];
 
         }
 
-        public void MovePlayer(int dx, int dy)
+        public void Run()
         {
+            bool running = true;
 
-            var newPos = (Player.Position.x + dx, Player.Position.y + dy);
-            Field target;
+            while (running)
+            {
+                DrawFields();
 
-            try 
-            {
-                // When does a error occurs it will not be assigned
-                target = fields[newPos];
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Out of the Map");
-                return;
-            } 
+                var action = _controller.GetNextAction();
 
-            if (target.IsWall)
-            {
-                Console.WriteLine("Is a Wall");
-                return;
-            }
-
-            if (target.IsDoor && target.IsLocked)
-            {
-                if (Player.Inventory.Any(item => item is Key))
+                switch (action) 
                 {
-                    target.IsLocked = false;
-                    Console.WriteLine($"{Player.Name} has unlocked the Door");
+                    case PlayerAction.PrintInventory: Player.PrintPlayerInventory(); break;
+                    case PlayerAction.MoveNorth: MovePlayer(Direction.North); break;
+                    case PlayerAction.MoveSouth: MovePlayer(Direction.South); break;
+                    case PlayerAction.MoveWest: MovePlayer(Direction.West); break;
+                    case PlayerAction.MoveEast: MovePlayer(Direction.East); break;
+                    case PlayerAction.Use: Player.UseTopItem(); break;
+                    case PlayerAction.PickUp: PickUpItem(); break;
+                    case PlayerAction.Drop: DropItem(); break;
+                    case PlayerAction.Quit: running = false; break;
+                }
+            }
+        }
 
-                    var items = Player.Inventory.ToList();
-                    var keyToRemove = items.First(item => item is Key);
-                    items.Remove(keyToRemove);
+        public void MovePlayer(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.North: SetPlayerPosition(0, -1); break;
+                case Direction.South: SetPlayerPosition(0, 1); break;
+                case Direction.East: SetPlayerPosition(1, 0); break;
+                case Direction.West: SetPlayerPosition(-1, 0); break;
+            }
+        }
 
-                    Player.Inventory.Clear();
-                    for (int i = items.Count - 1; i >= 0; i--) 
+        private void DrawFields()
+        {
+            
+            var playerPos = Player.Position;
+            var allCoords = Fields.Keys;
+
+            int minX = allCoords.Min(c => c.x);
+            int maxX = allCoords.Max(c => c.x);
+            int minY = allCoords.Min(c => c.y);
+            int maxY = allCoords.Max(c => c.y);
+
+            for (int y = minY; y <= maxY; y++)
+            {
+
+                for (int x = minX; x <= maxX; x++)
+                {
+                    Console.Write("+---");
+                }
+                Console.WriteLine("+");
+
+                for (int x = minX; x <= maxX; x++)
+                {
+                    char c = ' ';
+                    if ((x, y) == playerPos)
                     {
-                        Player.Inventory.Push(items[i]);
+                        c = 'P';
                     }
-                    
+                       
+                    else if (TryGetField((x, y), out var field))
+                    {
+                        c = field.Symbol;
+                    }
+
+                    Console.Write($"| {c} ");
                 }
-                else
-                {
-                    Console.WriteLine("Door is locked, cannot move.");
-                    return;
-                }
+                Console.WriteLine("|");
             }
 
-            if (Player.Energy < 10)
+            for (int x = minX; x <= maxX; x++)
             {
-                Console.WriteLine($"{Player.Name} cannot keep moving");
-                return;
+                Console.Write("+---");
             }
-
-            Player.Position = newPos;
-            Player.CurrentField = target;
-            Player.Energy -= 1;
-
-            Console.WriteLine($"Player moved to {Player.Position} ({Player.CurrentField})");
-
+            Console.WriteLine("+");
         }
 
-        public void PrintPlayerInfo()
+        private bool TryGetField((int x, int y) pos, out Field field)
         {
+            return Fields.TryGetValue(pos, out field);
+        }
 
-            var playerName = Player.Name;
-            var remainingEnergy = Player.Energy;
-            var position = Player.Position;
-            var itemCount = Player.Inventory.Count();
-
-            Console.WriteLine($"=== Player Info ===");
-            Console.WriteLine($"Name: {playerName}");
-            Console.WriteLine($"Energy: {remainingEnergy}");
-            Console.WriteLine($"Position: {position}");
-            Console.Write($"Items in Inventory: {itemCount} ");
-
+        private void SetPlayerPosition(int dx, int dy)
+        {
             try
             {
-                var topItem = Player.Inventory.Peek();
-                Console.WriteLine($"Top Item: {topItem.Name}");
+                var newPos = (Player.Position.x + dx, Player.Position.y + dy);
 
-                Console.WriteLine("All Items (top to bottom):");
-                foreach (var item in Player.Inventory)
+                if (!Fields.TryGetValue(newPos, out Field target))
                 {
-                    Console.WriteLine($" -  {item.Name}");
+                    throw new PlayerOutOfBoundsException(newPos);
                 }
+
+
+                if (!target.MovePlayerToField(Player))
+                {
+                    return;
+                }
+
+                if (Player.Energy < 1)
+                {
+                    _outputService.WriteLine($"{Player.Name} has not enough energy.");
+                    return;
+                }
+
+                Player.Energy -= 5;
+
+                if (!(target is Door door && !(door is FakeDoor)))
+                {
+                    Player.Position = newPos;
+                }
+
+
             }
-            catch (InvalidOperationException)
+            catch (PlayerOutOfBoundsException ex)
             {
-                Console.WriteLine("Inventory is empty");
+                _outputService.WriteLine($"{ex.Message}");
             }
+            catch (Exception ex)
+            {
+                _outputService.WriteLine($"Unexpected Error: {ex.Message}");
+            }
+        }
+
+
+        public void PickUpItem()
+        {
+            var field = Fields[Player.Position];
+            if (!field.Items.Any())
+            {
+                _outputService.WriteLine("Nothing to pick up.");
+                return;
+            }
+
+            var item = field.Items.Last();
+            field.Items.Remove(item);
+            Player.Inventory.Add(item);
+
+            _outputService.WriteLine($"{Player.Name} picked up {item.Name} at {Player.Position}");
+        }
+
+        public void DropItem()
+        {
+            if (!Player.Inventory.Any())
+            {
+                _outputService.WriteLine("Nothing to drop.");
+                return;
+            }
+
+            var field = Fields[Player.Position];
+
+            var item = Player.Inventory.Last();
+            field.Items.Add(item);
+            Player.Inventory.Remove(item);
+
+            _outputService.WriteLine($"{Player.Name} dropped {item.Name} at {Player.Position}");
+
         }
     }
 }

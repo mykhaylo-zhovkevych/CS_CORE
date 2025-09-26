@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._3._1
 {
-    internal abstract class Order
+    public abstract class Order
     {
         public int OrderNumber { get; }
         public int Quantity { get; }
@@ -24,7 +24,7 @@ namespace ConsoleApp2._3._1
         public virtual void ExecuteOn(AutomaticWagon wagon) => wagon.ProcessOrder(this);
     }
 
-    internal class HighPriorityOrder : Order
+    public class HighPriorityOrder : Order
     {
         public HighPriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
 
@@ -37,7 +37,7 @@ namespace ConsoleApp2._3._1
         public override int Priority => 1; 
     }
 
-    internal class MiddlePriorityOrder : Order
+    public class MiddlePriorityOrder : Order
     {
         public MiddlePriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
 
@@ -50,7 +50,7 @@ namespace ConsoleApp2._3._1
         public override int Priority => 2;
     }
 
-    internal class LowPriorityOrder : Order
+    public class LowPriorityOrder : Order
     {
         public LowPriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
         public override void ExecuteOn(AutomaticWagon wagon)
@@ -58,7 +58,6 @@ namespace ConsoleApp2._3._1
             Console.WriteLine("The lowest priority");
             wagon.ProcessOrder(this);
         }
-
         public override int Priority => 3;
     }
 }

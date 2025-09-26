@@ -26,10 +26,11 @@ namespace ConsoleAppTest4._3
         [TestInitialize]
         public void Initialize()
         {
-            game = new PlayField("Quest", new KeyboardController(), new ConsoleOutputService());
+            var player = new Player("Hero", default);
+            game = new PlayField("Quest", player, new KeyboardController(), new ConsoleOutputService());
             game.Fields[(0, 2)] = new Wall("Wall");
-            game.Fields[(1, 1)] = new Door("Door01", (2, 2));
-            game.Fields[(2, 3)] = new Door("Door02", (2, 5));
+            game.Fields[(1, 1)] = new MagicDoor("MagicDoor", (2,2));
+            game.Fields[(2, 3)] = new Door("Door");
 
         }
         [TestMethod]
@@ -73,7 +74,7 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
-        public void PlayerTryPass_ThroughDoor01_WithKey()
+        public void PlayerTryPass_ThroughMagicDoor_WithKey()
         {
             // Arrange
             var key = new Key();
@@ -89,7 +90,7 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
-        public void PlayerTryPass_ThroughDoor02_WithoutKey()
+        public void PlayerTryPass_ThroughDoor_WithoutKey()
         {
             // Arrange
             game.Player.Position = (2, 2);
@@ -98,7 +99,7 @@ namespace ConsoleAppTest4._3
             game.MovePlayer(Direction.South);
 
             // Assert
-            Assert.AreNotEqual((2, 5), game.Player.Position);
+            Assert.AreNotEqual((2, 3), game.Player.Position);
         }
 
         [TestMethod]

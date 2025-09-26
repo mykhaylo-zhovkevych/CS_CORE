@@ -5,13 +5,15 @@ namespace ConsoleApp4._3
 {
     public abstract class Item
     {
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; }
         public string Name { get; set; }
 
         protected readonly IOutputService outputService;
 
-        protected Item(IOutputService output = null)
+        protected Item( string name, IOutputService? output = null)
         {
+            Id = Guid.NewGuid();
+            Name = name;
             outputService = output ?? new StringBuilderOutputService();
         }
 

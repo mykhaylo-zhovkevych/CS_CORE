@@ -26,12 +26,14 @@ namespace ConsoleApp4._3
         // look at the Implantation 
         public Dictionary<(int x, int y), Field> Fields { get; }
         // Hard coded Player, secound option with dependency 
+        // required 
         public Player Player { get; set; }
         private readonly IOutputService _outputService;
 
-        public PlayField(string name, IController controller, IOutputService output)
+        public PlayField(string name,Player player, IController controller, IOutputService output)
         {
             Name = name;
+            Player = player;
             _controller = controller;
             _outputService = output;
             Fields = new Dictionary<(int x, int y), Field>();
@@ -54,8 +56,8 @@ namespace ConsoleApp4._3
             }
 
             Fields[(0, 1)] = new Wall("Wall");
-            Fields[(1, 3)] = new Door("Door", (3,3));
-            Fields[(2, 2)] = new FakeDoor("FakeDoor");
+            Fields[(1, 3)] = new Door("Door");
+            Fields[(2, 2)] = new MagicDoor("FakeDoor", (3, 3));
             Fields[(6, 2)] = new Enemy("Enemy");
 
             Fields[(2, 0)].Items.Add(new Key());
@@ -109,7 +111,6 @@ namespace ConsoleApp4._3
 
         private void DrawFields()
         {
-            
             var playerPos = Player.Position;
             var allCoords = Fields.Keys;
 
@@ -135,7 +136,8 @@ namespace ConsoleApp4._3
                         c = 'P';
                     }
                        
-                    else if (TryGetField((x, y), out var field))
+                    else if (Fields.TryGetValue((x, y), out Field? field))
+
                     {
                         c = field.Symbol;
                     }
@@ -152,22 +154,16 @@ namespace ConsoleApp4._3
             Console.WriteLine("+");
         }
 
-        private bool TryGetField((int x, int y) pos, out Field field)
-        {
-            return Fields.TryGetValue(pos, out field);
-        }
-
         private void SetPlayerPosition(int dx, int dy)
         {
             try
             {
                 var newPos = (Player.Position.x + dx, Player.Position.y + dy);
 
-                if (!Fields.TryGetValue(newPos, out Field target))
+                if (!Fields.TryGetValue(newPos, out Field? target))
                 {
                     throw new PlayerOutOfBoundsException(newPos);
                 }
-
 
                 if (!target.MovePlayerToField(Player))
                 {
@@ -180,25 +176,19 @@ namespace ConsoleApp4._3
                     return;
                 }
 
-                Player.Energy -= 5;
-
-                if (!(target is Door door && !(door is FakeDoor)))
+                switch (target)
                 {
-                    Player.Position = newPos;
+                    case MagicDoor magicDoor:
+                        Player.Position = magicDoor.DoorTarget; break;
+          
+                    default: Player.Position = newPos; break;
                 }
-
-
             }
             catch (PlayerOutOfBoundsException ex)
             {
                 _outputService.WriteLine($"{ex.Message}");
             }
-            catch (Exception ex)
-            {
-                _outputService.WriteLine($"Unexpected Error: {ex.Message}");
-            }
         }
-
 
         public void PickUpItem()
         {

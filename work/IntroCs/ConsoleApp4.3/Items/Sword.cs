@@ -4,10 +4,9 @@ namespace ConsoleApp4._3.Items
 {
     public class Sword : Item, IUsable
     {
-        public Sword() 
+        public Sword() : base ("Sword")
         {
             Guid Id = Guid.NewGuid();
-            Name = "Sword";
         }
         public void Use(Player player)
         {

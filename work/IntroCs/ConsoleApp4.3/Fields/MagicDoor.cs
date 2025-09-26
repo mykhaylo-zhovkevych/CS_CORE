@@ -1,17 +1,23 @@
 ﻿using ConsoleApp4._3.Items;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Fields
 {
-    public class FakeDoor : Door
+    // Generalization
+    public class MagicDoor : Door
     {
+        public (int x, int y) DoorTarget { get; }
         public override char Symbol => '║';
 
-        public FakeDoor(string name) : base(name, default) { }
+        public MagicDoor(string name, (int, int) doorTarget) : base(name)
+        {
+            DoorTarget = doorTarget;
+        }
 
         public override bool MovePlayerToField(Player player)
         {
@@ -20,18 +26,15 @@ namespace ConsoleApp4._3.Fields
                 var key = player.Inventory.OfType<Key>().FirstOrDefault();
                 if (key == null)
                 {
-                    outputService.WriteLine("FakeDoor is closed.");
+                    outputService.WriteLine("Magic Door is closed.");
                     return CanEnter;
                 }
 
                 player.Inventory.Remove(key);
-                player.Energy -= 15;
-                outputService.WriteLine($"{player.Name} has opened the fake door");
-                outputService.WriteLine($"{player.Name} lost 15 energy for opening fake door");
+                outputService.WriteLine($"{player.Name} has opened the magic door");
                 CanEnter = true;
             }
-
-            outputService.WriteLine($"{player.Name} passed through {Name} normally.");
+            player.Energy -= 5;
             return CanEnter;
         }
     }

@@ -4,10 +4,9 @@ namespace ConsoleApp4._3.Items
 {
     public class Key : Item, IUsable
     { 
-        public Key() 
+        public Key() : base(name: "Key")  
         {
             Guid Id = Guid.NewGuid();
-            Name = "key"; 
 
         }
         public void Use(Player player)

@@ -23,7 +23,7 @@ namespace ConsoleAppTest4._3
         public void Init()
         {
           
-            door = new Door("Door", (1,1));
+            door = new Door("Door");
             enemy = new Enemy("Spider");
             player = new Player("Hero", default);
 
@@ -75,12 +75,13 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
-        public void FakeDoor_MustAllowEntering_IfKey()
+        public void Door_MustAllowEntering_IfKey()
         {
             // Arrange 
             var key = new Key();
             player.Inventory.Add(key);
-            FakeDoor fakeDoor = new FakeDoor("FakeDoor");
+            // how is this called? 
+            Door fakeDoor = new Door("Door");
 
             // Act
             var result = fakeDoor.MovePlayerToField(player);
@@ -90,10 +91,10 @@ namespace ConsoleAppTest4._3
         }
 
         [TestMethod]
-        public void FakeDoor_MustBlockEntering_IfNoKey()
+        public void Door_MustBlockEntering_IfNoKey()
         {
             // Arrange
-            FakeDoor fakeDoor = new FakeDoor("FakeDoor");
+            Door fakeDoor = new Door("Door");
 
             // Act 
             var result = fakeDoor.MovePlayerToField(player);

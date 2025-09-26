@@ -7,9 +7,10 @@ using System.Xml;
 
 namespace ConsoleApp2._3._1
 {
-    internal class Cell
+    public class Cell
     {
-        private List<Product> Products = new List<Product>();
+        // doesnt matter what the type is
+        public List<Product> Products = new List<Product>();
 
         public int Id { get; private set; }
         public int MaxCapacity { get; private set; }
@@ -37,6 +38,7 @@ namespace ConsoleApp2._3._1
             {
                 existing.ProductAmount -= quantity;
 
+                // If I change the Product class constructor later, this code will break silently at runtime
                 var type = existing.GetType();
                 return (Product)Activator.CreateInstance(type, existing.Id, existing.Name, quantity);
             }

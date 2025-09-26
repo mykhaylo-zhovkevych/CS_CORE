@@ -10,13 +10,12 @@ using static ConsoleApp2._3._1.Warehouse;
 
 namespace ConsoleApp2._3._1
 {
-    internal class AutomaticWagon : IOrderExecutor<Order>
+    public class AutomaticWagon : IOrderExecutor<Order>
     {
+        // Möglichkeit für mehere AutomaticWagons 
         private Order? _currentOrder;
         private Cell? _currentCell;
         private PriorityQueue<Order, int> _orderQueue = new PriorityQueue<Order, int>();
-        private List<Cell> _cells { get; set; } = new List<Cell>();
-
         public int WagonNumber { get; }
         
         public AutomaticWagon(int number) => WagonNumber = number;
@@ -33,8 +32,7 @@ namespace ConsoleApp2._3._1
                 _currentOrder = _orderQueue.Dequeue();
                 Console.WriteLine($"Executing Order {_currentOrder.OrderNumber} (Priority {_currentOrder.Priority})");
                 _currentOrder.ExecuteOn(this);
-                _currentOrder = default;
-
+                //ProcessOrder( _currentOrder );
             }
         }
 
@@ -45,7 +43,7 @@ namespace ConsoleApp2._3._1
                 throw new InvalidOperationException($"No cell has enough of product {order.Product.Name} (Order {order.OrderNumber}).");
 
             MoveToCell(sourceCell);
-            Load(order.Product, order.Quantity, sourceCell);
+            Load(order.Product, order.Quantity);
 
             var targetCell = _cells.FirstOrDefault(c => c.HasEnoughFreeSpace(order.Quantity));
             if (targetCell == null)
@@ -57,30 +55,28 @@ namespace ConsoleApp2._3._1
 
         }
 
-        private void Load(Product product, int qunatity, Cell cell)
+        private void Load(Product product)
         {
-            cell.RemoveProduct(product, qunatity);
+            _currentCell.RemoveProduct(product, qunatity);
         }
 
-        private void Unload(Product product, int quantity, Cell cell)
+        private void Unload(Product product)
         {
             var type = product.GetType();
-            var newProduct = (Product)Activator.CreateInstance(type, product.Id, product.Name, quantity);
+            var newProduct = Activator.CreateInstance(type, product.Id, product.Name, quantity);
 
-            cell.StoreProduct(newProduct);
+            //cell.StoreProduct(newProduct);
 
         }
 
         private void MoveToCell(Cell cell)
         {
-            if (ReferenceEquals(_currentCell, cell)) return;
+            if (!ReferenceEquals(_currentCell, cell))
+            {
             _currentCell = cell;
+            }
         }
 
-        public void AddCell(Cell cell)
-        {
-            _cells.Add(cell);
-        }
-
+        
     }
 }

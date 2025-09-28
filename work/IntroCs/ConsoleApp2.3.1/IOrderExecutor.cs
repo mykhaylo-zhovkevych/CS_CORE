@@ -8,6 +8,7 @@ namespace ConsoleApp2._3._1
 {
     public interface IOrderExecutor<in T>
     {
+        void PreProcess(T order);
         void ExecuteOrder();
     }
 }

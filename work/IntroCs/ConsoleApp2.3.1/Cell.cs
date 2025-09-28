@@ -9,54 +9,58 @@ namespace ConsoleApp2._3._1
 {
     public class Cell
     {
-        // doesnt matter what the type is
-        public List<Product> Products = new List<Product>();
+        private readonly List<Product> _products = new();
 
-        public int Id { get; private set; }
-        public int MaxCapacity { get; private set; }
+        public int Id { get; }
+        public int MaxCapacity { get; }
 
-        public Cell (int id, int maxCapacity)
+        public Cell(int id, int maxCapacity)
         {
-            this.Id = id;
-            this.MaxCapacity = maxCapacity;
-
+      
+            Id = id;
+            MaxCapacity = maxCapacity;
         }
 
         public void StoreProduct(Product product)
         {
             if (!HasEnoughFreeSpace(product.ProductAmount))
-                throw new InvalidOperationException($"Cannot store {product.ProductAmount} of {product.Name} in Cell {Id}: not enough space");
+                throw new InvalidOperationException($"Cell {Id}: Not enough free space to store {product.ProductAmount} {product.Name}");
 
-            Products.Add(product);
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
+            if (existing != null)
+                existing.ProductAmount += product.ProductAmount;
+            else
+                _products.Add(product);
         }
-        
-        public Product RemoveProduct(Product product, int quantity)
+
+        public Product RemoveProduct(Product product)
         {
-            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
+            int quantity = product.ProductAmount;
 
-            if (existing != null && existing.ProductAmount >= quantity)
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
+            if (existing != null && existing.ProductAmount > quantity)
+                throw new InvalidOperationException($"Cell {Id}: dont have enough {product.Name} available");
+
+            if (existing.ProductAmount == quantity)
             {
-                existing.ProductAmount -= quantity;
-
-                // If I change the Product class constructor later, this code will break silently at runtime
-                var type = existing.GetType();
-                return (Product)Activator.CreateInstance(type, existing.Id, existing.Name, quantity);
+                _products.Remove(existing);
+                return existing; 
             }
 
-            throw new InvalidOperationException("Not enough product in cell to remove.");
+            existing.ProductAmount -= quantity;
+            return existing.WithAmount(quantity); 
         }
-
 
         public bool HasEnoughProduct(Product product, int quantity)
         {
-            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
             return existing != null && existing.ProductAmount >= quantity;
         }
 
         public bool HasEnoughFreeSpace(int quantity)
         {
-            var usedSpace = Products.Sum(p => p.ProductAmount);
+            var usedSpace = _products.Sum(p => p.ProductAmount);
             return (usedSpace + quantity) <= MaxCapacity;
-        }  
+        }
     }
 }

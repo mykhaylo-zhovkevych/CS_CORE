@@ -9,7 +9,7 @@ namespace ConsoleApp2._3._1
     public class Warehouse
     {
         private readonly List<Cell> _cells = new();
-        public IReadOnlyCollection<Cell> Cells => _cells.AsReadOnly();
+        public IReadOnlyList<Cell> Cells => _cells;
         private string _name;
         private string _location;
 

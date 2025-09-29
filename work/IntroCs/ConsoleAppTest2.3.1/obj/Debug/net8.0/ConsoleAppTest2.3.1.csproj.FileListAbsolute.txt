@@ -259,3 +259,15 @@ C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.pdb
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.genruntimeconfig.cache
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ref\ConsoleAppTest2.3.1.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\.msCoverageSourceRootsMapping_ConsoleAppTest2.3.1
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\.msCoverageExtensionSourceRootsMapping_ConsoleAppTest2.3.1
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.csproj.AssemblyReference.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.gentestingplatformentrypointinputcache.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.genautoregisteredextensionsinputcache.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\AutoRegisteredExtensions.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\TestPlatformEntryPoint.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest2.3.1\obj\Debug\net8.0\ConsoleAppTest2.3.1.sourcelink.json

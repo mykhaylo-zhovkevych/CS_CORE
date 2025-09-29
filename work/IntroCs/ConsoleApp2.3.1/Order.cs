@@ -11,7 +11,6 @@ namespace ConsoleApp2._3._1
     public abstract class Order
     {
         private readonly Product _product;
-
         public Product Product => _product;
 
         public int OrderNumber { get; }

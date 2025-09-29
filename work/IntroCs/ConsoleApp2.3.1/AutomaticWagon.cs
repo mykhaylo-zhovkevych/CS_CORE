@@ -12,18 +12,16 @@ namespace ConsoleApp2._3._1
 {
     public class AutomaticWagon
     {
-        private readonly PriorityQueue<Order, int> _queue = new();
+        private PriorityQueue<Order, int> _queue = new();
+
+        public PriorityQueue<Order, int> OrderQueue => _queue;
         public int WagonNumber { get; }
         public Cell? CurrentCell { get; private set; }
 
-        // TODO: figure out the correct 
-        public AutomaticWagon(int wagonNumber, Cell? startCell = null)
+        public AutomaticWagon(int wagonNumber, Cell startCell)
         {
             WagonNumber = wagonNumber;
-            if (startCell != null)
-            {
-                CurrentCell = startCell;
-            }
+            CurrentCell = startCell ?? throw new ArgumentNullException(nameof(startCell));
         }
 
         public void AddToOrderQueue(Order order)

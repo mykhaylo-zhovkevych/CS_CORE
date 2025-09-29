@@ -29,7 +29,7 @@ namespace ConsoleApp2._3._1
             c3.StoreProduct(cloth);  
 
             
-            var wagon = new AutomaticWagon(1001);
+            var wagon = new AutomaticWagon(1001, c2);
 
             Order o1 = new HighPriorityOrder(1, stone, c2, c1);   
             Order o2 = new LowPriorityOrder(2, food, c1, c3);     

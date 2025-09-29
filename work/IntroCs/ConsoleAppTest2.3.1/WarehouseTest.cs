@@ -19,44 +19,48 @@ namespace ConsoleAppTest2._3._1
             warehouse = new Warehouse("TestName", "TestLocation");
         }
 
-
         [TestMethod]
-        public void TestAddCell()
+        public void AddCell_AddsCell()
         {
-            // Arrange
-
             var cell = new Cell(1, 50);
-
-            // Act
-
             warehouse.AddCell(cell);
-
-            // Assert
             Assert.AreEqual(1, warehouse.Cells.Count);
-
         }
 
         [TestMethod]
-        public void TestAddCell_WithSameId()
+        public void AddCell_ThrowsWhenSameIdAdded()
         {
-            // Arrange
             var cell01 = new Cell(1, 50);
             var cell02 = new Cell(1, 50);
 
-            // Assert & Act
-
             warehouse.AddCell(cell01);
-
             Assert.ThrowsException<ArgumentException>(() => warehouse.AddCell(cell02));
         }
 
         [TestMethod]
-        public void TestPrintAllCellState()
+        public void AddCell_ThrowsWhenNull()
         {
-            // Arrange
-            // Act
-            // Assert
+            Assert.ThrowsException<ArgumentNullException>(() => warehouse.AddCell(null));
         }
 
+        [TestMethod]
+        public void PrintAllCellState_WritesStateToConsole()
+        {
+            var c1 = new Cell(1, 10);
+            c1.StoreProduct(new Food(1, "A", 3));
+            var c2 = new Cell(2, 5);
+            warehouse.AddCell(c1);
+            warehouse.AddCell(c2);
+
+            using var sw = new StringWriter();
+            Console.SetOut(sw);
+
+            warehouse.PrintAllCellState();
+
+            var output = sw.ToString();
+            Assert.IsTrue(output.Contains("Warehouse state"));
+            Assert.IsTrue(output.Contains("Cell 1"));
+            Assert.IsTrue(output.Contains("Cell 2"));
+        }
     }
 }

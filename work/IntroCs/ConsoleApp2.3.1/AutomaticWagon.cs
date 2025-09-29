@@ -50,7 +50,7 @@ namespace ConsoleApp2._3._1
             Console.WriteLine($"Processing Order {order.OrderNumber}: {order.Quantity}x {order.Product.Name} from Cell {order.SourceCell.Id} to Cell {order.TargetCell.Id}");
 
             MoveToCell(order.SourceCell);
-            var loaded = Load(order.Product);
+            var loaded = Load(requested);
             MoveToCell(order.TargetCell);
             Unload(loaded, order.TargetCell);
 
@@ -70,10 +70,6 @@ namespace ConsoleApp2._3._1
                 throw new InvalidOperationException($"Wagon {WagonNumber} Not located at any cell to load from");
             if (product == null) throw new ArgumentNullException(nameof(product));
 
-            if (!CurrentCell.HasEnoughProduct(product, product.ProductAmount))
-            {
-                throw new InvalidOperationException($"Cannot load {product.ProductAmount} {product.Name} from Cell {CurrentCell.Id}: not enough available");
-            }
 
             var removed = CurrentCell.RemoveProduct(product);
 
@@ -88,10 +84,6 @@ namespace ConsoleApp2._3._1
 
             int quantity = product.ProductAmount;
 
-            if (!targetCell.HasEnoughFreeSpace(quantity))
-            {
-                throw new InvalidOperationException($"Cannot unload {quantity} from {product.Name} into Cell {targetCell.Id}");
-            }
 
             targetCell.StoreProduct(product);
             Console.WriteLine($"Unloaded {product.ProductAmount}, {product.Name} into Cell {targetCell.Id}");

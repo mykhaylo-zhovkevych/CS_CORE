@@ -18,7 +18,7 @@ namespace ConsoleApp2._3._1
             warehouse.AddCell(c3);
 
             Product food = new Food(101, "Burger", 10);
-            Product stone = new Material(202, "Stone", 9);
+            Product stone = new Material(202, "Stone", 19);
             Product cloth = new Cloth(303, "Dress", 20);
 
             c1.StoreProduct(food); 
@@ -28,7 +28,7 @@ namespace ConsoleApp2._3._1
             
             var wagon = new AutomaticWagon(1001);
 
-            Order o1 = new HighPriorityOrder(1, 13, stone, c2, c1);   
+            Order o1 = new HighPriorityOrder(1, 5, stone, c2, c1);   
             Order o2 = new LowPriorityOrder(2, 4, food, c1, c3);     
             Order o3 = new MiddlePriorityOrder(3, 5, cloth, c3, c2); 
 

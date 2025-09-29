@@ -23,10 +23,9 @@ namespace ConsoleApp2._3._1
 
         public void StoreProduct(Product product)
         {
-            if (!HasEnoughFreeSpace(product.ProductAmount))
-                throw new InvalidOperationException($"Cell {Id}: Not enough free space to store {product.ProductAmount} {product.Name}");
-
             var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
+            HasEnoughFreeSpace(product.ProductAmount);
+
             if (existing != null)
                 existing.ProductAmount += product.ProductAmount;
             else
@@ -35,11 +34,10 @@ namespace ConsoleApp2._3._1
 
         public Product RemoveProduct(Product product)
         {
-            int quantity = product.ProductAmount;
+            var quantity = product.ProductAmount;
 
-            var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
-            if (existing != null && existing.ProductAmount > quantity)
-                throw new InvalidOperationException($"Cell {Id}: dont have enough {product.Name} available");
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id );
+            HasEnoughProduct(existing, quantity);
 
             if (existing.ProductAmount == quantity)
             {
@@ -48,19 +46,20 @@ namespace ConsoleApp2._3._1
             }
 
             existing.ProductAmount -= quantity;
-            return existing.WithAmount(quantity); 
+            return existing.WithAmount(quantity);
         }
 
-        public bool HasEnoughProduct(Product product, int quantity)
+        // rethink
+        private void HasEnoughProduct(Product product, int quantity)
         {
-            var existing = _products.FirstOrDefault(p => p.Id == product.Id && p.GetType() == product.GetType());
-            return existing != null && existing.ProductAmount >= quantity;
+            if (product == null || product.ProductAmount < quantity)
+                throw new InvalidOperationException($"Cell {Id}: not enough available");
         }
 
-        public bool HasEnoughFreeSpace(int quantity)
+        private void HasEnoughFreeSpace(int quantity)
         {
-            var usedSpace = _products.Sum(p => p.ProductAmount);
-            return (usedSpace + quantity) <= MaxCapacity;
+            if (_products.Sum(p => p.ProductAmount) + quantity > MaxCapacity)
+                throw new InvalidOperationException($"Cell {Id}: Not enough free space to store {quantity} items");
         }
     }
 }

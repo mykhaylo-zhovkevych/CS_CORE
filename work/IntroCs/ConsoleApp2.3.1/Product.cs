@@ -19,27 +19,21 @@ namespace ConsoleApp2._3._1
             ProductAmount = amount;
         }
 
-        public abstract Product WithAmount(int amount);
-
-        public static int SumAmountOfType<T>(IEnumerable<Product> products) where T : Product
-        {
-            return products.OfType<T>().Sum(p => p.ProductAmount);
-        }
     }
 
     public class Food : Product 
     { 
         public Food(int id, string name, int amount) : base(id, name, amount) { }
-        public override Product WithAmount(int amount) => new Food(Id, Name, amount);
+   
     }
     public class Material : Product 
     { 
         public Material(int id, string name, int amount) : base(id, name, amount) { }
-        public override Product WithAmount(int amount) => new Food(Id, Name, amount);
+    
     }
     public class Cloth : Product 
     { 
         public Cloth(int id, string name, int amount) : base(id, name, amount) { }
-        public override Product WithAmount(int amount) => new Food(Id, Name, amount);
+      
     }
 }

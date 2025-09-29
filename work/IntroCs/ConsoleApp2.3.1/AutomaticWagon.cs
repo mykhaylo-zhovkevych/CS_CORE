@@ -10,13 +10,13 @@ using static ConsoleApp2._3._1.Warehouse;
 
 namespace ConsoleApp2._3._1
 {
-    public class AutomaticWagon : IOrderExecutor<Order>
+    public class AutomaticWagon
     {
-    
         private readonly PriorityQueue<Order, int> _queue = new();
         public int WagonNumber { get; }
         public Cell? CurrentCell { get; private set; }
 
+        // TODO: figure out the correct 
         public AutomaticWagon(int wagonNumber, Cell? startCell = null)
         {
             WagonNumber = wagonNumber;
@@ -26,7 +26,7 @@ namespace ConsoleApp2._3._1
             }
         }
 
-        public void PreProcess(Order order)
+        public void AddToOrderQueue(Order order)
         {
             if (order == null) throw new ArgumentNullException(nameof(order));
             _queue.Enqueue(order, order.Priority);
@@ -37,23 +37,19 @@ namespace ConsoleApp2._3._1
             while (_queue.Count > 0)
             {
                 var order = _queue.Dequeue();
-                order.ExecuteOn(this);
+                ProcessOrder(order);
             }
         }
 
-        public void ProcessOrder(Order order)
+        private void ProcessOrder(Order order)
         {
-            if (order == null) throw new ArgumentNullException(nameof(order));
-
-            var requested = order.Product.WithAmount(order.Quantity);
-
-            Console.WriteLine($"Processing Order {order.OrderNumber}: {order.Quantity}x {order.Product.Name} from Cell {order.SourceCell.Id} to Cell {order.TargetCell.Id}");
+            Console.WriteLine($"Processing Order {order.OrderNumber}: {order.Quantity}x " +
+                $"{order.Product.Name} from Cell {order.SourceCell.Id} to Cell {order.TargetCell.Id}");
 
             MoveToCell(order.SourceCell);
-            var loaded = Load(requested);
+            var loaded = Load(order.Product);
             MoveToCell(order.TargetCell);
             Unload(loaded, order.TargetCell);
-
         }
 
         private void MoveToCell(Cell cell)
@@ -81,9 +77,6 @@ namespace ConsoleApp2._3._1
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
             if (targetCell == null) throw new ArgumentNullException(nameof(targetCell));
-
-            int quantity = product.ProductAmount;
-
 
             targetCell.StoreProduct(product);
             Console.WriteLine($"Unloaded {product.ProductAmount}, {product.Name} into Cell {targetCell.Id}");

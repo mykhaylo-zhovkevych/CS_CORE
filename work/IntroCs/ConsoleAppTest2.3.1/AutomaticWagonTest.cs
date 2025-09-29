@@ -12,36 +12,73 @@ namespace ConsoleAppTest2._3._1
     [TestClass]
     public class AutomaticWagonTest
     {
-        private Order _order1;
-        private Order _order2;
-        private Order _order3;
-        private PriorityQueue<Order, int> _orderQueue;
+
+        private Cell cell1;
+        private Cell cell2;
+
+        private Food food;
+        private Food food01;
+        private Order _order;
 
 
         [TestInitialize]
         public void Setup()
         {
-            _orderQueue = new PriorityQueue<Order, int>();
-            
-            _order1 = new HighPriorityOrder(1, 2, new Food(1, "TestFood", 10));
-            _order2 = new LowPriorityOrder(2, 5, new Material(2, "TestMaterial", 1));
-            _order3 = new MiddlePriorityOrder(3, 3, new Material(3, "TestMaterial", 5));
+            cell1 = new Cell(1, 50);
+            cell2 = new Cell(2, 50);
+
+
+            food = new Food(1, "TestFood", 10);
+      
+
+            cell1.StoreProduct(food);
+
+            _order = new HighPriorityOrder(101, 5, food, cell1, cell2);
+         
+
 
         }
 
-        // Check if orders adding into a queue
+
+        // Checks if AutomaticWagon process orders correctly 
+        [TestMethod]
+        public void TestProcessOrder_MoveOrderCorrect()
+        {
+            // Arrange
+
+
+            var wagon = new AutomaticWagon(101);
+
+
+            // Act
+            wagon.ProcessOrder(_order);
+
+            // Assert
+            Assert.AreEqual(5, cell2._products.Sum(p => p.ProductAmount));
+            Assert.AreEqual(5, cell1._products.Sum(p => p.ProductAmount));
+        }
+
+
         [TestMethod]
         public void TestPreProcess_AddsOrderToQueue()
         {
             // Arrange
+            var cell1 = new Cell(1, 50);
+            var cell2 = new Cell(2, 50);
+            var cell3 = new Cell(3, 50);
+
+            var food = new Food(1, "TestFood", 10);
+
+            var orderQueue = new PriorityQueue<Order, int>();
+            var order1 = new HighPriorityOrder(101, 5, food, cell1, cell2);
+            var order2 = new LowPriorityOrder(202, 5, food, cell2, cell3);
 
             // Act
-            _orderQueue.Enqueue(_order1, _order1.Priority);
-            _orderQueue.Enqueue(_order2, _order2.Priority);
+            orderQueue.Enqueue(order1, order1.Priority);
+            orderQueue.Enqueue(order2, order2.Priority);
 
             // Assert
-            Assert.AreEqual(2, _orderQueue.Count);
-
+            Assert.AreEqual(2, orderQueue.Count);
         }
 
         // Check if orders correctly executing based on the priority 
@@ -49,72 +86,53 @@ namespace ConsoleAppTest2._3._1
         public void TestExecuteOrder_SortesOrdersCorrectly()
         {
             // Arrange
-            var currentOrder = _orderQueue;
-            currentOrder.Enqueue(_order1, _order1.Priority);
-            currentOrder.Enqueue(_order2, _order2.Priority);
-            currentOrder.Enqueue(_order3, _order3.Priority);
+            var cell1 = new Cell(1, 50);
+            var cell2 = new Cell(2, 50);
+            var cell3 = new Cell(3, 50);
+
+            var food = new Food(1, "TestFood", 10);
+
+            var order1 = new HighPriorityOrder(101, 5, food, cell1, cell2);
+            var order2 = new LowPriorityOrder(202, 5, food, cell2, cell3);
+            var order3 = new MiddlePriorityOrder(303, 1, food, cell3, cell1);
+
+            var currentOrderQueue = new PriorityQueue<Order, int>();
+            currentOrderQueue.Enqueue(order1, order1.Priority);
+            currentOrderQueue.Enqueue(order2, order2.Priority);
+            currentOrderQueue.Enqueue(order3, order3.Priority);
 
             // Act
 
-            var first = currentOrder.Dequeue();
-            var secound = currentOrder.Dequeue();
-            var third = currentOrder.Dequeue();
+            var first = currentOrderQueue.Dequeue();
+            var secound = currentOrderQueue.Dequeue();
+            var third = currentOrderQueue.Dequeue();
 
 
             // Assert
 
-            Assert.AreEqual(0, currentOrder.Count);
+            Assert.AreEqual(0, currentOrderQueue.Count);
             Assert.IsInstanceOfType(first, typeof(HighPriorityOrder));
             Assert.IsInstanceOfType(secound, typeof(MiddlePriorityOrder));
             Assert.IsInstanceOfType(third, typeof(LowPriorityOrder));
 
         }
 
-        [TestMethod]
-        public void TestProcessOrder_MoveOrderCorrect()
-        {
-            // Arrange
-            var food = new Food(1, "Apple", 50);
-            var source = new Cell(1, 100);
-
-            source.StoreProduct(food);
-
-            var wagon = new AutomaticWagon(101);
-            wagon.AddCell(source);
-            var order = new HighPriorityOrder(1001, 20, food);
-
-            // Act
-            wagon.ProcessOrder(order);
-
-            // Assert
-            Assert.IsTrue(source.HasEnoughProduct(order.Product, 30));
-            // 100 - 30 = 70 >= 50 soll ja sein
-            Assert.IsTrue(source.HasEnoughFreeSpace(50));
-            
-           
-        }
+        
 
         [TestMethod]
         public void TestProcessOrder_WithExceedingCellCapacity()
         {
             // Arrange
-            var food = new Food(1, "Apple", 150);
-            var source = new Cell(1, 100);   
-
-            // Here I set wrong values directly 
-            source.Products.Add(food);
-
+            var cell1 = new Cell(1, 50);
+            var cell2 = new Cell(2, 50);
+   
+            var food = new Food(1, "TestFood", 10);
             var wagon = new AutomaticWagon(101);
-            wagon.AddCell(source);
-            
-            var order = new HighPriorityOrder(1001, 150, food);
+            cell1.StoreProduct(food);
+            var order = new HighPriorityOrder(1001, 100, food, cell1, cell2);
 
-            // Act / Assert
+            // Act & Assert
             Assert.ThrowsException<InvalidOperationException>(() => wagon.ProcessOrder(order));
-            //Assert.IsTrue(ex.Message.Contains("No cell has enough of free space for Apple"));
         }
- 
-
-
     }
 }

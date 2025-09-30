@@ -1,0 +1,26 @@
+2025-09-30T06:10:32.2890184+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.8.4+ac62226a2475fb11f9a6a0bfba3498dc5a707a49
+2025-09-30T06:10:32.3037176+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-09-30T06:10:32.3056508+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-09-30T06:10:32.3056547+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 06:10:32.223
+2025-09-30T06:10:32.3057307+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 33024
+2025-09-30T06:10:32.3058494+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-09-30T06:10:32.3058583+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-09-30T06:10:32.3058695+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-09-30T06:10:32.3059549+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T06:10:32.3063684+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 52488'
+2025-09-30T06:10:32.3083428+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-09-30T06:10:32.4269477+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-09-30T06:10:32.4665459+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-09-30T06:10:32.8279772+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.10.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-09-30T06:10:32.8906614+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-09-30T06:10:32.9053561+00:00 mstest-trace INFORMATION CollectSourceInformation value found : False 
+2025-09-30T06:10:32.9930967+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 12 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T06:10:33.0429155+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T06:10:33.0715214+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll (Workers: 12, Scope: MethodLevel)
+2025-09-30T06:10:33.0886763+00:00 mstest-trace INFORMATION Executing test ExecuteOrder_MovesProdctFromSourceToTarget
+2025-09-30T06:10:33.1864214+00:00 mstest-trace INFORMATION Executed test ExecuteOrder_MovesProdctFromSourceToTarget
+2025-09-30T06:10:33.1921063+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest2._3._1.AutomaticWagonTest.ExecuteOrder_MovesProdctFromSourceToTarget failed. ErrorMessage:Assert.AreEqual failed. Expected:<5>. Actual:<1>. , ErrorStackTrace:   at ConsoleAppTest2._3._1.AutomaticWagonTest.ExecuteOrder_MovesProdctFromSourceToTarget() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\AutomaticWagonTest.cs:line 46
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-09-30T06:10:33.1970576+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll

@@ -19,13 +19,13 @@ namespace ConsoleAppTest2._3._1
         [TestInitialize]
         public void Setup()
         {
-            cell1 = new Cell(1, 50);
-            cell2 = new Cell(2, 50);
+            cell1 = new Cell( 50);
+            cell2 = new Cell(50);
         }
 
 
         [TestMethod]
-        public void ProcessOrder_MovesQuantityFromSourceToTarget()
+        public void ExecuteOrder_MovesProdctFromSourceToTarget()
         {
             // Arrange
             var sourceProduct = new Food(1, "Burger", 10);
@@ -41,22 +41,13 @@ namespace ConsoleAppTest2._3._1
             wagon.ExecuteOrder();
 
             // Assert
-            Assert.AreEqual(5, cell2.Products.Sum(p => p.ProductAmount));
+            Assert.AreEqual(5, cell2.Products[0].ProductAmount);
+            //Assert.AreEqual(5, cell2.Products.Sum(p => p.ProductAmount));
             Assert.AreEqual(5, cell1.Products.Sum(p => p.ProductAmount));
+            
 
-            Assert.AreEqual(cell2.Id, wagon.CurrentCell?.Id);
+            Assert.AreEqual(cell2, wagon.CurrentCell);
         }
-
-
-        // Check if orders correctly executing based on the priority 
-        [TestMethod]
-        public void TestExecuteOrder_SortesOrdersCorrectly()
-        {
-            // Arrange
-
-        }
-
-
 
         [TestMethod]
         public void ExecuteOrder_ThrowsWhenSourceDoesNotHaveEnoughProduct()
@@ -72,7 +63,7 @@ namespace ConsoleAppTest2._3._1
             wagon.AddToOrderQueue(order);
 
             // Act & Assert
-            Assert.ThrowsException<InvalidOperationException>(() => wagon.ExecuteOrder());
+            Assert.ThrowsExactly<NotEnoughProductException>(wagon.ExecuteOrder);
         }
     }
 }

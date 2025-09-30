@@ -26,12 +26,12 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void StoreProduct_AddsProductToEmptyCell()
         {
-            var cell = new Cell(1, 20);
+            var cell = new Cell(20);
             cell.StoreProduct(_food);
 
-            Assert.AreEqual(1, cell.Products.Count);
-            Assert.AreEqual(10, cell.Products.First().ProductAmount);
-            Assert.AreEqual(101, cell.Products.First().Id);
+            Assert.HasCount(1, cell.Products);
+            Assert.AreEqual(10, cell.Products[0].ProductAmount);
+            Assert.AreEqual(101, cell.Products[0].Id);
         }
 
 
@@ -39,45 +39,56 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void StoreProduct_MergesAmounts_WhenSameProductId()
         {
-            var cell = new Cell(1, 50);
+            var cell = new Cell(50);
             cell.StoreProduct(_stone);
 
             cell.StoreProduct(new Material(_stone.Id, _stone.Name, 5));
 
-            Assert.AreEqual(1, cell.Products.Count);
-            Assert.AreEqual(15, cell.Products.First().ProductAmount);
+            Assert.HasCount(1, cell.Products);
+            Assert.AreEqual(15, cell.Products[0].ProductAmount);
         }
 
 
         [TestMethod]
         public void StoreProduct_ThrowsWhenNotEnoughSpace()
         {
-            var cell = new Cell(1, 10);
+            var cell = new Cell(10);
 
        
-            Assert.ThrowsException<InvalidOperationException>(() => cell.StoreProduct(_cloth));
+            Assert.ThrowsExactly<NotEnoughFreeSpaceException>(() => cell.StoreProduct(_cloth));
         }
 
         [TestMethod]
         public void RemoveProduct_PartialRemovalReducesStoredAmount()
         {
-            var cell = new Cell(1, 50);
-            cell.StoreProduct(new Food(1, "Burger", 10));
+            var cell = new Cell(50);
+            cell.StoreProduct(_food);
 
-            var removed = cell.RemoveProduct(new Food(1, "Burger", 5));
+            var removed = cell.RemoveProduct(new Food(101, "Burger", 5));
 
             Assert.AreEqual(5, removed.ProductAmount);
-            Assert.AreEqual(5, cell.Products.First().ProductAmount);
+            Assert.AreEqual(5, cell.Products[0].ProductAmount);
         }
 
         [TestMethod]
         public void RemoveProduct_ThrowsWhenProductNotAvailable()
         {
-            var cell = new Cell(1, 50);
+            var cell = new Cell(50);
 
             var request = new Food(999, "FoodTest", 1);
-            Assert.ThrowsException<InvalidOperationException>(() => cell.RemoveProduct(request));
+            Assert.ThrowsExactly<NoProductOnCellException>(() => cell.RemoveProduct(request));
         }
 
+        [TestMethod]
+        public void RemoveProduct_ThrowsWhenNotEnoughProductAvailable()
+        {
+            var cell = new Cell(50);
+            cell.StoreProduct(_stone);
+
+            var orderProduct = new Material(202, "Stone", 100);
+
+            Assert.ThrowsExactly<NotEnoughProductException>(() => cell.RemoveProduct(orderProduct));
+        
+        }
     }
 }

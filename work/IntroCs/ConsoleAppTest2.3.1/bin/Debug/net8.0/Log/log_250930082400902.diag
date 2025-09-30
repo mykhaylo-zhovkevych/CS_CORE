@@ -1,0 +1,33 @@
+2025-09-30T08:24:00.9132374+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.8.4+ac62226a2475fb11f9a6a0bfba3498dc5a707a49
+2025-09-30T08:24:00.9285915+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-09-30T08:24:00.9305413+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-09-30T08:24:00.9305524+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 08:24:00.835
+2025-09-30T08:24:00.9311562+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 5520
+2025-09-30T08:24:00.9314340+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-09-30T08:24:00.9314487+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-09-30T08:24:00.9314608+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-09-30T08:24:00.9315449+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T08:24:00.9317594+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 63636'
+2025-09-30T08:24:00.9335197+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-09-30T08:24:01.0607615+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-09-30T08:24:01.1016443+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-09-30T08:24:01.4586687+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.10.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-09-30T08:24:01.5153132+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-09-30T08:24:01.5284587+00:00 mstest-trace INFORMATION CollectSourceInformation value found : False 
+2025-09-30T08:24:01.6054262+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 11 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T08:24:01.6438729+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T08:24:01.6594368+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll (Workers: 12, Scope: MethodLevel)
+2025-09-30T08:24:01.6731610+00:00 mstest-trace INFORMATION Executing test PrintAllCellState_WritesStateAsString
+2025-09-30T08:24:01.7442559+00:00 mstest-trace INFORMATION Executed test PrintAllCellState_WritesStateAsString
+2025-09-30T08:24:01.7471609+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest2._3._1.WarehouseTest.PrintAllCellState_WritesStateAsString failed. ErrorMessage:Assert.AreEqual failed. Expected:<
+                            Warehouse state:
+                            Cell 0 (Used 3/10): 3 A
+                            Cell 1 (Capacity 5): empty
+                            >. Actual:<Warehouse state:
+Cell 0 (Used 3/10): 3x A
+Cell 1 (Capacity 5): empty
+>. , ErrorStackTrace:   at ConsoleAppTest2._3._1.WarehouseTest.PrintAllCellState_WritesStateAsString() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\WarehouseTest.cs:line 72
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-09-30T08:24:01.7511560+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll

@@ -1,0 +1,22 @@
+2025-09-30T05:53:39.6940240+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.8.4+ac62226a2475fb11f9a6a0bfba3498dc5a707a49
+2025-09-30T05:53:39.7102024+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-09-30T05:53:39.7128341+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-09-30T05:53:39.7128519+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 05:53:39.622
+2025-09-30T05:53:39.7130326+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 26012
+2025-09-30T05:53:39.7132356+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-09-30T05:53:39.7132513+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-09-30T05:53:39.7132713+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-09-30T05:53:39.7134083+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:53:39.7137904+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 52228'
+2025-09-30T05:53:39.7164423+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-09-30T05:53:39.8600082+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-09-30T05:53:39.9125293+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-09-30T05:53:40.3626096+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.10.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-09-30T05:53:40.4402970+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-09-30T05:53:40.4564719+00:00 mstest-trace INFORMATION CollectSourceInformation value found : False 
+2025-09-30T05:53:40.5574244+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 12 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:53:40.5990442+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:53:40.6154704+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll (Workers: 12, Scope: MethodLevel)
+2025-09-30T05:53:40.6311362+00:00 mstest-trace INFORMATION Executing test ProcessOrder_MovesQuantityFromSourceToTarget
+2025-09-30T05:53:40.6844287+00:00 mstest-trace INFORMATION Executed test ProcessOrder_MovesQuantityFromSourceToTarget
+2025-09-30T05:53:40.6957708+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll

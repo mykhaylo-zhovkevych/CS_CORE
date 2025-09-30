@@ -1,0 +1,57 @@
+2025-09-30T05:51:37.2371845+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.8.4+ac62226a2475fb11f9a6a0bfba3498dc5a707a49
+2025-09-30T05:51:37.2522359+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-09-30T05:51:37.2545904+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-09-30T05:51:37.2546181+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 05:51:37.167
+2025-09-30T05:51:37.2547236+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 37384
+2025-09-30T05:51:37.2548622+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-09-30T05:51:37.2548690+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-09-30T05:51:37.2548808+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-09-30T05:51:37.2549812+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:51:37.2553110+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 52204'
+2025-09-30T05:51:37.2577048+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-09-30T05:51:37.3882030+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-09-30T05:51:37.4326609+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-09-30T05:51:37.9604251+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.10.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-09-30T05:51:38.0664847+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-09-30T05:51:38.0786576+00:00 mstest-trace INFORMATION CollectSourceInformation value found : False 
+2025-09-30T05:51:38.1794332+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 12 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:51:38.2227623+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll
+2025-09-30T05:51:38.2639377+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll (Workers: 12, Scope: MethodLevel)
+2025-09-30T05:51:38.2848149+00:00 mstest-trace INFORMATION Executing test StoreProduct_AddsProductToEmptyCell
+2025-09-30T05:51:38.2848184+00:00 mstest-trace INFORMATION Executing test ExecuteOrder_ThrowsWhenSourceDoesNotHaveEnoughProduct
+2025-09-30T05:51:38.2848185+00:00 mstest-trace INFORMATION Executing test StoreProduct_ThrowsWhenNotEnoughSpace
+2025-09-30T05:51:38.2848184+00:00 mstest-trace INFORMATION Executing test RemoveProduct_ThrowsWhenProductNotAvailable
+2025-09-30T05:51:38.2848184+00:00 mstest-trace INFORMATION Executing test AddCell_AddsCell
+2025-09-30T05:51:38.2848338+00:00 mstest-trace INFORMATION Executing test ProcessOrder_MovesQuantityFromSourceToTarget
+2025-09-30T05:51:38.2848728+00:00 mstest-trace INFORMATION Executing test AddCell_ThrowsWhenSameIdAdded
+2025-09-30T05:51:38.2848697+00:00 mstest-trace INFORMATION Executing test RemoveProduct_PartialRemovalReducesStoredAmount
+2025-09-30T05:51:38.2848723+00:00 mstest-trace INFORMATION Executing test AddCell_ThrowsWhenNull
+2025-09-30T05:51:38.2848338+00:00 mstest-trace INFORMATION Executing test StoreProduct_MergesAmounts_WhenSameProductId
+2025-09-30T05:51:38.2848622+00:00 mstest-trace INFORMATION Executing test PrintAllCellState_WritesStateToConsole
+2025-09-30T05:51:38.3451712+00:00 mstest-trace INFORMATION Executed test AddCell_AddsCell
+2025-09-30T05:51:38.3451712+00:00 mstest-trace INFORMATION Executed test PrintAllCellState_WritesStateToConsole
+2025-09-30T05:51:38.3451859+00:00 mstest-trace INFORMATION Executed test AddCell_ThrowsWhenNull
+2025-09-30T05:51:38.3452024+00:00 mstest-trace INFORMATION Executed test StoreProduct_AddsProductToEmptyCell
+2025-09-30T05:51:38.3451711+00:00 mstest-trace INFORMATION Executed test AddCell_ThrowsWhenSameIdAdded
+2025-09-30T05:51:38.3452462+00:00 mstest-trace INFORMATION Executed test RemoveProduct_ThrowsWhenProductNotAvailable
+2025-09-30T05:51:38.3452569+00:00 mstest-trace INFORMATION Executed test StoreProduct_ThrowsWhenNotEnoughSpace
+2025-09-30T05:51:38.3452737+00:00 mstest-trace INFORMATION Executed test StoreProduct_MergesAmounts_WhenSameProductId
+2025-09-30T05:51:38.3452808+00:00 mstest-trace INFORMATION Executed test RemoveProduct_PartialRemovalReducesStoredAmount
+2025-09-30T05:51:38.3954283+00:00 mstest-trace INFORMATION Executed test ExecuteOrder_ThrowsWhenSourceDoesNotHaveEnoughProduct
+2025-09-30T05:51:38.3954284+00:00 mstest-trace INFORMATION Executed test ProcessOrder_MovesQuantityFromSourceToTarget
+2025-09-30T05:51:38.3955015+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest2._3._1.AutomaticWagonTest.ExecuteOrder_ThrowsWhenSourceDoesNotHaveEnoughProduct failed. ErrorMessage:Assert.ThrowsException failed. Expected exception type:<System.InvalidOperationException>. Actual exception type:<System.ObjectDisposedException>. , ErrorStackTrace:   at ConsoleAppTest2._3._1.AutomaticWagonTest.ExecuteOrder_ThrowsWhenSourceDoesNotHaveEnoughProduct() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\AutomaticWagonTest.cs:line 75
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-09-30T05:51:38.3955207+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest2._3._1.AutomaticWagonTest.ProcessOrder_MovesQuantityFromSourceToTarget failed. ErrorMessage:Test method ConsoleAppTest2._3._1.AutomaticWagonTest.ProcessOrder_MovesQuantityFromSourceToTarget threw exception: 
+System.ObjectDisposedException: Cannot write to a closed TextWriter., ErrorStackTrace:   at System.IO.StringWriter.Write(String value)
+   at System.IO.TextWriter.WriteLine(String value)
+   at System.IO.TextWriter.SyncTextWriter.WriteLine(String value)
+   at System.Console.WriteLine(String value)
+   at ConsoleApp2._3._1.AutomaticWagon.ProcessOrder(Order order) in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp2.3.1\AutomaticWagon.cs:line 44
+   at ConsoleApp2._3._1.AutomaticWagon.ExecuteOrder() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp2.3.1\AutomaticWagon.cs:line 38
+   at ConsoleAppTest2._3._1.AutomaticWagonTest.ProcessOrder_MovesQuantityFromSourceToTarget() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\AutomaticWagonTest.cs:line 41
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-09-30T05:51:38.3963611+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest2.3.1\bin\Debug\net8.0\ConsoleAppTest2.3.1.dll

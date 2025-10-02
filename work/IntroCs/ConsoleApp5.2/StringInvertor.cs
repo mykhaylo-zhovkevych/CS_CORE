@@ -14,5 +14,23 @@ namespace ConsoleApp5._2
 
             return new string(reversedChars);
         }
+
+        //Convert to SnakeCase (each letter)
+
+
+        public static string SnakeCaseInput(this string input)
+        {
+
+
+            return new string();
+        }
+
+        //truncat string
+
+        public static string TruncateInput(this string input)
+        {
+            return new string();
+        }
+
     }
 }

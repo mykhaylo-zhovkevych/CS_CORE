@@ -22,34 +22,6 @@ namespace ConsoleApp5._1
                 agg.AddNumber(rnd.Next(1, 51));
             }
 
-            // Because Main is static
-            static int EvenAverage(IEnumerable<int> nums)
-            {
-
-                return (int)nums.Where(n => n % 2 == 0).Average();
-            
-            }
-
-            static int OddAverage(IEnumerable<int> nums)
-            {
-                return (int)nums.Where(n => n % 2 != 0).Average();
-            }
-
-            static int EvenMax(IEnumerable<int> nums)
-            {
-                return nums.Where(n => n % 2 == 0).Max();
-            }
-
-            static int OddMax(IEnumerable<int> nums)
-            {
-                return nums.Where(n => n % 2 != 0).Max();
-            }
-
-            static int DivisibleBy7Count(IEnumerable<int> nums)
-            {
-                return nums.Count(n => n % 7 == 0);
-            }
-
             agg.Calculate(EvenAverage);
             agg.Calculate(OddAverage);
             agg.Calculate(EvenMax);
@@ -60,12 +32,33 @@ namespace ConsoleApp5._1
             agg.Calculate(f => f.Max());
         }
 
-        private static void OnResultNewState(object? sender, EventArgs e)
+        static int EvenAverage(IEnumerable<int> nums)
         {
-            if (sender is Aggregator agg)
-            {
-                Console.WriteLine("New Result: " + agg.Result);
-            }
+            return (int)nums.Where(n => n % 2 == 0).Average();
+
         }
+
+        static int OddAverage(IEnumerable<int> nums)
+        {
+            return (int)nums.Where(n => n % 2 != 0).Average();
+        }
+
+        static int EvenMax(IEnumerable<int> nums)
+        {
+            return nums.Where(n => n % 2 == 0).Max();
+        }
+
+        static int OddMax(IEnumerable<int> nums)
+        {
+            return nums.Where(n => n % 2 != 0).Max();
+        }
+
+        static int DivisibleBy7Count(IEnumerable<int> nums)
+        {
+            return nums.Count(n => n % 7 == 0);
+        }
+
+        private static void OnResultNewState(object? sender, int result) => Console.WriteLine("New Result: " + result);
+            
     }
 }

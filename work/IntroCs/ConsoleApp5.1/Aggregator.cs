@@ -12,20 +12,18 @@ namespace ConsoleApp5._1
         public delegate int AggregationFunction(IEnumerable<int> value);
         private readonly List<int> _numbers = new List<int>();
 
-        public int Result { get; private set; }
+        // public int Result { get; private set; }
 
-        public event EventHandler? ResultNewState;
-
-        public void AddNumber(int i) => _numbers.Add(i);
+        public event EventHandler<int> ResultNewState;
 
         public void Calculate(AggregationFunction newFunction)
         {
-            if (newFunction == null) throw new ArgumentNullException(nameof(newFunction));
+            int result = newFunction(_numbers);
 
-            Result = newFunction(_numbers);
-
-            ResultNewState?.Invoke(this, EventArgs.Empty);
+            ResultNewState?.Invoke(this, result);
 
         }
+
+        public void AddNumber(int i) => _numbers.Add(i);
     }
 }

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._2.Users
 {
-    internal class ExternalUser : User
+    public class ExternalUser : User
     {
         public ExternalUser(Guid id, string name) : base(id, name) { }
-        public override double PriceFactor => 2;
+
+        public override int LoanPeriod { get; set; }
+        public override decimal LoanFees { get; set; }
+        public override int Extensions { get; set; }
     }
 }

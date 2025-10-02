@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._2.Objects
 {
-    internal class Book : Object
+    internal class Book : Item
     {
-        public int Iban { get; set; }
         public string Publisher { get; set; }
 
-        public Book(Guid id, string name, double basicPrice, double surcharge, int iban, string publisher)
-            : base(id, name, basicPrice, surcharge)
+        public Book(Guid id, string name, string publisher)
+            : base(id, name)
         {
-            Iban = iban;
             Publisher = publisher;
         }
-
     }
 }

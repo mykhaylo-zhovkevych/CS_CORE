@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace ConsoleApp3._2
 {
-    public class Library
+    internal class Library
     {
         private List<Shelf> _shelves;
         private List<(User ReservedBy, Object Obj)> _reservations;

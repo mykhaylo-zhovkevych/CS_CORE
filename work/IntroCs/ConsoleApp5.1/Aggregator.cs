@@ -18,14 +18,13 @@ namespace ConsoleApp5._1
 
         public void AddNumber(int i) => _numbers.Add(i);
 
-        public int Calculate(AggregationFunction newFunction)
+        public void Calculate(AggregationFunction newFunction)
         {
             if (newFunction == null) throw new ArgumentNullException(nameof(newFunction));
 
-            // send result to subscriber
-            ResultNewState?.Invoke(this, EventArgs.Empty);
+            Result = newFunction(_numbers);
 
-            return newFunction(_numbers);;
+            ResultNewState?.Invoke(this, EventArgs.Empty);
 
         }
     }

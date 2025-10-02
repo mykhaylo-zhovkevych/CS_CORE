@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace ConsoleApp5._1
 {
@@ -21,12 +22,40 @@ namespace ConsoleApp5._1
                 agg.AddNumber(rnd.Next(1, 51));
             }
 
-            // correct avarage from even numbers
-            agg.Calculate(nums => (int)nums.Where(n => n % 2 == 0).Average());
-           
-            // odd / even max
-            // number dividable per 7
-            agg.Calculate(f => (int)f.Average());
+            // Because Main is static
+            static int EvenAverage(IEnumerable<int> nums)
+            {
+
+                return (int)nums.Where(n => n % 2 == 0).Average();
+            
+            }
+
+            static int OddAverage(IEnumerable<int> nums)
+            {
+                return (int)nums.Where(n => n % 2 != 0).Average();
+            }
+
+            static int EvenMax(IEnumerable<int> nums)
+            {
+                return nums.Where(n => n % 2 == 0).Max();
+            }
+
+            static int OddMax(IEnumerable<int> nums)
+            {
+                return nums.Where(n => n % 2 != 0).Max();
+            }
+
+            static int DivisibleBy7Count(IEnumerable<int> nums)
+            {
+                return nums.Count(n => n % 7 == 0);
+            }
+
+            agg.Calculate(EvenAverage);
+            agg.Calculate(OddAverage);
+            agg.Calculate(EvenMax);
+            agg.Calculate(OddMax);
+            agg.Calculate(DivisibleBy7Count);
+
             agg.Calculate(f => f.Min());
             agg.Calculate(f => f.Max());
         }

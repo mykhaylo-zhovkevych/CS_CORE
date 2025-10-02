@@ -1,7 +1,10 @@
+using System.ComponentModel.Design;
+using System.Text;
+
 namespace ConsoleApp5._2
 { 
 
-    public static class StringInvertor
+    public static class ExtentionMethods
     {
         public static string ReverseInput(this string input)
         {
@@ -16,20 +19,62 @@ namespace ConsoleApp5._2
         }
 
         //Convert to SnakeCase (each letter)
-
-
         public static string SnakeCaseInput(this string input)
         {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
 
+            var sb = new StringBuilder();
+            foreach (char c in input)
+            {
+                // Methoden von char
+                if (char.IsLetterOrDigit(c))
+                {
+                    sb.Append(char.ToLowerInvariant(c));
+                }
+                else
+                {
+                    sb.Append("_");
+                }
+            }
 
-            return new string();
+            var result = sb.ToString();
+            while (result.Contains("__"))
+            {
+                result = result.Replace("__", "_");
+            }
+            result = result.Trim('_');
+
+            return result;
         }
 
         //truncat string
-
-        public static string TruncateInput(this string input)
+        public static string TruncateInput(this string input, int maxLength )
         {
-            return new string();
+
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input), "Input string can not ");
+            }
+
+            if (input.Length <= maxLength)
+            {
+                return input;
+            }
+
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < maxLength; i++)
+            {
+                sb.Append(input[i]);
+            }
+
+            sb.AppendLine("...");
+   
+            return sb.ToString();
+
         }
 
     }

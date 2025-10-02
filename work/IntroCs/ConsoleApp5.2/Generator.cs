@@ -16,7 +16,7 @@ namespace ConsoleApp5._2
 
             if (isValid)
             {
-                var chars = "HelloWorldExample";
+                var chars = input;
                 var rnd = new Random();
 
                 return new string(

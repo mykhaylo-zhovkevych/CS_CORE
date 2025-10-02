@@ -1,10 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp5._2
 {
-    internal class Program
+    public class Program
     {
-
         static void Main(string[] args)
         {
             var gen = new Generator();
@@ -21,6 +21,13 @@ namespace ConsoleApp5._2
 
             string reversed = random.ReverseInput();
             Console.WriteLine("Reversed: " + reversed);
+
+            string testString = "Hello this is a Demo string!";
+            string snake = testString.SnakeCaseInput();
+            Console.WriteLine(snake);
+
+            string turnacate = testString.TruncateInput(15);
+            Console.WriteLine(turnacate);
 
         }
     }

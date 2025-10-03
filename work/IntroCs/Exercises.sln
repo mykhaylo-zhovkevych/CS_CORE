@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest.5.1", "Conso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest.5.2", "ConsoleAppTest.5.2\ConsoleAppTest.5.2.csproj", "{BCB15486-9067-4B44-BA74-64728A57B8B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest5.4", "ConsoleAppTest5.4\ConsoleAppTest5.4.csproj", "{14273CE5-E647-4336-A482-9425DE9BCCB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{BCB15486-9067-4B44-BA74-64728A57B8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB15486-9067-4B44-BA74-64728A57B8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB15486-9067-4B44-BA74-64728A57B8B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14273CE5-E647-4336-A482-9425DE9BCCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14273CE5-E647-4336-A482-9425DE9BCCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14273CE5-E647-4336-A482-9425DE9BCCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14273CE5-E647-4336-A482-9425DE9BCCB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

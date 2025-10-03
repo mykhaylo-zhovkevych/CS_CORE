@@ -12,8 +12,6 @@ namespace ConsoleApp5._1
         public delegate int AggregationFunction(IEnumerable<int> value);
         private readonly List<int> _numbers = new List<int>();
 
-        // public int Result { get; private set; }
-
         public event EventHandler<int> ResultNewState;
 
         public void Calculate(AggregationFunction newFunction)

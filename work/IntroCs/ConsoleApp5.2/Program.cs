@@ -12,10 +12,6 @@ namespace ConsoleApp5._2
             string random = gen.GenerateString(23);
             string randomCustom = gen.GenerateString(20, "ABCvv");
 
-            string nonrandom = gen.GenerateString(23);
-
-            Console.WriteLine(nonrandom);
-
             Console.WriteLine("Random: " + random);
             Console.WriteLine("Custom: " + randomCustom);
 

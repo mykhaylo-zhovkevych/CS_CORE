@@ -26,7 +26,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void StoreProduct_AddsProductToEmptyCell()
         {
-            var cell = new Cell(20);
+            var cell = new Cell(20, 50);
             cell.StoreProduct(_food);
 
             Assert.HasCount(1, cell.Products);
@@ -39,7 +39,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void StoreProduct_MergesAmounts_WhenSameProductId()
         {
-            var cell = new Cell(50);
+            var cell = new Cell(50, 50);
             cell.StoreProduct(_stone);
 
             cell.StoreProduct(new Material(_stone.Id, _stone.Name, 5));
@@ -52,7 +52,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void StoreProduct_ThrowsWhenNotEnoughSpace()
         {
-            var cell = new Cell(10);
+            var cell = new Cell(10, 50);
 
        
             Assert.ThrowsExactly<NotEnoughFreeSpaceException>(() => cell.StoreProduct(_cloth));
@@ -61,7 +61,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void RemoveProduct_PartialRemovalReducesStoredAmount()
         {
-            var cell = new Cell(50);
+            var cell = new Cell(50, 50);
             cell.StoreProduct(_food);
 
             var removed = cell.RemoveProduct(new Food(101, "Burger", 5));
@@ -73,7 +73,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void RemoveProduct_ThrowsWhenProductNotAvailable()
         {
-            var cell = new Cell(50);
+            var cell = new Cell(50, 50);
 
             var request = new Food(999, "FoodTest", 1);
             Assert.ThrowsExactly<NoProductOnCellException>(() => cell.RemoveProduct(request));
@@ -82,7 +82,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void RemoveProduct_ThrowsWhenNotEnoughProductAvailable()
         {
-            var cell = new Cell(50);
+            var cell = new Cell(50, 50);
             cell.StoreProduct(_stone);
 
             var orderProduct = new Material(202, "Stone", 100);

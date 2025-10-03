@@ -22,7 +22,7 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void AddCell_AddsCell()
         {
-            var cell = new Cell(50);
+            var cell = new Cell(5, 50);
 
             warehouse.AddCell(cell);
 
@@ -32,9 +32,10 @@ namespace ConsoleAppTest2._3._1
         [TestMethod]
         public void PrintAllCellState_WritesState()
         {
-            var c1 = new Cell(10);
+            var c1 = new Cell(10, 50);
             c1.StoreProduct(new Food(1, "A", 3));
-            var c2 = new Cell(5);
+            var c2 = new Cell(5, 40);
+    
 
             warehouse.AddCell(c1);
             warehouse.AddCell(c2);
@@ -42,10 +43,11 @@ namespace ConsoleAppTest2._3._1
             string output = warehouse.PrintAllCellState();
 
             string actual = @"Warehouse state:
-Cell 0 (Used 3/10): 3x A
-Cell 1 (Capacity 5): empty";
+Cell 10 (Used 3/50): 3x A
+Cell 5 (Capacity 40): empty
+";
 
-            Assert.AreEqual(actual, output);
+            Assert.AreEqual(output, actual);
 
         }
     }

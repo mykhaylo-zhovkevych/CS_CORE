@@ -29,13 +29,15 @@ namespace ConsoleApp2._3._1
             _cells.Add(cell);
         }
 
-        public void PrintAllCellState()
+        public string PrintAllCellState()
         {
-            Console.WriteLine("Warehouse state:");
+            var sb = new StringBuilder();
+            sb.AppendLine("Warehouse state:");
             foreach (var cell in _cells)
             {
-                Console.WriteLine(cell.ToString());
-            }   
+                sb.AppendLine(cell.ToString());
+            }
+            return sb.ToString();
         }
     }
 }

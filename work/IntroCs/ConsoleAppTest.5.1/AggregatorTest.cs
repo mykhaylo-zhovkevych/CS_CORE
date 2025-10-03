@@ -10,7 +10,6 @@ namespace ConsoleAppTest._5._1
         [TestMethod]
         public void TestCalculate_MustInvokeEventWithCorrectResult()
         {
-
             // Arrange
             var agg = new Aggregator();
             int? receivedResult = null;
@@ -22,11 +21,9 @@ namespace ConsoleAppTest._5._1
             agg.AddNumber(6);
 
             // Act
-
             agg.Calculate(nums => nums.Sum());
 
             // Assert
-
             Assert.IsNotNull(receivedResult);
             Assert.AreEqual(12, receivedResult.Value);
         }
@@ -35,18 +32,15 @@ namespace ConsoleAppTest._5._1
         public void TestCalculate_WithEmptyList()
         {
             // Arrange
-
             var agg = new Aggregator();
             int? receivedResult = null;
 
             agg.ResultNewState += (s, result) => receivedResult = result;
 
             // Act
-
             agg.Calculate(nums => nums.Sum());
 
             // Assert
-
             Assert.AreEqual(0, receivedResult.Value);
         }
     }

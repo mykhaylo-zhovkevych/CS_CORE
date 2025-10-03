@@ -2,10 +2,12 @@
 using ConsoleApp5._2.Objects;
 using ConsoleApp5._2.Users;
 using ConsoleApp5._4.HelperClasses;
+using ConsoleApp5._4.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,75 +15,88 @@ namespace ConsoleApp5._4
 {
     public class Library
     {
-        // not used _users
-        private List<User> _users;
         private List<Shelf> _shelves;
         private List<Borrowing> _borrowings;
-        
+        private readonly IBorrowPolicyProvider _policyProvider;
 
         public string Name { get; set; }
         public string Address { get; set; }
         
-        public Library(string name, string address)
+        public Library(string name, string address, IBorrowPolicyProvider policyProvider)
         {
             Name = name;
             Address = address;
-            _users = new List<User>();
             _shelves = new List<Shelf>();
             _borrowings = new List<Borrowing>();
+            _policyProvider = policyProvider;
         }
 
-
-        public void BorrowItem(User user, string currentItem)
+        public Result<Borrowing> BorrowItem(User user, string searchedItem)
         {
             // Searches for specific Item
-            var searchedItem = FindItemByName(currentItem);
-            if (searchedItem == null) 
+            var item = FindItemByName(searchedItem);
+            if (item == null) 
             {
                 throw new InvalidOperationException("Item is not available for borrowing, because a null.");
             }
 
             // Check if item is avaliable for borrowing
             // must it throw the error message or can i bypass more elegantly 
-            if (!CheckItemAvailability(user, searchedItem))
+            if (!CheckItemAvailability(user, item))
             {
-                throw new InvalidOperationException($"{currentItem} is currently not available for borrowing");
+                // return result
+                throw new InvalidOperationException($"{searchedItem} is currently not available for borrowing");
             }
 
-            // Processes it
-            DefineUserBorrowPolicy(user, searchedItem);
+            BorrowPolicy policy;
+            try
+            {
+                policy = _policyProvider.GetPolicy(user, item);
+            }
+            catch (Exception ex)
+            {
+                return Result<Borrowing>.Fail($"Policy-Fehler: {ex.Message}");
+            }
+
+            user.LoanPeriod = policy.LoanPeriod;
+            user.LoanFees = policy.Fees;
+            user.Extensions = policy.Extensions;
 
             var borrowing = new Borrowing()
             {
                 user = user,
-                item = searchedItem,
+                item = item,
                 LoanDate = DateTime.Now,
                 DueDate = DateTime.Now.AddDays(user.LoanPeriod),
             };
-
             _borrowings.Add(borrowing);
-            searchedItem.IsBorrowed = true;
+            item.IsBorrowed = true;
+
+            return Result<Borrowing>.Ok(borrowing, "Saved");
         }
 
+
+        // TODO: reimplement this method
         public void ReserveItem(User user, string currentItem )
         {
-            var searchedItem = FindItemByName(currentItem);
-            if (searchedItem == null)
+            var item = FindItemByName(currentItem);
+            if (item == null)
             {
                 throw new InvalidOperationException("Item is not available for borrowing, because a null.");
             }
-            if (!CheckItemAvailability(user, searchedItem))
+            if (!CheckItemAvailability(user, item))
             {
                 throw new InvalidOperationException($"{currentItem} is currently not available for reserving");
             }
 
-            searchedItem.ReservedBy = user.Id;
+            item.ReservedBy = user.Id;
 
         }
 
+        // TODO: reimplement this method
         public void ReturnItem(User user, string currentItem)
         {
-            var searchedItem = FindItemByUser(user);
+            var item = FindItemByUser(user);
 
             var borrowing = _borrowings.FirstOrDefault(b =>
                 b.user.Id == user.Id &&
@@ -97,34 +112,6 @@ namespace ConsoleApp5._4
             borrowing.ReturnDate = DateTime.Now;
             borrowing.item.IsBorrowed = default;
 
-        }
-
-
-        private void DefineUserBorrowPolicy(User user, Item item)
-        {
-
-            (int loanDays, decimal fees, int extensions) policy = (user, item) switch
-            {
-                (Student, Book) => (30, 0.00m, 1),
-                (Student, Magazine) => (30, 0.0m, 1),
-                (Student, BoardGame) => (21, 0.0m, 1),
-                (Student, VideoGame) => (21, 0.0m, 1),
-
-                (Teacher, Book) => (30, 50.0m, 2),
-                (Teacher, Magazine) => (30, 50.0m, 2),
-                (Teacher, BoardGame) => (14, 50.0m, 2),
-                (Teacher, VideoGame) => (14, 50.0m, 2),
-
-                (ExternalUser, Book) => (30, 100.0m, 0),
-                (ExternalUser, Magazine) => (30, 100.0m, 0),
-                (ExternalUser, BoardGame) => (14, 100.0m, 0),
-                (ExternalUser, VideoGame) => (14, 100.0m, 0),
-                _ => throw new ArgumentNullException()
-            };
-
-            user.LoanPeriod = policy.loanDays;
-            user.LoanFees = policy.fees;
-            user.Extensions = policy.extensions;
         }
 
 
@@ -151,6 +138,7 @@ namespace ConsoleApp5._4
         {
             var allItems = getAllItemsFromShelves();
 
+            // TODO: eliminate null possibility
             return allItems.FirstOrDefault(item => item.ReservedBy == user.Id);
         }
 

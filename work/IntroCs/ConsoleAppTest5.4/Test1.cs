@@ -1,0 +1,11 @@
+﻿namespace ConsoleAppTest5._4
+{
+    [TestClass]
+    public sealed class Test1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+        }
+    }
+}

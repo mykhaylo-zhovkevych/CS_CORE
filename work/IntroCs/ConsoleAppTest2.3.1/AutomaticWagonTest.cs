@@ -19,8 +19,8 @@ namespace ConsoleAppTest2._3._1
         [TestInitialize]
         public void Setup()
         {
-            cell1 = new Cell( 50);
-            cell2 = new Cell(50);
+            cell1 = new Cell(50, 50);
+            cell2 = new Cell(50, 50);
         }
 
 

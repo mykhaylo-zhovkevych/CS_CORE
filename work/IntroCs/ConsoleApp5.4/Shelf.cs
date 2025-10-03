@@ -12,7 +12,6 @@ namespace ConsoleApp5._4
         public int ShelfId { get; private set; }
         private List<Item> _items;
 
-
         public Shelf(int shelfNumber)
         {
             ShelfId = shelfNumber;

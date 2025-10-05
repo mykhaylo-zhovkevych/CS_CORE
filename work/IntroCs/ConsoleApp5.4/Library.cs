@@ -93,26 +93,27 @@ namespace ConsoleApp5._4
 
         }
 
-        // TODO: reimplement this method
-        public void ReturnItem(User user, string currentItem)
+
+        public Result<Borrowing> ReturnItem (User user, string currentItem)
         {
-            var item = FindItemByUser(user);
+            if (user == null) return Result<Borrowing>.Fail("Incorrect User");
+            if (string.IsNullOrEmpty(currentItem)) return Result<Borrowing>.Fail("Item Name is incorrect or missing");
 
             var borrowing = _borrowings.FirstOrDefault(b =>
                 b.user.Id == user.Id &&
                 b.item.Name.Equals(currentItem, StringComparison.OrdinalIgnoreCase) &&
-                !b.IsReturned
-            );
+                !b.IsReturned);
 
             if (borrowing == null)
             {
-                throw new InvalidOperationException("No active borrowing found for this user");
+                return Result<Borrowing>.Fail($"No entries was found with this user {user.Name}");
             }
-
             borrowing.ReturnDate = DateTime.Now;
-            borrowing.item.IsBorrowed = default;
+            borrowing.item.IsBorrowed = false;
 
+            return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
+
 
 
         private bool CheckItemAvailability(User user, Item item)

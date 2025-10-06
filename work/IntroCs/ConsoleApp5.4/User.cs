@@ -22,10 +22,5 @@ namespace ConsoleApp5._2
             Name = name;
         }
 
-        public virtual string ReportBorrowedItems()
-        {
-        
-            return "";
-        }
     }
 }

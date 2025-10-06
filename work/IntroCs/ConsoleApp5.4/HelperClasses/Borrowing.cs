@@ -1,5 +1,6 @@
 ﻿using ConsoleApp5._2;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._4.HelperClasses
 {
-    // This class doenst need a constructor, because it wont used independantly
-    public class Borrowing
+    // This class doenst need a constructor, because it won't be used independantly
+    public class Borrowing 
     {
         public User user { get; set; }
         public Item item { get; set; }
@@ -18,6 +19,7 @@ namespace ConsoleApp5._4.HelperClasses
         public DateTime? ReturnDate { get; set; }
 
         public bool IsReturned => ReturnDate.HasValue;
+
 
         // TODO: Find better way of priting the output 
         public override string ToString()

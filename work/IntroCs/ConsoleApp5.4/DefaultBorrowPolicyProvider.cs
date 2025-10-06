@@ -21,7 +21,7 @@ namespace ConsoleApp5._4
 
         public DefaultBorrowPolicyProvider()
         {
-            AddRule(typeof(Student), typeof(Book), new BorrowPolicy(30, 0.00m, 1));
+            AddRule(typeof(Student), typeof(Book), new BorrowPolicy(30, 0.00m, 2));
             AddRule(typeof(Student), typeof(Magazine), new BorrowPolicy(30, 0.00m, 1));
             AddRule(typeof(Student), typeof(BoardGame), new BorrowPolicy(21, 0.00m, 1));
             AddRule(typeof(Student), typeof(VideoGame), new BorrowPolicy(21, 0.00m, 1));

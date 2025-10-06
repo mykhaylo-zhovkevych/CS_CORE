@@ -19,6 +19,5 @@ namespace ConsoleApp5._4.HelperClasses
             Item = item;
             ReservedUser = reservedUser;
         }
-
     }
 }

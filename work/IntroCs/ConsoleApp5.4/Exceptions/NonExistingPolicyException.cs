@@ -14,5 +14,8 @@ namespace ConsoleApp5._4.Exceptions
             Console.WriteLine("No Policy was found.");
         }
 
+        public NonExistingPolicyException(string? message) : base(message)
+        {
+        }
     }
 }

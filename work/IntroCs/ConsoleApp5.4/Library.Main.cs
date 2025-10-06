@@ -70,8 +70,6 @@ namespace ConsoleApp5._4
                 return Result<Borrowing>.Fail($"Policy-Fehler: {ex.Message}");
             }
 
-            // Is there any better way of assigning the local properties with actula?
-            
             // in user define
             user.LoanFees = policy.Fees;
             user.Extensions = policy.Extensions;
@@ -118,6 +116,7 @@ namespace ConsoleApp5._4
 
 
         // Is this good idea to have method that dont needs a paramater but in internally there is function that needs that paramaters? 
+        // TODO: better logic with string name
         public void ReserveItem(User user, string currentItem)
         {
 

@@ -15,17 +15,17 @@ namespace ConsoleApp5._4
 
         static void Main(string[] args)
         {
-            var policyProvider = new DefaultBorrowPolicyProvider();            
+            var policyProvider = new DefaultBorrowPolicyProvider();
 
             var library = new Library("Central Library", "123 Main St.", policyProvider);
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-            
-            var studnet = new Student(Guid.NewGuid(),"TestName01");
+
+            var studnet = new Student(Guid.NewGuid(), "TestName01");
             var teacher = new Teacher(Guid.NewGuid(), "TestName02");
             var admin = new Admin(Guid.NewGuid(), "TestAdmin");
-            var book = new Book(Guid.NewGuid(),"TestNameBook", "TestPublisher");
+            var book = new Book(Guid.NewGuid(), "TestNameBook", "TestPublisher");
             var book02 = new Book(Guid.NewGuid(), "TestNameBook", "TestPublisher");
             var videoGame = new VideoGame(Guid.NewGuid(), "TestNameGame", GameType.RPG, 19);
 
@@ -33,7 +33,7 @@ namespace ConsoleApp5._4
             shelf1.AddItemToShelf(book02);
             // TODO: Check the assigment of the objects of the type Item
             shelf1.AddItemToShelf(videoGame);
-            
+
 
             library.AddShelf(shelf1);
             library.AddShelf(shelf2);

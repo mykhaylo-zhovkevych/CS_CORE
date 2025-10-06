@@ -16,7 +16,7 @@ namespace ConsoleApp5._4
             InformReserver?.Invoke(this, e);
         }
 
-
+        // TODO: Reimplement this with the result class
         private bool CheckItemAvailability(User user, Item item)
         {
             if (item.IsBorrowed)

@@ -10,77 +10,74 @@ using static ConsoleApp2._3._1.Warehouse;
 
 namespace ConsoleApp2._3._1
 {
-    internal class AutomaticWagon : IOrderExecutor<Order>
+    public class AutomaticWagon
     {
-        private Order? _currentOrder;
-        private Cell? _currentCell;
-        private PriorityQueue<Order, int> _orderQueue = new PriorityQueue<Order, int>();
-        private List<Cell> _cells { get; set; } = new List<Cell>();
+        private PriorityQueue<Order, int> _queue = new();
 
+        public PriorityQueue<Order, int> OrderQueue => _queue;
         public int WagonNumber { get; }
-        
-        public AutomaticWagon(int number) => WagonNumber = number;
-        public void PreProcess(Order order)
+        public Cell? CurrentCell { get; private set; }
+
+        public AutomaticWagon(int wagonNumber, Cell startCell)
         {
-            _orderQueue.Enqueue(order, order.Priority);
-            Console.WriteLine($"Added Order {order.OrderNumber} (Priority {order.Priority})");
+            WagonNumber = wagonNumber;
+            CurrentCell = startCell ?? throw new ArgumentNullException(nameof(startCell));
+        }
+
+        public void AddToOrderQueue(Order order)
+        {
+            if (order == null) throw new ArgumentNullException(nameof(order));
+            _queue.Enqueue(order, order.Priority);
         }
 
         public void ExecuteOrder()
         {
-            while (_orderQueue.Count > 0)
+            while (_queue.Count > 0)
             {
-                _currentOrder = _orderQueue.Dequeue();
-                Console.WriteLine($"Executing Order {_currentOrder.OrderNumber} (Priority {_currentOrder.Priority})");
-                _currentOrder.ExecuteOn(this);
-                _currentOrder = default;
-
+                var order = _queue.Dequeue();
+                ProcessOrder(order);
             }
         }
 
-        public void ProcessOrder(Order order)
+        private void ProcessOrder(Order order)
         {
-            var sourceCell = _cells.FirstOrDefault(c => c.HasEnoughProduct(order.Product, order.Quantity));
-            if (sourceCell == null)
-                throw new InvalidOperationException($"No cell has enough of product {order.Product.Name} (Order {order.OrderNumber}).");
+            Console.WriteLine($"Processing Order {order.OrderNumber}: {order.Quantity}x " +
+                $"{order.Product.Name} from Cell {order.SourceCell.Id} to Cell {order.TargetCell.Id}");
 
-            MoveToCell(sourceCell);
-            Load(order.Product, order.Quantity, sourceCell);
-
-            var targetCell = _cells.FirstOrDefault(c => c.HasEnoughFreeSpace(order.Quantity));
-            if (targetCell == null)
-                throw new InvalidOperationException($"No cell has enough of free space for {order.Product.Name}.");
-            Unload(order.Product, order.Quantity, targetCell);
-
-            //Console.WriteLine($"Moving {order.Quantity} of {order.Product.Name} from Cell {sourceCell.Id} to Cell {targetCell.Id}");
-
-
-        }
-
-        private void Load(Product product, int qunatity, Cell cell)
-        {
-            cell.RemoveProduct(product, qunatity);
-        }
-
-        private void Unload(Product product, int quantity, Cell cell)
-        {
-            var type = product.GetType();
-            var newProduct = (Product)Activator.CreateInstance(type, product.Id, product.Name, quantity);
-
-            cell.StoreProduct(newProduct);
-
+            MoveToCell(order.SourceCell);
+            var loaded = Load(order.Product);
+            MoveToCell(order.TargetCell);
+            Unload(loaded, order.TargetCell);
         }
 
         private void MoveToCell(Cell cell)
         {
-            if (ReferenceEquals(_currentCell, cell)) return;
-            _currentCell = cell;
+            if (!ReferenceEquals(CurrentCell, cell))
+            {
+                CurrentCell = cell;
+            }
         }
 
-        public void AddCell(Cell cell)
+        private Product Load(Product product)
         {
-            _cells.Add(cell);
+            if (CurrentCell == null)
+                throw new InvalidOperationException($"Wagon {WagonNumber} Not located at any cell to load from");
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
+
+            var removed = CurrentCell.RemoveProduct(product);
+
+            Console.WriteLine($"Loaded {removed.ProductAmount} and {removed.Name} from Cell {CurrentCell.Id}");
+            return removed;
         }
 
+        private void Unload(Product product, Cell targetCell)
+        {
+            if (product == null) throw new ArgumentNullException(nameof(product));
+            if (targetCell == null) throw new ArgumentNullException(nameof(targetCell));
+
+            targetCell.StoreProduct(product);
+            Console.WriteLine($"Unloaded {product.ProductAmount}, {product.Name} into Cell {targetCell.Id}");
+        }
     }
 }

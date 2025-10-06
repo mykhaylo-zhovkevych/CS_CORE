@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._3._1
 {
-    internal abstract class Product
+    public abstract class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id { get; }
+        public string Name { get; }
         public int ProductAmount { get; set; }
 
         protected Product(int id, string name, int amount)
@@ -19,27 +19,21 @@ namespace ConsoleApp2._3._1
             ProductAmount = amount;
         }
 
-        public static int SumAmountOfType<T>(IEnumerable<Product> products) where T : Product
-        {
-            return products.OfType<T>().Sum(p => p.ProductAmount);
-        }
     }
 
-    internal class Food : Product
-    {
-        public Food(int id, string name, int amount) : base(id, name, amount) {
-
-
-        }
+    public class Food : Product 
+    { 
+        public Food(int id, string name, int amount) : base(id, name, amount) { }
+   
     }
-
-    internal class Material : Product
-    {
+    public class Material : Product 
+    { 
         public Material(int id, string name, int amount) : base(id, name, amount) { }
+    
     }
-
-    internal class Cloth : Product
-    {
+    public class Cloth : Product 
+    { 
         public Cloth(int id, string name, int amount) : base(id, name, amount) { }
+      
     }
 }

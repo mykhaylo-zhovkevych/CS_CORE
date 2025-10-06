@@ -7,54 +7,76 @@ using System.Xml;
 
 namespace ConsoleApp2._3._1
 {
-    internal class Cell
+    public class Cell
     {
-        private List<Product> Products = new List<Product>();
 
-        public int Id { get; private set; }
-        public int MaxCapacity { get; private set; }
+        private readonly List<Product> _products = new();
+        public IReadOnlyList<Product> Products => _products;
+        public int Id { get; }
+        public int MaxCapacity { get; }
 
-        public Cell (int id, int maxCapacity)
+        public Cell(int id, int maxCapacity)
         {
-            this.Id = id;
-            this.MaxCapacity = maxCapacity;
-
+            Id = id;
+            MaxCapacity = maxCapacity;
         }
+
 
         public void StoreProduct(Product product)
         {
-            if (!HasEnoughFreeSpace(product.ProductAmount))
-                throw new InvalidOperationException($"Cannot store {product.ProductAmount} of {product.Name} in Cell {Id}: not enough space");
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id );
+            HasEnoughFreeSpace(product.ProductAmount);
 
-            Products.Add(product);
-        }
-        
-        public Product RemoveProduct(Product product, int quantity)
-        {
-            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
-
-            if (existing != null && existing.ProductAmount >= quantity)
+            if (existing != null)
             {
-                existing.ProductAmount -= quantity;
+                existing.ProductAmount += product.ProductAmount;
+            }
+            else
+            {
+                _products.Add(product);
+            }
+        }
 
-                var type = existing.GetType();
-                return (Product)Activator.CreateInstance(type, existing.Id, existing.Name, quantity);
+        public Product RemoveProduct(Product product)
+        {
+            var quantity = product.ProductAmount;
+            var existing = _products.FirstOrDefault(p => p.Id == product.Id );
+
+            HasEnoughProduct(existing, quantity);
+
+            if (existing.ProductAmount == quantity)
+            {
+                _products.Remove(existing);
+                return existing;
             }
 
-            throw new InvalidOperationException("Not enough product in cell to remove.");
+            existing.ProductAmount -= quantity;
+            product.ProductAmount = quantity;
+            return product;
         }
 
-
-        public bool HasEnoughProduct(Product product, int quantity)
+        // rethink
+        private void HasEnoughProduct(Product? existingProduct, int quantity)
         {
-            var existing = Products.FirstOrDefault(p => p.Id == product.Id);
-            return existing != null && existing.ProductAmount >= quantity;
+            if (existingProduct == null || existingProduct.ProductAmount < quantity)
+                throw new InvalidOperationException($"Cell {Id}: not enough product available");
         }
 
-        public bool HasEnoughFreeSpace(int quantity)
+        private void HasEnoughFreeSpace(int quantity)
         {
-            var usedSpace = Products.Sum(p => p.ProductAmount);
-            return (usedSpace + quantity) <= MaxCapacity;
-        }  
+            if (_products.Sum(p => p.ProductAmount) + quantity > MaxCapacity)
+                throw new InvalidOperationException($"Cell {Id}: Not enough free space to store {quantity} items");
+        }
+
+        public override string ToString()
+        {
+            if (_products.Count == 0)
+            {
+                return $"Cell {Id} (Capacity {MaxCapacity}): empty";
+            }
+            var productList = string.Join(", ", _products.Select(p => $"{p.ProductAmount}x {p.Name}"));
+            var used = _products.Sum(p => p.ProductAmount);
+            return $"Cell {Id} (Used {used}/{MaxCapacity}): {productList}";
+        }
     }
 }

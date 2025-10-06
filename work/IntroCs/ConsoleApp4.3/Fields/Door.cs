@@ -1,4 +1,5 @@
-﻿using ConsoleApp4._3.Items;
+﻿using ConsoleApp4._3.Interfaces;
+using ConsoleApp4._3.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._3.Fields
 {
+
     public class Door : Field
     {
-        public (int x, int y) DoorTarget { get; set; }
         public override char Symbol => '╬';
-        public Door(string name, (int, int) target) : base(name) => DoorTarget = target;
 
-        public override bool CanEnter { get; set; } 
-        
-        public override bool MovePlayerToField(Player player) 
+        public Door(string name) : base(name) { }
+
+        public override bool CanEnter { get; set; }
+
+        public override bool MovePlayerToField(Player player)
         {
             if (!CanEnter)
             {
@@ -25,14 +27,13 @@ namespace ConsoleApp4._3.Fields
                     outputService.WriteLine("Door is closed.");
                     return CanEnter;
                 }
-                
+
                 player.Inventory.Remove(key);
                 outputService.WriteLine($"{player.Name} has opened the door");
                 CanEnter = true;
             }
 
-            player.Position = DoorTarget;
-            outputService.WriteLine($"{player.Name} was teleported to {DoorTarget}");
+            outputService.WriteLine($"{player.Name} was went through {Name} normally");
 
             return CanEnter;
         }

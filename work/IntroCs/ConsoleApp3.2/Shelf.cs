@@ -28,15 +28,5 @@ namespace ConsoleApp3._2
         {
             _objects.Remove(obj);
         }
-
-        public List<Object> GetObjects()
-        {
-            return _objects;
-        }
-
-        public List<Object> GetTypeOfObject()
-        {
-            return _objects;
-        }
     }
 }

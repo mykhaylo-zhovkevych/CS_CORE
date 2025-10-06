@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5._2.Objects
+{
+    internal class Book : Item
+    {
+        public string Publisher { get; set; }
+
+        public Book(Guid id, string name, string publisher): base(id, name)
+        {
+            Publisher = publisher;
+        }
+    }
+}

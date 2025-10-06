@@ -1,64 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
 
 namespace ConsoleApp2._3._1
 {
-    internal abstract class Order
+    public abstract class Order
     {
-        public int OrderNumber { get; }
-        public int Quantity { get; }
-        public Product Product { get; }
-        public abstract int Priority { get; }
+        private readonly Product _product;
+        public Product Product => _product;
 
-        protected Order(int orderNumber, int quantity, Product product)
+        public int OrderNumber { get; }
+        public Cell SourceCell { get; }
+        public Cell TargetCell { get; }
+        public abstract int Priority { get; }
+        public int Quantity => _product.ProductAmount;
+        
+
+        protected Order(int orderNumber, Product product, Cell sourceCell, Cell targetCell)
         {
+
             OrderNumber = orderNumber;
-            Quantity = quantity;
-            Product = product;
+            SourceCell = sourceCell;
+            TargetCell = targetCell;
+            if (product == null ) throw new ArgumentNullException(nameof(product));
+            _product = product;
+
         }
 
-        public virtual void ExecuteOn(AutomaticWagon wagon) => wagon.ProcessOrder(this);
     }
 
-    internal class HighPriorityOrder : Order
-    {
-        public HighPriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
-
-        public override void ExecuteOn(AutomaticWagon wagon)
-        {
-            Console.WriteLine("The highest priority");
-            wagon.ProcessOrder(this);
-        }
-
+    public class HighPriorityOrder : Order 
+    { 
+        public HighPriorityOrder(int n, Product p, Cell s, Cell t) : base(n, p, s, t) { } 
         public override int Priority => 1; 
     }
-
-    internal class MiddlePriorityOrder : Order
-    {
-        public MiddlePriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
-
-        public override void ExecuteOn(AutomaticWagon wagon)
-        {
-            Console.WriteLine("The middle priority");
-            wagon.ProcessOrder(this);
-        }
-
-        public override int Priority => 2;
+    public class MiddlePriorityOrder : Order 
+    { 
+        public MiddlePriorityOrder(int n, Product p, Cell s, Cell t) : base(n, p, s, t) { } 
+        public override int Priority => 2; 
     }
-
-    internal class LowPriorityOrder : Order
-    {
-        public LowPriorityOrder(int orderNumber, int quantity, Product product) : base(orderNumber, quantity, product) { }
-        public override void ExecuteOn(AutomaticWagon wagon)
-        {
-            Console.WriteLine("The lowest priority");
-            wagon.ProcessOrder(this);
-        }
-
-        public override int Priority => 3;
+    public class LowPriorityOrder : Order 
+    { 
+        public LowPriorityOrder(int n, Product p, Cell s, Cell t) : base(n, p, s, t) {} 
+        public override int Priority => 3; 
     }
 }

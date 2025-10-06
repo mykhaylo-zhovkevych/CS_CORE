@@ -3,55 +3,46 @@ using ConsoleApp2._3._1;
 
 namespace ConsoleApp2._3._1
 {
-    internal class TestProgram
+    public class Program
     {
         static void Main(string[] args)
         {
-            var wagon = new AutomaticWagon(101);
+            var warehouse = new Warehouse("Haupt", "Zürich");
 
-            var food = new Food(101, "Burger", 5);
-            var material = new Material(202, "Stone", 5);
-            var cloth = new Cloth(303, "Dress", 45);
+            var c1 = new Cell(1, 50);
+            var c2 = new Cell(2, 50);
+            var c3 = new Cell(3, 50);
 
-            var cell1 = new Cell(1, 50);
-            var cell2 = new Cell(2, 50);
-            var cell3 = new Cell(3, 50);
+            warehouse.AddCell(c1);
+            warehouse.AddCell(c2);
+            warehouse.AddCell(c3);
+            
 
-            cell1.StoreProduct(food);
-            cell2.StoreProduct(material);
-            cell3.StoreProduct(cloth);
-
-            wagon.AddCell(cell1);
-            wagon.AddCell(cell2);
-            wagon.AddCell(cell3);
-
+            Product food = new Food(101, "Burger", 10);
+            Product stone = new Material(202, "Stone", 19);
           
-            var order1 = new HighPriorityOrder(1001, 2, material);
-            var order2 = new LowPriorityOrder(2002, 3, food);
-            var order3 = new MiddlePriorityOrder(3003, 5, cloth);
+            Product cloth = new Cloth(303, "Dress", 20);
 
-            wagon.PreProcess(order1);
-            wagon.PreProcess(order2);
-            wagon.PreProcess(order3);
+            c1.StoreProduct(food); 
+            c2.StoreProduct(stone);  
+
+            c3.StoreProduct(cloth);  
+
+            
+            var wagon = new AutomaticWagon(1001, c2);
+
+            Order o1 = new HighPriorityOrder(1, stone, c2, c1);   
+            Order o2 = new LowPriorityOrder(2, food, c1, c3);     
+            Order o3 = new MiddlePriorityOrder(3, cloth, c3, c2); 
+
+            wagon.AddToOrderQueue(o1);
+            wagon.AddToOrderQueue(o2);
+            wagon.AddToOrderQueue(o3);
 
             wagon.ExecuteOrder();
 
-            Console.WriteLine("\n--- Test Ergebnisse ---");
-            Console.WriteLine($"Zelle 1 (Food) Restmenge: {food.ProductAmount}");
-            Console.WriteLine($"Zelle 2 (Material) Restmenge: {material.ProductAmount}");
-            Console.WriteLine($"Zelle 3 (Cloth) Restmenge: {cloth.ProductAmount}");
+            warehouse.PrintAllCellState();
 
-
-            //var products = new List<Product>
-            //{
-            //    new Food(1, "Burger", 5),
-            //    new Food(2, "Pizza", 3),
-            //    new Material(3, "Stone", 10),
-            //    new Cloth(4, "Shirt", 2)
-            //};
-
-            //int totalFood = Product.SumAmountOfType<Food>(products);
-            //Console.WriteLine(totalFood);
 
         }
     }

@@ -10,10 +10,9 @@ namespace ConsoleApp4._3.Items
 {
     public class Food : Item, IConsumable
     {
-        public Food()
+        public Food() : base(name: "Food")
         {
             Guid Id = Guid.NewGuid();
-            Name = "Food";
         }
 
         public void Consume(Player player)

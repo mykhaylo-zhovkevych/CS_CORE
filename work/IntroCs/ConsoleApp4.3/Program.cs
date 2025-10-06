@@ -10,8 +10,9 @@ namespace ConsoleApp4._3
             KeyboardController controller = new KeyboardController();
             ConsoleOutputService output = new ConsoleOutputService();
             StringBuilderOutputService stringOutput = new StringBuilderOutputService();
+            Player player = new Player("Hero", 100);
 
-            PlayField game = new PlayField("Quest", controller, stringOutput);
+            PlayField game = new PlayField(player: player, name: "Quest", controller: controller, output: stringOutput);
             game.Run();
 
         }

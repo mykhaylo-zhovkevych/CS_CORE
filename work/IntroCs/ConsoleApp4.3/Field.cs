@@ -11,16 +11,17 @@ namespace ConsoleApp4._3
 {
     public abstract class Field
     {
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; }
         public string Name { get; }
         public abstract char Symbol { get; }
-        public List<Item> Items { get; } = new List<Item>();
+        public List<Item> Items { get; }
         public virtual bool CanEnter { get; set; }
         protected readonly IOutputService outputService;
 
-        public Field(string name, IOutputService output = null) 
+        public Field(string name, IOutputService? output = null) 
         { 
-            Id = Guid.NewGuid(); 
+            Id = Guid.NewGuid();
+            Items = new List<Item>();
             Name = name;
             outputService = output ?? new StringBuilderOutputService();
         }

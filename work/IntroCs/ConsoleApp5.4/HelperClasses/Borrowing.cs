@@ -19,9 +19,10 @@ namespace ConsoleApp5._4.HelperClasses
 
         public bool IsReturned => ReturnDate.HasValue;
 
+        // TODO: Find better way of priting the output 
         public override string ToString()
         {
-            return $"User: {user.Name}, Item: {item.Name}, LoanDate: {LoanDate}, DueDate: {DueDate}, Returned: {IsReturned}";
+            return $"User: {user.Name}, Item: {item.Name}, LoanDate: {LoanDate}, DueDate: {DueDate}, Returned Date: {ReturnDate}, Returned: {IsReturned}";
         }
 
 

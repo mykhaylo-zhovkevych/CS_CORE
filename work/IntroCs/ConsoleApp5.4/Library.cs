@@ -5,6 +5,7 @@ using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Permissions;
@@ -21,6 +22,7 @@ namespace ConsoleApp5._4
 
         public string Name { get; set; }
         public string Address { get; set; }
+        public event EventHandler<ItemEventArgs> InformReserver;
         
         public Library(string name, string address, IBorrowPolicyProvider policyProvider)
         {
@@ -33,12 +35,16 @@ namespace ConsoleApp5._4
 
         public Result<Borrowing> BorrowItem(User user, string searchedItem)
         {
-            // Searches for specific Item
+
+            if (user == null) return Result<Borrowing>.Fail("Incorrect User");
+            if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item name is missing");
+
             var item = FindItemByName(searchedItem);
             if (item == null) 
             {
-                throw new InvalidOperationException("Item is not available for borrowing, because a null.");
+                throw new InvalidOperationException("Item is not found for borrowing");
             }
+
 
             // Check if item is avaliable for borrowing
             // must it throw the error message or can i bypass more elegantly 
@@ -48,6 +54,7 @@ namespace ConsoleApp5._4
                 throw new InvalidOperationException($"{searchedItem} is currently not available for borrowing");
             }
 
+            // Will from here the error from above catched in this block? 
             BorrowPolicy policy;
             try
             {
@@ -75,25 +82,7 @@ namespace ConsoleApp5._4
             return Result<Borrowing>.Ok(borrowing, "Saved");
         }
 
-
-        // TODO: reimplement this method
-        public void ReserveItem(User user, string currentItem )
-        {
-            var item = FindItemByName(currentItem);
-            if (item == null)
-            {
-                throw new InvalidOperationException("Item is not available for borrowing, because a null.");
-            }
-            if (!CheckItemAvailability(user, item))
-            {
-                throw new InvalidOperationException($"{currentItem} is currently not available for reserving");
-            }
-
-            item.ReservedBy = user.Id;
-
-        }
-
-
+        // When i create the event must the 
         public Result<Borrowing> ReturnItem (User user, string currentItem)
         {
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
@@ -108,17 +97,63 @@ namespace ConsoleApp5._4
             {
                 return Result<Borrowing>.Fail($"No entries was found with this user {user.Name}");
             }
+
             borrowing.ReturnDate = DateTime.Now;
             borrowing.item.IsBorrowed = false;
+
+            if (borrowing.item.IsReserved)
+            {
+                OnInformReserver(new ItemEventArgs($"The {borrowing.item.Name} is now available",borrowing.item, borrowing.user));
+            }
+
 
             return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
 
 
+        private void OnInformReserver(ItemEventArgs e)
+        {
 
+            InformReserver?.Invoke(this, e);
+        }
+
+
+
+        // Is this good idea to have method that dont needs a paramater but a internla function in the method needs? 
+        public void ReserveItem(User user, string currentItem )
+        {
+
+            var item = FindItemByName(currentItem);
+            if (item == null || user == null)
+            {
+                throw new InvalidOperationException("Item is not available for borrowing, .");
+            }
+            if (!CheckItemAvailability(user, item))
+            {
+                throw new InvalidOperationException($"{currentItem} is currently not available for reserving");
+            }
+
+            item.ReservedBy = user.Id;
+
+        }
+
+
+        public void CancleReservation(User user, string currentItem )
+        {
+            var reservetedItem = FindItemByName(currentItem);
+            if (reservetedItem == null || user == null)
+            {
+                throw new InvalidOperationException("Item or User is missing for reservetion cancelation");
+            }
+
+            reservetedItem.ReservedBy = default;
+
+        }
+
+       
         private bool CheckItemAvailability(User user, Item item)
         {
-            if (item.IsBorrowed)
+            if (item.IsBorrowed && item.IsReserved)
                 return false;
 
             if (item.IsReserved && item.ReservedBy != user.Id)
@@ -130,17 +165,50 @@ namespace ConsoleApp5._4
 
         private Item FindItemByName(string name)
         {
-            var allItems = getAllItemsFromShelves();
-            return allItems.FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            // TODO: eliminate null possibility 
+            var searchedItem = getAllItemsFromShelves()
+                .FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if (searchedItem == null)
+            {
+                throw new InvalidOperationException("The searched item was not found");
+            }
+
+            return searchedItem;
+
+            
         }
+
+        /*
+         * better pattern 
+        private bool TryFindItemByName(string name, out Item? foundItem) 
+        {
+            var allItems = getAllItemsFromShelves();
+            foundItem = allItems.FirstOrDefault(
+                item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+        );
+
+        return foundItem != null;
+
+        }
+                 
+         
+         */
+
+
+
 
         private Item FindItemByUser(User user)
         {
-            var allItems = getAllItemsFromShelves();
+            var searchedItem = getAllItemsFromShelves()
+                .FirstOrDefault(item => item.ReservedBy == user.Id);
 
-            // TODO: eliminate null possibility
-            return allItems.FirstOrDefault(item => item.ReservedBy == user.Id);
+            if (searchedItem == null)
+            {
+                throw new InvalidOperationException("The searched Item was not foun");
+            }
+
+            return (searchedItem);
+
         }
 
 

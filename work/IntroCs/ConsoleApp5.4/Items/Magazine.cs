@@ -11,8 +11,7 @@ namespace ConsoleApp5._2.Objects
         public int AgeRating { get; set; }
         public string Publisher { get; set; }
 
-        public Magazine(Guid id, string name, int ageRating, string publisher) 
-            :base(id, name)
+        public Magazine(Guid id, string name, int ageRating, string publisher): base(id, name)
         {
             AgeRating = ageRating;
             Publisher = publisher;

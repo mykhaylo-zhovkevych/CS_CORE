@@ -32,7 +32,17 @@ namespace ConsoleApp5._4
             library.AddShelf(shelf1);
             library.AddShelf(shelf2);
 
+            library.InformReserver += (sender, e) =>
+            {
+                Console.WriteLine($"Notification: Item '{e.Item.Name}' is now available for {e.ReservedUser?.Name}");
+            };
+
+
             library.BorrowItem(studnet, "TestNameBook");
+            //library.ReserveItem(teacher, "TestNameBook");
+
+            library.ReturnItem(studnet, "TestNameBook");
+
 
             // library.ReserveItem(teacher, "TestNameGame");
 

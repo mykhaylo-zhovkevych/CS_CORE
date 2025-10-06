@@ -1,6 +1,7 @@
 ﻿using ConsoleApp5._2;
 using ConsoleApp5._2.Objects;
 using ConsoleApp5._2.Users;
+using ConsoleApp5._4.Exceptions;
 using ConsoleApp5._4.Interface;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,8 @@ namespace ConsoleApp5._4
                 .FirstOrDefault();
 
             // not clear in the specification if default is needed, otherwise can throw a exception
-            return policy ?? new BorrowPolicy(14, 100.0m, 0);
+            return policy ?? throw new NonExistingPolicyException();
+
 
         }
 

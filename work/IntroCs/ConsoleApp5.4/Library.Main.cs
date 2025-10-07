@@ -1,6 +1,4 @@
-﻿using ConsoleApp5._2;
-using ConsoleApp5._2.Objects;
-using ConsoleApp5._2.Users;
+﻿using ConsoleApp5._4.Items;
 using ConsoleApp5._4.Exceptions;
 using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Interface;
@@ -24,7 +22,8 @@ namespace ConsoleApp5._4
 
         public string Name { get; set; }
         public string Address { get; set; }
-        public event EventHandler<ItemEventArgs> InformReserver;
+        // Nullable event 
+        public event EventHandler<ItemEventArgs>? InformReserver;
 
         public delegate string PerformPrintOutput(User user);
         public delegate T PerformPrintLibraryItemsOutput<T>(Admin admin);
@@ -41,25 +40,20 @@ namespace ConsoleApp5._4
 
         public Result<Borrowing> BorrowItem(User user, string searchedItem)
         {
-
+            // If it is mistyped will be cause the fail
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
             if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item name is missing");
 
+            // will here it farther processing? 
             var item = FindItemByName(searchedItem);
-            if (item == null)
-            {
-                throw new InvalidOperationException("Item is not found for borrowing");
-            }
-
+    
 
             // Check if item is avaliable for borrowing
-            // Must it throw the error message or can i bypass more elegantly 
-            if (!CheckItemAvailability(user, item))
+            if (!CheckBorrowPossible(item))
             {
                 throw new InvalidOperationException($"{searchedItem} is currently not available for borrowing");
             }
 
-            // Will from here the error from above catched in this block? 
             BorrowPolicy policy;
             try
             {
@@ -70,14 +64,10 @@ namespace ConsoleApp5._4
                 return Result<Borrowing>.Fail($"Policy-Fehler: {ex.Message}");
             }
 
-            // in user define
-            user.LoanFees = policy.Fees;
-            user.Extensions = policy.Extensions;
-
             var borrowing = new Borrowing()
             {
-                user = user,
-                item = item,
+                User = user,
+                Item = item,
                 LoanDate = DateTime.Now,
                 DueDate = DateTime.Now.AddDays(policy.LoanPeriod),
             };
@@ -85,17 +75,21 @@ namespace ConsoleApp5._4
             _borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
+            
+            var values = Result<Borrowing>.Ok(borrowing, "Created");
+            Console.WriteLine(values);
+
             return Result<Borrowing>.Ok(borrowing, "Saved");
         }
 
-        public Result<Borrowing> ReturnItem(User user, string currentItem)
+        public Result<Borrowing> ReturnItem(User user, string searchedItem)
         {
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
-            if (string.IsNullOrEmpty(currentItem)) return Result<Borrowing>.Fail("Item Name is incorrect or missing");
+            if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item Name is incorrect or missing");
 
             var borrowing = _borrowings.FirstOrDefault(b =>
-                b.user.Id == user.Id &&
-                b.item.Name.Equals(currentItem, StringComparison.OrdinalIgnoreCase) &&
+                b.User.Id == user.Id &&
+                b.Item.Name.Equals(searchedItem, StringComparison.OrdinalIgnoreCase) &&
                 !b.IsReturned);
 
             if (borrowing == null)
@@ -104,62 +98,62 @@ namespace ConsoleApp5._4
             }
 
             borrowing.ReturnDate = DateTime.Now;
-            borrowing.item.IsBorrowed = false;
+            borrowing.Item.IsBorrowed = false;
 
-            if (borrowing.item.IsReserved)
+            if (borrowing.Item.IsReserved)
             {
-                OnInformReserver(new ItemEventArgs($"The {borrowing.item.Name} is now available", borrowing.item, borrowing.user));
+                OnInformReserver(new ItemEventArgs($"The {borrowing.Item.Name} is now available", borrowing.Item, borrowing.User));
             }
 
             return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
 
 
-        // Is this good idea to have method that dont needs a paramater but in internally there is function that needs that paramaters? 
-        // TODO: better logic with string name
-        public void ReserveItem(User user, string currentItem)
+        public Result<Item> ReserveItem(User user, string searchedItem)
         {
+            if (user == null) return Result<Item>.Fail("Incorrect User");
+            var item = FindItemByName(searchedItem);
 
-            var item = FindItemByName(currentItem);
-            if (item == null || user == null)
+            if (!CheckReservePossible(item))
             {
-                throw new InvalidOperationException("Item is not available for borrowing");
-            }
-            if (!CheckItemAvailability(user, item))
-            {
-                throw new InvalidOperationException($"{currentItem} is currently not available for reserving");
+                throw new InvalidOperationException($"{searchedItem} is currently not available for reserving");
             }
 
             item.ReservedBy = user.Id;
-
+            // debugg
+            // Console.WriteLine($"ReservedBy: {item.ReservedBy}, IsReserved: {item.IsReserved}");
+            return Result<Item>.Ok(item, "Item was successfully reserved");
         }
 
 
-        public void CancleReservation(User user, string currentItem)
+        public Result<Borrowing> CancleReservation(User user, string searchedItem)
         {
-            var reservetedItem = FindItemByName(currentItem);
-            if (reservetedItem == null || user == null)
-            {
-                throw new InvalidOperationException("Item or User is missing for reservetion cancelation");
-            }
+            if (user == null) return Result<Borrowing>.Fail("No User");
+            var reservetedItem = FindItemByName(searchedItem);
 
             // automaticaly makes IsReserved false
             reservetedItem.ReservedBy = default;
 
+            return Result<Borrowing>.Fine("Item was successfully cancelled");
         }
 
-        public void ExtendBorrowingPeriod(User user, string currentItem)
+        public Result<Borrowing> ExtendBorrowingPeriod(User user, string searchedItem)
         {
-            var reservedItem = FindItemByName(currentItem);
+            if (user == null) return Result<Borrowing>.Fail("Incorrect User");
+            var reservedItem = FindItemByName(searchedItem);
 
-            // Check if it is not reserved by someone else 
+            // Check if it is not reserved and borrowed simultaneously
             if (!reservedItem.IsReserved && reservedItem.IsBorrowed)
             {
                 var borrowing = _borrowings.FirstOrDefault(b =>
-                    b.user.Id == user.Id &&
-                    b.item.Name == reservedItem.Name);
+                    b.User.Id == user.Id &&
+                    b.Item.Name == reservedItem.Name);
 
-                if (user.Extensions <= 0)
+                if (borrowing == null)
+                {
+                    throw new ArgumentNullException($"{user.Name} dont have any: {reservedItem}");
+                }
+                else if (user.Extensions <= 0)
                 {
                     borrowing.DueDate = borrowing.DueDate.AddMonths(1);
                     user.Extensions--;
@@ -169,6 +163,7 @@ namespace ConsoleApp5._4
             {
                 throw new IsAlreadyReservedException(user, reservedItem);
             }
+            return Result<Borrowing>.Fine("Item was successfully extended");
         }
 
         public string ShowActiveBorrowings(User user)
@@ -177,7 +172,7 @@ namespace ConsoleApp5._4
 
             var borrowings = _borrowings.Where(b => 
                 b.ReturnDate == null && 
-                b.user.Id == user.Id)
+                b.User.Id == user.Id)
                 .ToList();
 
             if (!borrowings.Any())
@@ -188,7 +183,7 @@ namespace ConsoleApp5._4
             {
                 foreach (var b in borrowings)
                 {
-                    sb.AppendLine($"{user.Name} has '{b.item.Name}' from {b.LoanDate} until {b.DueDate}");
+                    sb.AppendLine($"{user.Name} has '{b.Item.Name}' from {b.LoanDate} until {b.DueDate}");
                 }
             }
 
@@ -200,7 +195,7 @@ namespace ConsoleApp5._4
 
             var borrowings = _borrowings.Where(b =>
                 b.ReturnDate != null &&
-                b.user.Id == user.Id)
+                b.User.Id == user.Id)
                 .ToList();
 
             if (!borrowings.Any())
@@ -211,7 +206,7 @@ namespace ConsoleApp5._4
             {
                 foreach (var b in borrowings)
                 {
-                    sb.AppendLine($"{user.Name} had '{b.item.Name}' from {b.LoanDate} until {b.DueDate} that was returned at {b.ReturnDate}");
+                    sb.AppendLine($"{user.Name} had '{b.Item.Name}' from {b.LoanDate} until {b.DueDate} that was returned at {b.ReturnDate}");
                 }
             }
             return sb.ToString();

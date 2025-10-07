@@ -1,11 +1,10 @@
-﻿using ConsoleApp5._2;
-using ConsoleApp5._2.Objects;
-using ConsoleApp5._2.Users;
+﻿using ConsoleApp5._4.Items;
+using ConsoleApp5._4.Users;
 using ConsoleApp5._4.Enum;
 using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Interface;
-using ConsoleApp5._4.Users;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using static ConsoleApp5._4.Library;
 
 namespace ConsoleApp5._4
@@ -21,19 +20,17 @@ namespace ConsoleApp5._4
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-
             var studnet = new Student(Guid.NewGuid(), "TestName01");
             var teacher = new Teacher(Guid.NewGuid(), "TestName02");
             var admin = new Admin(Guid.NewGuid(), "TestAdmin");
+
             var book = new Book(Guid.NewGuid(), "TestNameBook", "TestPublisher");
-            var book02 = new Book(Guid.NewGuid(), "TestNameBook", "TestPublisher");
+            var book02 = new Book(Guid.NewGuid(), "TestNameBook02", "TestPublisher");
             var videoGame = new VideoGame(Guid.NewGuid(), "TestNameGame", GameType.RPG, 19);
 
             shelf1.AddItemToShelf(book);
             shelf1.AddItemToShelf(book02);
-            // TODO: Check the assigment of the objects of the type Item
             shelf1.AddItemToShelf(videoGame);
-
 
             library.AddShelf(shelf1);
             library.AddShelf(shelf2);
@@ -44,13 +41,12 @@ namespace ConsoleApp5._4
             };
 
 
-            //library.BorrowItem(studnet, "TestNameBook");
-            //library.ReserveItem(teacher, "TestNameBook");
-            //library.ExtendBorrowingPeriod(studnet, "TestNameBook");
+            DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook"));
 
+            //DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook"));
+            DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook"));
+            DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook"));
 
-
-            //library.ReturnItem(studnet, "TestNameBook");
 
 
             PerformPrintOutput active = library.ShowActiveBorrowings;

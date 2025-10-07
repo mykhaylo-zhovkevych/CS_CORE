@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5._2.Objects
+namespace ConsoleApp5._4.Items
 {
-    internal class VideoGame : Item
+    public class VideoGame : Item
     {
         public GameType Genre { get; set; }
         public int AgeRating { get; set; }

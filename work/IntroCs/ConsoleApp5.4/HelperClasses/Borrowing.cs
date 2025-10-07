@@ -1,4 +1,4 @@
-﻿using ConsoleApp5._2;
+﻿using ConsoleApp5._4;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,9 +11,8 @@ namespace ConsoleApp5._4.HelperClasses
     // This class doenst need a constructor, because it wont used independantly
     public class Borrowing
     {
-        public User user { get; set; }
-        public Item item { get; set; }
-        // TODO longperiod
+        public required User User { get; set; }
+        public required Item Item { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime DueDate { get; set; }
         // May be null if not returned back
@@ -24,9 +23,9 @@ namespace ConsoleApp5._4.HelperClasses
         // TODO: Find better way of priting the output 
         public override string ToString()
         {
-            return $"User: {user.Name}, Item: {item.Name}, LoanDate: {LoanDate}, DueDate: {DueDate}, Returned Date: {ReturnDate}, Returned: {IsReturned}";
+            return $"User: {User.Name}, Item: {Item.Name}, LoanDate: {LoanDate}" +
+                $", DueDate: {DueDate}, Returned Date: {ReturnDate}" +
+                $", Returned: {IsReturned}";
         }
-
-
     }
 }

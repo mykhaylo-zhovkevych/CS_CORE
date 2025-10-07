@@ -1,5 +1,4 @@
-﻿using ConsoleApp5._2;
-using ConsoleApp5._4.HelperClasses;
+﻿using ConsoleApp5._4.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +15,28 @@ namespace ConsoleApp5._4
             InformReserver?.Invoke(this, e);
         }
 
-        // TODO: Reimplement this with the result class
-        private bool CheckItemAvailability(User user, Item item)
+        private bool CheckBorrowPossible(Item item)
         {
             if (item.IsBorrowed)
                 return false;
 
-            if (item.IsReserved || item.ReservedBy != user.Id)
+            if (item.IsReserved)
                 return false;
 
             return true;
         }
 
+        // TODO: possible further checks if the same user 
+        private bool CheckReservePossible(Item item)
+        {
+            if (item.IsBorrowed && item.IsReserved)
+                return false;
+            
+            if (item.IsReserved) 
+                return false;
+
+            return true;
+        }
 
         private Item FindItemByName(string name)
         {
@@ -36,12 +45,10 @@ namespace ConsoleApp5._4
 
             if (searchedItem == null)
             {
-                throw new InvalidOperationException("The searched item was not found");
+                throw new ArgumentNullException("The searched item was not found");
             }
 
             return searchedItem;
-
-
         }
 
         /*
@@ -58,7 +65,6 @@ namespace ConsoleApp5._4
             }
          */
 
-
         private List<Item> getAllItemsFromShelves()
         {
             var allItems = new List<Item>();
@@ -71,7 +77,6 @@ namespace ConsoleApp5._4
         }
 
         public void AddShelf(Shelf shelf) => _shelves.Add(shelf);
-        public List<Borrowing> GetBorrowings() => _borrowings;
 
     }
 }

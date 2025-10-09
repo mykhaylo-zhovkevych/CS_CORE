@@ -38,8 +38,14 @@ namespace ConsoleApp5._4
 
         public void AddRule(Type userType, Type itemType, BorrowPolicy policy)
         {
-            // if types null throw error
-            _map[(userType, itemType)] = policy;
+            if (userType == null || itemType == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                _map[(userType, itemType)] = policy;
+            }
         }
 
         // Is used as help method and obtains the default policy
@@ -53,11 +59,8 @@ namespace ConsoleApp5._4
                 .Select(f => f.Value)
                 .FirstOrDefault();
 
-            // not clear in the specification if default is needed, otherwise can throw a exception
             return policy ?? throw new NonExistingPolicyException();
 
-
         }
-
     }
 }

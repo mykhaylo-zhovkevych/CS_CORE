@@ -16,8 +16,9 @@ namespace ConsoleApp5._4
 {
     public partial class Library
     {
-        private List<Shelf> _shelves;
-        private List<Borrowing> _borrowings;
+        // TODO: Chnage them into Properties 
+        private readonly List<Shelf> _shelves;
+        private readonly List<Borrowing> _borrowings;
         private readonly IBorrowPolicyProvider _policyProvider;
 
         public string Name { get; set; }
@@ -41,12 +42,12 @@ namespace ConsoleApp5._4
         public Result<Borrowing> BorrowItem(User user, string searchedItem)
         {
             // If it is mistyped will be cause the fail
+            // It will not save the data, so called early return, and it will just return error message
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
             if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item name is missing");
 
-            // will here it farther processing? 
+            // Double cheking: overcoded
             var item = FindItemByName(searchedItem);
-    
 
             // Check if item is avaliable for borrowing
             if (!CheckBorrowPossible(item))
@@ -54,15 +55,8 @@ namespace ConsoleApp5._4
                 throw new InvalidOperationException($"{searchedItem} is currently not available for borrowing");
             }
 
-            BorrowPolicy policy;
-            try
-            {
-                policy = _policyProvider.GetPolicy(user, item);
-            }
-            catch (Exception ex)
-            {
-                return Result<Borrowing>.Fail($"Policy-Fehler: {ex.Message}");
-            }
+            BorrowPolicy policy = _policyProvider.GetPolicy(user, item);
+            // Catches a exception if there is need to
 
             var borrowing = new Borrowing()
             {
@@ -75,9 +69,6 @@ namespace ConsoleApp5._4
             _borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
-            
-            var values = Result<Borrowing>.Ok(borrowing, "Created");
-            Console.WriteLine(values);
 
             return Result<Borrowing>.Ok(borrowing, "Saved");
         }

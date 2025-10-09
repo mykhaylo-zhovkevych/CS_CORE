@@ -6,23 +6,27 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._4.HelperClasses
 {
+    // This class is static because it dont needs any initialisation, and it is helping class
     public static class DebuggerPrinter
     {
         // This method allows any type of input from Result to print out 
-        public static void PrintOutput<T>(Result<T>result) 
+        public static string PrintOutput<T>(Result<T>result) 
         {
-            string prefix;
-
-            prefix = result.Success ? "[CORRECT]" : "[FALSE]";
+            var prefix = result.Success ? "[CORRECT]" : "[FALSE]";
 
             if (result.Data != null)
             {
-                Console.WriteLine($"{prefix} {result.Data}");
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(prefix);
+                sb.AppendLine(result.Data.ToString());
+                sb.Append($"{result.Message}\n");
+
+                return sb.ToString();
             }
             else
             {
-                Console.WriteLine($"{prefix} {result.Message}");
-                Console.WriteLine("");
+                return $"{prefix} No data was found: {result.Message}";
             }
         }
     }

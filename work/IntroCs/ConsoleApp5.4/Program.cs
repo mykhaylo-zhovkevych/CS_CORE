@@ -41,17 +41,18 @@ namespace ConsoleApp5._4
             };
 
 
-            DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook"));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
 
-            //DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook"));
-            DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook"));
-            DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook"));
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook")));
+            //DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook"));
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook")));
 
 
 
             PerformPrintOutput active = library.ShowActiveBorrowings;
             PerformPrintOutput nonActive = library.ShowInactiveBorrowings;
 
+            Console.WriteLine("-------------------------");
             Console.WriteLine(active(studnet));
             Console.WriteLine(nonActive(studnet));
 
@@ -63,14 +64,6 @@ namespace ConsoleApp5._4
 
             Console.WriteLine(allVideoGamesInLibrary(admin) + "...");
             Console.WriteLine(allSameItemsInLibrary(admin));
-
-
-
-
-            //foreach (var b in library.GetBorrowings())
-            //{
-            //    Console.WriteLine(b);
-            //}
 
         }
     }

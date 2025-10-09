@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,12 @@ namespace ConsoleApp5._4
             Id = Guid.NewGuid();
             Name = name;
 
+        }
+
+        public override string ToString()
+        {
+            return $"User Id: {Id}, Item Name: {Name}, IsBorrowed: {IsBorrowed}" +
+                $", ReservedBy (Id): {ReservedBy}, IsReserved: {IsReserved}";
         }
     }
 }

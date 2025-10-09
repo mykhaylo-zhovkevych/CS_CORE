@@ -45,7 +45,7 @@ namespace ConsoleApp5._4
 
             if (searchedItem == null)
             {
-                throw new ArgumentNullException("The searched item was not found");
+                throw new ArgumentException("The searched item was not found");
             }
 
             return searchedItem;

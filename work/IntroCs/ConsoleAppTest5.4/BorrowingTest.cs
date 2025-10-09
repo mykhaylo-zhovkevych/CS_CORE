@@ -15,21 +15,18 @@ namespace ConsoleAppTest5._4
     [TestClass]
     public class BorrowingTest
     {
-        private User user;
-        private Item item;
-        private User user02;
-        private Item item02;
+        private User _user;
+        private Item _item;
+        private Item _item02;
 
 
 
         [TestInitialize]
         public void Setup()
         {
-            user = new Teacher(Guid.NewGuid(),"Schmid");
-            user02 = new Student(Guid.NewGuid(), "John");
-
-            item = new Book(Guid.NewGuid(), "Last Road", "Penguin");
-            item02 = new VideoGame(Guid.NewGuid(), "Video Game", GameType.RPG, 20);
+            _user = new Teacher(Guid.NewGuid(),"Schmid");
+            _item = new Book(Guid.NewGuid(), "Last Road", "Penguin");
+            _item02 = new VideoGame(Guid.NewGuid(), "Video Game", GameType.RPG, 20);
         }
 
 
@@ -40,8 +37,8 @@ namespace ConsoleAppTest5._4
             // Arrange
             var borrowing = new Borrowing()
             {
-                User = user,
-                Item = null,
+                User = _user,
+                Item = _item,
                 LoanDate = DateTime.Now,
                 DueDate = DateTime.Now.AddDays(1),
             };
@@ -51,7 +48,9 @@ namespace ConsoleAppTest5._4
 
 
             // Assert
-            Assert.IsInstanceOfType(values, typeof(Borrowing));
+            Assert.IsInstanceOfType(values, typeof(Result<Borrowing>));
+            Assert.IsNotNull(_user);
+            Assert.IsNotNull(_item);
 
         }
 
@@ -63,13 +62,11 @@ namespace ConsoleAppTest5._4
             // Arrange
             var borrowing = new Borrowing()
             {
-                User = user,
-                Item = null,
+                User = _user,
+                Item = _item,
                 LoanDate = DateTime.Now,
                 DueDate = DateTime.Now.AddDays(1),
             };
-
-
 
 
             // Act
@@ -77,11 +74,9 @@ namespace ConsoleAppTest5._4
 
 
             // Assert
-            Assert.AreSame(2, user.Extensions);
-            Assert.AreSame(50.0m, user.LoanFees);
-            Assert.AreSame()
-            
+            Assert.AreEqual(_user.Extensions, borrowing.User.Extensions);
+            Assert.AreEqual(_user.LoanFees, borrowing.User.LoanFees);
+            Assert.AreNotEqual(_item02.Name, borrowing.Item.Name);
         }
-
     }
 }

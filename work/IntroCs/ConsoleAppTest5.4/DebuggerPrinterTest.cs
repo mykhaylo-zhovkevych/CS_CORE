@@ -86,7 +86,7 @@ namespace ConsoleAppTest5._4
             // Arrange
             Result<Borrowing> result01;
 
-            string expectedOutput = @"[FALSE] No data was found: Item name is missing";
+            string expectedOutput = @"[FALSE] Item name is missing";
             string actualOutput;
 
             // Act
@@ -108,8 +108,7 @@ namespace ConsoleAppTest5._4
             var now = DateTime.Now;
 
             string expectedOutput = $@"[CORRECT]User: TestStudentOne, Item: TestVideoGameOne, LoanDate: {now}, DueDate: {now.AddDays(21)}, Returned Date: , Returned: False
-Saved
-";
+Saved";
             string actualOutput;
 
             // Act

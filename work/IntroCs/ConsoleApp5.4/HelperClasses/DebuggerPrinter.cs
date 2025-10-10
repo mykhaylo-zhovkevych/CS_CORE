@@ -26,7 +26,8 @@ namespace ConsoleApp5._4.HelperClasses
             }
             else
             {
-                return $"{prefix} No data was found: {result.Message}";
+                // No data was found:
+                return $"{prefix} {result.Message}";
             }
         }
     }

@@ -11,7 +11,6 @@ namespace ConsoleApp5._4
 {
     public class Program
     {
-
         static void Main(string[] args)
         {
             var policyProvider = new DefaultBorrowPolicyProvider();
@@ -41,13 +40,14 @@ namespace ConsoleApp5._4
             };
 
 
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
 
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook")));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook")));
             //DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook"));
+
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook")));
             Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook")));
-
-
 
             PerformPrintOutput active = library.ShowActiveBorrowings;
             PerformPrintOutput nonActive = library.ShowInactiveBorrowings;

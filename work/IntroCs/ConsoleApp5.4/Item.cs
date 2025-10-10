@@ -13,6 +13,7 @@ namespace ConsoleApp5._4
         public string Name { get; set; }
         public bool IsBorrowed { get; set; } = false;
         public Guid? ReservedBy { get; set; }
+        // Does not have any set
         public bool IsReserved => ReservedBy.HasValue;
 
         public Item(Guid id, string name)

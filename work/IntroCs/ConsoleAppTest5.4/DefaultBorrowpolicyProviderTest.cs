@@ -61,7 +61,6 @@ namespace ConsoleAppTest5._4
         public void GetPolicy_WithCorrectData()
         {
             // Arrange
-
             BorrowPolicy policy;
 
             // Act

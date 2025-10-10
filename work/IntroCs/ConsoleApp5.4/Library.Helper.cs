@@ -26,12 +26,14 @@ namespace ConsoleApp5._4
             return true;
         }
 
-        // TODO: possible further checks if the same user 
-        private bool CheckReservePossible(Item item)
+        private bool CheckReservePossible(Item item, User user)
         {
             if (item.IsBorrowed && item.IsReserved)
                 return false;
-            
+
+            if (item.IsReserved && item.ReservedBy != user.Id) 
+                return false;
+
             if (item.IsReserved) 
                 return false;
 

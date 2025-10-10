@@ -41,22 +41,22 @@ namespace ConsoleApp5._4
 
         public Result<Borrowing> BorrowItem(User user, string searchedItem)
         {
-            // If it is mistyped will be cause the fail
-            // It will not save the data, so called early return, and it will just return error message
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
+
+            // But Null than it can be neglect, because it is expected
             if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item name is missing");
 
-            // Double cheking: overcoded
+            // Double cheking: overcoded? NO because, e.x: when no similar data in databank found than exception, because unexpected
             var item = FindItemByName(searchedItem);
-
-            // Check if item is avaliable for borrowing
+            
+            // Expected
             if (!CheckBorrowPossible(item))
             {
-                throw new InvalidOperationException($"{searchedItem} is currently not available for borrowing");
+                return Result<Borrowing>.Fail($"{searchedItem} is currently not available for borrowing");
             }
 
+            // Unexpected, catches a exception
             BorrowPolicy policy = _policyProvider.GetPolicy(user, item);
-            // Catches a exception if there is need to
 
             var borrowing = new Borrowing()
             {
@@ -69,15 +69,15 @@ namespace ConsoleApp5._4
             _borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
-
             return Result<Borrowing>.Ok(borrowing, "Saved");
         }
 
         public Result<Borrowing> ReturnItem(User user, string searchedItem)
         {
             if (user == null) return Result<Borrowing>.Fail("Incorrect User");
-            if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item Name is incorrect or missing");
+            if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item Name is missing");
 
+            // Unexpected, e.x. no data was found in databank
             var borrowing = _borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Name.Equals(searchedItem, StringComparison.OrdinalIgnoreCase) &&
@@ -85,7 +85,7 @@ namespace ConsoleApp5._4
 
             if (borrowing == null)
             {
-                return Result<Borrowing>.Fail($"No entries was found with this user {user.Name}");
+                throw new ArgumentException($"No entries was found with this user {user.Name}");
             }
 
             borrowing.ReturnDate = DateTime.Now;
@@ -99,30 +99,33 @@ namespace ConsoleApp5._4
             return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
 
-
         public Result<Item> ReserveItem(User user, string searchedItem)
         {
             if (user == null) return Result<Item>.Fail("Incorrect User");
             var item = FindItemByName(searchedItem);
 
-            if (!CheckReservePossible(item))
+            // Expected
+            if (!CheckReservePossible(item, user))
             {
-                throw new InvalidOperationException($"{searchedItem} is currently not available for reserving");
+                return Result<Item>.Fail($"{searchedItem} is currently not available for reserving");
             }
 
             item.ReservedBy = user.Id;
-            // debugg
-            // Console.WriteLine($"ReservedBy: {item.ReservedBy}, IsReserved: {item.IsReserved}");
+
             return Result<Item>.Ok(item, "Item was successfully reserved");
         }
-
 
         public Result<Borrowing> CancleReservation(User user, string searchedItem)
         {
             if (user == null) return Result<Borrowing>.Fail("No User");
+            // Unexpected
             var reservetedItem = FindItemByName(searchedItem);
 
-            // automaticaly makes IsReserved false
+            // Expected: A double reinforcment of the ReserveItem method
+            if (reservetedItem.ReservedBy != user.Id)
+                return Result<Borrowing>.Fail("You cannot cancel another user's reservation");
+
+            // Automaticaly makes IsReserved false
             reservetedItem.ReservedBy = default;
 
             return Result<Borrowing>.Fine("Item was successfully cancelled");
@@ -142,9 +145,13 @@ namespace ConsoleApp5._4
 
                 if (borrowing == null)
                 {
-                    throw new ArgumentNullException($"{user.Name} dont have any: {reservedItem}");
+                    throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
                 }
                 else if (user.Extensions <= 0)
+                {
+                    return Result<Borrowing>.Fail($"{user.Name} don't have enough extentions points");
+                }
+                else
                 {
                     borrowing.DueDate = borrowing.DueDate.AddMonths(1);
                     user.Extensions--;
@@ -250,9 +257,7 @@ namespace ConsoleApp5._4
                 sb.AppendLine(n.Name);
             }
                 
-
             return sb.ToString();
         }
-
     }
 }

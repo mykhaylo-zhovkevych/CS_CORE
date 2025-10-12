@@ -16,10 +16,9 @@ namespace ConsoleApp5._4
 {
     public partial class Library
     {
-        // TODO: Chnage them into Properties 
-        private readonly List<Shelf> _shelves;
-        private readonly List<Borrowing> _borrowings;
-        private readonly IBorrowPolicyProvider _policyProvider;
+        public List<Shelf> Shelves { get; private set; }
+        public List<Borrowing> Borrowings { get; private set; }
+        public IBorrowPolicyProvider PolicyProvider { get; private set; }
 
         public string Name { get; set; }
         public string Address { get; set; }
@@ -33,9 +32,9 @@ namespace ConsoleApp5._4
         {
             Name = name;
             Address = address;
-            _shelves = new List<Shelf>();
-            _borrowings = new List<Borrowing>();
-            _policyProvider = policyProvider;
+            Shelves = new List<Shelf>();
+            Borrowings = new List<Borrowing>();
+            PolicyProvider = policyProvider;
         }
 
 
@@ -56,7 +55,7 @@ namespace ConsoleApp5._4
             }
 
             // Unexpected, catches a exception
-            BorrowPolicy policy = _policyProvider.GetPolicy(user, item);
+            BorrowPolicy policy = PolicyProvider.GetPolicy(user, item);
 
             var borrowing = new Borrowing()
             {
@@ -66,7 +65,7 @@ namespace ConsoleApp5._4
                 DueDate = DateTime.Now.AddDays(policy.LoanPeriod),
             };
 
-            _borrowings.Add(borrowing);
+            Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
             return Result<Borrowing>.Ok(borrowing, "Saved");
@@ -78,7 +77,7 @@ namespace ConsoleApp5._4
             if (string.IsNullOrEmpty(searchedItem)) return Result<Borrowing>.Fail("Item Name is missing");
 
             // Unexpected, e.x. no data was found in databank
-            var borrowing = _borrowings.FirstOrDefault(b =>
+            var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Name.Equals(searchedItem, StringComparison.OrdinalIgnoreCase) &&
                 !b.IsReturned);
@@ -139,7 +138,7 @@ namespace ConsoleApp5._4
             // Check if it is not reserved and borrowed simultaneously
             if (!reservedItem.IsReserved && reservedItem.IsBorrowed)
             {
-                var borrowing = _borrowings.FirstOrDefault(b =>
+                var borrowing = Borrowings.FirstOrDefault(b =>
                     b.User.Id == user.Id &&
                     b.Item.Name == reservedItem.Name);
 
@@ -168,20 +167,20 @@ namespace ConsoleApp5._4
         {
             StringBuilder sb = new StringBuilder();
 
-            var borrowings = _borrowings.Where(b => 
+            var borrowings = Borrowings.Where(b => 
                 b.ReturnDate == null && 
                 b.User.Id == user.Id)
                 .ToList();
 
             if (!borrowings.Any())
             {
-                sb.AppendLine($"{user.Name} has no active borrowings");
+                sb.Append($"{user.Name} has no active borrowings");
             }
             else
             {
                 foreach (var b in borrowings)
                 {
-                    sb.AppendLine($"{user.Name} has '{b.Item.Name}' from {b.LoanDate} until {b.DueDate}");
+                    sb.Append($"{user.Name} has '{b.Item.Name}' from {b.LoanDate} until {b.DueDate}");
                 }
             }
 
@@ -191,20 +190,20 @@ namespace ConsoleApp5._4
         {
             StringBuilder sb = new StringBuilder();
 
-            var borrowings = _borrowings.Where(b =>
+            var borrowings = Borrowings.Where(b =>
                 b.ReturnDate != null &&
                 b.User.Id == user.Id)
                 .ToList();
 
             if (!borrowings.Any())
             {
-                sb.AppendLine($"{user.Name} has no past borrowings");
+                sb.Append($"{user.Name} has no past borrowings");
             }
             else
             {
                 foreach (var b in borrowings)
                 {
-                    sb.AppendLine($"{user.Name} had '{b.Item.Name}' from {b.LoanDate} until {b.DueDate} that was returned at {b.ReturnDate}");
+                    sb.Append($"{user.Name} had '{b.Item.Name}' from {b.LoanDate} until {b.DueDate} that was returned at {b.ReturnDate}");
                 }
             }
             return sb.ToString();

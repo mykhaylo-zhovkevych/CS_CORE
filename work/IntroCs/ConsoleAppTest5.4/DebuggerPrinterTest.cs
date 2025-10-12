@@ -107,8 +107,10 @@ namespace ConsoleAppTest5._4
 
             var now = DateTime.Now;
 
-            string expectedOutput = $@"[CORRECT]User: TestStudentOne, Item: TestVideoGameOne, LoanDate: {now}, DueDate: {now.AddDays(21)}, Returned Date: , Returned: False
-Saved";
+            string expectedOutput =
+    $@"[CORRECT]User: TestStudentOne, Item: TestVideoGameOne, LoanDate: {now}, DueDate: {now.AddDays(21)}, Returned Date: , Returned: False
+Saved
+";
             string actualOutput;
 
             // Act

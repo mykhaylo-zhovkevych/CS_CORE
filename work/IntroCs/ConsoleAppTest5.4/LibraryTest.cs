@@ -2,9 +2,11 @@
 using ConsoleApp5._4.Enum;
 using ConsoleApp5._4.Exceptions;
 using ConsoleApp5._4.HelperClasses;
+using ConsoleApp5._4.Interface;
 using ConsoleApp5._4.Items;
 using ConsoleApp5._4.Users;
 using Microsoft.Extensions.DependencyModel;
+using System.Data;
 using static ConsoleApp5._4.Library;
 
 namespace ConsoleAppTest5._4
@@ -14,8 +16,7 @@ namespace ConsoleAppTest5._4
     {
         public TestUser(Guid id, string name) : base(id, name)
         {
-            LoanFees = 0.0m;
-            Extensions = -1;
+            // Not Used
         }
 
         public override int LoanPeriod { get; set; }
@@ -61,10 +62,13 @@ namespace ConsoleAppTest5._4
         public void BorrowItem_When_DataIsCorrect()
         {
             // Act
-            _library.BorrowItem(_student, "TestBookOne");
+            var borrowing = _library.BorrowItem(_student, _book.Name);
 
             // Assert
-            Assert.AreEqual(true, _book.IsBorrowed);
+            Assert.IsNotNull(borrowing);
+            Assert.AreEqual(_student, borrowing.Data.User);
+            Assert.AreEqual(_book, borrowing.Data.Item);
+            Assert.IsTrue(_book.IsBorrowed);
         }
 
         [TestMethod]
@@ -129,27 +133,35 @@ namespace ConsoleAppTest5._4
 
         }
 
-        //TODO: Find out the way to test it
         [TestMethod] 
         public void ReturnItem_Is_EvenCalled()
         {
-            // Arrange 
-            var eventRaised = false;
+            // Arrange
+            _library.BorrowItem(_teacher, _videoGame.Name);
 
-            // Act
-            _library.InformReserver += (sender, e) =>
+            var borrowed = _library.Borrowings.FirstOrDefault(b => 
+                b.User.Id == _teacher.Id && 
+                b.Item.Id == _videoGame.Id && 
+                b.ReturnDate == null);
+
+            _videoGame.ReservedBy = _student.Id; // ✅ Nur diese Zeile notwendig
+
+            bool eventRaised = false;
+            ItemEventArgs? eventArgs = null;
+
+            _library.InformReserver += (s, e) =>
             {
-                e.Message = "The event called";
                 eventRaised = true;
+                eventArgs = e;
             };
 
-            _library.BorrowItem(_teacher, "TestVideoGameOne");
-
-            _library.ReturnItem(_teacher, "TestVideoGameOne");
+            // Act
+            _library.ReturnItem(_teacher, _videoGame.Name);
 
             // Assert
+            Assert.IsNotNull(borrowed);
+            Assert.IsNotNull(eventArgs);
             Assert.IsTrue(eventRaised);
-            //Assert.AreEqual("The event called", Item.Message);
         }
 
 
@@ -230,14 +242,33 @@ namespace ConsoleAppTest5._4
         [TestMethod]
         public void ExtendBorrowingPeriod_When_DataIsCorrect()
         {
-            // Arrange & Act
+            // Arrange
             _library.BorrowItem(_student, _book.Name);
-            var stateBefore = _student.Extensions;
+
+
+            var borrowed = _library.Borrowings.FirstOrDefault(b => 
+                b.User.Id == _student.Id && 
+                b.Item.Id == _book.Id && 
+                b.ReturnDate == null);
+            
+
+            var oldDue = borrowed.DueDate;
+            var oldExtensions = _student.Extensions;
+
+            // Act
             _library.ExtendBorrowingPeriod(_student, _book.Name);
-            var stateAfter = _student.Extensions;
+
+            var updated = _library.Borrowings.FirstOrDefault(b => 
+                b.User.Id == _student.Id && 
+                b.Item.Id == _book.Id && 
+                b.ReturnDate == null);
 
             // Assert
-            Assert.IsTrue(stateAfter < stateBefore);
+            Assert.IsNotNull(borrowed);
+            Assert.IsNotNull(updated);
+
+            Assert.IsTrue(updated.DueDate > oldDue);
+            Assert.AreEqual(oldExtensions - 1, _student.Extensions);
         }
 
         [TestMethod]
@@ -261,98 +292,110 @@ namespace ConsoleAppTest5._4
             Assert.ThrowsException<IsAlreadyReservedException>(() => _library.ExtendBorrowingPeriod(_testUser, _book.Name));
         }
 
-        //[TestMethod]
-        //public void ExtendBorrowingPeriod_When_NoEnoughExtention()
-        //{
-  
-        //    // Arrange
-        //    var extensionsResult = _library.ExtendBorrowingPeriod(_testUser, _videoGame.Name);
+        [TestMethod]
+        public void ExtendBorrowingPeriod_When_NoEnoughExtention()
+        {
+            // Arrange
+            var policyProvider = new DefaultBorrowPolicyProvider();
+            policyProvider.AddRule(typeof(TestUser), typeof(VideoGame), new BorrowPolicy(21));
 
-        //    // Assert & Act
-        //    //_library.BorrowItem(_testUser, _videoGame.Name);
-        //    Assert.AreEqual($"{_testUser.Name} don't have enough extentions points", extensionsResult.Message);
-        //}
+            var library = new ConsoleApp5._4.Library("TestName", "TestAdress", policyProvider);
+
+            var shelf = new Shelf(1);
+            var testVideoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameTwo", GameType.RPG, 20);
+
+            shelf.AddItemToShelf(testVideoGame);
+            library.AddShelf(shelf);
+
+            var testUser = new TestUser(Guid.NewGuid(), "TestUserOne")
+            {
+                Extensions = -1
+            };
+
+            // Act
+            library.BorrowItem(testUser, testVideoGame.Name);
+            var extensionsResult = library.ExtendBorrowingPeriod(testUser, testVideoGame.Name);
+
+            // Assert
+            Assert.IsFalse(extensionsResult.Success);
+            Assert.AreEqual($"{testUser.Name} don't have enough extentions points", extensionsResult.Message);
+        }
 
 
         [TestMethod]
-        public void ShowActiveBorrowings_With_ExistingData()
+        public void ShowActiveBorrowings_With_DataExist()
         {
-            // Arrange 
-            PerformPrintOutput active = _library.ShowActiveBorrowings;
+            // Arrange
+            var Now = DateTime.Now;
+            var End = Now.AddDays(30);
 
-            var sw = new StringWriter();
-            Console.SetOut(sw);
+            var borrowing = new Borrowing
+            {
+                User = _student,
+                Item = _book,
+                LoanDate = Now,
+                DueDate = End
+            };
+            _library.Borrowings.Add(borrowing);
 
-            var expectedOutput = $"TestStudentOne has 'TestBookOne' from {DateTime.Now} until {DateTime.Now.AddDays(30)}";
+            var expectedOutput = $"{_student.Name} has '{_book.Name}' from {Now} until {End}";
 
             // Act
-            _library.BorrowItem(_student, _book.Name);
-            Console.WriteLine(active(_student));
+            var actualOutput = _library.ShowActiveBorrowings(_student);
 
             // Assert
-            string actualOutput = sw.ToString().Trim();
             Assert.AreEqual(expectedOutput, actualOutput);
         }
 
         [TestMethod]
         public void ShowActiveBorrowings_If_DataDontExist()
         {
-            // Arrange 
-            PerformPrintOutput active = _library.ShowActiveBorrowings;
-
-            var sw = new StringWriter();
-            Console.SetOut(sw);
-
+            // Arrange
             var expectedOutput = $"{_student.Name} has no active borrowings";
 
             // Act
-            //_library.BorrowItem(_student, _book.Name);
-            Console.WriteLine(active(_student));
+            var actualOutput = _library.ShowActiveBorrowings(_student);
 
             // Assert
-            string actualOutput = sw.ToString().Trim();
             Assert.AreEqual(expectedOutput, actualOutput);
-
         }
-
         [TestMethod]
-        public void ShowInactiveBorrowings()
+        public void ShowInactiveBorrowings_With_DataExist()
         {
-            // Arrange 
-            PerformPrintOutput nonActive = _library.ShowInactiveBorrowings;
+            // Arrange
+            var now = DateTime.Now;
+            var end = now.AddDays(30);
 
-            var sw = new StringWriter();
-            Console.SetOut(sw);
-
-            var expectedOutput = $"TestStudentOne had 'TestBookOne' from {DateTime.Now} until {DateTime.Now.AddDays(30)} that was returned at {(DateTime.Now)}";
+            var borrowing = new Borrowing
+            {
+                User = _student,
+                Item = _book,
+                LoanDate = now,
+                DueDate = end,
+                ReturnDate = now.AddHours(1)
+            };
 
             // Act
-            _library.BorrowItem(_student, _book.Name);
-            _library.ReturnItem(_student, _book.Name);
-            Console.WriteLine(nonActive(_student));
+            _library.Borrowings.Add(borrowing);
+
+            var expectedOutput = $"{_student.Name} had '{_book.Name}' from {now} until {end} that was returned at {borrowing.ReturnDate}";
+
+            var actualOutput = _library.ShowInactiveBorrowings(_student);
 
             // Assert
-            string actualOutput = sw.ToString().Trim();
             Assert.AreEqual(expectedOutput, actualOutput);
         }
 
         [TestMethod]
         public void ShowInactiveBorrowings_If_DataDontExist()
         {
-            // Arrange 
-            PerformPrintOutput nonActive = _library.ShowInactiveBorrowings;
-
-            var sw = new StringWriter();
-            Console.SetOut(sw);
-
+            // Arrange
             var expectedOutput = $"{_student.Name} has no past borrowings";
 
             // Act
-            //_library.BorrowItem(_student, _book.Name);
-            Console.WriteLine(nonActive(_student));
+            var actualOutput = _library.ShowInactiveBorrowings(_student);
 
             // Assert
-            string actualOutput = sw.ToString().Trim();
             Assert.AreEqual(expectedOutput, actualOutput);
         }
 
@@ -376,7 +419,7 @@ namespace ConsoleAppTest5._4
         //    Assert.AreEqual(expectedOutput, actualOutput);
         //}
 
-      
+
 
         //[TestMethod]
         //public void CountAllBooksInLibrary()

@@ -70,7 +70,7 @@ namespace ConsoleApp5._4
         private List<Item> getAllItemsFromShelves()
         {
             var allItems = new List<Item>();
-            foreach (var shelf in _shelves)
+            foreach (var shelf in Shelves)
             {
                 allItems.AddRange(shelf.GetCurrentItems());
             }
@@ -78,7 +78,7 @@ namespace ConsoleApp5._4
             return allItems;
         }
 
-        public void AddShelf(Shelf shelf) => _shelves.Add(shelf);
+        public void AddShelf(Shelf shelf) => Shelves.Add(shelf);
 
     }
 }

@@ -157,6 +157,7 @@ namespace ConsoleAppTest5._4
         public void ReserveItem_When_DataIsCorrect()
         {
             // Act
+            _library.BorrowItem(_teacher, "TestVideoGameOne");
             _library.ReserveItem(_student, "TestVideoGameOne");
 
             // Assert

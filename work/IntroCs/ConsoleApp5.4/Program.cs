@@ -43,9 +43,9 @@ namespace ConsoleApp5._4
 
             Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
 
-            
+
             //Console.WriteLine(library.BorrowItem(teacher, "TestNameBook"));
-         
+
             //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
             //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
             //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
@@ -56,7 +56,17 @@ namespace ConsoleApp5._4
             //Console.WriteLine(library.ReturnItem(teacher, "TestNameBook"));
 
 
+            var results1 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Book));
 
+            var results2 = library.QueryItems(isReserved: true);
+ 
+            var results3 = library.QueryItems(customPredicate: i => (i is VideoGame vg) && vg.AgeRating < 18);
+
+
+            foreach (var item in results1)
+            {
+                Console.WriteLine(item);
+            }
 
 
             //Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));

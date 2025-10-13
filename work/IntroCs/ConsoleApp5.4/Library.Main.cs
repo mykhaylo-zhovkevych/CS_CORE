@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace ConsoleApp5._4
 {
@@ -224,9 +225,54 @@ namespace ConsoleApp5._4
 
         }
 
-        
+        public IEnumerable<Item> QueryItems(
+            
+            string? nameContains = null,
+            bool? isBorrowed = null,
+            bool? isReserved = null,
+            Type? itemType = null,
+            Func<Item, bool>? customPredicate = null,
+            string? OrderBy = null,
+            bool orderDescending = false,
+            int? skip = null,
+            int? take = null
+        )
+        {
+            
+            var items = GetAllItemsFromShelves().AsEnumerable();
 
-        // TODO: Create a method that is allows different filtering conditions having
+            if (!string.IsNullOrWhiteSpace(nameContains))
+            {
+                var term = nameContains.Trim();
+                if (!string.IsNullOrEmpty(term))
+                {
+                items = items.Where(i => i.Name != null &&
+                        i.Name.Contains(term, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+
+            if (isBorrowed.HasValue)
+            {
+                items = items.Where(i => i.IsBorrowed == isBorrowed.Value);           
+            }
+
+            if (isReserved.HasValue)
+            {
+                items = items.Where(i => i.IsReserved == isReserved.Value);
+            }
+
+            if (itemType != null)
+            {
+                items = items.Where(i => itemType.IsAssignableFrom(i.GetType()));
+            }
+
+            if (customPredicate != null)
+            {
+                items = items.Where(customPredicate);
+            }
+
+            return items.ToList();
+        } 
 
 
 

@@ -58,22 +58,15 @@ namespace ConsoleAppTest5._4
 
 
             // Act
-            var result01 = _library.BorrowItem(_teacher, "TestBookOne");
-
+            Result<Borrowing> result01 = (Result<Borrowing>)_library.BorrowItem(_teacher, "TestBookOne");
             output01 = DebuggerPrinter.PrintOutput(result01);
 
 
             var result02 = _library.ReserveItem(_teacher, "TestBookOne");
-
             output02 = DebuggerPrinter.PrintOutput(result02);
 
-
-
             // Assert
-
-            // disputable
-            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));
-            Assert.IsInstanceOfType(result02.Data, typeof(Item));
+            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));      
 
             // why
             // StringAssert.Equals(output01, output02);
@@ -84,13 +77,12 @@ namespace ConsoleAppTest5._4
         public void PrintOutput_When_NoDataFound()
         {
             // Arrange
-            Result<Borrowing> result01;
 
             string expectedOutput = @"[FALSE] Item name is missing";
             string actualOutput;
 
             // Act
-            result01 = _library.BorrowItem(_teacher, null);
+            Result result01 = _library.BorrowItem(_teacher, null);
 
             actualOutput = DebuggerPrinter.PrintOutput(result01);
 
@@ -114,7 +106,7 @@ Saved
             string actualOutput;
 
             // Act
-            result02 = _library.BorrowItem(_student, "TestVideoGameOne");
+            result02 = (Result<Borrowing>)_library.BorrowItem(_student, "TestVideoGameOne");
 
             actualOutput = DebuggerPrinter.PrintOutput(result02);
 

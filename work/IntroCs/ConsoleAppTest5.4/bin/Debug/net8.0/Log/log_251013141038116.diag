@@ -1,0 +1,27 @@
+2025-10-13T14:10:38.1278122+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 2.0.0+2bec15462381649ff4b770577e7b8b3bbba5ea12
+2025-10-13T14:10:38.1432907+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-13T14:10:38.1460253+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-13T14:10:38.1460401+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 14:10:38.028
+2025-10-13T14:10:38.1463126+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 32860
+2025-10-13T14:10:38.1464778+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-10-13T14:10:38.1464862+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-10-13T14:10:38.1465202+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-13T14:10:38.1466281+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T14:10:38.1469689+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 55873'
+2025-10-13T14:10:38.1490679+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-13T14:10:38.2905039+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-13T14:10:38.3353496+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-10-13T14:10:38.8172401+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '4.0.0' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-10-13T14:10:38.8854497+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-10-13T14:10:39.0417879+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 29 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T14:10:39.0891631+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T14:10:39.1063409+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll (Workers: 12, Scope: MethodLevel)
+2025-10-13T14:10:39.1268567+00:00 mstest-trace INFORMATION Executing test GetPolicy_WithCorrectData
+2025-10-13T14:10:39.1268682+00:00 mstest-trace INFORMATION Executing test AddRule_WithMissingTypes_MustThrowAException
+2025-10-13T14:10:39.1268704+00:00 mstest-trace INFORMATION Executing test GetPolicy_WithWrongData_MustThrowAException
+2025-10-13T14:10:39.1268585+00:00 mstest-trace INFORMATION Executing test AddRule_WithCorrectTypes
+2025-10-13T14:10:39.1724230+00:00 mstest-trace INFORMATION Executed test GetPolicy_WithCorrectData
+2025-10-13T14:10:39.1724218+00:00 mstest-trace INFORMATION Executed test GetPolicy_WithWrongData_MustThrowAException
+2025-10-13T14:10:39.1724334+00:00 mstest-trace INFORMATION Executed test AddRule_WithMissingTypes_MustThrowAException
+2025-10-13T14:10:39.1724349+00:00 mstest-trace INFORMATION Executed test AddRule_WithCorrectTypes
+2025-10-13T14:10:39.1796889+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll

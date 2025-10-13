@@ -10,25 +10,24 @@ namespace ConsoleApp5._4.HelperClasses
     public static class DebuggerPrinter
     {
         // This method allows any type of input from Result to print out 
-        public static string PrintOutput<T>(Result<T>result) 
+        public static string PrintOutput<T>(Result<T> result) 
         {
             var prefix = result.Success ? "[CORRECT]" : "[FALSE]";
 
-            if (result.Data != null)
-            {
-                StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
-                sb.Append(prefix);
-                sb.AppendLine(result.Data.ToString());
-                sb.Append($"{result.Message}\n");
+            sb.Append(prefix);
+            sb.AppendLine(result.Data.ToString());
+            sb.AppendLine($"{result.Message}");
 
-                return sb.ToString();
-            }
-            else
-            {
-                // No data was found:
-                return $"{prefix} {result.Message}";
-            }
+            return sb.ToString();
+
+        }
+
+        public static string PrintOutput(Result result)
+        {
+            var prefix = result.Success ? "[CORRECT]" : "[FALSE]";
+            return $"{prefix} {result.Message}";
         }
     }
 }

@@ -11,16 +11,30 @@ namespace ConsoleApp5._4.HelperClasses
     // This class doenst need a constructor, because it wont used independantly
     public class Borrowing
     {
+        private int? _usedBorrowingCredits;
         public required User User { get; set; }
         public required Item Item { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime DueDate { get; set; }
         // May be null if not returned back
         public DateTime? ReturnDate { get; set; }
-
         public bool IsReturned => ReturnDate.HasValue;
+        // Computed property
+        public int BorrowingCredits => User.Extensions;  
+        public int UsedBorrowingCredits
+        {
+            get
+            {
+                if (!_usedBorrowingCredits.HasValue) 
+                    _usedBorrowingCredits = BorrowingCredits;
+                return _usedBorrowingCredits.Value;
+            }
+            set
+            {
+                _usedBorrowingCredits = value;
+            }
+        }
 
-        // TODO: Find better way of priting the output 
         public override string ToString()
         {
             return $"User: {User.Name}, Item: {Item.Name}, LoanDate: {LoanDate}" +

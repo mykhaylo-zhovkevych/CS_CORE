@@ -13,12 +13,8 @@ namespace ConsoleApp5._4
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-
-        public abstract int LoanPeriod { get; set; }
-
-        public virtual decimal LoanFees { get; set; }
-        public virtual int Extensions { get; set; }
-
+        public abstract decimal LoanFees { get; }
+        public abstract int Extensions { get; }
 
 
         public User(Guid id, string name)

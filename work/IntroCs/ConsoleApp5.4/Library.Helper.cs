@@ -26,12 +26,9 @@ namespace ConsoleApp5._4
             return true;
         }
 
-        private bool CheckReservePossible(Item item, User user)
+        private bool CheckReservePossible(Item item)
         {
-            if (item.IsBorrowed && item.IsReserved)
-                return false;
-
-            if (item.IsReserved && item.ReservedBy != user.Id) 
+            if (!item.IsBorrowed)
                 return false;
 
             if (item.IsReserved) 
@@ -42,7 +39,7 @@ namespace ConsoleApp5._4
 
         private Item FindItemByName(string name)
         {
-            var searchedItem = getAllItemsFromShelves()
+            var searchedItem = GetAllItemsFromShelves()
                 .FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (searchedItem == null)
@@ -67,7 +64,7 @@ namespace ConsoleApp5._4
             }
          */
 
-        private List<Item> getAllItemsFromShelves()
+        private List<Item> GetAllItemsFromShelves()
         {
             var allItems = new List<Item>();
             foreach (var shelf in Shelves)

@@ -51,7 +51,6 @@ namespace ConsoleApp5._4
         // Is used as help method and obtains the default policy
         public BorrowPolicy GetPolicy(User user, Item item)
         {
-            // ifs checks
 
             var policy = _map
                 .Where(f => f.Key.userType.IsAssignableFrom(user.GetType()) &&

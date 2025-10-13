@@ -6,6 +6,7 @@ using ConsoleApp5._4.Interface;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using static ConsoleApp5._4.Library;
+using System.Linq.Expressions;
 
 namespace ConsoleApp5._4
 {
@@ -40,15 +41,50 @@ namespace ConsoleApp5._4
             };
 
 
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
+
+            
+            //Console.WriteLine(library.BorrowItem(teacher, "TestNameBook"));
+         
+            //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
+            //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
+            //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
+            //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
+            //Console.WriteLine(library.ExtendBorrowingPeriod(teacher, "TestNameBook"));
+
+            //Console.WriteLine(library.BorrowItem(teacher, "TestNameBook"));
+            //Console.WriteLine(library.ReturnItem(teacher, "TestNameBook"));
+
+
+
+
+
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
+
+            //try 
+            //{
+            //    Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBoffok")));
+            //} catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
             //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook")));
-            //DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook"));
 
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook")));
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook")));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook")));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook")));
 
+            // No changes: because 
+            // I might want to decide at runtime which method to call based on some condition
+            /*
+                performPrintOut printer;
+
+                if (studnet.HasActiveBorrowings)
+                    printer = library.ShowActiveBorrowings;
+                else 
+                    printer = library.ShowInactiveBorrowings;
+                Console.WriteLine(printer(studnet));
+             */
             PerformPrintOutput active = library.ShowActiveBorrowings;
             PerformPrintOutput nonActive = library.ShowInactiveBorrowings;
 
@@ -56,14 +92,7 @@ namespace ConsoleApp5._4
             Console.WriteLine(active(studnet));
             Console.WriteLine(nonActive(studnet));
 
-            PerformPrintLibraryItemsOutput<int> allBooksInLibrary = library.CountAllBooksInLibrary;
-            PerformPrintLibraryItemsOutput<string> allVideoGamesInLibrary = library.ShowVideoGameWithSpecificAgeRatingInLibrary;
-            PerformPrintLibraryItemsOutput<string> allSameItemsInLibrary = library.ShowAllItemsWithSameName;
-            // allowed only to admin user
-            Console.WriteLine("Overall there is... " + allBooksInLibrary(admin) + " pieces of the item");
 
-            Console.WriteLine(allVideoGamesInLibrary(admin) + "...");
-            Console.WriteLine(allSameItemsInLibrary(admin));
 
         }
     }

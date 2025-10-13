@@ -1,0 +1,103 @@
+2025-10-13T06:21:23.1647881+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 2.0.0+2bec15462381649ff4b770577e7b8b3bbba5ea12
+2025-10-13T06:21:23.1788802+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-13T06:21:23.1813904+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-13T06:21:23.1814227+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 06:21:23.101
+2025-10-13T06:21:23.1815381+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 41712
+2025-10-13T06:21:23.1816862+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-10-13T06:21:23.1816934+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-10-13T06:21:23.1819829+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-13T06:21:23.1821054+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T06:21:23.1824677+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 51918'
+2025-10-13T06:21:23.1845531+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-13T06:21:23.3003052+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-13T06:21:23.3493339+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-10-13T06:21:23.8084610+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '4.0.0' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-10-13T06:21:23.8818227+00:00 mstest-trace INFORMATION MSTestExecutor.RunTests: Running tests from sources.
+2025-10-13T06:21:24.0777793+00:00 mstest-trace INFORMATION MSTestDiscoverer: Found 30 tests from source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T06:21:24.1160817+00:00 mstest-trace INFORMATION Created unit-test runner C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-13T06:21:24.1322700+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll (Workers: 12, Scope: MethodLevel)
+2025-10-13T06:21:24.1577756+00:00 mstest-trace INFORMATION Executing test ReserveItem_When_DataIsCorrect
+2025-10-13T06:21:24.1577752+00:00 mstest-trace INFORMATION Executing test ReserveItem_When_ReservedBySomeoneElse
+2025-10-13T06:21:24.1577758+00:00 mstest-trace INFORMATION Executing test ReturnItem_Is_EvenCalled
+2025-10-13T06:21:24.1577908+00:00 mstest-trace INFORMATION Executing test BorrowItem_When_DataIsWrong
+2025-10-13T06:21:24.1577993+00:00 mstest-trace INFORMATION Executing test CancleReservation_When_DataIsCorrect
+2025-10-13T06:21:24.1578188+00:00 mstest-trace INFORMATION Executing test ReturnItem_When_DataIsCorrect
+2025-10-13T06:21:24.1578286+00:00 mstest-trace INFORMATION Executing test BorrowItem_When_DataIsCorrect
+2025-10-13T06:21:24.1578487+00:00 mstest-trace INFORMATION Executing test ReturnItem_When_DataIsWrong
+2025-10-13T06:21:24.1578953+00:00 mstest-trace INFORMATION Executing test BorrowItem_When_BorrowedIsTrue
+2025-10-13T06:21:24.1579039+00:00 mstest-trace INFORMATION Executing test ReserveItem_When_DataIsWrong
+2025-10-13T06:21:24.1579089+00:00 mstest-trace INFORMATION Executing test BorrowItem_When_NonExistingPolicyException
+2025-10-13T06:21:24.1751388+00:00 mstest-trace INFORMATION Executing test CancleReservation_When_DataIsWrong
+2025-10-13T06:21:24.2164109+00:00 mstest-trace INFORMATION Executed test ReserveItem_When_DataIsCorrect
+2025-10-13T06:21:24.2164156+00:00 mstest-trace INFORMATION Executed test ReserveItem_When_DataIsWrong
+2025-10-13T06:21:24.2164260+00:00 mstest-trace INFORMATION Executed test ReserveItem_When_ReservedBySomeoneElse
+2025-10-13T06:21:24.2164348+00:00 mstest-trace INFORMATION Executed test ReturnItem_When_DataIsWrong
+2025-10-13T06:21:24.2164495+00:00 mstest-trace INFORMATION Executed test BorrowItem_When_DataIsWrong
+2025-10-13T06:21:24.2164665+00:00 mstest-trace INFORMATION Executed test BorrowItem_When_BorrowedIsTrue
+2025-10-13T06:21:24.2164678+00:00 mstest-trace INFORMATION Executed test CancleReservation_When_DataIsWrong
+2025-10-13T06:21:24.2274716+00:00 mstest-trace INFORMATION Executing test ExtendBorrowingPeriod_When_IsReservedTrue
+2025-10-13T06:21:24.2274715+00:00 mstest-trace INFORMATION Executing test ExtendBorrowingPeriod_When_NoEnoughExtention
+2025-10-13T06:21:24.2274716+00:00 mstest-trace INFORMATION Executing test ExtendBorrowingPeriod_When_DataIsCorrect
+2025-10-13T06:21:24.2274716+00:00 mstest-trace INFORMATION Executing test CancleReservation_For_SomeoneElse
+2025-10-13T06:21:24.2274799+00:00 mstest-trace INFORMATION Executing test ExtendBorrowingPeriod_When_DataIsWrong
+2025-10-13T06:21:24.2274921+00:00 mstest-trace INFORMATION Executing test ShowActiveBorrowings_If_DataDontExist
+2025-10-13T06:21:24.2274921+00:00 mstest-trace INFORMATION Executing test ShowActiveBorrowings_With_DataExist
+2025-10-13T06:21:24.2280343+00:00 mstest-trace INFORMATION Executed test CancleReservation_For_SomeoneElse
+2025-10-13T06:21:24.2283702+00:00 mstest-trace INFORMATION Executing test ShowInactiveBorrowings_With_DataExist
+2025-10-13T06:21:24.2291363+00:00 mstest-trace INFORMATION Executed test ShowActiveBorrowings_If_DataDontExist
+2025-10-13T06:21:24.2292309+00:00 mstest-trace INFORMATION Executing test ShowInactiveBorrowings_If_DataDontExist
+2025-10-13T06:21:24.2295986+00:00 mstest-trace INFORMATION Executed test ExtendBorrowingPeriod_When_DataIsWrong
+2025-10-13T06:21:24.2296307+00:00 mstest-trace INFORMATION Executed test ExtendBorrowingPeriod_When_IsReservedTrue
+2025-10-13T06:21:24.2328882+00:00 mstest-trace INFORMATION Executed test ShowActiveBorrowings_With_DataExist
+2025-10-13T06:21:24.2333358+00:00 mstest-trace INFORMATION Executed test ShowInactiveBorrowings_With_DataExist
+2025-10-13T06:21:24.2364560+00:00 mstest-trace INFORMATION Executed test ExtendBorrowingPeriod_When_NoEnoughExtention
+2025-10-13T06:21:24.2448643+00:00 mstest-trace INFORMATION Executed test CancleReservation_When_DataIsCorrect
+2025-10-13T06:21:24.2448672+00:00 mstest-trace INFORMATION Executed test BorrowItem_When_DataIsCorrect
+2025-10-13T06:21:24.2448682+00:00 mstest-trace INFORMATION Executed test BorrowItem_When_NonExistingPolicyException
+2025-10-13T06:21:24.2448682+00:00 mstest-trace INFORMATION Executed test ReturnItem_When_DataIsCorrect
+2025-10-13T06:21:24.2448772+00:00 mstest-trace INFORMATION Executed test ExtendBorrowingPeriod_When_DataIsCorrect
+2025-10-13T06:21:24.2449020+00:00 mstest-trace INFORMATION Executed test ReturnItem_Is_EvenCalled
+2025-10-13T06:21:24.2449627+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.ReturnItem_Is_EvenCalled failed. ErrorMessage:Test method ConsoleAppTest5._4.LibraryTest.ReturnItem_Is_EvenCalled threw exception:
+System.ArgumentException: No entries was found with this user TestTeacherOne, ErrorStackTrace:   at ConsoleApp5._4.Library.ReturnItem(User user, String searchedItem) in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4\Library.Main.cs:line 87
+   at ConsoleAppTest5._4.LibraryTest.ReturnItem_Is_EvenCalled() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 158
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-10-13T06:21:24.2449621+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.ExtendBorrowingPeriod_When_DataIsCorrect failed. ErrorMessage:Test method ConsoleAppTest5._4.LibraryTest.ExtendBorrowingPeriod_When_DataIsCorrect threw exception:
+System.NullReferenceException: Object reference not set to an instance of an object., ErrorStackTrace:   at ConsoleAppTest5._4.LibraryTest.ExtendBorrowingPeriod_When_DataIsCorrect() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 254
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-10-13T06:21:24.2449633+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.ReturnItem_When_DataIsCorrect failed. ErrorMessage:Test method ConsoleAppTest5._4.LibraryTest.ReturnItem_When_DataIsCorrect threw exception:
+System.ArgumentException: No entries was found with this user TestStudentOne, ErrorStackTrace:   at ConsoleApp5._4.Library.ReturnItem(User user, String searchedItem) in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4\Library.Main.cs:line 87
+   at ConsoleAppTest5._4.LibraryTest.ReturnItem_When_DataIsCorrect() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 115
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-10-13T06:21:24.2449774+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.BorrowItem_When_NonExistingPolicyException failed. ErrorMessage:Assert.ThrowsExactly failed. Expected exception type:<ConsoleApp5._4.Exceptions.NonExistingPolicyException> but no exception was thrown. 'action' expression: '() => _library.BorrowItem(_testUser, _book.Name)'., ErrorStackTrace:   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.<>c__DisplayClass226_0`1.<IsThrowsFailing>b__0(String userMessage) in /_/src/TestFramework/TestFramework/Assertions/Assert.ThrowsException.cs:line 593
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.ThrowsException[TException](Action action, Boolean isStrictType, String message, String actionExpression, String assertMethodName) in /_/src/TestFramework/TestFramework/Assertions/Assert.ThrowsException.cs:line 330
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.ThrowsExactly[TException](Func`1 action, String message, String actionExpression) in /_/src/TestFramework/TestFramework/Assertions/Assert.ThrowsException.cs:line 272
+   at ConsoleAppTest5._4.LibraryTest.BorrowItem_When_NonExistingPolicyException() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 105
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr).
+2025-10-13T06:21:24.2449424+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.CancleReservation_When_DataIsCorrect failed. ErrorMessage:Assert.IsFalse failed. 'condition' expression: '_book.IsReserved'., ErrorStackTrace:   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.ThrowAssertIsFalseFailed(String userMessage) in /_/src/TestFramework/TestFramework/Assertions/Assert.IsTrue.cs:line 200
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(Nullable`1 condition, String message, String conditionExpression) in /_/src/TestFramework/TestFramework/Assertions/Assert.IsTrue.cs:line 191
+   at ConsoleAppTest5._4.LibraryTest.CancleReservation_When_DataIsCorrect() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 215
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr).
+2025-10-13T06:21:24.2453835+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.BorrowItem_When_DataIsCorrect failed. ErrorMessage:Test method ConsoleAppTest5._4.LibraryTest.BorrowItem_When_DataIsCorrect threw exception:
+System.NullReferenceException: Object reference not set to an instance of an object., ErrorStackTrace:   at ConsoleAppTest5._4.LibraryTest.BorrowItem_When_DataIsCorrect() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 68
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+.
+2025-10-13T06:21:24.2470601+00:00 mstest-trace INFORMATION Executed test ShowInactiveBorrowings_If_DataDontExist
+2025-10-13T06:21:24.2470992+00:00 mstest-trace INFORMATION MSTestExecutor:Test ConsoleAppTest5._4.LibraryTest.ShowInactiveBorrowings_If_DataDontExist failed. ErrorMessage:Assert.AreEqual failed. Expected string length 37 but was 124. 'expected' expression: 'expectedOutput', 'actual' expression: 'actualOutput'.
+Expected: "TestStudentOne has no past borrowings"
+But was:  "TestStudentOne had 'TestBookOne' from ..."
+----------------------------^, ErrorStackTrace:   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.ThrowAssertAreEqualFailed(Object expected, Object actual, String userMessage) in /_/src/TestFramework/TestFramework/Assertions/Assert.AreEqual.cs:line 665
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, IEqualityComparer`1 comparer, String message, String expectedExpression, String actualExpression) in /_/src/TestFramework/TestFramework/Assertions/Assert.AreEqual.cs:line 492
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, String expectedExpression, String actualExpression) in /_/src/TestFramework/TestFramework/Assertions/Assert.AreEqual.cs:line 405
+   at ConsoleAppTest5._4.LibraryTest.ShowInactiveBorrowings_If_DataDontExist() in C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\LibraryTest.cs:line 398
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr).
+2025-10-13T06:21:24.2475169+00:00 mstest-trace INFORMATION Executed tests belonging to source C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll

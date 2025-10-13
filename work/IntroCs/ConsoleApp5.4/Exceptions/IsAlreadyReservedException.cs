@@ -9,19 +9,10 @@ namespace ConsoleApp5._4.Exceptions
 {
     public class IsAlreadyReservedException : Exception
     {
-        public string ItemName { get; }
-        public string UserName { get; }
 
-        public IsAlreadyReservedException(User user, Item item) : base ()
+        public IsAlreadyReservedException(User user, Item item) 
+                : base ($"Apology, but {item.Name} is allready reserved by {user.Name}")
         {
-            ItemName = item.Name;
-            UserName = user.Name;
-
-        }
-
-        public override string ToString()
-        {
-            return $"Apology, but {ItemName} is allready reserved by {UserName}";
         }
     }
 }

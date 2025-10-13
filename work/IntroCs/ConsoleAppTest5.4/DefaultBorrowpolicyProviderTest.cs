@@ -76,7 +76,8 @@ namespace ConsoleAppTest5._4
         {
 
             // Act & Assert
-            Assert.ThrowsException<NonExistingPolicyException>(() => _provider.GetPolicy(_student, _rareBook));
+            Assert.ThrowsExactly<NonExistingPolicyException>(() => _provider.GetPolicy(_student, _rareBook));
+            //Assert.ThrowsException<NonExistingPolicyException>(() => _provider.GetPolicy(_student, _rareBook));
         }
 
         [TestMethod]
@@ -100,7 +101,7 @@ namespace ConsoleAppTest5._4
         {
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => _provider.AddRule(null, typeof(Book), new BorrowPolicy(90)));
+            Assert.ThrowsExactly<ArgumentNullException>(() => _provider.AddRule(null, typeof(Book), new BorrowPolicy(90)));
 
         }
     }

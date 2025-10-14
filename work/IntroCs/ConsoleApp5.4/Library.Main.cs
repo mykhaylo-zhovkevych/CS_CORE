@@ -29,7 +29,7 @@ namespace ConsoleApp5._4
         // It has be one Method that can decide which part me be executed
         public delegate string PerformPrintOutput(User user);
 
-        
+
         public Library(string name, string address, IBorrowPolicyProvider policyProvider)
         {
             Name = name;
@@ -48,7 +48,7 @@ namespace ConsoleApp5._4
 
             // Double cheking: overcoded? NO because, e.x: when no similar data in databank found than exception, because unexpected
             var item = FindItemByName(searchedItem);
-            
+
             // Expected
             if (!CheckBorrowPossible(item))
             {
@@ -58,14 +58,7 @@ namespace ConsoleApp5._4
             // Unexpected, catches a exception
             BorrowPolicy policy = PolicyProvider.GetPolicy(user, item);
 
-            var borrowing = new Borrowing()
-            {
-                User = user,
-                Item = item,
-                LoanDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(policy.LoanPeriod),
-            };
-
+            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod));
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
@@ -100,7 +93,7 @@ namespace ConsoleApp5._4
             // After successful return the old object Borrowing can be overwriten and saved in as non active
             return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
- 
+
         public Result ReserveItem(User user, string searchedItem)
         {
             //try
@@ -126,7 +119,7 @@ namespace ConsoleApp5._4
             return Result.Notify("Item was successfully reserved");
         }
 
-        
+
         public Result CancelReservation(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("No User");
@@ -148,39 +141,22 @@ namespace ConsoleApp5._4
             if (user == null) return Result.Fail("Incorrect User");
             var reservedItem = FindItemByName(searchedItem);
 
-            // The previous logic 
+            //Check if it is not reserved and borrowed simultaneously
+            // if (!reserveditem.isreserved && reserveditem.isborrowed)
 
-            //public bool CheckExtendPossible(User user, Item item)
-            //{
-            //     Check if it is not reserved and borrowed simultaneously
-            //    if (!item.IsReserved && item.IsBorrowed)
-            //    {
-            //        var borrowing = Borrowing.Equals(user.Id && item.Name);
+            var borrowing = Borrowings.FirstOrDefault(b =>
+                b.User.Id == user.Id &&
+                b.Item.Name == reservedItem.Name);
 
-            //        if (borrowing == null)
-            //        {
-            //            throw new ArgumentException($"{User.Name} dont have any: {Item.Name}");
-            //        }
-            //        else if (borrowing.UsedBorrowingCredits <= 0)
-            //        {
-            //            return ($"{User.Name} don't have enough extentions points");
-            //        }
-            //        else
-            //        {
-            //            borrowing.DueDate = borrowing.DueDate.AddMonths(1);
-            //            borrowing.UsedBorrowingCredits--;
-            //        }
-            //        return ("Item was successfully extended");
-            //    }
-            //}
-
-            else if (reservedItem.IsReserved)
+            if (borrowing == null)
             {
-                throw new IsAlreadyReservedException(user, reservedItem);
+                throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
             }
-            return Result.Fail($"No borrowed Item was found for {user.Name}");
+
+            return borrowing.Extend();
         }
 
+        
         public string ShowActiveBorrowings(User user)
         {
             StringBuilder sb = new StringBuilder();

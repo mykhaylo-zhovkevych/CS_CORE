@@ -41,8 +41,8 @@ namespace ConsoleAppTest5._4
         {
             _provider = new DefaultBorrowPolicyProvider();
 
-            _teacher = new Teacher(Guid.NewGuid(), "TestTeacher");
-            _student = new Student(Guid.NewGuid(), "TestStudent");
+            _teacher = new Teacher("TestTeacher");
+            _student = new Student("TestStudent");
     
             _book = new Book("TestBook", "TestPublisher");
             _rareBook = new RareBook(Guid.NewGuid(), "RareBook", "RarePublisher");

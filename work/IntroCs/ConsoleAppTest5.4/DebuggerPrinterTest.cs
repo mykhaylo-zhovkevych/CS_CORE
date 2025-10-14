@@ -24,8 +24,8 @@ namespace ConsoleAppTest5._4
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-            _student = new Student(Guid.NewGuid(), "TestStudentOne");
-            _teacher = new Teacher(Guid.NewGuid(), "TestTeacherOne");
+            _student = new Student("TestStudentOne");
+            _teacher = new Teacher("TestTeacherOne");
 
             _book = new Book("TestBookOne", "TestPublisherOne");
             _videoGame = new VideoGame("TestVideoGameOne", GameType.RPG, 20);
@@ -42,7 +42,7 @@ namespace ConsoleAppTest5._4
             };
         }
 
-        // Just data with different types to test,and the instances 
+        // Just data with different types to test,(and the instances can be two but not main focus)
         [TestMethod]
         public void PrintOutput_With_DifferentTypes()
         {

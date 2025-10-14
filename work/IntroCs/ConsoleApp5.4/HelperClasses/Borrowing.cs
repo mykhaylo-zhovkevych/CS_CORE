@@ -55,7 +55,7 @@ namespace ConsoleApp5._4.HelperClasses
             DueDate = DueDate.AddMonths(months);
             _remainingExtensionCredits--;
 
-            return Result.Notify($"No borrowed Item was found for {User.Name}");
+            return Result.Notify($"Item was successfully extended");
         }
 
         public override string ToString()

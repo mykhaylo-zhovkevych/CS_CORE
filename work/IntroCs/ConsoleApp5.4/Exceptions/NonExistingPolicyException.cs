@@ -9,10 +9,12 @@ namespace ConsoleApp5._4.Exceptions
     public class NonExistingPolicyException : Exception
     {
 
-        public NonExistingPolicyException()
+        public NonExistingPolicyException() : this("No Policy was found.")
         {
-            Console.WriteLine("No Policy was found.");
         }
 
+        public NonExistingPolicyException(string? message) : base(message)
+        {
+        }
     }
 }

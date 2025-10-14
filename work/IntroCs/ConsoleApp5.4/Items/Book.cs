@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5._2.Objects
+namespace ConsoleApp5._4.Items
 {
-    internal class Book : Item
+    public class Book : Item
     {
         public string Publisher { get; set; }
 

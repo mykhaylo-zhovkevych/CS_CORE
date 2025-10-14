@@ -1,0 +1,16 @@
+2025-10-14T09:47:05.1680404+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 2.0.0+2bec15462381649ff4b770577e7b8b3bbba5ea12
+2025-10-14T09:47:05.1851638+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-14T09:47:05.1873000+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-14T09:47:05.1873087+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 09:47:05.072
+2025-10-14T09:47:05.1873973+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 33304
+2025-10-14T09:47:05.1876172+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.18
+2025-10-14T09:47:05.1876254+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.18\System.Private.CoreLib.dll
+2025-10-14T09:47:05.1876409+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-14T09:47:05.1879298+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll
+2025-10-14T09:47:05.1882978+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\Log --results-directory C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\TestResults --client-port 63146'
+2025-10-14T09:47:05.1907352+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-14T09:47:05.3361898+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-14T09:47:05.3873036+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-10-14T09:47:05.8667599+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '4.0.0' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-10-14T09:47:05.8853375+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter WARNING Runsettings attribute 'MaxCpuCount' is not supported by Microsoft.Testing.Platform and will be ignored
+2025-10-14T09:47:06.0178461+00:00 mstest-trace INFORMATION AssemblyEnumerator: MSTestAdapter failed to discover tests in class 'ConsoleAppTest5._4.LibraryTest' of assembly 'C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\ConsoleAppTest5.4.dll' because Method ConsoleAppTest5._4.LibraryTest.ClassInit has wrong signature. The method must be static, public, does not return a value and should take a single parameter of type TestContext. Additionally, if you are using async-await in method then return-type must be 'Task' or 'ValueTask'..

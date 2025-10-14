@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5._2.Objects
+namespace ConsoleApp5._4.Items
 {
-    internal class Magazine : Item
+    public class Magazine : Item
     {
         public int AgeRating { get; set; }
         public string Publisher { get; set; }
 
-        public Magazine(Guid id, string name, int ageRating, string publisher): base(id, name)
+        public Magazine(Guid id, string name, string publisher, int ageRating): base(id, name)
         {
-            AgeRating = ageRating;
             Publisher = publisher;
+            AgeRating = ageRating;
         }
     }
 }

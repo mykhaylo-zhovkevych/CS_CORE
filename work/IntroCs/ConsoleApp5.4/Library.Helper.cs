@@ -69,7 +69,7 @@ namespace ConsoleApp5._4
             var allItems = new List<Item>();
             foreach (var shelf in Shelves)
             {
-                allItems.AddRange(shelf.GetCurrentItems());
+                allItems.AddRange(shelf.Items);
             }
 
             return allItems;

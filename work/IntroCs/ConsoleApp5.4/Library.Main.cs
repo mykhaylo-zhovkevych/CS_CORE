@@ -143,34 +143,37 @@ namespace ConsoleApp5._4
             return Result.Notify("Item was successfully cancelled");
         }
 
-        // It removes one extention per Borrowing and not per User 
         public Result ExtendBorrowingPeriod(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("Incorrect User");
             var reservedItem = FindItemByName(searchedItem);
 
-            // Check if it is not reserved and borrowed simultaneously
-            if (!reservedItem.IsReserved && reservedItem.IsBorrowed)
-            {
-                var borrowing = Borrowings.FirstOrDefault(b =>
-                    b.User.Id == user.Id &&
-                    b.Item.Name == reservedItem.Name);
+            // The previous logic 
 
-                if (borrowing == null)
-                {
-                    throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
-                }
-                else if (borrowing.UsedBorrowingCredits <= 0)
-                {
-                    return Result.Fail($"{user.Name} don't have enough extentions points");
-                }
-                else
-                {
-                    borrowing.DueDate = borrowing.DueDate.AddMonths(1);
-                    borrowing.UsedBorrowingCredits--;
-                }
-                return Result.Notify("Item was successfully extended");
-            }
+            //public bool CheckExtendPossible(User user, Item item)
+            //{
+            //     Check if it is not reserved and borrowed simultaneously
+            //    if (!item.IsReserved && item.IsBorrowed)
+            //    {
+            //        var borrowing = Borrowing.Equals(user.Id && item.Name);
+
+            //        if (borrowing == null)
+            //        {
+            //            throw new ArgumentException($"{User.Name} dont have any: {Item.Name}");
+            //        }
+            //        else if (borrowing.UsedBorrowingCredits <= 0)
+            //        {
+            //            return ($"{User.Name} don't have enough extentions points");
+            //        }
+            //        else
+            //        {
+            //            borrowing.DueDate = borrowing.DueDate.AddMonths(1);
+            //            borrowing.UsedBorrowingCredits--;
+            //        }
+            //        return ("Item was successfully extended");
+            //    }
+            //}
+
             else if (reservedItem.IsReserved)
             {
                 throw new IsAlreadyReservedException(user, reservedItem);
@@ -236,24 +239,20 @@ namespace ConsoleApp5._4
         {
             var items = GetAllItemsFromShelves().AsEnumerable();
 
-            if (!string.IsNullOrWhiteSpace(nameContains))
+            var term = nameContains?.Trim();
+            if (!string.IsNullOrWhiteSpace(term))
             {
-                var term = nameContains.Trim();
-                if (!string.IsNullOrEmpty(term))
-                {
-                items = items.Where(i => i.Name != null &&
-                        i.Name.Contains(term, StringComparison.OrdinalIgnoreCase));
-                }
+                items = items.Where(i => i.Name.Contains(term, StringComparison.OrdinalIgnoreCase));
             }
 
-            if (isBorrowed.HasValue)
+            if (isBorrowed != null)
             {
-                items = items.Where(i => i.IsBorrowed == isBorrowed.Value);           
+                items = items.Where(i => i.IsBorrowed == isBorrowed);           
             }
 
             if (isReserved.HasValue)
             {
-                items = items.Where(i => i.IsReserved == isReserved.Value);
+                items = items.Where(i => i.IsReserved == isReserved);
             }
 
             if (itemType != null)

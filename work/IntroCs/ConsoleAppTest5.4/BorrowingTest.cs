@@ -25,8 +25,8 @@ namespace ConsoleAppTest5._4
         public void Setup()
         {
             _user = new Teacher(Guid.NewGuid(),"Schmid");
-            _item = new Book(Guid.NewGuid(), "Last Road", "Penguin");
-            _item02 = new VideoGame(Guid.NewGuid(), "Video Game", GameType.RPG, 20);
+            _item = new Book("Last Road", "Penguin");
+            _item02 = new VideoGame("Video Game", GameType.RPG, 20);
         }
 
 

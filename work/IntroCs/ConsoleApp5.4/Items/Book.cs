@@ -10,7 +10,7 @@ namespace ConsoleApp5._4.Items
     {
         public string Publisher { get; set; }
 
-        public Book(Guid id, string name, string publisher): base(id, name)
+        public Book(string name, string publisher): base(name)
         {
             Publisher = publisher;
         }

@@ -11,7 +11,7 @@ namespace ConsoleApp5._4.Items
         public int AgeRating { get; set; }
         public string Publisher { get; set; }
 
-        public Magazine(Guid id, string name, string publisher, int ageRating): base(id, name)
+        public Magazine(string name, string publisher, int ageRating): base(name)
         {
             Publisher = publisher;
             AgeRating = ageRating;

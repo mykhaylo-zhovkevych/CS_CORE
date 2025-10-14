@@ -10,6 +10,9 @@ using System.Linq;
 namespace ConsoleAppTest5._4
 {
 
+    // MethodName_Scenerio_ExpectedOutcome
+    // e.x. Add_AddsTwoWholeNumbers_SumOfThoseNumbers
+
     [TestClass]
     public class LibraryTest
     {
@@ -36,9 +39,9 @@ namespace ConsoleAppTest5._4
             _teacher = new Teacher(Guid.NewGuid(), "TestTeacherOne");
             _admin = new Admin(Guid.NewGuid(), "TestTeacherOne");
 
-            _book = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherOne");
-            _book02 = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherTwo");
-            _videoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameOne", GameType.RPG, 20);
+            _book = new Book( "TestBookOne", "TestPublisherOne");
+            _book02 = new Book("TestBookOne", "TestPublisherTwo");
+            _videoGame = new VideoGame( "TestVideoGameOne", GameType.RPG, 20);
 
             shelf1.AddItemToShelf(_book);
             shelf1.AddItemToShelf(_videoGame);
@@ -293,7 +296,7 @@ namespace ConsoleAppTest5._4
             var library = new Library("TestName", "TestAdress", policyProvider);
 
             var shelf = new Shelf(1);
-            var testVideoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameTwo", GameType.RPG, 20);
+            var testVideoGame = new VideoGame("TestVideoGameTwo", GameType.RPG, 20);
 
             shelf.AddItemToShelf(testVideoGame);
             library.AddShelf(shelf);
@@ -400,13 +403,15 @@ namespace ConsoleAppTest5._4
             // Act
             var result = _library.QueryItems(
                 nameContains: "TestBookOne",
-                isBorrowed: true, 
-                isReserved: true, 
-                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
-                .ToList();
+                isBorrowed: true,
+                isReserved: true,
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"));
+      
 
             // Assert
             Assert.AreEqual(1,result.Count());
+            Assert.AreEqual(_book, result.First());
+
         }
 
         [TestMethod]
@@ -424,8 +429,7 @@ namespace ConsoleAppTest5._4
                 nameContains: "TestBookOne",
                 isBorrowed: true,
                 isReserved: true,
-                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
-                .ToList();
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"));
 
             // Assert
             Assert.AreNotEqual(1, result.Count());

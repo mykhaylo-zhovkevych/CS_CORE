@@ -231,14 +231,9 @@ namespace ConsoleApp5._4
             bool? isBorrowed = null,
             bool? isReserved = null,
             Type? itemType = null,
-            Func<Item, bool>? customPredicate = null,
-            string? OrderBy = null,
-            bool orderDescending = false,
-            int? skip = null,
-            int? take = null
+            Func<Item, bool>? customPredicate = null
         )
         {
-            
             var items = GetAllItemsFromShelves().AsEnumerable();
 
             if (!string.IsNullOrWhiteSpace(nameContains))
@@ -270,58 +265,7 @@ namespace ConsoleApp5._4
             {
                 items = items.Where(customPredicate);
             }
-
             return items.ToList();
-        } 
-
-
-
-        //public string ShowVideoGameWithSpecificAgeRatingInLibrary(Admin admin)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    var allItems = GetAllItemsFromShelves();
-
-        //                        // Filters specific type
-        //    var allVideoGame = allItems.OfType<VideoGame>()
-        //        .Where(vg => 
-        //            vg.Genre == Enum.GameType.RPG &&
-        //            vg.AgeRating >= 18
-        //        );
-
-        //    foreach (var vb in allVideoGame)
-        //    {
-        //        sb.AppendLine($"{vb.Name}, {vb.Genre}, {vb.AgeRating}, Is this game borrowed {vb.IsBorrowed}");
-                
-        //    }
-
-        //    return sb.ToString();
-        //}
-
-        //public int CountAllBooksInLibrary(Admin admin)
-        //{            
-        //    var allItems = GetAllItemsFromShelves();
-        //    var allBooksCount = allItems.Where(i =>
-        //        i.GetType() == typeof(Book));
-
-        //    return allBooksCount.Count();
-
-        //}
-
-        //public string ShowAllItemsWithSameName(Admin admin)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-
-        //    var allItems = GetAllItemsFromShelves();
-        //    var allItemsWithSameName = allItems.Where(n => 
-        //        n.Name == n.Name &&
-        //        n.Equals(n));
-
-        //    foreach (var n in allItemsWithSameName)
-        //    {
-        //        sb.AppendLine(n.Name);
-        //    }
-                
-        //    return sb.ToString();
-        //}
+        }
     }
 }

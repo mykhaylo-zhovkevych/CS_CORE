@@ -39,9 +39,11 @@ namespace ConsoleApp5._4
             {
                 Console.WriteLine($"Notification: Item '{e.Item.Name}' is now available for {e.ReservedUser?.Name}");
             };
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(teacher, "TestNameBook")));
+            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
 
+            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(teacher, "TestNameBook")));
 
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
 
 
             //Console.WriteLine(library.BorrowItem(teacher, "TestNameBook"));
@@ -62,27 +64,12 @@ namespace ConsoleApp5._4
  
             var results3 = library.QueryItems(customPredicate: i => (i is VideoGame vg) && vg.AgeRating < 18);
 
-
+            
             foreach (var item in results1)
             {
                 Console.WriteLine(item);
             }
 
-
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBook")));
-
-            //try 
-            //{
-            //    Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(studnet, "TestNameBoffok")));
-            //} catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
-
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(teacher, "TestNameBook")));
-
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(studnet, "TestNameBook")));
-            //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReturnItem(studnet, "TestNameBook")));
 
             // No changes: because 
             // I might want to decide at runtime which method to call based on some condition
@@ -101,8 +88,6 @@ namespace ConsoleApp5._4
             Console.WriteLine("-------------------------");
             Console.WriteLine(active(studnet));
             Console.WriteLine(nonActive(studnet));
-
-
 
         }
     }

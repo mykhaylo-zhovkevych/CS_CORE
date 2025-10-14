@@ -24,8 +24,8 @@ namespace ConsoleApp5._4
 
         public override string ToString()
         {
-            return $"User Id: {Id}, Item Name: {Name}, IsBorrowed: {IsBorrowed}" +
-                $", ReservedBy (Id): {ReservedBy}, IsReserved: {IsReserved}";
+            return $"Item Id: {Id}, Item Name: {Name}, IsBorrowed: {IsBorrowed}" +
+                $", IsReserved: {IsReserved}, ReservedBy (Id): {ReservedBy}";
         }
     }
 }

@@ -5,25 +5,26 @@ using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Interface;
 using ConsoleApp5._4.Items;
 using ConsoleApp5._4.Users;
+using System.Linq;
 
 namespace ConsoleAppTest5._4
 {
 
-
     [TestClass]
-    public sealed class LibraryTest
+    public class LibraryTest
     {
-        private static Library _library;
+        private Library _library;
 
-        private static User _student;
-        private static User _teacher;
-        private static User _admin;
+        private User _student;
+        private User _teacher;
+        private User _admin;
    
-        private static Item _book;
-        private static Item _videoGame;
+        private Item _book;
+        private Item _book02;
+        private Item _videoGame;
 
-        [ClassInitialize]
-        public static void ClassInit(TestContext testContext)
+        [TestInitialize]
+        public  void ClassInit()
         {
             var policyProvider = new DefaultBorrowPolicyProvider();
 
@@ -36,6 +37,7 @@ namespace ConsoleAppTest5._4
             _admin = new Admin(Guid.NewGuid(), "TestTeacherOne");
 
             _book = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherOne");
+            _book02 = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherTwo");
             _videoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameOne", GameType.RPG, 20);
 
             shelf1.AddItemToShelf(_book);
@@ -104,7 +106,7 @@ namespace ConsoleAppTest5._4
             _library.ReturnItem(_student, "TestBookOne");
 
             // Assert
-            Assert.AreEqual(false, _book.IsBorrowed);
+            Assert.IsFalse(_book.IsBorrowed);
         }
 
 
@@ -228,37 +230,37 @@ namespace ConsoleAppTest5._4
             Assert.AreEqual("You cannot cancel another user's reservation", result.Message);
         }
 
-        //[TestMethod]
-        //public void ExtendBorrowingPeriod_When_DataIsCorrect()
-        //{
-        //     Arrange
-        //    _library.BorrowItem(_student, _book.Name);
+        [TestMethod]
+        public void ExtendBorrowingPeriod_When_DataIsCorrect()
+        {
+            // Arrange
+            _library.BorrowItem(_student, _book.Name);
 
+            var borrowed = _library.Borrowings.FirstOrDefault(b =>
+                b.User.Id == _student.Id &&
+                b.Item.Id == _book.Id &&
+                b.ReturnDate == null);
 
-        //    var borrowed = _library.Borrowings.FirstOrDefault(b => 
-        //        b.User.Id == _student.Id && 
-        //        b.Item.Id == _book.Id && 
-        //        b.ReturnDate == null);
-            
+            var oldDue = borrowed.DueDate;
+            var oldExtensions = borrowed.ExtentionCredits;
 
-        //    var oldDue = borrowed.DueDate;
-        //    var oldExtensions = _student.Extensions;
+            // Act
+            _library.ExtendBorrowingPeriod(_student, _book.Name);
 
-        //     Act
-        //    _library.ExtendBorrowingPeriod(_student, _book.Name);
+            var updated = _library.Borrowings.FirstOrDefault(b =>
+                b.User.Id == _student.Id &&
+                b.Item.Id == _book.Id &&
+                b.ReturnDate == null);
 
-        //    var updated = _library.Borrowings.FirstOrDefault(b => 
-        //        b.User.Id == _student.Id && 
-        //        b.Item.Id == _book.Id && 
-        //        b.ReturnDate == null);
+            var newDue = updated.DueDate;
+            var newExtensions = updated.UsedBorrowingCredits;
 
-        //     Assert
-        //    Assert.IsNotNull(borrowed);
-        //    Assert.IsNotNull(updated);
-
-        //    Assert.IsTrue(updated.DueDate > oldDue);
-        //    Assert.AreEqual(oldExtensions - 1, _student.Extensions);
-        //}
+            // Assert
+            Assert.IsNotNull(borrowed);
+            Assert.IsNotNull(updated);
+            Assert.IsTrue(newDue > oldDue);
+            Assert.AreNotEqual(newExtensions, oldExtensions);
+        }
 
         [TestMethod]
         public void ExtendBorrowingPeriod_When_DataIsWrong()
@@ -281,34 +283,30 @@ namespace ConsoleAppTest5._4
             Assert.ThrowsExactly<IsAlreadyReservedException>(() => _library.ExtendBorrowingPeriod(_student, _book.Name));
         }
 
-        //[TestMethod]
-        //public void ExtendBorrowingPeriod_When_NoEnoughExtention()
-        //{
-        //    // Arrange
-        //    var policyProvider = new DefaultBorrowPolicyProvider();
-        //    policyProvider.AddRule(typeof(TestUser), typeof(VideoGame), new BorrowPolicy(21));
+        [TestMethod]
+        public void ExtendBorrowingPeriod_When_NoEnoughExtention()
+        {
+            // Arrange
+            var policyProvider = new DefaultBorrowPolicyProvider();
+            policyProvider.AddRule(typeof(Admin), typeof(VideoGame), new BorrowPolicy(21));
 
-        //    var library = new ConsoleApp5._4.Library("TestName", "TestAdress", policyProvider);
+            var library = new Library("TestName", "TestAdress", policyProvider);
 
-        //    var shelf = new Shelf(1);
-        //    var testVideoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameTwo", GameType.RPG, 20);
+            var shelf = new Shelf(1);
+            var testVideoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameTwo", GameType.RPG, 20);
 
-        //    shelf.AddItemToShelf(testVideoGame);
-        //    library.AddShelf(shelf);
+            shelf.AddItemToShelf(testVideoGame);
+            library.AddShelf(shelf);
 
-        //    var testUser = new TestUser(Guid.NewGuid(), "TestUserOne")
-        //    {
-        //        Extensions = -1
-        //    };
 
-        //    // Act
-        //    library.BorrowItem(testUser, testVideoGame.Name);
-        //    var extensionsResult = library.ExtendBorrowingPeriod(testUser, testVideoGame.Name);
+            // Act
+            library.BorrowItem(_admin, testVideoGame.Name);
+            var extensionsResult = library.ExtendBorrowingPeriod(_admin, testVideoGame.Name);
 
-        //    // Assert
-        //    Assert.IsFalse(extensionsResult.Success);
-        //    Assert.AreEqual($"{testUser.Name} don't have enough extentions points", extensionsResult.Message);
-        //}
+            // Assert
+            Assert.IsFalse(extensionsResult.Success);
+            Assert.AreEqual($"{_admin.Name} don't have enough extentions points", extensionsResult.Message);
+        }
 
 
         [TestMethod]
@@ -389,42 +387,50 @@ namespace ConsoleAppTest5._4
         }
 
 
-        //[TestMethod]
-        //public void ShowVideoGameWithSpecificAgeRatingInLibrary()
-        //{
-        //    // Arrange 
-        //    PerformPrintLibraryItemsOutput<string> allVideoGamesInLibrary = _library.ShowVideoGameWithSpecificAgeRatingInLibrary;
+        [TestMethod]
+        public void QueryItems_With_DataExist()
+        {
+            // Arrange
+            _book.IsBorrowed = true;
+            _book.ReservedBy = _student;
 
-        //    var sw = new StringWriter();
-        //    Console.SetOut(sw);
+            _book02.IsBorrowed = true;
+            _book02.ReservedBy = _teacher;
 
-        //    var expectedOutput = $"TestVideoGameOne, RPG, 20, Is this game borrowed False";
+            // Act
+            var result = _library.QueryItems(
+                nameContains: "TestBookOne",
+                isBorrowed: true, 
+                isReserved: true, 
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
+                .ToList();
 
-        //    // Act
-        //    Console.WriteLine(allVideoGamesInLibrary(_admin));
-        //    string actualOutput = sw.ToString().Trim();
+            // Assert
+            Assert.AreEqual(1,result.Count());
+        }
 
-        //    // Assert
-        //    Assert.AreEqual(expectedOutput, actualOutput);
-        //}
+        [TestMethod]
+        public void QueryItems_With_DataDontExist()
+        {
+            // Arrange
+            _book.IsBorrowed = false;
+            _book.ReservedBy = _student;
 
+            _book02.IsBorrowed = true;
+            _book02.ReservedBy = _teacher;
 
+            // Act
+            var result = _library.QueryItems(
+                nameContains: "TestBookOne",
+                isBorrowed: true,
+                isReserved: true,
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
+                .ToList();
 
-        //[TestMethod]
-        //public void CountAllBooksInLibrary()
-        //{
-        //    // Arrange 
-        //    // Act
-        //    // Assert
-        //}
-
-        //[TestMethod]
-        //public void ShowAllItemsWithSameName()
-        //{
-        //    // Arrange 
-        //    // Act
-        //    // Assert
-        //}
-
+            // Assert
+            Assert.AreNotEqual(1, result.Count());
+            Assert.IsEmpty(result);
+            
+        }
     }
 }

@@ -20,13 +20,13 @@ namespace ConsoleApp5._4.HelperClasses
         public DateTime? ReturnDate { get; set; }
         public bool IsReturned => ReturnDate.HasValue;
         // Computed property
-        public int BorrowingCredits => User.Extensions;  
+        public int ExtentionCredits => User.Extensions;  
         public int UsedBorrowingCredits
         {
             get
             {
                 if (!_usedBorrowingCredits.HasValue) 
-                    _usedBorrowingCredits = BorrowingCredits;
+                    _usedBorrowingCredits = ExtentionCredits;
                 return _usedBorrowingCredits.Value;
             }
             set

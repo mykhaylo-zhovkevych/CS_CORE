@@ -32,30 +32,22 @@ namespace ConsoleAppTest5._4
 
         private Teacher _teacher;
         private Student _student;
-        private ExternalUser _externalUser;
 
         private Book _book;
         private RareBook _rareBook;
-        private VideoGame _videoGame;
-        private Magazine _magazine;
-
+  
         [TestInitialize]
         public void Setup()
         {
             _provider = new DefaultBorrowPolicyProvider();
 
-
             _teacher = new Teacher(Guid.NewGuid(), "TestTeacher");
             _student = new Student(Guid.NewGuid(), "TestStudent");
-            _externalUser = new ExternalUser(Guid.NewGuid(), "TestExternalUser");
-
+    
             _book = new Book(Guid.NewGuid(), "TestBook", "TestPublisher");
             _rareBook = new RareBook(Guid.NewGuid(), "RareBook", "RarePublisher");
-            _videoGame = new VideoGame(Guid.NewGuid(), "TestVideoGame", GameType.RPG, 20);
-            _magazine = new Magazine(Guid.NewGuid(), "TestMagazine", "TestMagazinePublisher", 20);
 
         }
-
 
         [TestMethod]
         public void GetPolicy_WithCorrectData()
@@ -68,7 +60,6 @@ namespace ConsoleAppTest5._4
 
             // Assert
             Assert.AreEqual(30, policy.LoanPeriod);
-
         }
 
         [TestMethod]

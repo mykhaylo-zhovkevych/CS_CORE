@@ -17,7 +17,6 @@ namespace ConsoleApp5._4
         // Direct initialization: good for simple, constant initialization
         private readonly Dictionary<(Type userType, Type itemType), BorrowPolicy> _map = new();
 
-
         public DefaultBorrowPolicyProvider()
         {
             AddRule(typeof(Student), typeof(Book), new BorrowPolicy(30));

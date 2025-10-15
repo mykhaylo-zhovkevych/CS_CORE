@@ -50,7 +50,6 @@ namespace ConsoleAppTest5._4
             string output01;
             string output02;
 
-
             // Act
             Result<Borrowing> result01 = (Result<Borrowing>)_library.BorrowItem(_teacher, "TestBookOne");
             output01 = DebuggerPrinter.PrintOutput(result01);
@@ -60,11 +59,17 @@ namespace ConsoleAppTest5._4
             output02 = DebuggerPrinter.PrintOutput(result02);
 
             // Assert
-            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));   
+            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));
+            Assert.IsInstanceOfType(result02, typeof(Result));
 
+            var expectedPrefix01 = result01.Success ? "[CORRECT]" : "[FALSE]";
+            StringAssert.StartsWith(output01, expectedPrefix01);
+            StringAssert.Contains(output01, result01.Data.ToString());
+            StringAssert.Contains(output01, result01.Message);
 
-            // why
-            // StringAssert.Equals(output01, output02);
+           
+            var expectedOutput02 = $"{(result02.Success ? "[CORRECT]" : "[FALSE]")} {result02.Message}";
+            Assert.AreEqual(expectedOutput02, output02);
 
         }
 
@@ -72,7 +77,6 @@ namespace ConsoleAppTest5._4
         public void PrintOutput_When_NoDataFound()
         {
             // Arrange
-
             string expectedOutput = @"[FALSE] Item name is missing";
             string actualOutput;
 

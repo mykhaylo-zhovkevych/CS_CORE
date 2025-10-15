@@ -16,8 +16,6 @@ namespace ConsoleApp5._4
 
         //TODO: Recreate the record as a int, for simplification
         //TODO: Create some new feature for fees calculation 
-        //TODO: Look at the MSUnitTests
-        //TODO: With Dubugger
     
 
         static void Main(string[] args)

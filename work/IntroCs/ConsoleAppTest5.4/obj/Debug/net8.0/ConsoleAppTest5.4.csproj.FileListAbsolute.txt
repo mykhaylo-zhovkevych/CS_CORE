@@ -554,3 +554,4 @@ C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest5.4\bin\Debug\n
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\MSTest.TestFramework.Extensions.xml
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest5.4\obj\Debug\net8.0\MicrosoftTestingPlatformEntryPoint.cs
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest5.4\obj\Debug\net8.0\SelfRegisteredExtensions.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleAppTest5.4\bin\Debug\net8.0\de\MSTestAdapter.PlatformServices.resources.dll

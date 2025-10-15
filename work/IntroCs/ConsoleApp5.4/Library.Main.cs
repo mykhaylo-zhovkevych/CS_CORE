@@ -39,20 +39,23 @@ namespace ConsoleApp5._4
             PolicyProvider = policyProvider;
         }
 
-        public Result BorrowItem(User user, string searchedItem)
+        
+
+        // TODO: Exception preferred over early return 
+        public Result BorrowItem(User user, Item item)
         {
             if (user == null) return Result.Fail("Incorrect User");
 
             // But Null than it can be neglect, because it is expected
-            if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item name is missing");
+            //if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item name is missing");
 
             // Double cheking: overcoded? NO because, e.x: when no similar data in databank found than exception, because unexpected
-            var item = FindItemByName(searchedItem);
+            // var item = FindItemByName(searchedItem);
 
             // Expected
             if (!CheckBorrowPossible(item))
             {
-                return Result.Fail($"{searchedItem} is currently not available for borrowing");
+                return Result.Fail($"{item.Name} is currently not available for borrowing");
             }
 
             // Unexpected, catches a exception
@@ -66,7 +69,7 @@ namespace ConsoleApp5._4
         }
 
         // Possible other way of implementing, as method that receives only Borrowing object
-        // The Borrowing will be updated
+        // better naming, like i dont return the titel but the whole item
         public Result ReturnItem(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("Incorrect User");

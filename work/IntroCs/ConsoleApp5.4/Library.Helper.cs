@@ -39,8 +39,13 @@ namespace ConsoleApp5._4
 
         private Item FindItemByName(string name)
         {
+            // No Id check
             var searchedItem = GetAllItemsFromShelves()
-                .FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(item => 
+                    item.Name.Equals(name, StringComparison.OrdinalIgnoreCase) 
+                    
+                    
+                    );
 
             if (searchedItem == null)
             {

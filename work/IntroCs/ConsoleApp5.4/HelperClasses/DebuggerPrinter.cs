@@ -17,7 +17,6 @@ namespace ConsoleApp5._4.HelperClasses
             sb.AppendLine($"{result.Message}");
 
             return sb.ToString();
-
         }
 
         public static string PrintOutput(Result result)

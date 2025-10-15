@@ -45,7 +45,14 @@ namespace ConsoleApp5._4
             {
                 Console.WriteLine($"Notification: Item '{e.Item.Name}' is now available for {e.ReservedUser?.Name}");
             };
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(teacher, "TestNameBook")));
+
+            // IS not good because of the casting, can cause possible runtime error
+            /*
+             * var results1 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Book));
+             * Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(teacher, (Item)results1)));
+             */
+
+
             //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
 
             Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(teacher, "TestNameBook")));
@@ -64,7 +71,7 @@ namespace ConsoleApp5._4
             //Console.WriteLine(library.ReturnItem(teacher, "TestNameBook"));
 
 
-            var results1 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Book));
+            
             var results = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Item));
 
             var results2 = library.QueryItems(isReserved: true);

@@ -6,26 +6,24 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._4Remastered.Data
 {
-    // tiny factory (switch or delegate) 
-    // For creating specifiy user based on enum 
-
-    // or create 
 
     public class Policy
     {
-
         public Guid Id { get; init; }
-        public string? PolicyName { get; init }
+        public string? PolicyName { get; init; }
 
-        // I can change these properties if i will needed
-        public Item Item { get; init }
-        public User User { get; init }
+        public Item Item { get; init; }
+        public User User { get; init; }
 
-        // TODO: think way of resetting the properties
         public int Extensions { get; private set; }
         public decimal LoanFees { get; private set; }
         public int LoanPeriod { get; private set; }
 
+
+        public Policy()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public Policy(string policyName, Item item, User user, int extensions, decimal loanFees, int loanPeriod)
         {
@@ -49,7 +47,5 @@ namespace ConsoleApp5._4Remastered.Data
             LoanFees = loanFees;
             LoanPeriod = loanPeriod;
         }
-
-
     }
 }

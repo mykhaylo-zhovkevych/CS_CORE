@@ -1,4 +1,5 @@
 ﻿using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,13 @@ namespace ConsoleApp5._4Remastered
 
         public string Name { get; set; }
         public string Address { get; set; }
-        // Nullable event 
-        public event EventHandler<ItemEventArgs>? InformReserver;
 
-        // It has be one Method that can decide which part me be executed
+        public event EventHandler<ItemEventArgs>? InformReserver;
         public delegate string PerformPrintOutput(User user);
 
 
-        public Library(string name, string address, IBorrowPolicyProvider policyProvider)
+
+        public Library(string name, string address)
         {
             Name = name;
             Address = address;
@@ -29,48 +29,29 @@ namespace ConsoleApp5._4Remastered
             Borrowings = new List<Borrowing>();
         }
 
-
-
-        // TODO: Exception preferred over early return 
         public bool BorrowItem(User user, Item item)
         {
-            if (user == null) return Result.Fail("Incorrect User");
+            //TODO: Add possible check
 
-            // But Null than it can be neglect, because it is expected
-            //if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item name is missing");
+            if (!CheckBorrowPossible(item)) return false;
 
-            // Double cheking: overcoded? NO because, e.x: when no similar data in databank found than exception, because unexpected
-            // var item = FindItemByName(searchedItem);
+            Policy policy = PolicyService.GetPolicy(user, item);
 
-            // Expected
-            if (!CheckBorrowPossible(item))
-            {
-                return Result.Fail($"{item.Name} is currently not available for borrowing");
-            }
 
-            // Unexpected, catches a exception
-            BorrowPolicy policy = PolicyProvider.GetPolicy(user, item);
-
-            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod));
+            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod), policy);
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
-            return Result<Borrowing>.Ok(borrowing, "Saved");
+            return true;
         }
 
-        // Possible other way of implementing, as method that receives only Borrowing object
-        // The Borrowing will be updated
-
-        // better naming, like i dont return the titile but thwe whole item
         public bool ReturnItem(User user, Item item)
         {
-            if (user == null) return Result.Fail("Incorrect User");
-            if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item Name is missing");
 
             // Unexpected, e.x. no data was found in databank
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
-                b.Item.Name.Equals(searchedItem, StringComparison.OrdinalIgnoreCase) &&
+                b.Item.Id == item.Id &&
                 !b.IsReturned);
 
             if (borrowing == null)
@@ -85,59 +66,40 @@ namespace ConsoleApp5._4Remastered
             {
                 OnInformReserver(new ItemEventArgs($"The {borrowing.Item.Name} is now available", borrowing.Item, borrowing.User));
             }
-            // After successful return the old object Borrowing can be overwriten and saved in as non active
-            return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
+
+            return true;
         }
 
         public bool ReserveItem(User user, Item item)
         {
-   
-
-            if (user == null) return Result.Fail("No User");
-
-            var item = FindItemByName(searchedItem);
-            if (!CheckReservePossible(item))
-            {
-                return Result.Fail($"{searchedItem} is currently not available for reserving");
-            }
+            if (!CheckReservePossible(item)) return false;
 
             item.ReservedBy = user;
 
-            return Result.Notify("Item was successfully reserved");
+            return true;
         }
 
 
         public bool CancelReservation(User user, Item item)
         {
-            if (user == null) return Result.Fail("No User");
-            // Unexpected
-            var reservetedItem = FindItemByName(searchedItem);
 
-            // Expected: A double reinforcment of the ReserveItem method
-            if (reservetedItem.ReservedBy != user)
-                return Result.Fail("You cannot cancel another user's reservation");
+            if (item.ReservedBy != user) return false;
 
-            // Automaticaly makes IsReserved false
-            reservetedItem.ReservedBy = null;
+            item.ReservedBy = null;
 
-            return Result.Notify("Item was successfully cancelled");
+            return true;
         }
 
-        public Result ExtendBorrowingPeriod(User user, string searchedItem)
+        public bool ExtendBorrowingPeriod(User user, Item item)
         {
-            if (user == null) return Result.Fail("Incorrect User");
-            var reservedItem = FindItemByName(searchedItem);
-
-            //Check if it is not reserved and borrowed simultaneously
-            // if (!reserveditem.isreserved && reserveditem.isborrowed)
 
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
-                b.Item.Name == reservedItem.Name);
+                b.Item.Name == item.Name);
 
             if (borrowing == null)
             {
-                throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
+                throw new ArgumentException($"{user.Name} dont have any: {item.Name}");
             }
 
             return borrowing.Extend();
@@ -196,7 +158,7 @@ namespace ConsoleApp5._4Remastered
             string? nameContains = null,
             bool? isBorrowed = null,
             bool? isReserved = null,
-            Type? itemType = null,
+            Enum.ItemType? itemType = null,
             Func<Item, bool>? customPredicate = null
         )
         {
@@ -220,7 +182,7 @@ namespace ConsoleApp5._4Remastered
 
             if (itemType != null)
             {
-                items = items.Where(i => itemType.IsAssignableFrom(i.GetType()));
+                items = items.Where(i => itemType.Equals(i.ItemType));
             }
 
             if (customPredicate != null)
@@ -230,8 +192,4 @@ namespace ConsoleApp5._4Remastered
             return items.ToList();
         }
     }
-
-
-
-
 }

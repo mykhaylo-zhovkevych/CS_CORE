@@ -26,10 +26,10 @@ namespace ConsoleApp5._4
         // Nullable event 
         public event EventHandler<ItemEventArgs>? InformReserver;
 
-        // It has be one Method that can decide which part me be executed
         public delegate string PerformPrintOutput(User user);
 
-
+        // Important after the code is ready: look into the code again and look for possible simplifications
+        // Such es removing the nessaserly part, and try to make code less dependent on that nessaserly part
         public Library(string name, string address, IBorrowPolicyProvider policyProvider)
         {
             Name = name;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp5._4Remastered.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,13 @@ namespace ConsoleApp5._4Remastered.Data
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public UserType UserType { get; set; }
 
-
-        public User(string name)
+        public User(string name, UserType type)
         {
             Id = Guid.NewGuid();
             Name = name;
+            UserType = type;
         }
-
     }
 }

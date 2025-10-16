@@ -14,15 +14,14 @@ namespace ConsoleApp5._4Remastered.Data
         public bool IsBorrowed { get; set; } = false;
         public User? ReservedBy { get; set; }
         public bool IsReserved => ReservedBy is not null;
-
-        public ItemType Type { get; init; }
-
+        public ItemType ItemType { get; set; }
 
 
-        public Item(string name)
+        public Item(string name, ItemType itemType)
         {
             Id = Guid.NewGuid();
             Name = name;
+            ItemType = itemType;
         }
 
         public override string ToString()

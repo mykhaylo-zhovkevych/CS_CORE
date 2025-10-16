@@ -1,3 +1,4 @@
+using ConsoleApp5._4Remastered.Data;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,16 +8,37 @@ namespace ConsoleApp5._4Remastered
 {
     public class PolicyService
     {
+        
+        /*
+         The idea that i have a one user type 
+         and it it check if that type is allwod or in policy existing like 
+         one policy for one type of user and not secific each one
 
-        public Dictionary<(User, Item), Policy> Policies = new Dictionary<(User, Item), Policy>();
+         like i can have a toused of user with same type and must 
+         
+         
+         
+         */
+
+
+
+        public static Dictionary<(User user, Item item), Policy> Policies { get; private set; } = new();
 
         // Can cause side effects
-        public PolicyService()
+        static PolicyService()
         {
-            Policies[(User.Student, Item2.Book)] new Policy("Student Book Policy", User.Student, Item2.Book, 2, 0, 21);
+            //var defaultUser = new User ("Default Student", Enum.UserType.Student);
+            //var defaultItem = new Item ("Default Book", Enum.ItemType.BoardGame);
+
+            //var defaultPolicy = new Policy { PolicyName = "Student Book Policy", User = defaultUser, Item = defaultItem };
+
+            //defaultPolicy.SetValues(extensions: 2, loanFees: 0.5m, loanPeriod: 14);
+
+            //AddPolicy(defaultPolicy);
+
         }
 
-        public bool AddPolicy(Policy policy)
+        public static bool AddPolicy(Policy policy)
         {
             var key = (policy.User, policy.Item);
             if (Policies.ContainsKey(key)) return false;
@@ -24,18 +46,25 @@ namespace ConsoleApp5._4Remastered
             return true;
         }
 
-        public bool UpdatePolicyValues(UserType userType, ItemType itemType,
+        public static bool UpdatePolicyValues(User user, Item item,
                                           int extensions, decimal loanFees, int loanPeriodDays)
         {
-            var key = (userType, itemType);
+            var key = (user, item);
             if (!Policies.ContainsKey(key)) return false;
-            policy.SetValues(extensions, loanFees, loanPeriodDays);
+            Policies[key].SetValues(extensions, loanFees, loanPeriodDays);
             return true;
         }
 
-        public bool Remove(UserType userType, ItemType itemType)
+        public static bool Remove(User user, Item item)
         {
-            return _policies.Remove((userType, itemType));
+            return Policies.Remove((user, item));
+        }
+
+        public static Policy GetPolicy(User user, Item item)
+        {
+            var key = (user, item);
+
+            return Policies[key];
         }
     }
 }

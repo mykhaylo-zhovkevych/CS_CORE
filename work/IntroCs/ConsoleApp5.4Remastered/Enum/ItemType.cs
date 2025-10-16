@@ -13,6 +13,6 @@ namespace ConsoleApp5._4Remastered.Enum
        BoardGame,
        Book,
        Magazine,
-       Videogame
+       VideoGame
     }
 }

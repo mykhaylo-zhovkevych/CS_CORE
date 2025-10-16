@@ -9,7 +9,6 @@ namespace ConsoleApp5._4.Exceptions
 {
     public class IsAlreadyReservedException : Exception
     {
-
         public IsAlreadyReservedException(User user, Item item) 
                 : base ($"Apology, but {item.Name} is allready reserved by {user.Name}")
         {

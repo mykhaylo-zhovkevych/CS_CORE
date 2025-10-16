@@ -20,15 +20,14 @@ namespace ConsoleApp5._4Remastered.HelperClasses
         public int RemainingExtensionCredits { get; private set; }
 
 
-        // Ensures valid start state
-        public Borrowing(User user, Item item, DateTime loanDate, DateTime dueDate, Policy? temp)
+        public Borrowing(User user, Item item, DateTime loanDate, DateTime dueDate, int allowedCredits)
         {
             User = user;
             Item = item;
             LoanDate = loanDate;
             DueDate = dueDate;
 
-            RemainingExtensionCredits = temp.Extensions;
+            RemainingExtensionCredits = allowedCredits;
         }
 
         public bool Extend(int months = 1)

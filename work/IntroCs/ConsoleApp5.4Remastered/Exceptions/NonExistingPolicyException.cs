@@ -9,7 +9,6 @@ namespace ConsoleApp5._4.Exceptions
 {
     public class NonExistingPolicyException : Exception
     {
-
         public NonExistingPolicyException() : this("No Policy was found.")
         {
         }

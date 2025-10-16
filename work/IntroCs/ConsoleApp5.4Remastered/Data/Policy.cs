@@ -30,14 +30,15 @@ namespace ConsoleApp5._4Remastered.Data
             Id = Guid.NewGuid();
             PolicyName = policyName;
             Item = item;
-            User= user;
+            User = user;
             Extensions = extensions;
             LoanFees = loanFees;
             LoanPeriod = loanPeriod;
 
         }
 
-        internal void SetValues(int extensions, decimal loanFees, int loanPeriod)
+        // For testing reason: changed to public, must be internal per default 
+        public void SetValues(int extensions, decimal loanFees, int loanPeriod)
         {
             if (extensions < 0) throw new ArgumentOutOfRangeException(nameof(extensions));
             if (loanFees < 0) throw new ArgumentOutOfRangeException(nameof(loanFees));

@@ -1,4 +1,5 @@
 ﻿using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Exceptions;
 using ConsoleApp5._4Remastered.HelperClasses;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ namespace ConsoleApp5._4Remastered
         public delegate string PerformPrintOutput(User user);
 
 
-
         public Library(string name, string address)
         {
             Name = name;
@@ -31,14 +31,43 @@ namespace ConsoleApp5._4Remastered
 
         public bool BorrowItem(User user, Item item)
         {
-            //TODO: Add possible check
+            try
+            {
+                if (user == null) throw new ArgumentNullException(nameof(user));
+                if (item == null) throw new ArgumentNullException(nameof(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
 
-            if (!CheckBorrowPossible(item)) return false;
+            try
+            {
+                if (!CheckBorrowPossible(item)) throw new IsAlreadyBorrowedException(user, item);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
 
-            Policy policy = PolicyService.GetPolicy(user, item);
+            Policy policy;
+            try
+            {
+                policy = PolicyService.GetPolicy(user, item);
+            } 
+            // The specific exception will be caught first 
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                return false;
+            }
+            
 
-
-            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod), policy);
+            var allowedCredits = policy.Extensions;
+            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod), allowedCredits);
+            
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
@@ -47,18 +76,34 @@ namespace ConsoleApp5._4Remastered
 
         public bool ReturnItem(User user, Item item)
         {
+            try
+            {
+                if (user == null) throw new ArgumentNullException(nameof(user));
+                if (item == null) throw new ArgumentNullException(nameof(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
 
-            // Unexpected, e.x. no data was found in databank
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Id == item.Id &&
                 !b.IsReturned);
 
-            if (borrowing == null)
+            try
             {
-                throw new ArgumentException($"No entries was found with this user {user.Name}");
+                if (borrowing == null)
+                {
+                    throw new ArgumentException($"No entries was found with this user {user.Name}");
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            
             borrowing.ReturnDate = DateTime.Now;
             borrowing.Item.IsBorrowed = false;
 
@@ -72,6 +117,17 @@ namespace ConsoleApp5._4Remastered
 
         public bool ReserveItem(User user, Item item)
         {
+            try
+            {
+                if (user == null) throw new ArgumentNullException(nameof(user));
+                if (item == null) throw new ArgumentNullException(nameof(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+
             if (!CheckReservePossible(item)) return false;
 
             item.ReservedBy = user;
@@ -82,8 +138,18 @@ namespace ConsoleApp5._4Remastered
 
         public bool CancelReservation(User user, Item item)
         {
+            try
+            {
+                if (user == null) throw new ArgumentNullException(nameof(user));
+                if (item == null) throw new ArgumentNullException(nameof(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
 
-            if (item.ReservedBy != user) return false;
+            if (item.ReservedBy != user) return false; 
 
             item.ReservedBy = null;
 
@@ -92,14 +158,31 @@ namespace ConsoleApp5._4Remastered
 
         public bool ExtendBorrowingPeriod(User user, Item item)
         {
+            try
+            {
+                if (user == null) throw new ArgumentNullException(nameof(user));
+                if (item == null) throw new ArgumentNullException(nameof(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
 
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Name == item.Name);
 
-            if (borrowing == null)
+            try
             {
-                throw new ArgumentException($"{user.Name} dont have any: {item.Name}");
+                if (borrowing == null)
+                {
+                    throw new ArgumentException($"{user.Name} dont have any: {item.Name}");
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                return false;
             }
 
             return borrowing.Extend();

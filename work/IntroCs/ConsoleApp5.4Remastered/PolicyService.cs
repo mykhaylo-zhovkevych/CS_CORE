@@ -1,4 +1,5 @@
 using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Enum;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,39 +9,31 @@ namespace ConsoleApp5._4Remastered
 {
     public class PolicyService
     {
-        
-        /*
-         The idea that i have a one user type 
-         and it it check if that type is allwod or in policy existing like 
-         one policy for one type of user and not secific each one
+        public static Dictionary<(Enum.UserType UserType, Enum.ItemType ItemType), Policy> Policies { get; private set; } = new();
 
-         like i can have a toused of user with same type and must 
-         
-         
-         
-         */
-
-
-
-        public static Dictionary<(User user, Item item), Policy> Policies { get; private set; } = new();
-
-        // Can cause side effects
         static PolicyService()
         {
-            //var defaultUser = new User ("Default Student", Enum.UserType.Student);
-            //var defaultItem = new Item ("Default Book", Enum.ItemType.BoardGame);
+            var defaultStudent = new User("Default Student", Enum.UserType.Student);
+            var defaultTeacher = new User("Default Teacher", Enum.UserType.Teacher);
 
-            //var defaultPolicy = new Policy { PolicyName = "Student Book Policy", User = defaultUser, Item = defaultItem };
+            
+            var defaultBook = new Item("Default Book", Enum.ItemType.Book);
+            var defaultBoardGame = new Item("Default BoardGame", Enum.ItemType.BoardGame);
 
-            //defaultPolicy.SetValues(extensions: 2, loanFees: 0.5m, loanPeriod: 14);
+            var Student_Book_Policy = new Policy { PolicyName = "Student_Book_Policy", User = defaultStudent, Item = defaultBook };
+            var Student_BoardGame_Policy = new Policy { PolicyName = "Student_BoardGame_Policy", User = defaultStudent, Item = defaultBoardGame };
 
-            //AddPolicy(defaultPolicy);
+            Student_Book_Policy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
+            Student_BoardGame_Policy.SetValues(extensions: 1, loanFees: 100.0m, loanPeriod: 21);
+
+            AddPolicy(Student_Book_Policy);
+            AddPolicy(Student_BoardGame_Policy);
 
         }
 
         public static bool AddPolicy(Policy policy)
         {
-            var key = (policy.User, policy.Item);
+            var key = (policy.User.UserType, policy.Item.ItemType);
             if (Policies.ContainsKey(key)) return false;
             Policies[key] = policy;
             return true;
@@ -49,21 +42,21 @@ namespace ConsoleApp5._4Remastered
         public static bool UpdatePolicyValues(User user, Item item,
                                           int extensions, decimal loanFees, int loanPeriodDays)
         {
-            var key = (user, item);
+            var key = (user.UserType, item.ItemType);
             if (!Policies.ContainsKey(key)) return false;
             Policies[key].SetValues(extensions, loanFees, loanPeriodDays);
             return true;
         }
 
-        public static bool Remove(User user, Item item)
+        public static bool Remove(Policy policy)
         {
-            return Policies.Remove((user, item));
+            var key = (policy.User.UserType, policy.Item.ItemType);
+            return Policies.Remove(key);
         }
-
+        // Is it okay to have a exceptions defined from the generic methods by themselves?
         public static Policy GetPolicy(User user, Item item)
         {
-            var key = (user, item);
-
+            var key = (user.UserType, item.ItemType);
             return Policies[key];
         }
     }

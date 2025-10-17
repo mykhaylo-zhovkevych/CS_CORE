@@ -9,8 +9,8 @@ namespace ConsoleApp5._4Remastered.Exceptions
 {
     public class IsAlreadyBorrowedException : Exception
     {
-        public IsAlreadyBorrowedException(User user, Item item)
-                : base ($"Apology, but {item.Name} is allready borrowed by {user.Name}")
+        public IsAlreadyBorrowedException(Item item)
+                : base ($"Apology, but {item.Name} is non retrievable")
         {
         }
     }

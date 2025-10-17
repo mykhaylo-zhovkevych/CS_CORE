@@ -1,4 +1,5 @@
 ﻿using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,15 +33,21 @@ namespace ConsoleApp5._4Remastered.HelperClasses
 
         public bool Extend(int months = 1)
         {
-            if (months <= 0) return false;
+            if (months <= 0)
+            {
+                return false;
+            }
 
             if (Item.IsReserved)
             {
-                throw new _4.Exceptions.IsAlreadyReservedException(User, Item);
+                throw new IsAlreadyReservedException(Item);
             }
 
-            if (RemainingExtensionCredits <= 0) return false;
-            
+            if (RemainingExtensionCredits <= 0)
+            {
+                return false;
+            }
+
             DueDate = DueDate.AddMonths(months);
             RemainingExtensionCredits--;
 

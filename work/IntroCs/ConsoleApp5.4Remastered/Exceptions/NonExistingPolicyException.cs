@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp5._4Remastered.Data;
 
-namespace ConsoleApp5._4.Exceptions
+namespace ConsoleApp5._4Remastered.Exceptions
 {
     public class NonExistingPolicyException : Exception
     {

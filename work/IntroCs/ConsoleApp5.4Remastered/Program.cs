@@ -1,4 +1,6 @@
 ﻿using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Enum;
+using ConsoleApp5._4Remastered.Exceptions;
 
 namespace ConsoleApp5._4Remastered
 {
@@ -10,13 +12,13 @@ namespace ConsoleApp5._4Remastered
             var library = new Library("Central Library", "123 Main St.");
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
-            
-            var studnet = new User("testname01", Enum.UserType.Student);
-            var teacher = new User("testname02", Enum.UserType.Teacher);
-            var teacher2 = new User("testname03", Enum.UserType.Teacher);
 
-            var book = new Item("TestNameBook", Enum.ItemType.Book);
-            var boardGame = new Item("TestNameBoardGame", Enum.ItemType.BoardGame);
+            var studnet = new User("testname01", UserType.Student);
+            var teacher = new User("testname02", UserType.Teacher);
+            var teacher2 = new User("testname03", UserType.Teacher);
+
+            var book = new Item("TestNameBook", ItemType.Book);
+            var boardGame = new Item("TestNameBoardGame", ItemType.BoardGame);
 
 
             shelf1.AddItemToShelf(book);
@@ -28,8 +30,8 @@ namespace ConsoleApp5._4Remastered
             var defaultPolicy = new Policy
             {
                 PolicyName = "Default teacher book policy",
-                User = teacher2,
-                Item = book,
+                UserType = UserType.Teacher,
+                ItemType = ItemType.Book,
             };
 
             defaultPolicy.SetValues(extensions: 2, loanFees: 0.5m, loanPeriod: 14);
@@ -42,17 +44,74 @@ namespace ConsoleApp5._4Remastered
             };
 
             //PolicyService.Policies.Clear();
-            Console.WriteLine(library.BorrowItem(studnet, book));
-            
-            Console.WriteLine(library.ReserveItem(teacher2, book));
+
+            try 
+            { 
+                Console.WriteLine(library.BorrowItem(teacher, book)); 
+            }
+            catch (IsAlreadyBorrowedException ex)
+            {
+                Console.WriteLine($"Cannot borrow item: {ex.Message}");
+            }
+            catch (NonExistingPolicyException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+
+            try 
+            { 
+                Console.WriteLine(library.BorrowItem(teacher2, book)); 
+            }
+            catch (IsAlreadyBorrowedException ex)
+            {
+                Console.WriteLine($"Cannot borrow item: {ex.Message}");
+            }
+            catch (NonExistingPolicyException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
 
 
-            IEnumerable<Item> result01 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: true, itemType: Enum.ItemType.Book);
-            var firstItem = result01.FirstOrDefault();
+            try
+            {
+                Console.WriteLine(library.ReturnItem(teacher, book));
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+
+            //try
+            //{
+            //    Console.WriteLine(library.CancelReservation(teacher, book));
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine($"{ex.Message}");
+            //}
 
 
-            //Console.WriteLine(result01.First());
-            Console.WriteLine(library.ReserveItem(teacher2, firstItem));
+            //try
+            //{
+            //    Console.WriteLine(library.ExtendBorrowingPeriod(teacher, book));
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine($"Unexpected error: {ex.Message}");
+            //    // The program will re-throw the exception to be handled by the caller 
+            //    throw;
+            //}
+
+
+
+
+
+            //IEnumerable<Item> result01 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: true, itemType: Enum.ItemType.Book);
+            //var firstItem = result01.FirstOrDefault();
+
+
+            ////Console.WriteLine(result01.First());
+            //Console.WriteLine(library.ReserveItem(teacher2, firstItem));
 
         }
     }

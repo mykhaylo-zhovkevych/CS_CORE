@@ -10,6 +10,7 @@ namespace ConsoleApp5._4Remastered.Enum
     {
         ExternalUser,
         Student,
-        Teacher
+        Teacher,
+        Officer
     }
 }

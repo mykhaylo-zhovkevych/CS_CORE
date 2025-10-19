@@ -13,7 +13,6 @@ namespace ConsoleApp5._4Remastered
     {
         public List<Shelf> Shelves { get; private set; }
         public List<Borrowing> Borrowings { get; private set; }
-
         public string Name { get; set; }
         public string Address { get; set; }
 
@@ -29,40 +28,16 @@ namespace ConsoleApp5._4Remastered
             Borrowings = new List<Borrowing>();
         }
 
-        public bool BorrowItem(User user, Item item)
+
+        public (bool, string) BorrowItem(User user, Item item)
         {
-            try
+            // If positive case scenario, than no need let user to know about it, else throw exception
+            if (!CheckBorrowPossible(item))
             {
-                if (user == null) throw new ArgumentNullException(nameof(user));
-                if (item == null) throw new ArgumentNullException(nameof(item));
+                throw new IsAlreadyBorrowedException(item);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-
-            try
-            {
-                if (!CheckBorrowPossible(item)) throw new IsAlreadyBorrowedException(user, item);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-
-            Policy policy;
-            try
-            {
-                policy = PolicyService.GetPolicy(user, item);
-            } 
-            // The specific exception will be caught first 
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
-                return false;
-            }
+         
+            var policy = PolicyService.GetPolicy(user.UserType, item.ItemType);
             
 
             var allowedCredits = policy.Extensions;
@@ -71,39 +46,22 @@ namespace ConsoleApp5._4Remastered
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
-            return true;
+            return (true, $"{item.Name}, was secussfully borrowed, with {user.Name}");
         }
 
-        public bool ReturnItem(User user, Item item)
+        public (bool, string) ReturnItem(User user, Item item)
         {
-            try
-            {
-                if (user == null) throw new ArgumentNullException(nameof(user));
-                if (item == null) throw new ArgumentNullException(nameof(item));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Id == item.Id &&
                 !b.IsReturned);
 
-            try
+
+            if (borrowing == null)
             {
-                if (borrowing == null)
-                {
-                    throw new ArgumentException($"No entries was found with this user {user.Name}");
-                }
+                throw new ArgumentException($"No entries was found for this user {user.Name}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            
+
             borrowing.ReturnDate = DateTime.Now;
             borrowing.Item.IsBorrowed = false;
 
@@ -112,80 +70,46 @@ namespace ConsoleApp5._4Remastered
                 OnInformReserver(new ItemEventArgs($"The {borrowing.Item.Name} is now available", borrowing.Item, borrowing.User));
             }
 
-            return true;
+            return (true, $"{item.Name}, was secussfully returned");
         }
 
-        public bool ReserveItem(User user, Item item)
+        public (bool, string) ReserveItem(User user, Item item)
         {
-            try
-            {
-                if (user == null) throw new ArgumentNullException(nameof(user));
-                if (item == null) throw new ArgumentNullException(nameof(item));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
 
-            if (!CheckReservePossible(item)) return false;
-
+            if (!CheckReservePossible(item))
+            {
+                throw new IsAlreadyReservedException(item);
+            }
+            
             item.ReservedBy = user;
-
-            return true;
+            return (true, $"{item.Name} was secussfully reserved, with {user.Name}");
         }
 
 
-        public bool CancelReservation(User user, Item item)
+        public (bool, string) CancelReservation(User user, Item item)
         {
-            try
+            if (item.ReservedBy != user)
             {
-                if (user == null) throw new ArgumentNullException(nameof(user));
-                if (item == null) throw new ArgumentNullException(nameof(item));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-
-            if (item.ReservedBy != user) return false; 
+                throw new ArgumentException($"{user.Name} has no reservation for {item.Name}");
+            }; 
 
             item.ReservedBy = null;
-
-            return true;
+            return (true, $"reservation for {item.Name} was successfully canceled");
         }
 
-        public bool ExtendBorrowingPeriod(User user, Item item)
+        public (bool, string) ExtendBorrowingPeriod(User user, Item item)
         {
-            try
-            {
-                if (user == null) throw new ArgumentNullException(nameof(user));
-                if (item == null) throw new ArgumentNullException(nameof(item));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return false;
-            }
-
+           
             var borrowing = Borrowings.FirstOrDefault(b =>
                 b.User.Id == user.Id &&
                 b.Item.Name == item.Name);
 
-            try
+            if (borrowing == null)
             {
-                if (borrowing == null)
-                {
-                    throw new ArgumentException($"{user.Name} dont have any: {item.Name}");
-                }
-            } catch (Exception ex)
-            {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
-                return false;
+                throw new ArgumentException($"{user.Name} dont have any: {item.Name}");
             }
 
-            return borrowing.Extend();
+            return (borrowing.Extend(), $"{user.Name} has successfully extended the {item.Name}");
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp5._4Remastered.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace ConsoleApp5._4Remastered.Data
         public Guid Id { get; init; }
         public string? PolicyName { get; init; }
 
-        public Item Item { get; init; }
-        public User User { get; init; }
+        public ItemType ItemType { get; init; }
+        public UserType UserType { get; init; }
 
         public int Extensions { get; private set; }
         public decimal LoanFees { get; private set; }
@@ -25,12 +26,12 @@ namespace ConsoleApp5._4Remastered.Data
             Id = Guid.NewGuid();
         }
 
-        public Policy(string policyName, Item item, User user, int extensions, decimal loanFees, int loanPeriod)
+        public Policy(string policyName, ItemType item, UserType user, int extensions, decimal loanFees, int loanPeriod)
         {
             Id = Guid.NewGuid();
             PolicyName = policyName;
-            Item = item;
-            User = user;
+            ItemType = item;
+            UserType = user;
             Extensions = extensions;
             LoanFees = loanFees;
             LoanPeriod = loanPeriod;

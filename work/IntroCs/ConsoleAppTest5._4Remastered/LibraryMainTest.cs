@@ -2,102 +2,99 @@
 using ConsoleApp5._4Remastered.Data;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.Exceptions;
+using ConsoleApp5._4Remastered.HelperClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 
 
 namespace ConsoleAppTest5._4Remastered
 {
 
     [TestClass]
+    [DoNotParallelize]
     public class LibraryTest
     {
-        private Library _library;
-
+        private  Library _library;
         private Policy _policy;
-        private User _teacher;
-        private User _student;
-        private Item _book;
-        private Item _videoGame;
 
+        private  User _teacher;
+        private  User _student;
+        private  Item _book;
+        private  Item _videoGame;
 
         [TestInitialize]
-        public void Setup()
+        public void Setup( )
         {
 
             _library = new Library("Central Library", "123 Main St.");
 
             _student = new User("TestName", UserType.Student);
             _teacher = new User("TestName02", UserType.Teacher);
+
             _book = new Item("CS Book", ItemType.Book);
             _videoGame = new Item("TestVideoGameOne", ItemType.VideoGame);
 
-            _policy = new Policy { PolicyName = "Student_BoardGame_Policy", User = _student, Item = _videoGame };
-            _policy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
-            PolicyService.AddPolicy(_policy);
 
+            var teacherPolicy = new Policy { PolicyName = "Teacher_VideoGame_Policy", UserType = UserType.Teacher, ItemType = ItemType.VideoGame };
+            teacherPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
+            PolicyService.AddPolicy(teacherPolicy);
 
-            _policy = new Policy { PolicyName = "Student_BoardGame_Policy", User = _teacher, Item = _videoGame };
-
-            _policy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
-
-            PolicyService.AddPolicy(_policy);
-
+            var studentPolicy = new Policy { PolicyName = "Student_VideoGame_Policy", UserType = UserType.Student, ItemType = ItemType.VideoGame };
+            studentPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
+            PolicyService.AddPolicy(studentPolicy);
         }
+
+        [TestCleanup]
+        public void ClassCleanup()
+        {
+            PolicyService.ClearPolicies();
+        }
+
 
         [TestMethod]
         public void BorrowItem_When_DataIsCorrect()
         {
-            // Act 
-            var result = _library.BorrowItem(_student, _book);
+
+            // Act
+            var result = _library.BorrowItem(_student, _videoGame);
 
             // Assert
-            Assert.IsTrue(result);
-            Assert.IsTrue(_book.IsBorrowed);
+            Assert.IsTrue(result.Item1);
+            Assert.IsTrue(_videoGame.IsBorrowed);
             Assert.AreEqual(1, _library.Borrowings.Count);
+        }
+
+  
+        [TestMethod]
+        public void BorrowItem_When_NoPolicyFound()
+        {
+            // Assert & Act
+            Assert.ThrowsException<NonExistingPolicyException>(() => _library.BorrowItem(_student, _book));
         }
 
         [TestMethod]
         public void BorrowItem_When_DataIsWrong()
         {
-            // Arrange 
-            var result = _library.BorrowItem(null, _book);
-
-            // Assert
-            Assert.IsFalse(result);
-            Assert.IsFalse(_book.IsBorrowed);
-
-            // Act & Assert
-            _book.IsBorrowed = true;
-            Assert.ThrowsException<IsAlreadyBorrowedException>(() => _library.BorrowItem(_student, _book));
-        }
-
-        [TestMethod]
-        public void BorrowItem_When_NoPolicyFound()
-        {
             // Arrange
-            PolicyService.Policies.Clear();
+            _book.IsBorrowed = true;
 
-            // Act
-            var result = _library.BorrowItem(_student, _book);
+            // Assert & Act
+            Assert.ThrowsException<IsAlreadyBorrowedException>(() => _library.BorrowItem(_student, _book));
 
-            // Assert
-            Assert.IsFalse(result);
-            Assert.IsFalse(_book.IsBorrowed);
-            Assert.AreEqual(0, _library.Borrowings.Count);
         }
 
+        
+
         [TestMethod]
-        public void TestReturnItem_When_DataExists()
+        public void TestReturnItem_When_DataIsCorrect()
         {
             // Arrange 
-            _library.BorrowItem(_student, _book);
+            _library.BorrowItem(_student, _videoGame);
 
             // Act
-            var result = _library.ReturnItem(_student, _book);  
+            var result = _library.ReturnItem(_student, _videoGame);  
 
             // Assert
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.Item1);
             Assert.IsFalse(_book.IsBorrowed);
             var borrowing = _library.Borrowings.First();
             Assert.IsNotNull(borrowing.ReturnDate);
@@ -108,21 +105,16 @@ namespace ConsoleAppTest5._4Remastered
         public void TestReturnItem_When_DataNotFound()
         {
             // Arramge
-            _library.BorrowItem(_student, _book);
-            var anotherBook = new Item("Another Book", ItemType.Book);
+            _library.BorrowItem(_student, _videoGame);
+            var anotherBook = new Item("Another VideoGame", ItemType.VideoGame);
 
-            // Act 
-            var result = _library.ReturnItem(_student, anotherBook);
-
-            // Assert
-            Assert.IsFalse(result);
-            Assert.IsTrue(_book.IsBorrowed);
-            Assert.AreSame<Item>(_book, _library.Borrowings.First().Item);
+            // Assert & Act 
+            Assert.ThrowsException<System.ArgumentException>(() => _library.ReturnItem(_student, anotherBook));
         }
 
 
         [TestMethod]
-        public void ReserveItem_When_DataIsCorrect()
+        public void TestReserveItem_When_DataIsCorrect()
         {
             // Act
             _library.BorrowItem(_student, _videoGame);
@@ -133,50 +125,110 @@ namespace ConsoleAppTest5._4Remastered
             Assert.AreEqual(_videoGame.ReservedBy, _teacher);
         }
 
-
         [TestMethod]
-        public void ReserveItem_When_DataIsWrong()
-        {
-            // Arrange 
-            var result = _library.ReserveItem(null, _videoGame);
-
-            // Assert & Act
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void ReserveItem_When_ReservedBySomeoneElse()
+        public void TestReserveItem_When_DataIsWrong()
         {
             // Arrange
             _book.ReservedBy = _student;
 
-            // Act
-            var expected = _book.ReservedBy.Equals(_student);
-
-            _library.ReserveItem(_teacher, _book);
-
-            var result = _book.ReservedBy.Equals(_teacher);
-
-            // Assert
-            Assert.IsTrue(_book.IsReserved);
-            Assert.AreNotEqual(expected, result);
+            // Assert & Act
+            Assert.ThrowsException<IsAlreadyReservedException>(() => _library.ReserveItem(_student, _videoGame));
+            //Assert.ThrowsException<System.ArgumentException>(() => _library.ReserveItem(_teacher, _book));
         }
 
         [TestMethod]
-        public void TestCancelReservation_When_DataIsIncorrect()
+        public void TestCancelReservation_When_DataNotFound()
         {
+            // Arrange & Act 
+            Assert.ThrowsException<ArgumentException>(() => _library.CancelReservation(_student, _book));
+        }
 
+        [TestMethod]
+        public void TestCancelReservation_When_SomeOneElseReserved()
+        {
+            // Arrange
+            _videoGame.ReservedBy = _teacher;
+
+            // Assert & Act
+            Assert.ThrowsException<ArgumentException>(() => _library.CancelReservation(_student, _videoGame));
         }
 
 
         [TestMethod]
         public void TestCancleReservation_When_DataIsCorrect()
         {
+            // Arrange & Act
+            _videoGame.IsBorrowed = true;
 
+            var reservation = _library.ReserveItem(_teacher, _videoGame);
+            var result = _library.CancelReservation(_teacher, _videoGame);
+
+            // Assert
+            Assert.AreEqual(_book.ReservedBy is null, result.Item1);
         }
 
+        [TestMethod]
+        public void TestExtendBorrowing_When_DataNotFound()
+        {
+            // Arrange
+            _library.BorrowItem(_teacher, _videoGame);
 
+            // Assert & Act
+            Assert.ThrowsException<ArgumentException>(() => _library.ExtendBorrowingPeriod(_teacher, _book));
+        }
 
+        [TestMethod]
+        public void TestExtendBorrowing_When_DataIsCorrect()
+        {
+            // Arrange
+            _library.BorrowItem(_student, _videoGame);
+            // Act
+            var result = _library.ExtendBorrowingPeriod(_student, _videoGame);
+            // Assert
+            Assert.IsTrue(result.Item1);
+        }
 
+        //[TestMethod]
+        //public void QueryItems_With_DataExist()
+        //{
+        //    // Arrange
+        //    _videoGame.IsBorrowed = true;
+        //    _videoGame.ReservedBy = _teacher;
+
+        //    // 
+
+        //    // Act
+        //    var result = _library.QueryItems(
+        //        nameContains: _videoGame.Name,
+        //        isBorrowed: true,
+        //        isReserved: true,
+        //        customPredicate: i => i.ItemType == ItemType.VideoGame);
+
+        //    // Assert
+        //    Assert.IsTrue(result.Any());
+        //    Assert.AreEqual(1, result.Count());
+
+        //}
+
+        //[TestMethod]
+        //public void QueryItems_With_DataDontExist()
+        //{
+        //    // Arrange
+
+        //    _videoGame.IsBorrowed = false;
+        //    _videoGame.ReservedBy = _student;
+
+        //    // Act
+        //    var result = _library.QueryItems(
+        //        nameContains: _videoGame.Name,
+        //        isBorrowed: true,
+        //        isReserved: true,
+        //        customPredicate: i =>  i.ItemType == ItemType.Book);
+
+        //    // Assert
+        //    Assert.AreNotEqual(1, result.Count());
+        //    Assert.IsFalse(result.Any());
+
+        //}
     }
 }

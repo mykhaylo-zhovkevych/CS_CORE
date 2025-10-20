@@ -39,10 +39,19 @@ namespace ConsoleApp5._4Remastered
         }
 
 
+        //private List<Item> GetAllItemsFromShelves()
+        //{
+        //    var allItems = new List<Item>();
+        //    foreach (var shelf in Shelves)
+        //    {
+        //        allItems.AddRange(shelf.Items);
+        //    }
+
+        //    return allItems;
+        //}
+
         private List<Item> GetAllItemsFromShelves()
-        {
-            return Shelves.SelectMany(shelf => shelf.Items).ToList();
-        }
+            => Shelves.SelectMany(s => s.Items).ToList();
 
         public void AddShelf(Shelf shelf) => Shelves.Add(shelf);
 

@@ -12,7 +12,7 @@ namespace ConsoleApp5._4Remastered.Data
         public Guid Id { get; init; }
         public string Name { get; }
         public bool IsBorrowed { get; set; } = false;
-        public User? ReservedBy { get; set; }
+        public User? ReservedBy { get; internal set; }
         public bool IsReserved => ReservedBy is not null;
         public ItemType ItemType { get; set; }
 
@@ -29,5 +29,7 @@ namespace ConsoleApp5._4Remastered.Data
             return $"Item Id: {Id}, Item Name: {Name}, IsBorrowed: {IsBorrowed}" +
                 $", IsReserved: {IsReserved}, ReservedBy (Id): {ReservedBy}";
         }
+
+
     }
 }

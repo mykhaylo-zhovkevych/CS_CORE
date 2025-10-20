@@ -10,12 +10,11 @@ namespace ConsoleApp5._4Remastered
 {
     public class PolicyService
     {
-        public static Dictionary<(Enum.UserType UserType, Enum.ItemType ItemType), Policy> Policies { get; private set; } = new();
+        public static Dictionary<(UserType UserType, ItemType ItemType), Policy> Policies { get; private set; } = new();
 
-
-        public static bool AddPolicy(Policy policy)
+        public static bool AddPolicy(UserType userType, ItemType itemType, Policy policy)
         {
-            var key = (policy.UserType, policy.ItemType);
+            var key = (userType, itemType);
             if (Policies.ContainsKey(key))
             {
                 return false;
@@ -25,8 +24,8 @@ namespace ConsoleApp5._4Remastered
             return true;
         }
 
-        public static Policy UpdatePolicyValues(Enum.UserType userType, Enum.ItemType itemType,
-                                          int extensions, decimal loanFees, int loanPeriodDays)
+        public static Policy UpdatePolicyValues(UserType userType, ItemType itemType,
+                                          uint extensions, decimal loanFees, uint loanPeriodDays)
         {
             var key = (userType, itemType);
             if (!Policies.ContainsKey(key))
@@ -37,13 +36,13 @@ namespace ConsoleApp5._4Remastered
             return Policies[key];
         }
 
-        public static bool Remove(Policy policy)
+        public static bool Remove(UserType userType, ItemType itemType)
         {
-            var key = (policy.UserType, policy.ItemType);
+            var key = (userType, itemType);
             return Policies.Remove(key);
         }
 
-        public static Policy GetPolicy(Enum.UserType userType, Enum.ItemType itemType)
+        public static Policy GetPolicy(UserType userType, ItemType itemType)
         {
             var key = (userType, itemType);
             if (!Policies.ContainsKey(key))

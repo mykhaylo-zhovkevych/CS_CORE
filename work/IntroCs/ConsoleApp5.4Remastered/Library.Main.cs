@@ -1,6 +1,7 @@
 ﻿using ConsoleApp5._4Remastered.Data;
 using ConsoleApp5._4Remastered.Exceptions;
 using ConsoleApp5._4Remastered.HelperClasses;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace ConsoleApp5._4Remastered
             
 
             var allowedCredits = policy.Extensions;
-            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod), allowedCredits);
+            var borrowing = new Borrowing(user, item, policy);
             
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
@@ -67,7 +68,7 @@ namespace ConsoleApp5._4Remastered
 
             if (borrowing.Item.IsReserved)
             {
-                OnInformReserver(new ItemEventArgs($"The {borrowing.Item.Name} is now available", borrowing.Item, borrowing.User));
+                OnInformReserver(new ItemEventArgs($"The {borrowing.Item.Name} is now available", borrowing.Item, item.ReservedBy));
             }
 
             return (true, $"{item.Name}, was secussfully returned");
@@ -97,7 +98,7 @@ namespace ConsoleApp5._4Remastered
             return (true, $"reservation for {item.Name} was successfully canceled");
         }
 
-        public (bool, string) ExtendBorrowingPeriod(User user, Item item)
+        public (bool Success, string Message) ExtendBorrowingPeriod(User user, Item item)
         {
            
             var borrowing = Borrowings.FirstOrDefault(b =>
@@ -111,7 +112,6 @@ namespace ConsoleApp5._4Remastered
 
             return (borrowing.Extend(), $"{user.Name} has successfully extended the {item.Name}");
         }
-
 
         public string ShowActiveBorrowings(User user)
         {

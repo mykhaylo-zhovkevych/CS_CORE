@@ -12,43 +12,42 @@ namespace ConsoleApp5._4Remastered.HelperClasses
     {
         public User User { get; init; }
         public Item Item { get; init; }
+        public Policy Policy { get; }
         public DateTime LoanDate { get; private set; }
         public DateTime DueDate { get; private set; }
 
         public DateTime? ReturnDate { get; internal set; }
         public bool IsReturned => ReturnDate.HasValue;
 
-        public int RemainingExtensionCredits { get; private set; }
+        public uint RemainingExtensionCredits { get; private set; }
 
 
-        public Borrowing(User user, Item item, DateTime loanDate, DateTime dueDate, int allowedCredits)
+        public Borrowing(User user, Item item, Policy policy)
         {
             User = user;
             Item = item;
-            LoanDate = loanDate;
-            DueDate = dueDate;
-
-            RemainingExtensionCredits = allowedCredits;
+            Policy = policy;
+            LoanDate = DateTime.Today;
+            DueDate = LoanDate.AddDays(policy.LoanPeriodInDays);
+            
+            RemainingExtensionCredits = policy.Extensions;
         }
 
-        public bool Extend(int months = 1)
+        public bool Extend()
         {
-            if (months <= 0)
-            {
-                return false;
-            }
+            //var days = Policy.LoanPeriodInDays;
 
             if (Item.IsReserved)
             {
                 throw new IsAlreadyReservedException(Item);
             }
 
-            if (RemainingExtensionCredits <= 0)
+            if (RemainingExtensionCredits == 0)
             {
                 return false;
             }
 
-            DueDate = DueDate.AddMonths(months);
+            DueDate.AddDays(Policy.LoanPeriodInDays);
             RemainingExtensionCredits--;
 
             return true;

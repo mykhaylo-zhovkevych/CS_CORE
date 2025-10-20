@@ -19,8 +19,8 @@ namespace ConsoleAppTest5._4Remastered
             _defaultStudent = new User("Default Student", UserType.Student);
             _defaultVideoGame = new Item("Default BoardGame", ItemType.VideoGame);
 
-            _policy = new Policy { PolicyName = "Student_BoardGame__policy", UserType = UserType.Student, ItemType = ItemType.VideoGame };
-            _policy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
+            _policy = new Policy {PolicyName = "Student_BoardGame__policy" };
+            _policy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriodInDays: 30);
 
         }
 
@@ -35,10 +35,10 @@ namespace ConsoleAppTest5._4Remastered
         public void TestAdd_policy_When_KeyIsCorrect()
         {  
             // Arrange & Act
-            PolicyService.AddPolicy(_policy);
+            PolicyService.AddPolicy(UserType.Teacher, ItemType.VideoGame, _policy);
 
             // Assert
-            Assert.AreEqual(_policy, PolicyService.GetPolicy(_policy.UserType, _policy.ItemType));
+            Assert.AreEqual(_policy, PolicyService.GetPolicy(UserType.Teacher, ItemType.VideoGame));
 
         }
             
@@ -48,13 +48,13 @@ namespace ConsoleAppTest5._4Remastered
         {
             // Arrange
              Policy _incorrectPolicy;
-             _incorrectPolicy = new Policy { PolicyName = "Student_Offocer_policy", UserType = UserType.Student, ItemType = ItemType.VideoGame };
-             _incorrectPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
-            PolicyService.AddPolicy(_incorrectPolicy);
+             _incorrectPolicy = new Policy {PolicyName = "Student_Offocer_policy" };
+             _incorrectPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriodInDays: 30);
+            PolicyService.AddPolicy(UserType.Teacher, ItemType.VideoGame, _incorrectPolicy);
 
 
             // Assert & Act
-            Assert.IsFalse(PolicyService.AddPolicy(_incorrectPolicy));
+            Assert.IsFalse(PolicyService.AddPolicy(UserType.Teacher, ItemType.VideoGame, _incorrectPolicy));
         }
 
         [TestMethod]
@@ -68,30 +68,22 @@ namespace ConsoleAppTest5._4Remastered
         public void TestGetPolicy_If_KeyIsPresent()
         {
             // Arrange & Act
-            PolicyService.AddPolicy(_policy);
+            PolicyService.AddPolicy(UserType.Student, ItemType.VideoGame, _policy);
 
             var result = PolicyService.GetPolicy(UserType.Student, ItemType.VideoGame);
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual<UserType>(_defaultStudent.UserType, result.UserType);
-            Assert.AreEqual<ItemType>(_defaultVideoGame.ItemType, result.ItemType);
+            Assert.AreEqual<UserType>(_defaultStudent.UserType, UserType.Student);
+            Assert.AreEqual<ItemType>(_defaultVideoGame.ItemType, ItemType.VideoGame);
         }
 
 
         [TestMethod]
         public void TestUpdatePolicyValues_When_Iscorrect()
         {
-            // Arrange 
-
-
-            var prepare = PolicyService.GetPolicy(_defaultStudent.UserType, _defaultVideoGame.ItemType);
-            PolicyService.AddPolicy(prepare);
-            // Act
-            var result = PolicyService.UpdatePolicyValues(_defaultStudent.UserType, _defaultVideoGame.ItemType, 5, 200.0m, 60);
-
-            // Assert
-            Assert.AreNotEqual(prepare, result);
+            // Assert & Act
+            Assert.ThrowsException<NonExistingPolicyException>(() => PolicyService.GetPolicy(UserType.Teacher, ItemType.VideoGame));
 
         }
 
@@ -99,13 +91,13 @@ namespace ConsoleAppTest5._4Remastered
         public void TestUpdate_policyValues_When_IsIncorrect()
         {
             // Arrange 
-            var wrongPolicy = new Policy { PolicyName = "Student_BoardGame__policy", UserType = UserType.Teacher, ItemType = ItemType.VideoGame };
+            var wrongPolicy = new Policy {PolicyName = "Student_BoardGame__policy" };
 
             // Act
-            wrongPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriod: 30);
+            wrongPolicy.SetValues(extensions: 2, loanFees: 50.0m, loanPeriodInDays: 30);
 
             // Assert
-            Assert.ThrowsException<NonExistingPolicyException>(() => PolicyService.UpdatePolicyValues(wrongPolicy.UserType, wrongPolicy.ItemType, 5, 200.0m, 60));
+            Assert.ThrowsException<NonExistingPolicyException>(() => PolicyService.UpdatePolicyValues(UserType.Teacher, ItemType.VideoGame, 5, 200.0m, 60));
         }
     }
 }

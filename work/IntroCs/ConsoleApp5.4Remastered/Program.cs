@@ -30,12 +30,11 @@ namespace ConsoleApp5._4Remastered
             var defaultPolicy = new Policy
             {
                 PolicyName = "Default teacher book policy",
-                UserType = UserType.Teacher,
-                ItemType = ItemType.Book,
+
             };
 
-            defaultPolicy.SetValues(extensions: 2, loanFees: 0.5m, loanPeriod: 14);
-            PolicyService.AddPolicy(defaultPolicy);
+            defaultPolicy.SetValues(extensions: 2, loanFees: 0.5m, loanPeriodInDays: 30);
+            PolicyService.AddPolicy(UserType.Teacher, ItemType.Book, defaultPolicy);
 
 
             library.InformReserver += (sender, e) =>
@@ -58,18 +57,31 @@ namespace ConsoleApp5._4Remastered
                 Console.WriteLine($"{ex.Message}");
             }
 
-            try 
-            { 
-                Console.WriteLine(library.BorrowItem(teacher2, book)); 
-            }
-            catch (IsAlreadyBorrowedException ex)
+            try
             {
-                Console.WriteLine($"Cannot borrow item: {ex.Message}");
+                Console.WriteLine(library.ReserveItem(studnet, book));
             }
-            catch (NonExistingPolicyException ex)
+            catch (ArgumentException ex)
             {
                 Console.WriteLine($"{ex.Message}");
             }
+
+            //try 
+            //{ 
+            //    Console.WriteLine(library.ExtendBorrowingPeriod(teacher, book)); 
+            //}
+            //catch (IsAlreadyBorrowedException ex)
+            //{
+            //    Console.WriteLine($"Cannot borrow item: {ex.Message}");
+            //}
+            //catch (NonExistingPolicyException ex)
+            //{
+            //    Console.WriteLine($"{ex.Message}");
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine($"{ex.Message}");
+            //}
 
 
             try
@@ -101,10 +113,6 @@ namespace ConsoleApp5._4Remastered
             //    // The program will re-throw the exception to be handled by the caller 
             //    throw;
             //}
-
-
-
-
 
             //IEnumerable<Item> result01 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: true, itemType: Enum.ItemType.Book);
             //var firstItem = result01.FirstOrDefault();

@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    // Client can set interval of the order execution or push order to be executed immediately
     public class Client
     {
-
         public string ClientName { get; internal set; }
         public Printer Printer { get; internal set; }
-        public ConcurrentBag<Order> Orders { get; internal set; } = new ConcurrentBag<Order>();
+
+        // public List<Order> Orders { get; internal set; } = new List<Order>();
 
         public Client(string name, Printer printer)
         {
@@ -21,39 +20,25 @@ namespace ConsoleApp6
             Printer = printer;
         }
 
-        public async Task PlacePrintIntervalOfOrdersAsync(uint each)
+        public async Task PlacePrintIntervalOfOrdersAsync(uint each, List<Order> orders, CancellationToken ct )
         {
-
-
-            // Each is in seconds
-            while (!Orders.IsEmpty)
+            while (!ct.IsCancellationRequested)
             {
-                // Execute orders in the bag at the specified interval
+                PlacePrintOrders(orders);
+                await Task.Delay(TimeSpan.FromMilliseconds(each),ct);
 
-                PlacePrintOrder();
-                await Task.Delay(TimeSpan.FromSeconds(each));
-                
             }
         }
 
-        // dont wait for condition start immediatly
-        public void PlacePrintOrder()
+        public void PlacePrintOrders(List<Order> orders)
         {
-
-            
-            foreach (var order in Orders)
-            {
-                Printer.ExecuteOrder(order);
-            }
-
-
-            // clean the orders after or something another
+            // Not really needed but for test possibility okay  
+            if (Printer == null) throw new ArgumentNullException();
+            Printer.ExecuteOrder(orders);
         }
-
-
-
 
         // Help methods
-        public void AddOrder(Order order) => Orders.Add(order);
+        // public void AddOrders(List<Order> orders) => Orders.AddRange(orders);
+        
     }
 }

@@ -9,19 +9,16 @@ namespace ConsoleApp6
     public class Order 
     {
         public Guid OrderId { get; }
-        public string Content { get; set; }
+        public string OrderName { get; internal set; }
+        public string Content { get; internal set; }
         public int Size { get; }
 
-        public Order (string content)
+        public Order (string orderName, string content)
         {
             OrderId = Guid.NewGuid();
+            OrderName = orderName;
             Content = content;
             Size = content.Length;
         }
-
-
-
-
-
     }
 }

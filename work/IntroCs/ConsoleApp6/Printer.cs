@@ -7,49 +7,68 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    // Can different orders accept and will sort them and execute them in order 
     public class Printer
     {
-        private ConcurrentQueue<Order> _orderQueue = new ConcurrentQueue<Order>();
+        //private readonly ConcurrentQueue<Order> _orderQueue = new ConcurrentQueue<Order>();
+        //private readonly SemaphoreSlim _orderSignal = new SemaphoreSlim(0);
+        //private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+
+        public ConcurrentQueue<Order> _orderQueue { get; set; } = new ConcurrentQueue<Order>();
+        public SemaphoreSlim _orderSignal { get; set; }  = new SemaphoreSlim(0);
+        public CancellationTokenSource _cts { get; set; } = new CancellationTokenSource();
+
+        // Add another class that represent printer settings
 
         public Printer()
         {
-            // Start a background task to process orders
+            // Possible race condition
+            RunAsync(_cts.Token);
+        }
 
+
+        private void RunAsync(CancellationToken token)
+        {
             Task.Run(async () =>
             {
-                while (true)
+                while (!token.IsCancellationRequested)
                 {
-                    if (_orderQueue.TryDequeue(out Order order))
+                    await _orderSignal.WaitAsync();
+
+                    while (_orderQueue.TryDequeue(out var order))
                     {
-                        Console.WriteLine($"Processing order {order.OrderId} of size {order.Size}...");
-                        await ProcessOrderSsync(order);
-                        Console.WriteLine($"Order {order.OrderId} completed.");
-                    }
-                    else
-                    {
-                        // No orders to process, wait a bit before checking again
-                        await Task.Delay(500);
+                        Console.WriteLine($"Processing order {order.OrderName}...");
+                        await ProcessOrderAsync(order);
+                        Console.WriteLine($"Order {order.OrderName} completed.");
                     }
                 }
             });
         }
 
 
-        public void ExecuteOrder(Order order)
+        public void ExecuteOrder(List<Order> orders)
         {
-            // if 
-            _orderQueue.Enqueue(order);
-            Console.WriteLine("Order added to the queue.");
+            foreach (var order in orders)
+            {
+                _orderQueue.Enqueue(order);
+                Console.WriteLine($"{order.OrderName} added to the queue.");
+                _orderSignal.Release();
+            }
 
         }
 
-        private async Task ProcessOrderSsync(Order order)
+        private async Task ProcessOrderAsync(Order order)
         {
             var duration = order.Size * 100;
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             try
             {
-                await Task.Delay(duration);
+                while (sw.ElapsedMilliseconds < duration)
+                {
+                    Console.WriteLine($"Printing {order.OrderName}: {sw.ElapsedMilliseconds * 100 / duration}% completed.");
+                    await Task.Delay(50);
+                }   
+                sw.Stop();
+
             }
             catch (Exception ex)
             {
@@ -57,12 +76,6 @@ namespace ConsoleApp6
             }
         }
 
-        public string PrintOrders()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            return sb.ToString();
-
-        }
+        public void StopPrinter() => _cts.Cancel();
     }
 }

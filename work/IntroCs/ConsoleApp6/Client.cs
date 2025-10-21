@@ -21,13 +21,9 @@ namespace ConsoleApp6
             Printer = printer;
         }
 
-        public async Task PlacePrintIntervalOfOrdersAsnnc(uint each)
+        public async Task PlacePrintIntervalOfOrdersAsync(uint each)
         {
 
-            // 10 
-            // 9 
-            // 10 
-            // get access from the ConcurrentBag<Order>
 
             // Each is in seconds
             while (!Orders.IsEmpty)
@@ -36,7 +32,7 @@ namespace ConsoleApp6
 
                 PlacePrintOrder();
                 await Task.Delay(TimeSpan.FromSeconds(each));
-
+                
             }
         }
 

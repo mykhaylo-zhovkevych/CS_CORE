@@ -10,11 +10,13 @@ namespace ConsoleApp6
     {
         public Guid OrderId { get; }
         public string Content { get; set; }
+        public int Size { get; }
 
         public Order (string content)
         {
             OrderId = Guid.NewGuid();
             Content = content;
+            Size = content.Length;
         }
 
 

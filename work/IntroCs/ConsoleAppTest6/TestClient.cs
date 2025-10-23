@@ -22,11 +22,11 @@ namespace ConsoleAppTest6
         {
             order = new Order[]
             {
-                new Order("Order01","Document 1 - Project Plan"),
-                new Order("Order02", "Document 2 - Budget Report"),
-                new Order("Order03", "Document 3 - Meeting Minutes"),
-                new Order("Order04", "Document 4 - Marketing Strategy"),
-                new Order("Order05","Document 5 - Sales Data"),
+                new Order("Order01","Document 1 - Project Plan", 5),
+                new Order("Order02", "Document 2 - Budget Report", 5),
+                new Order("Order03", "Document 3 - Meeting Minutes", 5),
+                new Order("Order04", "Document 4 - Marketing Strategy", 5),
+                new Order("Order05","Document 5 - Sales Data", 5),
             };
 
             _threeOrderList = new List<Order>();
@@ -50,12 +50,6 @@ namespace ConsoleAppTest6
         }
 
         [TestMethod]
-        public void TestPlacePrintIntervalOfOrdersAsync()
-        {
-        }
-
-
-        [TestMethod]
         public void TestPlacePrintOrders_If_NoPrinterIsSelected()
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
@@ -67,7 +61,7 @@ namespace ConsoleAppTest6
         }
 
         [TestMethod]
-        public void TestPlacePrintOrders_If_PrinterIsSelected()
+        public void TestPlacePrintOrders_If_AllCorrect()
         {
             // Arrange
   
@@ -82,24 +76,43 @@ namespace ConsoleAppTest6
         {
             // Arrange
             CancellationTokenSource cts = new CancellationTokenSource();
+            uint tries = 1;
+            uint interval = 10;
+
+            // Act
+            cts.Cancel();
+
+            await _client02.PlacePrintIntervalOfOrdersAsync(tries, interval, _threeOrderList, cts.Token);
+
+            // Assert
+            Assert.IsTrue(_printer._orderQueue.Count == 0);
+
+        }
+
+        [TestMethod]
+        public async Task TestPlacePrintIntervalOfOrdersAsync_If_DelayIsCorrect()
+        {
+
+            // Arrange
+            // Act
+            // Assert
+
+        }
+
+
+        [TestMethod]
+        public async Task TestPlacePrintIntervalOfOrdersAsync_When_AllCorrect()
+        {
+            // Arrange
+            CancellationTokenSource cts = new CancellationTokenSource();
+            uint tries = 1;
             uint interval = 100;
 
             // Act
-            var placeOrdersTask = _client02.PlacePrintIntervalOfOrdersAsync(interval, _threeOrderList, cts.Token);
+            await _client02.PlacePrintIntervalOfOrdersAsync(tries, interval, _threeOrderList, cts.Token);
 
-            await Task.Delay(150);
-
-            //cts.Cancel();
-            try
-            {
-                await placeOrdersTask;
-            }
-            catch (TaskCanceledException)
-            {
-
-            }
             // Assert
-            Assert.IsTrue(_printer._orderQueue.Count >= 3);
+            Assert.IsTrue(_printer._orderQueue.Count == 3);
 
         }
     }

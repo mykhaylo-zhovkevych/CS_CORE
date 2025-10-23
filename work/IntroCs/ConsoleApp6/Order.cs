@@ -11,14 +11,14 @@ namespace ConsoleApp6
         public Guid OrderId { get; }
         public string OrderName { get; internal set; }
         public string Content { get; internal set; }
-        public int Size { get; }
+        public uint Size { get; set; }
 
-        public Order (string orderName, string content)
+        public Order (string orderName, string content, uint size)
         {
             OrderId = Guid.NewGuid();
             OrderName = orderName;
             Content = content;
-            Size = content.Length;
+            Size = size;
         }
     }
 }

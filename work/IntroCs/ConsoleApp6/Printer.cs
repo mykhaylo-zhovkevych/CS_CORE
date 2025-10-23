@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,71 +10,59 @@ namespace ConsoleApp6
 {
     public class Printer
     {
-        //private readonly ConcurrentQueue<Order> _orderQueue = new ConcurrentQueue<Order>();
-        //private readonly SemaphoreSlim _orderSignal = new SemaphoreSlim(0);
-        //private readonly CancellationTokenSource _cts = new CancellationTokenSource();
+        public Task? _backgroundTask;
 
         public ConcurrentQueue<Order> _orderQueue { get; set; } = new ConcurrentQueue<Order>();
-        public SemaphoreSlim _orderSignal { get; set; }  = new SemaphoreSlim(0);
         public CancellationTokenSource _cts { get; set; } = new CancellationTokenSource();
 
         // Add another class that represent printer settings
 
 
-        public async Task StartPrinter(CancellationToken token)
+        public Task Start()
         {
+            // Returns a pre-completed task that now holds reference to the running task
+            // But the returned taks is immediatly returned even though the _backgroundTask is still running
+            _backgroundTask = Task.Run(() => RunAsync(_cts.Token));
+            return Task.CompletedTask;
+        }
 
+        private async Task RunAsync(CancellationToken token)
+        {
             while (!token.IsCancellationRequested)
             {
-                // It background waits/process order that is released, and blocks thread only no _orderSginal fired out
-                // The WaitAsync decrements the _orderSignal count by 1
-                // await _orderSignal.WaitAsync();
-
-                while (HasOrdersInQueue())
+                if (_orderQueue.TryDequeue(out var order))
                 {
-                    _orderQueue.TryDequeue(out var order);
                     Console.WriteLine($"Processing order {order.OrderName}...");
                     await ProcessOrderAsync(order);
                     Console.WriteLine($"Order {order.OrderName} completed.");
                 }
-                break;
+                else
+                {
+                    await Task.Delay(500, token);
+                }
             }
         }
 
-        private bool HasOrdersInQueue() => !_orderQueue.IsEmpty;
-       
+        private async Task ProcessOrderAsync(Order order)
+        {
+            TimeSpan duration = TimeSpan.FromSeconds(order.Size);
+            var sw = System.Diagnostics.Stopwatch.StartNew();   
 
+            while (sw.Elapsed.TotalSeconds < duration.Seconds)
+            {
+                Console.WriteLine($"Printing {order.OrderName} of Size {order.Size}s\nPlease wait: {sw.Elapsed.TotalSeconds:F2}s");
+                await Task.Delay(duration/10);
+            }
+            sw.Stop();
+        }
 
-        public void ExecuteOrder(List<Order> orders)
+        public void PreProcessOrders(List<Order> orders)
         {
             foreach (var order in orders)
             {
                 _orderQueue.Enqueue(order);
                 Console.WriteLine($"{order.OrderName} added to the queue.");
-                //_orderSignal.Release();
             }
-
-        }
-
-        private async Task<bool> ProcessOrderAsync(Order order)
-        {
-            var duration = order.Size * 50;
-            var sw = System.Diagnostics.Stopwatch.StartNew();
-            try
-            {
-                while (sw.ElapsedMilliseconds < duration)
-                {
-                    Console.WriteLine($"Printing {order.OrderName}: {sw.ElapsedMilliseconds * 100 / duration}% completed.");
-                    await Task.Delay(25);
-                }   
-                sw.Stop();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error processing order {order.OrderId}: {ex.Message}");
-            }
-            return true;
         }
 
         public void StopPrinter() => _cts.Cancel();

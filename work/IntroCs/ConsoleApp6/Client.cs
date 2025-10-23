@@ -20,7 +20,6 @@ namespace ConsoleApp6
             Printer = printer;
         }
 
-        // Make generic method so bool with true can be returned, no exception is needed
         public async Task PlacePrintIntervalOfOrdersAsync(uint repitition, uint each, List<Order> orders, CancellationToken ct)
         {
             uint counter = 0;
@@ -42,7 +41,7 @@ namespace ConsoleApp6
         {
             // Not really needed but for test possibility okay  
             if (Printer == null) throw new ArgumentNullException();
-            Printer.ExecuteOrder(orders);
+            Printer.PreProcessOrders(orders);
             
         }
 

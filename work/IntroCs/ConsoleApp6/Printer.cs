@@ -19,30 +19,29 @@ namespace ConsoleApp6
 
         // Add another class that represent printer settings
 
-        public Printer()
-        {
-            // Possible race condition
-            RunAsync(_cts.Token);
-        }
 
-
-        private void RunAsync(CancellationToken token)
+        public async Task StartPrinter(CancellationToken token)
         {
-            Task.Run(async () =>
+
+            while (!token.IsCancellationRequested)
             {
-                while (!token.IsCancellationRequested)
-                {
-                    await _orderSignal.WaitAsync();
+                // It background waits/process order that is released, and blocks thread only no _orderSginal fired out
+                // The WaitAsync decrements the _orderSignal count by 1
+                // await _orderSignal.WaitAsync();
 
-                    while (_orderQueue.TryDequeue(out var order))
-                    {
-                        Console.WriteLine($"Processing order {order.OrderName}...");
-                        await ProcessOrderAsync(order);
-                        Console.WriteLine($"Order {order.OrderName} completed.");
-                    }
+                while (HasOrdersInQueue())
+                {
+                    _orderQueue.TryDequeue(out var order);
+                    Console.WriteLine($"Processing order {order.OrderName}...");
+                    await ProcessOrderAsync(order);
+                    Console.WriteLine($"Order {order.OrderName} completed.");
                 }
-            });
+                break;
+            }
         }
+
+        private bool HasOrdersInQueue() => !_orderQueue.IsEmpty;
+       
 
 
         public void ExecuteOrder(List<Order> orders)
@@ -51,21 +50,21 @@ namespace ConsoleApp6
             {
                 _orderQueue.Enqueue(order);
                 Console.WriteLine($"{order.OrderName} added to the queue.");
-                _orderSignal.Release();
+                //_orderSignal.Release();
             }
 
         }
 
-        private async Task ProcessOrderAsync(Order order)
+        private async Task<bool> ProcessOrderAsync(Order order)
         {
-            var duration = order.Size * 100;
+            var duration = order.Size * 50;
             var sw = System.Diagnostics.Stopwatch.StartNew();
             try
             {
                 while (sw.ElapsedMilliseconds < duration)
                 {
                     Console.WriteLine($"Printing {order.OrderName}: {sw.ElapsedMilliseconds * 100 / duration}% completed.");
-                    await Task.Delay(50);
+                    await Task.Delay(25);
                 }   
                 sw.Stop();
 
@@ -74,6 +73,7 @@ namespace ConsoleApp6
             {
                 Console.WriteLine($"Error processing order {order.OrderId}: {ex.Message}");
             }
+            return true;
         }
 
         public void StopPrinter() => _cts.Cancel();

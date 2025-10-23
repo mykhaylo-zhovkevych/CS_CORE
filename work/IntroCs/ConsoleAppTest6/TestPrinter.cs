@@ -19,13 +19,15 @@ namespace ConsoleAppTest6
         private List<Order> _threeOrderList;
         private List<Order> _oneOrder;
 
+        private Order[] order;
+
 
         [TestInitialize]
         public void Setup()
         {
-            Order[] order = new Order[]
+            order = new Order[]
             {
-                new Order("Order01","Document 1 - Project Plan",5),
+                new Order("Order01","Document 1 - Project Plan", 5),
                 new Order("Order02", "Document 2 - Budget Report", 5),
                 new Order("Order03", "Document 3 - Meeting Minutes", 5),
                 new Order("Order04", "Document 4 - Marketing Strategy", 5),
@@ -52,25 +54,33 @@ namespace ConsoleAppTest6
             _client03 = new Client("IT Desktop", _printer);
         }
 
-        //[TestMethod]
-        //public void TestExecuteOrder_If_MoreThanOneOrderPresent()
-        //{
-        //    // Act
-        //    _printer.PreProcessOrders(_threeOrderList);
-
-        //    // Assert
-        //    Assert.AreEqual(3, _printer._orderQueue.Count);
-        //    Assert.IsTrue(_printer._orderSignal.CurrentCount >= 1);
-        //}
-
-        
         [TestMethod]
-        public void TestPrinterConstructor_If_TokenStop()
+        public void TestStopPrinter_If_AllCorrect()
         {
             _printer.StopPrinter();
 
             Assert.IsTrue(_printer._cts.IsCancellationRequested);
 
         }
+
+        [TestMethod]
+        public void TestPreProcessOrders_If_AllCorrect()
+        {
+            // Act
+            _printer.PreProcessOrders(_threeOrderList);
+
+            // Assert
+            Assert.AreEqual(_threeOrderList.Count, _printer._orderQueue.Count);
+        }
+
+        [TestMethod]
+        public void TestPreProcessOrders_If_NullReferenceException()
+        {
+            
+            Assert.ThrowsException<NullReferenceException>(() => _printer.PreProcessOrders(null));
+        }
+
+
+
     }
 }

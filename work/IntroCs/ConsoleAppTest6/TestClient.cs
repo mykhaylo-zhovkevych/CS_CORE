@@ -1,4 +1,6 @@
 ﻿using ConsoleApp6;
+using System.Diagnostics;
+using System.Threading;
 
 namespace ConsoleAppTest6
 {
@@ -92,11 +94,25 @@ namespace ConsoleAppTest6
         [TestMethod]
         public async Task TestPlacePrintIntervalOfOrdersAsync_If_DelayIsCorrect()
         {
-
             // Arrange
-            // Act
-            // Assert
+            CancellationTokenSource cts = new CancellationTokenSource();
+            uint repetitions = 2;
+            uint intervals = 10;
 
+            var sw = Stopwatch.StartNew();
+            await _client01.PlacePrintIntervalOfOrdersAsync(repetitions, intervals, _oneOrder, cts.Token);
+            sw.Stop();
+
+            // Act
+            long expected = (long)repetitions * intervals;
+            long elapsed = sw.Elapsed.TotalSeconds;
+
+            // Assert
+            // Minimum expected time
+            Assert.IsTrue(elapsed >= expected);
+
+            int expectedCount = (int)repetitions * _oneOrder.Count;
+            Assert.AreEqual(expectedCount, _printer._orderQueue.Count);
         }
 
 

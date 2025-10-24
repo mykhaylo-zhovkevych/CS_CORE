@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\bin\Debug\net8.0\CovaAnimalShelter.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\bin\Debug\net8.0\CovaAnimalShelter.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\bin\Debug\net8.0\CovaAnimalShelter.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\bin\Debug\net8.0\CovaAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\bin\Debug\net8.0\CovaAnimalShelter.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\refint\CovaAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\CovaAnimalShelter.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\CovaAnimalShelter\obj\Debug\net8.0\ref\CovaAnimalShelter.dll

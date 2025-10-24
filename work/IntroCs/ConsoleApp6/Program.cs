@@ -13,7 +13,7 @@ namespace ConsoleApp6
                     new Order("Order02", "Document 2 - Budget Report", 5),
                     new Order("Order03", "Document 3 - Meeting Minutes", 5),
                     new Order("Order04", "Document 4 - Marketing Strategy", 5),
-                    new Order("Order05","Document 5 - Sales Data", 5),
+                    new Order("Order05","Document 5 - Sales Data", 10),
             };
 
             List<Order> threeOrderList = new List<Order>();
@@ -41,13 +41,13 @@ namespace ConsoleApp6
 
             //client01.PlacePrintOrders(twoOrders);
 
-            client03.PlacePrintOrders(oneOrder);
+            //client03.PlacePrintOrders(oneOrder);
             //client02.PlacePrintOrders(threeOrderList);
 
             //cts.Cancel();
 
             // `await` puases the calling method untill the awaited task completes
-            // await client03.PlacePrintIntervalOfOrdersAsync(5 ,5_000, oneOrder, cts.Token);
+            await client03.PlacePrintIntervalOfOrdersAsync(2 ,10, oneOrder, cts.Token);
 
             //printer.StopPrinter();
 

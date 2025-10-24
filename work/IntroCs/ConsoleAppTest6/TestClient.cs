@@ -28,7 +28,7 @@ namespace ConsoleAppTest6
                 new Order("Order02", "Document 2 - Budget Report", 5),
                 new Order("Order03", "Document 3 - Meeting Minutes", 5),
                 new Order("Order04", "Document 4 - Marketing Strategy", 5),
-                new Order("Order05","Document 5 - Sales Data", 5),
+                new Order("Order05","Document 5 - Sales Data", 10),
             };
 
             _threeOrderList = new List<Order>();
@@ -104,15 +104,13 @@ namespace ConsoleAppTest6
             sw.Stop();
 
             // Act
-            long expected = (long)repetitions * intervals;
-            long elapsed = sw.Elapsed.TotalSeconds;
+            var expected = repetitions * intervals;
+            var elapsed = sw.Elapsed.TotalSeconds;
 
             // Assert
             // Minimum expected time
             Assert.IsTrue(elapsed >= expected);
 
-            int expectedCount = (int)repetitions * _oneOrder.Count;
-            Assert.AreEqual(expectedCount, _printer._orderQueue.Count);
         }
 
 

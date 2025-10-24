@@ -31,7 +31,7 @@ namespace ConsoleApp6
                     ct.ThrowIfCancellationRequested();
 
                     PlacePrintOrders(orders);
-                    await Task.Delay(TimeSpan.FromMilliseconds(each), ct);
+                    await Task.Delay(TimeSpan.FromSeconds(each), ct);
                 }
                 counter++;
             }
@@ -44,9 +44,5 @@ namespace ConsoleApp6
             Printer.PreProcessOrders(orders);
             
         }
-
-        // Help methods
-        // public void AddOrders(List<Order> orders) => Orders.AddRange(orders);
-        
     }
 }

@@ -17,7 +17,6 @@ namespace ConsoleApp6
 
         // Add another class that represent printer settings
 
-
         public Task Start()
         {
             // Returns a pre-completed task that now holds reference to the running task
@@ -45,10 +44,12 @@ namespace ConsoleApp6
 
         private async Task ProcessOrderAsync(Order order)
         {
-            TimeSpan duration = TimeSpan.FromSeconds(order.Size);
+            if (order is null) throw new ArgumentNullException(nameof(order));
+
+            var duration = TimeSpan.FromSeconds(order.Size);
             var sw = System.Diagnostics.Stopwatch.StartNew();   
 
-            while (sw.Elapsed.TotalSeconds < duration.Seconds)
+            while (sw.Elapsed.TotalSeconds < duration.TotalSeconds)
             {
                 Console.WriteLine($"Printing {order.OrderName} of Size {order.Size}s\nPlease wait: {sw.Elapsed.TotalSeconds:F2}s");
                 await Task.Delay(duration/10);

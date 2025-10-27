@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6._1
 {
-    internal class Customer
+    public class Customer
     {
+        public int CustomerOrderNumber { get; private set; }
+
+
+        // Add posibility to add past and current orders
+
     }
 }

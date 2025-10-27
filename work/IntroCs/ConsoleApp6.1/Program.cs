@@ -1,10 +1,23 @@
 ﻿namespace ConsoleApp6._1
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Crew MyCrew = new Crew();
+            Kitchen MyKitchen = new Kitchen(MyCrew);
+
+            Counter MyCounter = new Counter("First Counter");
+            Customer MyCustomer = new Customer();
+
+
+            MyCounter.UserInputTerminal();
+
+
+            await MyKitchen.PrepareOrderAsync(MyCounter);
+                   
+
+            //Console.ReadKey();
         }
     }
 }

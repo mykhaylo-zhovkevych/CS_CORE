@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6._1
 {
-    internal class Burger
+    public class Burger
     {
+        private int _avaliableBurgers;
+
+        public string BurgerName { get; private set; }
+        public decimal BurgerPrice { get; private set; }
+
+        public int AvaliableBurgers => _avaliableBurgers;
+
+
+        public Burger(string burgerName, decimal burgerPrice)
+        {
+            BurgerName = burgerName;
+            BurgerPrice = burgerPrice;
+            _avaliableBurgers++;
+
+        }
     }
 }

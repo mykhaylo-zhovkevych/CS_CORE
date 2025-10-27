@@ -8,16 +8,17 @@
             Kitchen MyKitchen = new Kitchen(MyCrew);
 
             Counter MyCounter = new Counter("First Counter");
-            Customer MyCustomer = new Customer();
 
-
+            // Simulation of multiple user inputs
             MyCounter.UserInputTerminal();
-
+            MyCounter.UserInputTerminal();
 
             await MyKitchen.PrepareOrderAsync(MyCounter);
                    
 
-            //Console.ReadKey();
+            // Secound resta
+
+            Console.ReadKey();
         }
     }
 }

@@ -10,8 +10,6 @@ namespace ConsoleApp6._1
     public class Counter
     {
         public string CounterName { get; private set; }
-        // Reference from the MacDonalds ticket system 
-        public Customer CustomerOrderNumber { get; private set; }
         // Find out possible way of retrieving the same instance of the Data
         public ConcurrentQueue<Order> PendingOrders { get; set; } = new ConcurrentQueue<Order>();
 
@@ -22,7 +20,7 @@ namespace ConsoleApp6._1
 
         public void UserInputTerminal()
         {
-            Console.WriteLine("--- Welcome To Restaurent ---");
+            Console.WriteLine("--- Welcome To Restaurant ---");
             Console.WriteLine("1. Order");
             Console.WriteLine("2. Exit");
 
@@ -36,40 +34,41 @@ namespace ConsoleApp6._1
 
 
         // Method for sychronously adding orders to the counter queue
+        // Reference from the MacDonalds ticket system 
         private Order OrderFood()
         {
+            List<GenericCustomer> buffer = new List<GenericCustomer>();
+            Random random = new Random();
+            var genericCustomer = new GenericCustomer(random.Next(0, 1000));
+
+            // Temp in-memory buffer
+            buffer.Add(genericCustomer);
+
             var order = new Order(
-               CustomerOrderNumber,
+               genericCustomer.CustomerOrderNumber,
                // How to make dynamic list of food items?
                new List<Burger>
                {
                     new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Bacon Burger", 7.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m)
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Bacon Burger", 7.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m),
+                    //new Burger("Cheeseburger", 5.99m),
+                    //new Burger("Veggie Burger", 6.49m)
                });
-
-            // Check if the order belongs to the customer 
-            if (order.CustomerOrderNumber == CustomerOrderNumber)
-            {
-                PendingOrders.Enqueue(order);
-            }
-            else
-            {
-                throw new InvalidOperationException("Order does not belong to the specified customer.");
-
-            }
+       
+            PendingOrders.Enqueue(order);
+         
+            Console.WriteLine($"Your order number is {order.CustomerOrderNumber}.");
             return order;
         }
 

@@ -13,7 +13,7 @@ namespace ConsoleApp6
                     new Order("Order02", "Document 2 - Budget Report", 5),
                     new Order("Order03", "Document 3 - Meeting Minutes", 5),
                     new Order("Order04", "Document 4 - Marketing Strategy", 5),
-                    new Order("Order05","Document 5 - Sales Data", 10),
+                    new Order("Order05","Document 5 - Sales Data", 5),
             };
 
             List<Order> threeOrderList = new List<Order>();
@@ -47,10 +47,12 @@ namespace ConsoleApp6
             //cts.Cancel();
 
             // `await` puases the calling method untill the awaited task completes
-            await client03.PlacePrintIntervalOfOrdersAsync(2 ,10, oneOrder, cts.Token);
+            client03.PlacePrintIntervalOfOrdersAsync(2 ,10, oneOrder, cts.Token);
 
             //printer.StopPrinter();
 
+            // While it is running, the request cancelationtoken is not checked until the next iteration 
+            printer.RequestCancelationAfterSomeTime(5);
             Console.ReadKey();
 
             // This is a Background Thread, transforted into foreground thread, makes wait before exiting Main thread

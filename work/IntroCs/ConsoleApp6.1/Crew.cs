@@ -27,7 +27,6 @@ namespace ConsoleApp6._1
         }
         
 
-
         class CrewMember
         {
             public string Name { get; private set; }

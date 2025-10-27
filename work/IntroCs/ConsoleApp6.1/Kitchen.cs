@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Xsl;
 
 namespace ConsoleApp6._1
 {
@@ -15,12 +16,10 @@ namespace ConsoleApp6._1
         public Crew CurrentCrew { get; private set; }
         // Replace it with more genric class that holds burder as subtype of class itself
 
-
         public Kitchen(Crew currentCrew)
         {
             KitchenName = "Main Kitchen";
             CurrentCrew = currentCrew;
-
         }
 
 
@@ -44,6 +43,7 @@ namespace ConsoleApp6._1
         {
             Console.WriteLine("Has started the process");
             await CheckKitchenCapacity();
+            await CheckOrderSize(order.OrderAmount);
             Console.WriteLine("Has finished the process");
 
         }
@@ -61,6 +61,7 @@ namespace ConsoleApp6._1
                 }
             }
 
+            // switch expression   
             var delay = presentMembers switch
             {
                 6 => TimeSpan.FromMilliseconds(500),
@@ -71,16 +72,26 @@ namespace ConsoleApp6._1
             return Task.Delay(delay);
         }
 
-        private Task CheckOrderSize()
+        private Task CheckOrderSize(List<Burger> orderSize)
         {
+            var counter = 0;
 
-            var orderedItems = 0;
+            foreach (var item in orderSize)
+            {
+                if (item is not null)
+                {
+                    counter++;
+                }
+            }
 
-            foreach (var item in )
-
-
+            var delay = counter switch
+            {
+                6 or > 6 => TimeSpan.FromMilliseconds(3500),
+                4 => TimeSpan.FromMilliseconds(2500),
+                2 => TimeSpan.FromMilliseconds(1500),
+                _ => TimeSpan.FromMilliseconds(500)
+            };
+            return Task.Delay(delay);
         }
-
-
     }
 }

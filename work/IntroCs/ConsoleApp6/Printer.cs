@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,6 +11,7 @@ namespace ConsoleApp6
 {
     public class Printer
     {
+        public Task? _CancelationTask; 
         public Task? _backgroundTask;
 
         public ConcurrentQueue<Order> _orderQueue { get; set; } = new ConcurrentQueue<Order>();
@@ -64,6 +66,16 @@ namespace ConsoleApp6
                 _orderQueue.Enqueue(order);
                 Console.WriteLine($"{order.OrderName} added to the queue.");
             }
+        }
+
+
+        public void RequestCancelationAfterSomeTime(uint time)
+        {
+            _CancelationTask = Task.Run(async () =>
+            {
+                await Task.Delay(TimeSpan.FromSeconds(time));
+                _cts.Cancel();
+            });
         }
 
         public void StopPrinter() => _cts.Cancel();

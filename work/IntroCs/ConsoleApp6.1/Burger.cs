@@ -9,12 +9,9 @@ namespace ConsoleApp6._1
     public class Burger
     {
         private int _avaliableBurgers;
-
         public string BurgerName { get; private set; }
         public decimal BurgerPrice { get; private set; }
-
         public int AvaliableBurgers => _avaliableBurgers;
-
 
         public Burger(string burgerName, decimal burgerPrice)
         {

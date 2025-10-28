@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\bin\Debug\net8.0\ContraAnimalShelter.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\bin\Debug\net8.0\ContraAnimalShelter.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\bin\Debug\net8.0\ContraAnimalShelter.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\bin\Debug\net8.0\ContraAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\bin\Debug\net8.0\ContraAnimalShelter.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\refint\ContraAnimalShelter.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ContraAnimalShelter.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\ContraAnimalShelter\obj\Debug\net8.0\ref\ContraAnimalShelter.dll

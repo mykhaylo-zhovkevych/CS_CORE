@@ -15,8 +15,7 @@ namespace ConsoleApp5._4
         public User? ReservedBy { get; set; }        
         public bool IsReserved => ReservedBy is not null;
 
-        // In the base will be Id to subclasses give, what if I won't give Guid id in paramaters? 
-        public Item(Guid id, string name)
+        public Item(string name)
         {
             Id = Guid.NewGuid();
             Name = name;

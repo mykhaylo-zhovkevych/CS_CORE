@@ -5,10 +5,14 @@ using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Interface;
 using ConsoleApp5._4.Items;
 using ConsoleApp5._4.Users;
+using System;
 using System.Linq;
 
 namespace ConsoleAppTest5._4
 {
+
+    // MethodName_Scenerio_ExpectedOutcome
+    // e.x. Add_AddsTwoWholeNumbers_SumOfThoseNumbers
 
     [TestClass]
     public class LibraryTest
@@ -32,13 +36,13 @@ namespace ConsoleAppTest5._4
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-            _student = new Student(Guid.NewGuid(), "TestStudentOne");
-            _teacher = new Teacher(Guid.NewGuid(), "TestTeacherOne");
-            _admin = new Admin(Guid.NewGuid(), "TestTeacherOne");
+            _student = new Student("TestStudentOne");
+            _teacher = new Teacher("TestTeacherOne");
+            _admin = new Admin("TestTeacherOne");
 
-            _book = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherOne");
-            _book02 = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherTwo");
-            _videoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameOne", GameType.RPG, 20);
+            _book = new Book( "TestBookOne", "TestPublisherOne");
+            _book02 = new Book("TestBookOne", "TestPublisherTwo");
+            _videoGame = new VideoGame( "TestVideoGameOne", GameType.RPG, 20);
 
             shelf1.AddItemToShelf(_book);
             shelf1.AddItemToShelf(_videoGame);
@@ -253,7 +257,7 @@ namespace ConsoleAppTest5._4
                 b.ReturnDate == null);
 
             var newDue = updated.DueDate;
-            var newExtensions = updated.UsedBorrowingCredits;
+            var newExtensions = updated.RemainingExtensionCredits;
 
             // Assert
             Assert.IsNotNull(borrowed);
@@ -277,11 +281,14 @@ namespace ConsoleAppTest5._4
         public void ExtendBorrowingPeriod_When_IsReservedTrue()
         {
             // Arrange
+            _library.BorrowItem(_student, _book.Name);
+
             _book.ReservedBy = _teacher;
 
-            // Assert & Act
+            // Assert & Act 
             Assert.ThrowsExactly<IsAlreadyReservedException>(() => _library.ExtendBorrowingPeriod(_student, _book.Name));
         }
+
 
         [TestMethod]
         public void ExtendBorrowingPeriod_When_NoEnoughExtention()
@@ -293,11 +300,10 @@ namespace ConsoleAppTest5._4
             var library = new Library("TestName", "TestAdress", policyProvider);
 
             var shelf = new Shelf(1);
-            var testVideoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameTwo", GameType.RPG, 20);
+            var testVideoGame = new VideoGame("TestVideoGameTwo", GameType.RPG, 20);
 
             shelf.AddItemToShelf(testVideoGame);
             library.AddShelf(shelf);
-
 
             // Act
             library.BorrowItem(_admin, testVideoGame.Name);
@@ -305,27 +311,23 @@ namespace ConsoleAppTest5._4
 
             // Assert
             Assert.IsFalse(extensionsResult.Success);
-            Assert.AreEqual($"{_admin.Name} don't have enough extentions points", extensionsResult.Message);
+
+            Assert.AreEqual($"{_admin.Name} has no more remaining extension credits", extensionsResult.Message);
         }
+
 
 
         [TestMethod]
         public void ShowActiveBorrowings_With_DataExist()
         {
             // Arrange
-            var Now = DateTime.Now;
-            var End = Now.AddDays(30);
+            var now = DateTime.Now;
+            var end = now.AddDays(30);
 
-            var borrowing = new Borrowing
-            {
-                User = _student,
-                Item = _book,
-                LoanDate = Now,
-                DueDate = End
-            };
+            var borrowing = new Borrowing(_student, _book, now, end);
             _library.Borrowings.Add(borrowing);
 
-            var expectedOutput = $"{_student.Name} has '{_book.Name}' from {Now} until {End}";
+            var expectedOutput = $"{_student.Name} has '{_book.Name}' from {now} until {end}";
 
             // Act
             var actualOutput = _library.ShowActiveBorrowings(_student);
@@ -350,28 +352,25 @@ namespace ConsoleAppTest5._4
         public void ShowInactiveBorrowings_With_DataExist()
         {
             // Arrange
-            var now = DateTime.Now;
-            var end = now.AddDays(30);
+            _library.BorrowItem(_student, _book.Name);
+            _library.ReturnItem(_student, _book.Name);
 
-            var borrowing = new Borrowing
-            {
-                User = _student,
-                Item = _book,
-                LoanDate = now,
-                DueDate = end,
-                ReturnDate = now.AddHours(1)
-            };
+            var borrowing = _library.Borrowings.FirstOrDefault(b =>
+                b.User.Id == _student.Id &&
+                b.Item.Id == _book.Id &&
+                b.ReturnDate != null);
+
+            Assert.IsNotNull(borrowing);
+
+            var expectedOutput = $"{_student.Name} had '{_book.Name}' from {borrowing.LoanDate} until {borrowing.DueDate} that was returned at {borrowing.ReturnDate}";
 
             // Act
-            _library.Borrowings.Add(borrowing);
-
-            var expectedOutput = $"{_student.Name} had '{_book.Name}' from {now} until {end} that was returned at {borrowing.ReturnDate}";
-
             var actualOutput = _library.ShowInactiveBorrowings(_student);
 
             // Assert
             Assert.AreEqual(expectedOutput, actualOutput);
         }
+
 
         [TestMethod]
         public void ShowInactiveBorrowings_If_DataDontExist()
@@ -400,13 +399,15 @@ namespace ConsoleAppTest5._4
             // Act
             var result = _library.QueryItems(
                 nameContains: "TestBookOne",
-                isBorrowed: true, 
-                isReserved: true, 
-                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
-                .ToList();
+                isBorrowed: true,
+                isReserved: true,
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"));
+      
 
             // Assert
             Assert.AreEqual(1,result.Count());
+            Assert.AreEqual(_book, result.First());
+
         }
 
         [TestMethod]
@@ -424,8 +425,7 @@ namespace ConsoleAppTest5._4
                 nameContains: "TestBookOne",
                 isBorrowed: true,
                 isReserved: true,
-                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"))
-                .ToList();
+                customPredicate: i => (i is Book b) && b.Publisher.Equals("TestPublisherOne"));
 
             // Assert
             Assert.AreNotEqual(1, result.Count());

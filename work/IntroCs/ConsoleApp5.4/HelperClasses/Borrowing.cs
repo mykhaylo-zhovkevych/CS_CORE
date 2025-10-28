@@ -1,4 +1,6 @@
 ﻿using ConsoleApp5._4;
+using ConsoleApp5._4.Exceptions;
+using ConsoleApp5._4.HelperClasses;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,31 +10,52 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._4.HelperClasses
 {
-    // This class doenst need a constructor, because it wont used independantly
     public class Borrowing
     {
-        private int? _usedBorrowingCredits;
-        public required User User { get; set; }
-        public required Item Item { get; set; }
-        public DateTime LoanDate { get; set; }
-        public DateTime DueDate { get; set; }
+        private int _remainingExtensionCredits;
+        public User User { get; init; }
+        public Item Item { get; init; }
+        public DateTime LoanDate { get; private set; }
+        public DateTime DueDate { get; private set; }
         // May be null if not returned back
-        public DateTime? ReturnDate { get; set; }
+        public DateTime? ReturnDate { get; internal set; }
         public bool IsReturned => ReturnDate.HasValue;
         // Computed property
-        public int ExtentionCredits => User.Extensions;  
-        public int UsedBorrowingCredits
+        public int ExtentionCredits => User.Extensions;
+        public int RemainingExtensionCredits => _remainingExtensionCredits;
+
+
+        // Ensures valid start state
+        public Borrowing(User user, Item item, DateTime loanDate,  DateTime dueDate)
         {
-            get
+            User = user;
+            Item = item;
+            LoanDate = loanDate;
+            DueDate = dueDate;
+
+            _remainingExtensionCredits = ExtentionCredits;
+        }
+
+        public Result Extend(int months = 1)
+        {
+            if (months <= 0)
             {
-                if (!_usedBorrowingCredits.HasValue) 
-                    _usedBorrowingCredits = ExtentionCredits;
-                return _usedBorrowingCredits.Value;
+                return Result.Fail("Extension months must be greater than zero");
             }
-            set
+
+            if (Item.IsReserved)
             {
-                _usedBorrowingCredits = value;
+                throw new IsAlreadyReservedException(User, Item);
             }
+
+            if (_remainingExtensionCredits <= 0)
+            {
+                return Result.Fail($"{User.Name} has no more remaining extension credits");
+            }
+            DueDate = DueDate.AddMonths(months);
+            _remainingExtensionCredits--;
+
+            return Result.Notify($"Item was successfully extended");
         }
 
         public override string ToString()

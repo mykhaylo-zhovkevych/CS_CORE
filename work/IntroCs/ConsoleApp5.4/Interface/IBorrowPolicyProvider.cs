@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5._4.Interface
 {
+    // init acccessor 
     public record BorrowPolicy(int LoanPeriod) { }
 
     public interface IBorrowPolicyProvider

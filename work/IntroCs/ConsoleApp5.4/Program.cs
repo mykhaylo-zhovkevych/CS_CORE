@@ -12,6 +12,12 @@ namespace ConsoleApp5._4
 {
     public class Program
     {
+
+
+        //TODO: Recreate the record as a int, for simplification
+        //TODO: Create some new feature for fees calculation 
+    
+
         static void Main(string[] args)
         {
             var policyProvider = new DefaultBorrowPolicyProvider();
@@ -20,13 +26,13 @@ namespace ConsoleApp5._4
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-            var studnet = new Student(Guid.NewGuid(), "TestName01");
-            var teacher = new Teacher(Guid.NewGuid(), "TestName02");
-            var admin = new Admin(Guid.NewGuid(), "TestAdmin");
+            var studnet = new Student("TestName01");
+            var teacher = new Teacher("TestName02");
+            var admin = new Admin("TestAdmin");
 
-            var book = new Book(Guid.NewGuid(), "TestNameBook", "TestPublisher");
-            var book02 = new Book(Guid.NewGuid(), "TestNameBook02", "TestPublisher");
-            var videoGame = new VideoGame(Guid.NewGuid(), "TestNameGame", GameType.RPG, 19);
+            var book = new Book( "TestNameBook", "TestPublisher");
+            var book02 = new Book( "TestNameBook02", "TestPublisher");
+            var videoGame = new VideoGame( "TestNameGame", GameType.RPG, 19);
 
             shelf1.AddItemToShelf(book);
             shelf1.AddItemToShelf(book02);
@@ -39,7 +45,14 @@ namespace ConsoleApp5._4
             {
                 Console.WriteLine($"Notification: Item '{e.Item.Name}' is now available for {e.ReservedUser?.Name}");
             };
-            Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(teacher, "TestNameBook")));
+
+            // IS not good because of the casting, can cause possible runtime error
+            /*
+             * var results1 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Book));
+             * Console.WriteLine(DebuggerPrinter.PrintOutput(library.BorrowItem(teacher, (Item)results1)));
+             */
+
+
             //Console.WriteLine(DebuggerPrinter.PrintOutput(library.ReserveItem(studnet, "TestNameBook")));
 
             Console.WriteLine(DebuggerPrinter.PrintOutput(library.ExtendBorrowingPeriod(teacher, "TestNameBook")));
@@ -58,7 +71,8 @@ namespace ConsoleApp5._4
             //Console.WriteLine(library.ReturnItem(teacher, "TestNameBook"));
 
 
-            var results1 = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Book));
+            
+            var results = library.QueryItems(nameContains: "TestNameBook", isBorrowed: false, itemType: typeof(Item));
 
             var results2 = library.QueryItems(isReserved: true);
  

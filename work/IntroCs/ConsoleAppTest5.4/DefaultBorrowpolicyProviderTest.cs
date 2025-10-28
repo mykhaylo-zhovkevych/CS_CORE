@@ -19,7 +19,7 @@ namespace ConsoleAppTest5._4
     {
         public string Publisher { get; set; }
 
-        public RareBook(Guid id, string name, string publisher) : base (id, name)
+        public RareBook(Guid id, string name, string publisher) : base (name)
         {
             Publisher = publisher;
         }
@@ -41,10 +41,10 @@ namespace ConsoleAppTest5._4
         {
             _provider = new DefaultBorrowPolicyProvider();
 
-            _teacher = new Teacher(Guid.NewGuid(), "TestTeacher");
-            _student = new Student(Guid.NewGuid(), "TestStudent");
+            _teacher = new Teacher("TestTeacher");
+            _student = new Student("TestStudent");
     
-            _book = new Book(Guid.NewGuid(), "TestBook", "TestPublisher");
+            _book = new Book("TestBook", "TestPublisher");
             _rareBook = new RareBook(Guid.NewGuid(), "RareBook", "RarePublisher");
 
         }

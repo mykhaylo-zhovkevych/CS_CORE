@@ -10,14 +10,12 @@ namespace ConsoleApp5._4
 {
     public abstract class User
     {
-
         public Guid Id { get; set; }
         public string Name { get; set; }
         public abstract decimal LoanFees { get; }
         public abstract int Extensions { get; }
 
-
-        public User(Guid id, string name)
+        public User(string name)
         {
             Id = Guid.NewGuid();
             Name = name;

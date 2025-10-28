@@ -3,38 +3,32 @@ using ConsoleApp5._4.Enum;
 using ConsoleApp5._4.HelperClasses;
 using ConsoleApp5._4.Items;
 using ConsoleApp5._4.Users;
-using Microsoft.Extensions.DependencyModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleAppTest5._4
 {
     [TestClass]
     public class DebuggerPrinterTest
     {
-        private static ConsoleApp5._4.Library _library;
-        private static User _student;
-        private static User _teacher;
-        private static Item _book;
-        private static Item _videoGame;
+        private Library _library;
+        private User _student;
+        private User _teacher;
+        private Item _book;
+        private Item _videoGame;
 
-        [ClassInitialize]
-        public static void ClassInit(TestContext testContext)
+        [TestInitialize]
+        public void ClassInit()
         {
             var policyProvider = new DefaultBorrowPolicyProvider();
 
-            _library = new ConsoleApp5._4.Library("Central Library", "123 Main St.", policyProvider);
+            _library = new Library("Central Library", "123 Main St.", policyProvider);
             var shelf1 = new Shelf(1);
             var shelf2 = new Shelf(2);
 
-            _student = new Student(Guid.NewGuid(), "TestStudentOne");
-            _teacher = new Teacher(Guid.NewGuid(), "TestTeacherOne");
+            _student = new Student("TestStudentOne");
+            _teacher = new Teacher("TestTeacherOne");
 
-            _book = new Book(Guid.NewGuid(), "TestBookOne", "TestPublisherOne");
-            _videoGame = new VideoGame(Guid.NewGuid(), "TestVideoGameOne", GameType.RPG, 20);
+            _book = new Book("TestBookOne", "TestPublisherOne");
+            _videoGame = new VideoGame("TestVideoGameOne", GameType.RPG, 20);
 
             shelf1.AddItemToShelf(_book);
             shelf1.AddItemToShelf(_videoGame);
@@ -48,7 +42,7 @@ namespace ConsoleAppTest5._4
             };
         }
 
-
+        // Just data with different types to test,(and the instances can be two but not main focus)
         [TestMethod]
         public void PrintOutput_With_DifferentTypes()
         {
@@ -56,20 +50,26 @@ namespace ConsoleAppTest5._4
             string output01;
             string output02;
 
-
             // Act
             Result<Borrowing> result01 = (Result<Borrowing>)_library.BorrowItem(_teacher, "TestBookOne");
             output01 = DebuggerPrinter.PrintOutput(result01);
 
 
-            var result02 = _library.ReserveItem(_teacher, "TestBookOne");
+            Result result02 = _library.ReserveItem(_teacher, "TestBookOne");
             output02 = DebuggerPrinter.PrintOutput(result02);
 
             // Assert
-            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));      
+            Assert.IsInstanceOfType(result01.Data, typeof(Borrowing));
+            Assert.IsInstanceOfType(result02, typeof(Result));
 
-            // why
-            // StringAssert.Equals(output01, output02);
+            var expectedPrefix01 = result01.Success ? "[CORRECT]" : "[FALSE]";
+            StringAssert.StartsWith(output01, expectedPrefix01);
+            StringAssert.Contains(output01, result01.Data.ToString());
+            StringAssert.Contains(output01, result01.Message);
+
+           
+            var expectedOutput02 = $"{(result02.Success ? "[CORRECT]" : "[FALSE]")} {result02.Message}";
+            Assert.AreEqual(expectedOutput02, output02);
 
         }
 
@@ -77,7 +77,6 @@ namespace ConsoleAppTest5._4
         public void PrintOutput_When_NoDataFound()
         {
             // Arrange
-
             string expectedOutput = @"[FALSE] Item name is missing";
             string actualOutput;
 

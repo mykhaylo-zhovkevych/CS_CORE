@@ -17,66 +17,47 @@ namespace ConsoleAppTest5._4
     {
         private User _user;
         private Item _item;
-        private Item _item02;
-
-
 
         [TestInitialize]
         public void Setup()
         {
-            _user = new Teacher(Guid.NewGuid(),"Schmid");
-            _item = new Book(Guid.NewGuid(), "Last Road", "Penguin");
-            _item02 = new VideoGame(Guid.NewGuid(), "Video Game", GameType.RPG, 20);
+            _user = new Teacher("Schmid");
+            _item = new Book("Last Road", "Penguin");
         }
 
 
         [TestMethod]
         public void IsObject_OfCorrectType()
         {
-
             // Arrange
-            var borrowing = new Borrowing()
-            {
-                User = _user,
-                Item = _item,
-                LoanDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(1),
-            };
+            var now = DateTime.Now;
+            var borrowing = new Borrowing(_user, _item, now, now.AddDays(1));
 
             // Act
-            var values = Result<Borrowing>.Ok(borrowing,"Created");
-
+            var result = Result<Borrowing>.Ok(borrowing, "Created");
 
             // Assert
-            Assert.IsInstanceOfType(values, typeof(Result<Borrowing>));
-            Assert.IsNotNull(_user);
-            Assert.IsNotNull(_item);
-
+            Assert.IsInstanceOfType(result, typeof(Result<Borrowing>));
+            Assert.IsNotNull(result.Data);
+            Assert.AreSame(borrowing, result.Data);
+            Assert.IsFalse(borrowing.IsReturned);
         }
 
         [TestMethod]
         public void IsObject_WithCorrectData()
         {
 
-
             // Arrange
-            var borrowing = new Borrowing()
-            {
-                User = _user,
-                Item = _item,
-                LoanDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(1),
-            };
-
+            var now = DateTime.Now;
+            var borrowing = new Borrowing(_user, _item, now, now.AddDays(1));
 
             // Act
-            var values = Result<Borrowing>.Ok(borrowing, "Created");
+            var result = Result<Borrowing>.Ok(borrowing, "Created");
 
-
-            // Assert
+            // Assert 
             Assert.AreEqual(_user.Extensions, borrowing.User.Extensions);
             Assert.AreEqual(_user.LoanFees, borrowing.User.LoanFees);
-            Assert.AreNotEqual(_item02.Name, borrowing.Item.Name);
+
         }
     }
 }

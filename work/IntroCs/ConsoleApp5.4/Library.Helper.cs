@@ -39,8 +39,13 @@ namespace ConsoleApp5._4
 
         private Item FindItemByName(string name)
         {
+            // No Id check
             var searchedItem = GetAllItemsFromShelves()
-                .FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(item => 
+                    item.Name.Equals(name, StringComparison.OrdinalIgnoreCase) 
+                    
+                    
+                    );
 
             if (searchedItem == null)
             {
@@ -69,7 +74,7 @@ namespace ConsoleApp5._4
             var allItems = new List<Item>();
             foreach (var shelf in Shelves)
             {
-                allItems.AddRange(shelf.GetCurrentItems());
+                allItems.AddRange(shelf.Items);
             }
 
             return allItems;

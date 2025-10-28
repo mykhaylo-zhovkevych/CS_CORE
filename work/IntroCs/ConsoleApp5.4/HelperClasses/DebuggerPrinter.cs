@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace ConsoleApp5._4.HelperClasses
 {
@@ -21,7 +17,6 @@ namespace ConsoleApp5._4.HelperClasses
             sb.AppendLine($"{result.Message}");
 
             return sb.ToString();
-
         }
 
         public static string PrintOutput(Result result)

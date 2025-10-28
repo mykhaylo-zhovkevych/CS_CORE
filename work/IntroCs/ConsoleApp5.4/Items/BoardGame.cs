@@ -12,7 +12,7 @@ namespace ConsoleApp5._4.Items
         public int AgeRating { get; set; }
         public GameType Genre { get; set; }
 
-        public BoardGame(Guid id, string name, int ageRating, GameType genre): base(id, name)
+        public BoardGame(string name, int ageRating, GameType genre): base(name)
         {
             AgeRating = ageRating;
             Genre = genre;

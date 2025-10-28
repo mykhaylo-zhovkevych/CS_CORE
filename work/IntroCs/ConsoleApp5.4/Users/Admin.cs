@@ -13,7 +13,7 @@ namespace ConsoleApp5._4.Users
         public override decimal LoanFees { get; }
         public override int Extensions { get; }
 
-        public Admin(Guid id, string name) : base(id, name) 
+        public Admin(string name) : base(name) 
         {
             LoanFees = 0.0m;
             Extensions = 0;

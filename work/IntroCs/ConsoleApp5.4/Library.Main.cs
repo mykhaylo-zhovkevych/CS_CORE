@@ -26,10 +26,10 @@ namespace ConsoleApp5._4
         // Nullable event 
         public event EventHandler<ItemEventArgs>? InformReserver;
 
-        // It has be one Method that can decide which part me be executed
         public delegate string PerformPrintOutput(User user);
 
-        
+        // Important after the code is ready: look into the code again and look for possible simplifications
+        // Such es removing the nessaserly part, and try to make code less dependent on that nessaserly part
         public Library(string name, string address, IBorrowPolicyProvider policyProvider)
         {
             Name = name;
@@ -39,33 +39,29 @@ namespace ConsoleApp5._4
             PolicyProvider = policyProvider;
         }
 
-        public Result BorrowItem(User user, string searchedItem)
+        
+
+        // TODO: Exception preferred over early return 
+        public Result BorrowItem(User user, Item item)
         {
             if (user == null) return Result.Fail("Incorrect User");
 
             // But Null than it can be neglect, because it is expected
-            if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item name is missing");
+            //if (string.IsNullOrEmpty(searchedItem)) return Result.Fail("Item name is missing");
 
             // Double cheking: overcoded? NO because, e.x: when no similar data in databank found than exception, because unexpected
-            var item = FindItemByName(searchedItem);
-            
+            // var item = FindItemByName(searchedItem);
+
             // Expected
             if (!CheckBorrowPossible(item))
             {
-                return Result.Fail($"{searchedItem} is currently not available for borrowing");
+                return Result.Fail($"{item.Name} is currently not available for borrowing");
             }
 
             // Unexpected, catches a exception
             BorrowPolicy policy = PolicyProvider.GetPolicy(user, item);
 
-            var borrowing = new Borrowing()
-            {
-                User = user,
-                Item = item,
-                LoanDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(policy.LoanPeriod),
-            };
-
+            var borrowing = new Borrowing(user, item, DateTime.Now, DateTime.Now.AddDays(policy.LoanPeriod));
             Borrowings.Add(borrowing);
             item.IsBorrowed = true;
 
@@ -73,7 +69,7 @@ namespace ConsoleApp5._4
         }
 
         // Possible other way of implementing, as method that receives only Borrowing object
-        // The Borrowing will be updated
+        // better naming, like i dont return the titel but the whole item
         public Result ReturnItem(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("Incorrect User");
@@ -100,7 +96,7 @@ namespace ConsoleApp5._4
             // After successful return the old object Borrowing can be overwriten and saved in as non active
             return Result<Borrowing>.Ok(borrowing, "Item was successfully returned");
         }
- 
+
         public Result ReserveItem(User user, string searchedItem)
         {
             //try
@@ -126,7 +122,7 @@ namespace ConsoleApp5._4
             return Result.Notify("Item was successfully reserved");
         }
 
-        
+
         public Result CancelReservation(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("No User");
@@ -143,41 +139,27 @@ namespace ConsoleApp5._4
             return Result.Notify("Item was successfully cancelled");
         }
 
-        // It removes one extention per Borrowing and not per User 
         public Result ExtendBorrowingPeriod(User user, string searchedItem)
         {
             if (user == null) return Result.Fail("Incorrect User");
             var reservedItem = FindItemByName(searchedItem);
 
-            // Check if it is not reserved and borrowed simultaneously
-            if (!reservedItem.IsReserved && reservedItem.IsBorrowed)
-            {
-                var borrowing = Borrowings.FirstOrDefault(b =>
-                    b.User.Id == user.Id &&
-                    b.Item.Name == reservedItem.Name);
+            //Check if it is not reserved and borrowed simultaneously
+            // if (!reserveditem.isreserved && reserveditem.isborrowed)
 
-                if (borrowing == null)
-                {
-                    throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
-                }
-                else if (borrowing.UsedBorrowingCredits <= 0)
-                {
-                    return Result.Fail($"{user.Name} don't have enough extentions points");
-                }
-                else
-                {
-                    borrowing.DueDate = borrowing.DueDate.AddMonths(1);
-                    borrowing.UsedBorrowingCredits--;
-                }
-                return Result.Notify("Item was successfully extended");
-            }
-            else if (reservedItem.IsReserved)
+            var borrowing = Borrowings.FirstOrDefault(b =>
+                b.User.Id == user.Id &&
+                b.Item.Name == reservedItem.Name);
+
+            if (borrowing == null)
             {
-                throw new IsAlreadyReservedException(user, reservedItem);
+                throw new ArgumentException($"{user.Name} dont have any: {reservedItem}");
             }
-            return Result.Fail($"No borrowed Item was found for {user.Name}");
+
+            return borrowing.Extend();
         }
 
+        
         public string ShowActiveBorrowings(User user)
         {
             StringBuilder sb = new StringBuilder();
@@ -236,24 +218,20 @@ namespace ConsoleApp5._4
         {
             var items = GetAllItemsFromShelves().AsEnumerable();
 
-            if (!string.IsNullOrWhiteSpace(nameContains))
+            var term = nameContains?.Trim();
+            if (!string.IsNullOrWhiteSpace(term))
             {
-                var term = nameContains.Trim();
-                if (!string.IsNullOrEmpty(term))
-                {
-                items = items.Where(i => i.Name != null &&
-                        i.Name.Contains(term, StringComparison.OrdinalIgnoreCase));
-                }
+                items = items.Where(i => i.Name.Contains(term, StringComparison.OrdinalIgnoreCase));
             }
 
-            if (isBorrowed.HasValue)
+            if (isBorrowed != null)
             {
-                items = items.Where(i => i.IsBorrowed == isBorrowed.Value);           
+                items = items.Where(i => i.IsBorrowed == isBorrowed);           
             }
 
             if (isReserved.HasValue)
             {
-                items = items.Where(i => i.IsReserved == isReserved.Value);
+                items = items.Where(i => i.IsReserved == isReserved);
             }
 
             if (itemType != null)

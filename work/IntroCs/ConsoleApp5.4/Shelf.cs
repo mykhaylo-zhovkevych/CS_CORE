@@ -10,28 +10,23 @@ namespace ConsoleApp5._4
     public class Shelf
     {
         public int ShelfId { get; private set; }
-        private List<Item> _items;
+
+        public List<Item> Items { get; }
 
         public Shelf(int shelfNumber)
         {
             ShelfId = shelfNumber;
-            _items = new List<Item>();
+            Items = new List<Item>();
         }
 
         public void AddItemToShelf(Item item)
         {
-            _items.Add(item);
+            Items.Add(item);
         }
 
         public void RemoveItemFromShelf(Item item)
         {
-            _items.Remove(item);
-        }
-
-        // Returns all items from one specific shelf
-        public List<Item> GetCurrentItems()
-        {
-            return _items;
+            Items.Remove(item);
         }
     }
 }

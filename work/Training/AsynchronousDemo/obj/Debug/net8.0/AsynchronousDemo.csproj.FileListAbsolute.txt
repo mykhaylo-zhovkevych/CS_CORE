@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\bin\Debug\net8.0\AsynchronousDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\bin\Debug\net8.0\AsynchronousDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\bin\Debug\net8.0\AsynchronousDemo.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\bin\Debug\net8.0\AsynchronousDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\bin\Debug\net8.0\AsynchronousDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\refint\AsynchronousDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\AsynchronousDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\AsynchronousDemo\obj\Debug\net8.0\ref\AsynchronousDemo.dll

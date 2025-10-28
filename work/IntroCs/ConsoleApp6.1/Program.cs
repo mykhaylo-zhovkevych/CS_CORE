@@ -4,21 +4,40 @@
     {
         static async Task Main(string[] args)
         {
-            Crew MyCrew = new Crew();
-            Kitchen MyKitchen = new Kitchen(MyCrew);
 
-            Counter MyCounter = new Counter("First Counter");
+            Restaurant restaurant = new Restaurant("Restaurant", "Main Station");
 
-            // Simulation of multiple user inputs
-            MyCounter.UserInputTerminal();
-            MyCounter.UserInputTerminal();
+            //restaurant.Counters.ForEach(counter =>
+            //{
+            //    Console.WriteLine($"Counter Name: {counter.CounterName}");
+            //});
 
-            await MyKitchen.PrepareOrderAsync(MyCounter);
-                   
 
-            // Secound resta
+            var tasks = new List<Task>();
 
-            Console.ReadKey();
+            for (int i = 0; i < 2; i++)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    var order = restaurant.Counters[0].OrderFood();
+              
+                }));
+                tasks.Add(Task.Run(() =>
+                {
+             
+                    var order = restaurant.Counters[1].OrderFood();
+                }));
+            }
+
+            await Task.WhenAll(tasks);
+
+
+            var kitchenTasks = restaurant.Counters
+                .Select(counter => restaurant.Kitchen.PrepareOrderAsync(counter))
+                .ToList();
+
+            await Task.WhenAll(kitchenTasks);
+
         }
     }
 }

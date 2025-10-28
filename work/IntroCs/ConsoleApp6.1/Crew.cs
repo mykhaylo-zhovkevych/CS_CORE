@@ -10,9 +10,7 @@ namespace ConsoleApp6._1
 {
     public class Crew
     {
-
         public ArrayList members { get; private set; }
-
 
         public Crew()
         {
@@ -23,10 +21,8 @@ namespace ConsoleApp6._1
             //members.Add(new CrewMember("Bob", Roles.Host));
             //members.Add(new CrewMember("Bob", Roles.SousChef));
             //members.Add(new CrewMember("Bob", Roles.Dishwasher));
-
         }
         
-
         class CrewMember
         {
             public string Name { get; private set; }
@@ -39,14 +35,13 @@ namespace ConsoleApp6._1
         }
 
         public enum Roles
-            {
-                Chef,
-                SousChef,
-                LineCook,
-                Dishwasher,
-                Server,
-                Host
-            }
-        
+        {
+            Chef,
+            SousChef,
+            LineCook,
+            Dishwasher,
+            Server,
+            Host
+        }
     }
 }

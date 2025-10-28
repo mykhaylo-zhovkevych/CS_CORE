@@ -8,13 +8,13 @@ namespace ConsoleApp6._1
 {
     public class Restaurant
     {
-
         public string RestaurantName { get; private set; }
         public string Location { get; private set; }
 
         public Kitchen Kitchen { get; private set; }
         public Crew Crew { get; private set; }
-        public Counter Counter { get; private set; }
+        public List<Counter> Counters { get; private set; } = new List<Counter>();
+
 
         public Restaurant(string restaurantName, string location)
         {
@@ -22,9 +22,10 @@ namespace ConsoleApp6._1
             Location = location;
             Crew = new Crew();
             Kitchen = new Kitchen(Crew);
-            Counter = new Counter("Main Counter");
+
+            Counters.Add(new Counter("Main Counter"));
+            Counters.Add(new Counter("Secondary Counter"));
+
         }
-
-
     }
 }

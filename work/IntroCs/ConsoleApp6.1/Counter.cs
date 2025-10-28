@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp6._1.Menu;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,52 +11,48 @@ namespace ConsoleApp6._1
     public class Counter
     {
         public string CounterName { get; private set; }
-        // Find out possible way of retrieving the same instance of the Data
-        public ConcurrentQueue<Order> PendingOrders { get; set; } = new ConcurrentQueue<Order>();
+        public ConcurrentQueue<Order> PendingOrders { get; private set; } = new ConcurrentQueue<Order>();
 
         public Counter(string counterName)
         {
             CounterName = counterName;
         }
 
-        public void UserInputTerminal()
-        {
-            Console.WriteLine("--- Welcome To Restaurant ---");
-            Console.WriteLine("1. Order");
-            Console.WriteLine("2. Exit");
+        //public void UserInputTerminal()
+        //{
+        //    Console.WriteLine("--- Welcome To Restaurant ---");
+        //    Console.WriteLine("1. Order");
+        //    Console.WriteLine("2. Exit");
+        //    var choice = PromptInt("Choose an option: ", 1, 2);
+        //    switch (choice)
+        //    {
+        //        case 1: OrderFood(); break;
+        //        case 2: Console.WriteLine("Canceled"); break;
+        //    }
+        //}
 
-            var choice = PromptInt("Choose an option: ", 1, 2);
-            switch (choice)
-            {
-                case 1: OrderFood(); break;
-                case 2: Console.WriteLine("Goodbye!"); break;
-            }
-        }
 
-
-        // Method for sychronously adding orders to the counter queue
         // Reference from the MacDonalds ticket system 
-        private Order OrderFood()
+        public Order OrderFood()
         {
             List<GenericCustomer> buffer = new List<GenericCustomer>();
             Random random = new Random();
-            var genericCustomer = new GenericCustomer(random.Next(0, 1000));
+            var genericCustomer = new GenericCustomer(random.Next(100, 1000));
 
             // Temp in-memory buffer
             buffer.Add(genericCustomer);
 
             var order = new Order(
                genericCustomer.CustomerOrderNumber,
-               // How to make dynamic list of food items?
-               new List<Burger>
+               new List<IFoodItem>
                {
                     new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Bacon Burger", 7.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
+                    new Coffe("Late", 6.49m),
+                    new Fries("Cheese Fries", 7.49m),
+                    new Burger("Cheeseburger", 5.99m),
+                    new Burger("Veggie Burger", 6.49m),
+                    new Burger("Cheeseburger", 5.99m),
+                    new Burger("Veggie Burger", 6.49m),
                     //new Burger("Cheeseburger", 5.99m),
                     //new Burger("Veggie Burger", 6.49m),
                     //new Burger("Cheeseburger", 5.99m),
@@ -67,21 +64,20 @@ namespace ConsoleApp6._1
                });
        
             PendingOrders.Enqueue(order);
-         
-            Console.WriteLine($"Your order number is {order.CustomerOrderNumber}.");
+            Console.WriteLine($"Your order is being processed, Order number is {order.CustomerOrderNumber}.");
             return order;
         }
 
+        //private int PromptInt(string message, int min = int.MinValue, int max = int.MaxValue)
+        //{
+        //    int value;
+        //    do
+        //    {
+        //        Console.WriteLine(message);
+        //    }
+        //    while (!int.TryParse(Console.ReadLine(), out value) || value < min || value > max);
+        //    return value;
+        //}
 
-        private int PromptInt(string message, int min = int.MinValue, int max = int.MaxValue)
-        {
-            int value;
-            do
-            {
-                Console.WriteLine(message);
-            }
-            while (!int.TryParse(Console.ReadLine(), out value) || value < min || value > max);
-            return value;
-        }
     }
 }

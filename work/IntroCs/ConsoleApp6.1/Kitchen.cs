@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp6._1.Menu;
+using System;
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace ConsoleApp6._1
     {
         public string KitchenName { get; private set; }
         public Crew CurrentCrew { get; private set; }
-        // Replace it with more genric class that holds burder as subtype of class itself
 
         public Kitchen(Crew currentCrew)
         {
@@ -22,8 +22,6 @@ namespace ConsoleApp6._1
             CurrentCrew = currentCrew;
         }
 
-
-        // Prepares Burgers asychron 
         public async Task PrepareOrderAsync(Counter counter)
         {
 
@@ -34,6 +32,7 @@ namespace ConsoleApp6._1
 
             while (counter.PendingOrders.TryDequeue(out var order))
             {
+                Console.WriteLine($"Order from: {counter.CounterName}");
                 await ProccessOrderAsync(order);
             }
 
@@ -41,10 +40,10 @@ namespace ConsoleApp6._1
 
         private async Task ProccessOrderAsync(Order order)
         {
-            Console.WriteLine("Has started the process");
+            Console.WriteLine($"Process started your, ID: {order.OrderId}");
             await CheckKitchenCapacity();
             await CheckOrderSize(order.OrderAmount);
-            Console.WriteLine("Has finished the process");
+            Console.WriteLine($"{KitchenName} has finished the process");
 
         }
 
@@ -61,7 +60,7 @@ namespace ConsoleApp6._1
                 }
             }
 
-            // switch expression   
+            // Switch expression   
             var delay = presentMembers switch
             {
                 6 => TimeSpan.FromMilliseconds(500),
@@ -72,7 +71,7 @@ namespace ConsoleApp6._1
             return Task.Delay(delay);
         }
 
-        private Task CheckOrderSize(List<Burger> orderSize)
+        private Task CheckOrderSize(List<IFoodItem> orderSize)
         {
             var counter = 0;
 

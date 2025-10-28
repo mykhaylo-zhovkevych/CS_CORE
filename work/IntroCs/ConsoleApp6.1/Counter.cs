@@ -33,7 +33,7 @@ namespace ConsoleApp6._1
 
 
         // Reference from the MacDonalds ticket system 
-        public Order OrderFood()
+        public Order OrderFood(List<IFoodItem> customerOrder)
         {
             List<GenericCustomer> buffer = new List<GenericCustomer>();
             Random random = new Random();
@@ -42,29 +42,15 @@ namespace ConsoleApp6._1
             // Temp in-memory buffer
             buffer.Add(genericCustomer);
 
-            var order = new Order(
-               genericCustomer.CustomerOrderNumber,
-               new List<IFoodItem>
-               {
-                    new Burger("Cheeseburger", 5.99m),
-                    new Coffe("Late", 6.49m),
-                    new Fries("Cheese Fries", 7.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    new Burger("Cheeseburger", 5.99m),
-                    new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m),
-                    //new Burger("Cheeseburger", 5.99m),
-                    //new Burger("Veggie Burger", 6.49m)
-               });
+            var order = new Order( genericCustomer.CustomerOrderNumber, customerOrder);
        
+            if (customerOrder is null)
+            {
+                throw new ArgumentException("No food items selected. Please select at least one item to place an order");
+            }
+
             PendingOrders.Enqueue(order);
-            Console.WriteLine($"Your order is being processed, Order number is {order.CustomerOrderNumber}.");
+            Console.WriteLine($"Your order is being processed, Order number is {order.CustomerOrderNumber}");
             return order;
         }
 

@@ -1,17 +1,20 @@
-﻿namespace ConsoleApp6._1
+﻿using ConsoleApp6._1.Menu;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
+
+namespace ConsoleApp6._1
 {
     public class Program
     {
         static async Task Main(string[] args)
         {
+            await new Program().RunSimulationAsync();
+        }
 
+        public async Task RunSimulationAsync()
+        {
             Restaurant restaurant = new Restaurant("Restaurant", "Main Station");
-
-            //restaurant.Counters.ForEach(counter =>
-            //{
-            //    Console.WriteLine($"Counter Name: {counter.CounterName}");
-            //});
-
 
             var tasks = new List<Task>();
 
@@ -19,25 +22,45 @@
             {
                 tasks.Add(Task.Run(() =>
                 {
-                    var order = restaurant.Counters[0].OrderFood();
-              
+                    try
+                    {
+                        var order = restaurant.Counters[0].OrderFood(new List<IFoodItem> { new Burger("Cheeseburger", 5.99m) });
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }));
                 tasks.Add(Task.Run(() =>
                 {
-             
-                    var order = restaurant.Counters[1].OrderFood();
+                    try
+                    {
+                        var order = restaurant.Counters[1].OrderFood(new List<IFoodItem> { new Coffe("Latte", 5.99m) });
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }));
             }
 
             await Task.WhenAll(tasks);
 
-
             var kitchenTasks = restaurant.Counters
-                .Select(counter => restaurant.Kitchen.PrepareOrderAsync(counter))
+                .Select(async counter =>
+                {
+                    try
+                    {
+                        await restaurant.Kitchen.PrepareOrderAsync(counter);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                })
                 .ToList();
 
             await Task.WhenAll(kitchenTasks);
-
         }
     }
 }

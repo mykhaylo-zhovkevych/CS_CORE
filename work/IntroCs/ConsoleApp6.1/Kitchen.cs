@@ -27,7 +27,7 @@ namespace ConsoleApp6._1
 
             if (counter.PendingOrders.IsEmpty)
             {
-                throw new ArgumentException("No orders to process.");
+                throw new ArgumentException("No orders to process");
             }
 
             while (counter.PendingOrders.TryDequeue(out var order))
@@ -35,9 +35,9 @@ namespace ConsoleApp6._1
                 Console.WriteLine($"Order from: {counter.CounterName}");
                 await ProccessOrderAsync(order);
             }
-
         }
 
+        // Not sure if must be tested
         private async Task ProccessOrderAsync(Order order)
         {
             Console.WriteLine($"Process started your, ID: {order.OrderId}");

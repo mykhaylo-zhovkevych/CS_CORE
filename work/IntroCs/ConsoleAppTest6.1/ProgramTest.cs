@@ -22,8 +22,8 @@ namespace ConsoleAppTest6._1
 
             var tasks = new List<Task>
             {
-                Task.Run(() => restaurant.Counters[0].OrderFood(new List<IFoodItem> { new Burger("Cheeseburger", 5.99m) })),
-                Task.Run(() => restaurant.Counters[1].OrderFood(new List<IFoodItem> { new Coffe("Latte", 4.99m) }))
+                Task.Run(() => restaurant.Counters[0].OrderFood(new List<IFoodItem> { new CheeseBurger("Cheeseburger", 5.99m) })),
+                Task.Run(() => restaurant.Counters[1].OrderFood(new List<IFoodItem> { new Coffee("Latte", 4.99m) }))
             };
 
             // Act

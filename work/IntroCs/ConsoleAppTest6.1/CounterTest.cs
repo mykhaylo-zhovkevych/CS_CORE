@@ -20,7 +20,7 @@ namespace ConsoleAppTest6._1
 
             // Act
             counter.PendingOrders.Clear();
-            counter.OrderFood(new List<IFoodItem> { new Burger("Cheeseburger", 5.99m) });
+            counter.OrderFood(new List<IFoodItem> { new CheeseBurger("Cheeseburger", 5.99m) });
 
             // Assert
             Assert.IsFalse(counter.PendingOrders.IsEmpty);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp6._1.Menu.Ingredients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,17 @@ namespace ConsoleApp6._1.Menu
     {
         public string Name { get; private set; }
         public decimal Price { get; private set; }
+        public Sause? IsCoveredOver{ get; private set; }
 
         public Fries(string name, decimal price)
         {
             Name = name;
             Price = price;
+        }
+
+        public Fries(Sause isCoveredOver)
+        {
+            isCoveredOver = isCoveredOver;
 
         }
     }

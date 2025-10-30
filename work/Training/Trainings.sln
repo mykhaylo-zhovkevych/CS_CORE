@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContraAnimalShelter", "Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousDemo", "AsynchronousDemo\AsynchronousDemo.csproj", "{FC55C141-F6D8-4F6F-BCDC-47AA0C0280BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDemo", "StreamDemo\StreamDemo.csproj", "{1033F4F3-FF74-4121-8C23-58236FC98838}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{FC55C141-F6D8-4F6F-BCDC-47AA0C0280BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC55C141-F6D8-4F6F-BCDC-47AA0C0280BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC55C141-F6D8-4F6F-BCDC-47AA0C0280BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1033F4F3-FF74-4121-8C23-58236FC98838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1033F4F3-FF74-4121-8C23-58236FC98838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1033F4F3-FF74-4121-8C23-58236FC98838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1033F4F3-FF74-4121-8C23-58236FC98838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

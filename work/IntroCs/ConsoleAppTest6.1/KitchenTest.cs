@@ -25,7 +25,7 @@ namespace ConsoleAppTest6._1
         {
             // Arrange
             var counter = new Counter("Main Counter");
-            counter.OrderFood(new List<IFoodItem> { new Burger("Cheeseburger", 5.99m) });
+            counter.OrderFood(new List<IFoodItem> { new CheeseBurger("Cheeseburger", 5.99m) });
 
             // Act
             await _kitchen.PrepareOrderAsync(counter);
@@ -68,7 +68,7 @@ namespace ConsoleAppTest6._1
         public async Task TestCheckKitchenCapacity_If_BellowCapacity()
         {
            
-            _kitchenCrew.members.Clear();
+            _kitchenCrew.Members.Clear();
             _kitchen = new Kitchen(_kitchenCrew);
 
             var method = typeof(Kitchen).GetMethod("CheckKitchenCapacity", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -89,10 +89,10 @@ namespace ConsoleAppTest6._1
             // Arrange
             var orderItems = new List<IFoodItem>
             {
-                new Burger("Cheeseburger", 6.99m),
-                new Burger("Cheeseburger", 6.99m),
-                new Coffe("Latte", 3.50m),
-                new Coffe("Latte", 3.50m)
+                new CheeseBurger("Cheeseburger", 6.99m),
+                new CheeseBurger("Cheeseburger", 6.99m),
+                new Coffee("Latte", 3.50m),
+                new Coffee("Latte", 3.50m)
             };
 
             var method = typeof(Kitchen).GetMethod("CheckOrderSize", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -112,7 +112,7 @@ namespace ConsoleAppTest6._1
         {
             var orderItems = new List<IFoodItem>
             {
-                new Burger("Cheeseburger", 6.99m)
+                new CheeseBurger("Cheeseburger", 6.99m)
             };
 
             var method = typeof(Kitchen).GetMethod("CheckOrderSize", BindingFlags.NonPublic | BindingFlags.Instance);

@@ -23,17 +23,23 @@ namespace ConsoleApp6
         public async Task PlacePrintIntervalOfOrdersAsync(uint repitition, uint each, List<Order> orders, CancellationToken ct)
         {
             uint counter = 0;
-
-            while (counter < repitition)
+            try 
             {
-                if (!ct.IsCancellationRequested)
-                {
-                    ct.ThrowIfCancellationRequested();
+                while (counter < repitition)
+                    {
+                        ct.ThrowIfCancellationRequested();
 
-                    PlacePrintOrders(orders);
-                    await Task.Delay(TimeSpan.FromSeconds(each), ct);
+                        PlacePrintOrders(orders);
+                        
+                        await Task.Delay(TimeSpan.FromSeconds(each), ct);
+
+                        counter++;
+                    }
                 }
-                counter++;
+            catch (OperationCanceledException ex) 
+            { 
+            
+                Console.WriteLine($"Print interval of orders canceled after {counter} repetitions. {ex.Message}");
             }
         }
 

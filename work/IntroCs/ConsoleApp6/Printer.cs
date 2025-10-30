@@ -17,7 +17,6 @@ namespace ConsoleApp6
         public ConcurrentQueue<Order> _orderQueue { get; set; } = new ConcurrentQueue<Order>();
         public CancellationTokenSource _cts { get; set; } = new CancellationTokenSource();
 
-        // Add another class that represent printer settings
 
         public Task Start()
         {

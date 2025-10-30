@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LE+vJntHxWE=",
+  "dgSpecHash": "7CAxGCD/6PQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleAppTest6.1\\ConsoleAppTest6.1.csproj",
+  "projectFilePath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleAppTest6.1\\ConsoleAppTest6.1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chmyzh1\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
     "C:\\Users\\chmyzh1\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",

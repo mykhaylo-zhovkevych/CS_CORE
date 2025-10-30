@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp6._1.Menu.Ingredients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +7,23 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6._1.Menu
 {
-    public class Coffe : IFoodItem
+    public class Coffee : IFoodItem
     {
         public string Name { get; private set; }
-
         public decimal Price { get; private set; }
+        // Fictive value
+        public Bread? TopBread { get; private set; }
 
 
-        public Coffe(string name, decimal price)
+        public Coffee(string name, decimal price)
         {
             Name = name;
             Price = price;
+        }
+
+        public Coffee(Bread topBread)
+        {
+            TopBread = topBread;
 
         }
     }

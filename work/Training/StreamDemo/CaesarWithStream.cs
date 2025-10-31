@@ -18,10 +18,7 @@ namespace StreamDemo
         {
             CaesarWithStream caesar = new CaesarWithStream();
             caesar.EncryptFileWithStream();
-
-
         }
-
 
         public void EncryptFileWithStream()
         {
@@ -41,7 +38,6 @@ namespace StreamDemo
                     Console.WriteLine(encryptedLine);
                     writer.WriteLine(encryptedLine);
                 }
-                
             }
         }
 

@@ -42,6 +42,7 @@ namespace ConsoleApp6._1
         {
             Console.WriteLine($"Process started your, ID: {order.OrderId}");
 
+            await CheckKitchenCapacity();
             if (order.OrderAmount.Any(item => item is BigMac))
             {
                 await ProduceBigMacAsync();
@@ -56,6 +57,7 @@ namespace ConsoleApp6._1
             {
                 await ProduceFriesAsync();
             }
+            await CheckOrderSize(order.OrderAmount);
 
             Console.WriteLine($"{KitchenName} has finished the process");
         }
@@ -69,11 +71,12 @@ namespace ConsoleApp6._1
             Bacon bacon = await GrillBaconAsync();
 
             var burger = new BigMac(top, bottom, bacon, patty);
-            Console.WriteLine("Hamburger ready!");
+            Console.WriteLine("Bicmac ready!");
         }
 
         private async Task ProduceCoffeeAsync()
         {
+            // Fictive value
             Bread top = await ToastBreadAsync();
             var coffee = new Coffee(top);
             Console.WriteLine("Coffee ready!");
@@ -81,7 +84,7 @@ namespace ConsoleApp6._1
 
         private async Task ProduceFriesAsync()
         {
-            Sause sause= await PrepareSauseAsync();
+            Sause sause = await PrepareSauseAsync();
             var coffee = new Fries(sause);
             Console.WriteLine("Friee ready!");
         }
@@ -118,7 +121,7 @@ namespace ConsoleApp6._1
         private async Task<Patty> GrillPattyAsync()
         {
             Console.WriteLine("Grilling patty asynchronously...");
-            await Task.Delay(20_000); // simuliert Grillzeit
+            await Task.Delay(20_000);
             return new Patty() { IsGrilled = true };
         }
 
@@ -149,6 +152,5 @@ namespace ConsoleApp6._1
             await Task.Delay(3_000);
             return new Sause() { IsCoveredOver = true };
         }
-
     }
 }

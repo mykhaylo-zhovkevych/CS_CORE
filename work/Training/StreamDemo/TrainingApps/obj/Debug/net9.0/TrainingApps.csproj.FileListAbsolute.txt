@@ -1,0 +1,15 @@
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\bin\Debug\net9.0\TrainingApps.exe
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\bin\Debug\net9.0\TrainingApps.deps.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\bin\Debug\net9.0\TrainingApps.runtimeconfig.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\bin\Debug\net9.0\TrainingApps.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\bin\Debug\net9.0\TrainingApps.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.sourcelink.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\refint\TrainingApps.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\TrainingApps.genruntimeconfig.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\TrainingApps\obj\Debug\net9.0\ref\TrainingApps.dll

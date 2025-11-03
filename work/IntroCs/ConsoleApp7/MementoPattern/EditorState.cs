@@ -1,6 +1,6 @@
 namespace MementoPattern
 {
-
+    // Memento 
     public class  EditorState
     {
         // once the editor state has been created, it cannot be changed
@@ -15,6 +15,7 @@ namespace MementoPattern
         {
             _title = title;
             _content = content;
+            // Meta Data
             _stateCreatedAt = DateTime.Now;
         }
         // 2.18.48
@@ -29,6 +30,16 @@ namespace MementoPattern
             return _content;
         }
 
-    }
+        public DateTime GetDate()
+        {
+            return _stateCreatedAt;
+        }
 
+        // Unique identifier
+        public string GetName()
+        {
+            return $"{_stateCreatedAt}/ {_title}";
+        }
+
+    }
 }

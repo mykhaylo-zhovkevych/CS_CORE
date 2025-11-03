@@ -11,9 +11,11 @@ namespace AdapterPattern
         {
             _video = video;
         }
-        public void ApplyColor(IColor icolor)
+        public void ApplyColor(IColor iColor)
         {
-            icolor.Apply(_video);
+            Console.WriteLine("Starting color processing...");
+            iColor.Apply(_video);
+            Console.WriteLine("Color processing finished.\n");
         }
     }
 }

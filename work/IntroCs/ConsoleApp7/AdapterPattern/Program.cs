@@ -4,9 +4,15 @@
     {
         static void Main(string[] args)
         {
-            var videoEditor = new VideoEditor(new Video());
+
+            var video = new Video();
+            var editor = new VideoEditor(video);
+
+            editor.ApplyColor(new BlackAndWhiteColor());
+            editor.ApplyColor(new MidnightColor());
+
             // Applying A external Color thanks to the RainbowCaller that is a Wrapper/Adapter
-            videoEditor.ApplyColor(new RainbowColor(new Package.Rainbow()));
+            editor.ApplyColor(new RainbowColor(new Package.Rainbow()));
         }
     }
 }

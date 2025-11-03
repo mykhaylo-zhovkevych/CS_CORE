@@ -8,6 +8,4 @@ namespace AdapterPattern
             Console.WriteLine("Applying Black and White Color Filter");
         }
     }
-
-
 }

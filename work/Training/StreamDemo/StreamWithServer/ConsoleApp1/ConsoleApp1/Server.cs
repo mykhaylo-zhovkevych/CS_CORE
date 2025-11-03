@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -13,66 +14,54 @@ namespace ConsoleApp1
 
         public async Task Start()
         {
-            // Waits for client connections
             TcpListener listener = new TcpListener(System.Net.IPAddress.Loopback, Port);
             listener.Start();
 
             while (true)
             {
                 TcpClient client = await listener.AcceptTcpClientAsync();
-                Task.Run(async () => await HandleClient(client));
+                Task.Run(() => HandleClient(client));
             }
-
         }
 
         private async Task HandleClient(TcpClient client)
         {
-            // Getting the data from TcpClient, because TcpClient dosent directly support reading and writing
+            using NetworkStream stream = client.GetStream();
+            using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
 
-            using (var writer = new StreamWriter(client.GetStream()))
+            try
             {
                 while (client.Connected)
                 {
-                    string message = "Hello from server";
-                    string encryptedMessage = SwapTheChars(message);
+                    string? message = await reader.ReadLineAsync();
+                    if (message == null) break;
 
-                    writer.WriteLine(encryptedMessage);
+                    var parts = message.Split('|', 2);
+                    if (parts.Length != 2) continue;
 
-                    // Without Flush(), a writer may sit in the writer's buffer and not send data immediately, the Flush() forces the writer to send the data immediately 
-                    writer.Flush();
-                    await Task.Delay(1000);
+                    string mode = parts[0];
+                    string text = parts[1];
+                    string response = mode switch
+                    {
+                        "E" => Helper.Encrypt(text),
+                        "D" => Helper.Decrypt(text),
+                        _ => "Invalid mode"
+                    };
+
+                    await writer.WriteLineAsync(response);
+                    Console.WriteLine($"Answer: {response}");
+
                 }
             }
-            client.Close();
-        }
-
-        private string SwapTheChars(string lines)
-        {
-            if (string.IsNullOrEmpty(lines))
-                return lines;
-
-            int key = 3;
-
-            var sb = new StringBuilder(lines.Length);
-
-            for (int i = 0; i < lines.Length; i++)
+            catch (Exception ex)
             {
-                char ch = lines[i];
-
-                if (ch >= 'A' && ch <= 'Z')
-                {
-                    char enc = (char)(((ch + key - 65) % 26) + 65);
-                    sb.Append(enc);
-                }
-                else if (ch >= 'a' && ch <= 'z')
-                {
-                    char enc = (char)(((ch + key - 97) % 26) + 97);
-                    sb.Append(enc);
-                }
-
+                Console.WriteLine($"{ex.Message}");
             }
-
-            return sb.ToString();
+            finally
+            {
+                client.Close();
+            }
         }
     }
 }

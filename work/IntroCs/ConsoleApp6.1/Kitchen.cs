@@ -37,7 +37,6 @@ namespace ConsoleApp6._1
             }
         }
 
-
         private async Task ProccessOrderAsync(Order order)
         {
             Console.WriteLine($"Process started your, ID: {order.OrderId}");

@@ -1,18 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\",
+  "WorkspaceRootPath": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\mzovk\\visual studio\\repos\\c#\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\mzovk\\visual studio\\repos\\c#\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\mzovk\\visual studio\\repos\\c#\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\mzovk\\visual studio\\repos\\c#\\work\\training\\streamdemo\\streamwithserver\\consoleapp1\\consoleapp1\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90EC93C1-5F6D-434E-AB1C-A1E37F8ADAAE}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Kitchen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Counter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -34,7 +44,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 179,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,60 +52,111 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Helper.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Helper.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Helper.cs",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Helper.cs",
+              "RelativeToolTip": "ConsoleApp1\\Helper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T17:02:02.839Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T16:27:40.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Kitchen.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Kitchen.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Kitchen.cs",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp6.1\\Kitchen.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Kitchen.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwKYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:31.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ProgramSecound.cs",
               "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\ProgramSecound.cs",
-              "RelativeDocumentMoniker": "..\\..\\ProgramSecound.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\ProgramSecound.cs",
               "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\ProgramSecound.cs",
-              "RelativeToolTip": "..\\..\\ProgramSecound.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\ProgramSecound.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T12:58:58.299Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "StreamDemo.csproj",
               "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamDemo.csproj",
-              "RelativeDocumentMoniker": "..\\..\\StreamDemo.csproj",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamDemo.csproj",
               "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamDemo.csproj",
-              "RelativeToolTip": "..\\..\\StreamDemo.csproj",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamDemo.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-11-03T12:58:56.964Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
               "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T07:01:57.664Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Counter.cs",
               "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Counter.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Counter.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Counter.cs",
               "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Counter.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\IntroCs\\ConsoleApp6.1\\Counter.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp6.1\\Counter.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAC4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T07:01:46.141Z"
@@ -104,11 +165,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Server.cs",
-              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Server.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Server.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Server.cs",
-              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Server.cs",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Server.cs",
               "RelativeToolTip": "ConsoleApp1\\Server.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwAkAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAswDQAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T14:17:13.856Z",
               "EditorCaption": ""
@@ -117,11 +178,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Client.cs",
-              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Client.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Client.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Client.cs",
-              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Client.cs",
-              "RelativeToolTip": "ConsoleApp1\\Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Client.cs*",
+              "RelativeToolTip": "ConsoleApp1\\Client.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T14:17:02.662Z",
               "EditorCaption": ""
@@ -130,11 +191,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "ToolTip": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T14:16:08.929Z",
               "EditorCaption": ""

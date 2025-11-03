@@ -11,8 +11,7 @@ namespace ConsoleApp6._1.Menu
     {
         public string Name { get; private set; }
         public decimal Price { get; private set; }
-        // Fictive value
-        public Bread? TopBread { get; private set; }
+        public Cookie? IsServed { get; private set; }
 
 
         public Coffee(string name, decimal price)
@@ -21,9 +20,9 @@ namespace ConsoleApp6._1.Menu
             Price = price;
         }
 
-        public Coffee(Bread topBread)
+        public Coffee(Cookie isServed)
         {
-            TopBread = topBread;
+            IsServed = isServed;
 
         }
     }

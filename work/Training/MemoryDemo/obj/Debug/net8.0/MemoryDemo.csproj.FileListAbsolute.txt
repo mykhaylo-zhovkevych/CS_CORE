@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\bin\Debug\net8.0\MemoryDemo.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\bin\Debug\net8.0\MemoryDemo.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\bin\Debug\net8.0\MemoryDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\bin\Debug\net8.0\MemoryDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\bin\Debug\net8.0\MemoryDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\refint\MemoryDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\MemoryDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\MemoryDemo\obj\Debug\net8.0\ref\MemoryDemo.dll

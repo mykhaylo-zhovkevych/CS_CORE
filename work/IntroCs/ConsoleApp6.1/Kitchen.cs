@@ -57,6 +57,7 @@ namespace ConsoleApp6._1
             {
                 await ProduceFriesAsync();
             }
+
             await CheckOrderSize(order.OrderAmount);
 
             Console.WriteLine($"{KitchenName} has finished the process");
@@ -64,29 +65,33 @@ namespace ConsoleApp6._1
 
         private async Task ProduceBigMacAsync()
         {
-            Patty patty = await GrillPattyAsync();
-            Bread top = await ToastBreadAsync();
-            Bread bottom = await ToastBreadAsync();
-            bottom = await CoatBreadWithSauceAsync();
-            Bacon bacon = await GrillBaconAsync();
 
-            var burger = new BigMac(top, bottom, bacon, patty);
-            Console.WriteLine("Bicmac ready!");
+            var pattyTask = GrillPattyAsync();
+            var baconTask = GrillBaconAsync();
+
+            var topBreadTask = ToastBreadAsync();
+
+            var bottomBreadTask = CoatBreadWithSauceAsync();
+
+            await Task.WhenAll(pattyTask, baconTask, topBreadTask, bottomBreadTask);
+
+            // Repeat the parallel execution pattern with WhenAll
+            var burger = new BigMac(topBreadTask.Result, bottomBreadTask.Result, baconTask.Result, pattyTask.Result);
+            Console.WriteLine("Bigmac ready!");
         }
 
         private async Task ProduceCoffeeAsync()
         {
-            // Fictive value
-            Bread top = await ToastBreadAsync();
-            var coffee = new Coffee(top);
+            Cookie bonus = await AddACookie();
+            var coffee = new Coffee(bonus);
             Console.WriteLine("Coffee ready!");
         }
 
         private async Task ProduceFriesAsync()
         {
-            Sause sause = await PrepareSauseAsync();
-            var coffee = new Fries(sause);
-            Console.WriteLine("Friee ready!");
+            Sauce sauce = await PrepareSauseAsync();
+            var coffee = new Fries(sauce);
+            Console.WriteLine("Frie ready!");
         }
 
         // The return type must be awaitable type
@@ -107,7 +112,6 @@ namespace ConsoleApp6._1
 
         private Task CheckOrderSize(List<IFoodItem> orderSize)
         {
-
             var delay = orderSize.Count switch
             {
                 >= 6 => TimeSpan.FromMilliseconds(3500),
@@ -132,6 +136,13 @@ namespace ConsoleApp6._1
             return new Bread() { IsToasted = true };
         }
 
+        private async Task<Cookie> AddACookie()
+        {
+            Console.WriteLine("Adding a Cookie...");
+            await Task.Delay(5_000);
+            return new Cookie() { IsServed = true };
+        }
+
         private async Task<Bacon> GrillBaconAsync()
         {
             Console.WriteLine("Grilling bacon asynchronously...");
@@ -146,11 +157,11 @@ namespace ConsoleApp6._1
             return new Bread() { HasSauce = true };
         }
 
-        private async Task<Sause> PrepareSauseAsync()
+        private async Task<Sauce> PrepareSauseAsync()
         {
             Console.WriteLine("Preparing sauce asynchronously...");
             await Task.Delay(3_000);
-            return new Sause() { IsCoveredOver = true };
+            return new Sauce() { IsCoveredOver = true };
         }
     }
 }

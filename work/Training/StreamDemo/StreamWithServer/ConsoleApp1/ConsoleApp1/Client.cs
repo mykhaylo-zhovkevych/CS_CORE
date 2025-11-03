@@ -22,15 +22,12 @@ namespace ConsoleApp1
         {
             using (TcpClient client = new TcpClient(_server, _port))
 
-                using(StreamReader reader = new StreamReader(client.GetStream()))
-                {
-                while (!reader.EndOfStream)
-                {
-                    string? time = await reader.ReadLineAsync();
-                    Console.WriteLine(time);
-                }
+            // Reads data from network stream
+            using (StreamReader reader = new StreamReader(client.GetStream()))
+            {
+                string answer = await reader.ReadLineAsync();
+                Console.WriteLine(answer);
             }
-
         }
     }
 }

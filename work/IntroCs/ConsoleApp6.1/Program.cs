@@ -1,4 +1,5 @@
 ﻿using ConsoleApp6._1.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
@@ -16,9 +17,8 @@ namespace ConsoleApp6._1
         {
             Restaurant restaurant = new Restaurant("Restaurant", "Main Station");
 
-
-            var list01 = new List<IFoodItem> { new BigMac("Spetioal Order", 6.99m)};
-            var list02 = new List<IFoodItem> { new Fries("Big Pack", 5.99m), new Coffee("Morning Coffee", 2.99m) };
+            var list01 = new List<IFoodItem> { (new BigMac("Cheeseburger", 5.99m)), (new Coffee("Coffee", 12.9m))};
+            // var list02 = new List<IFoodItem> { new BigMac("Cheeseburger", 5.99m)};
 
             var tasks = new List<Task>();
 
@@ -28,13 +28,14 @@ namespace ConsoleApp6._1
                 {
                     try
                     {
-                        var order = restaurant.Counters[0].OrderFood(list02);
+                        var order = restaurant.Counters[0].OrderFood(list01);
                     }
                     catch (ArgumentException ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
                 }));
+
                 tasks.Add(Task.Run(() =>
                 {
                     try

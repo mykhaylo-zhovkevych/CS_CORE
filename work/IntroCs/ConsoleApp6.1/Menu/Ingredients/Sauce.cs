@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6._1.Menu.Ingredients
 {
-    public class Sause
+    public class Sauce
     {
         public bool IsCoveredOver { get; set; }
     }

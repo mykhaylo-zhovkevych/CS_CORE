@@ -11,7 +11,7 @@ namespace ConsoleApp6._1.Menu
     {
         public string Name { get; private set; }
         public decimal Price { get; private set; }
-        public Sause? IsCoveredOver{ get; private set; }
+        public Sauce? IsCoveredOver{ get; private set; }
 
         public Fries(string name, decimal price)
         {
@@ -19,9 +19,9 @@ namespace ConsoleApp6._1.Menu
             Price = price;
         }
 
-        public Fries(Sause isCoveredOver)
+        public Fries(Sauce isCoveredOver)
         {
-            isCoveredOver = isCoveredOver;
+            IsCoveredOver = isCoveredOver;
 
         }
     }

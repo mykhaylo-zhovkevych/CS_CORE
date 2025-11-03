@@ -35,6 +35,11 @@ namespace ConsoleApp6._1
         // Reference from the MacDonalds ticket system 
         public Order OrderFood(List<IFoodItem> customerOrder)
         {
+            if (customerOrder is null || customerOrder.Count == 0)
+            {
+                throw new ArgumentException("No food items selected. Please select at least one item to place an order");
+            }
+
             List<GenericCustomer> buffer = new List<GenericCustomer>();
             Random random = new Random();
             var genericCustomer = new GenericCustomer(random.Next(100, 1000));
@@ -43,11 +48,6 @@ namespace ConsoleApp6._1
             buffer.Add(genericCustomer);
 
             var order = new Order( genericCustomer.CustomerOrderNumber, customerOrder);
-       
-            if (customerOrder is null)
-            {
-                throw new ArgumentException("No food items selected. Please select at least one item to place an order");
-            }
 
             PendingOrders.Enqueue(order);
             Console.WriteLine($"Your order is being processed, Order number is {order.CustomerOrderNumber}");

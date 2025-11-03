@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StreamDemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9bc173edbf565e3722f234e1d439aca6e35cc6c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+061df5ce8f9448338823e2331e9be864a44affd9")]
 [assembly: System.Reflection.AssemblyProductAttribute("StreamDemo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StreamDemo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

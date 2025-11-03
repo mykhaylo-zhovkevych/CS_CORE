@@ -20,6 +20,7 @@ namespace StreamDemo
             caesar.EncryptFileWithStream();
         }
 
+        // In Constructor only string, reader or writer and the client decode and the server encode the stream data 
         public void EncryptFileWithStream()
         {
             if (!File.Exists(filepath))

@@ -2,7 +2,5 @@
 
 public class Video
 {
-	public Video()
-	{
-	}
+	public Video() { }
 }

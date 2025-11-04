@@ -19,6 +19,5 @@ namespace AdapterPattern
             _rainbow.Setup();
             _rainbow.Update(video);
         }
-
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\bin\Debug\net8.0\StrategyPattern.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\bin\Debug\net8.0\StrategyPattern.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\bin\Debug\net8.0\StrategyPattern.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\bin\Debug\net8.0\StrategyPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\bin\Debug\net8.0\StrategyPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\refint\StrategyPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\StrategyPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\StrategyPattern\obj\Debug\net8.0\ref\StrategyPattern.dll

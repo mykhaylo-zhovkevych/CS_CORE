@@ -4,7 +4,6 @@ namespace AdapterPattern.Package
     public class Rainbow ()
     {
 
-
         public void Setup()
         {
             Console.WriteLine("Setting up Rainbow filter");

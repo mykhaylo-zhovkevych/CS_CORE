@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj": {}
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj": {
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj",
+        "projectUniqueName": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj",
         "projectName": "ObserverPattern",
-        "projectPath": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj",
-        "packagesPath": "C:\\Users\\mzovk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\obj\\",
+        "projectPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\ObserverPattern.csproj",
+        "packagesPath": "C:\\Users\\chmyzh1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\ObserverPattern\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mzovk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chmyzh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

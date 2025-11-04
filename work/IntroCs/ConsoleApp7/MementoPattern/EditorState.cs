@@ -18,7 +18,6 @@ namespace MementoPattern
             // Meta Data
             _stateCreatedAt = DateTime.Now;
         }
-        // 2.18.48
 
         public string GetTitle()
         {

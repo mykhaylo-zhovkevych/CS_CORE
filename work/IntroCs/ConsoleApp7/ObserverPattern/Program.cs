@@ -4,7 +4,17 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            DataSource dataSource = new DataSource();
+
+            SheetTwo sheet2 = new SheetTwo(dataSource);
+
+            BarChart barChart = new BarChart(dataSource);
+
+            dataSource.AddObserver(sheet2);
+            dataSource.AddObserver(barChart);
+
+            dataSource.SetValues(new List<int> { 10, 20, 30 });
+            dataSource.SetValues(new List<int> { 20, 10, 10 });
         }
     }
 }

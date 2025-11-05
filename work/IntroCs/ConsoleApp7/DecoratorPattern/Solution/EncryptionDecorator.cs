@@ -16,7 +16,7 @@ namespace DecoratorPattern.Solution
         public override void Save(string data)
         {
             var encrypted = Encrypt(data);
-            base._iData.Save(data);
+            base._iData.Save(encrypted);
         }
 
         public string Encrypt(string data)

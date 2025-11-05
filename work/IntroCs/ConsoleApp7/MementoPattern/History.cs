@@ -7,10 +7,12 @@ using System.Xml.Serialization;
 
 namespace MementoPattern
 {
+    // History manages states but changes the editor
     public class History
     {
         private List<EditorState> _states = new List<EditorState>();
-        // reference to the Editor object
+
+        // Composition because reference to the Editor object
         private Editor _editor;
 
         public History(Editor editor)

@@ -7,7 +7,6 @@ namespace ObserverPattern
 
         private DataSource _dataSource;
 
-        // Warum übergebe ich hier die DataSource? 
         public SheetTwo(DataSource dataSource)
         {
             _dataSource = dataSource;

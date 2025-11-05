@@ -26,7 +26,7 @@ namespace StrategyPattern.Solution
 
 		public void Store(string fileName)
 		{
-			// No need check what Algorith shoud be applied, becuase it does the classes themself
+			// No need check what Algorithm shoud be applied, becuase it does the classes themself
 			_compressor.Compress();
 			_overlay.Apply();
 

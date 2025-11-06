@@ -13,3 +13,18 @@ C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\FactoryMethodPatt
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.pdb
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.genruntimeconfig.cache
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\ref\FactoryMethodPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\bin\Debug\net8.0\FactoryMethodPattern.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\bin\Debug\net8.0\FactoryMethodPattern.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\bin\Debug\net8.0\FactoryMethodPattern.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\bin\Debug\net8.0\FactoryMethodPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\bin\Debug\net8.0\FactoryMethodPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\refint\FactoryMethodPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\FactoryMethodPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\FactoryMethodPattern\obj\Debug\net8.0\ref\FactoryMethodPattern.dll

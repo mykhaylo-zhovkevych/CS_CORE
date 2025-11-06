@@ -25,15 +25,11 @@ namespace ConsoleApp6._1
 
         public async Task PrepareOrderAsync(Counter counter)
         {
-            if (counter.PendingOrders.IsEmpty)
-            {
-                throw new ArgumentException("No orders to process");
-            }
-
             while (counter.PendingOrders.TryDequeue(out var order))
             {
                 Console.WriteLine($"Order from: {counter.CounterName}");
                 await ProccessOrderAsync(order);
+                
             }
         }
 
@@ -42,29 +38,47 @@ namespace ConsoleApp6._1
             Console.WriteLine($"Process started your, ID: {order.OrderId}");
 
             await CheckKitchenCapacity();
-            if (order.OrderAmount.Any(item => item is BigMac))
+
+            switch (order.OrderAmount)
             {
-                await ProduceBigMacAsync();
+                case List<IFoodItem> items when items.Any(item => item is Coffee) && items.Any(item => item is BigMac):
+                    var bigmacOrder = ProduceBigMacAsync();
+                    var coffeeOrder = ProduceCoffeeAsync();
+                    await Task.WhenAll(bigmacOrder, bigmacOrder);
+
+                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
+                    break;
+
+                case List<IFoodItem> items when items.Any(item => item is BigMac):
+                    var bigmacOrderSignle = ProduceBigMacAsync();
+                    await Task.WhenAll(bigmacOrderSignle);
+
+                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
+                    break;
+
+                case List<IFoodItem> items when items.Any(item => item is Coffee):
+
+                    var coffeeordeSingle = ProduceCoffeeAsync();
+                    await Task.WhenAll(coffeeordeSingle);
+                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
+                    break;
+
+                case List<IFoodItem> items when items.Any(item => item is Fries):
+
+                    var friesorderSingle = ProduceFriesAsync();
+                    await Task.WhenAll(friesorderSingle);
+                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
+                    break;
+
+                default:
+
+                    Console.WriteLine("No valid food items found in the order.");
+                    break;
             }
-
-            if (order.OrderAmount.Any(item => item is Coffee))
-            {
-                await ProduceCoffeeAsync();
-            }
-
-            if (order.OrderAmount.Any(item => item is Fries))
-            {
-                await ProduceFriesAsync();
-            }
-
-            await CheckOrderSize(order.OrderAmount);
-
-            Console.WriteLine($"{KitchenName} has finished the process");
         }
 
         private async Task ProduceBigMacAsync()
         {
-
             var pattyTask = GrillPattyAsync();
             var baconTask = GrillBaconAsync();
 
@@ -106,6 +120,7 @@ namespace ConsoleApp6._1
                 >= 2 and < 4 => TimeSpan.FromMilliseconds(2500),
                 _ => TimeSpan.FromMilliseconds(3500)
             };
+            Console.WriteLine($"present memebers: {presentMembers}, delay: {delay.TotalMilliseconds} ms");
             return Task.Delay(delay);
         }
 

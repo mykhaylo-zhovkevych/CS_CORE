@@ -6,12 +6,12 @@
         {
             DataSource dataSource = new DataSource();
 
-            SheetTwo sheet2 = new SheetTwo(dataSource);
+            Observer observer1 = new SheetTwo(dataSource);
 
-            BarChart barChart = new BarChart(dataSource);
+            Observer observer2 = new BarChart(dataSource);
 
-            dataSource.AddObserver(sheet2);
-            dataSource.AddObserver(barChart);
+            dataSource.AddObserver(observer1);
+            dataSource.AddObserver(observer2);
 
             dataSource.SetValues(new List<int> { 10, 20, 30 });
             dataSource.SetValues(new List<int> { 20, 10, 10 });

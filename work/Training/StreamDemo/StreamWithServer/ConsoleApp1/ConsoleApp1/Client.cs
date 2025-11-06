@@ -17,29 +17,26 @@ namespace ConsoleApp1
             _port = port;
         }
 
-        public async Task Run()
+        public async Task Run(string message)
         {
             using TcpClient client = new TcpClient(_server, _port);
             using NetworkStream stream = client.GetStream();
-            using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
             using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
 
-            while (true)
+            // Send data to the Server
+            byte[] data = Encoding.UTF8.GetBytes(message + "\n");
+            await stream.WriteAsync(data);
+            await stream.FlushAsync();
+
+            string? line = await reader.ReadLineAsync();
+            if (line != null)
             {
-                Console.Write("Mode [E]ncrypt / [D]ecrypt: ");
-                string mode = Console.ReadLine().Trim().ToUpper();
-
-                Console.Write("Text: ");
-                string input = Console.ReadLine().Trim();
-
-                // Send request to server
-                await writer.WriteLineAsync($"{mode}|{input}");
-
-                // Read response from server
-                string response = await reader.ReadLineAsync();
-                Console.WriteLine("Server response: " + response);
-
+                Console.WriteLine("Received data: " + line);
+                string decrypted = Helper.Decrypt(line);
+                Console.WriteLine("Decrypted Data: " + decrypted);
             }
+
+            client.Close();
         }
     }
 }

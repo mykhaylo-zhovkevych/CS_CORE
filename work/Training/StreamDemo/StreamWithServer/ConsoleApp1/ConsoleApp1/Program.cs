@@ -8,7 +8,14 @@
             Task serverTask = Task.Run(() => server.Start());
 
             Client client = new Client("localhost", Server.Port);
-            client.Run().Wait();
+            
+            while (true)
+            {
+                Console.Write("Text send: ");
+                string input = Console.ReadLine();
+
+                client.Run(input).Wait();
+            }
         }
     }
 }

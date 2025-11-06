@@ -28,40 +28,24 @@ namespace ConsoleApp1
         {
             using NetworkStream stream = client.GetStream();
             using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
 
             try
             {
-                while (client.Connected)
-                {
-                    string? message = await reader.ReadLineAsync();
-                    if (message == null) break;
+                // Receive data from Client
+                string? clientMessage = await reader.ReadLineAsync();
+                if (clientMessage == null) return;
 
-                    var parts = message.Split('|', 2);
-                    if (parts.Length != 2) continue;
+                string encrypted = Helper.Encrypt(clientMessage);
+                byte[] data = Encoding.UTF8.GetBytes(encrypted + "\n"); 
 
-                    string mode = parts[0];
-                    string text = parts[1];
-                    string response = mode switch
-                    {
-                        "E" => Helper.Encrypt(text),
-                        "D" => Helper.Decrypt(text),
-                        _ => "Invalid mode"
-                    };
-
-                    await writer.WriteLineAsync(response);
-                    Console.WriteLine($"Answer: {response}");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
+                await stream.WriteAsync(data);
+                await stream.FlushAsync();
             }
             finally
             {
                 client.Close();
             }
-        }
+
+        } 
     }
 }

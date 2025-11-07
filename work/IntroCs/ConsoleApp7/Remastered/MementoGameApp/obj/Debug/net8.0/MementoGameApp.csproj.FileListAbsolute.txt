@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\bin\Debug\net8.0\MementoGameApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\bin\Debug\net8.0\MementoGameApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\bin\Debug\net8.0\MementoGameApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\bin\Debug\net8.0\MementoGameApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\bin\Debug\net8.0\MementoGameApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\refint\MementoGameApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\MementoGameApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\MementoGameApp\obj\Debug\net8.0\ref\MementoGameApp.dll

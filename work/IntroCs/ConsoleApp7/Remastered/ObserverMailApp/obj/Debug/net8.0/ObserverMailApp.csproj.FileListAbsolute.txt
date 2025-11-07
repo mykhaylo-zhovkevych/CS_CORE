@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\bin\Debug\net8.0\ObserverMailApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\bin\Debug\net8.0\ObserverMailApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\bin\Debug\net8.0\ObserverMailApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\bin\Debug\net8.0\ObserverMailApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\bin\Debug\net8.0\ObserverMailApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\refint\ObserverMailApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ObserverMailApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverMailApp\obj\Debug\net8.0\ref\ObserverMailApp.dll

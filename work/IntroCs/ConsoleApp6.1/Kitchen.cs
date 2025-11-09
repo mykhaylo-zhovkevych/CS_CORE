@@ -14,6 +14,8 @@ namespace ConsoleApp6._1
 {
     public class Kitchen
     {
+        private readonly SemaphoreSlim _crewSemaphore;
+
         public string KitchenName { get; private set; }
         public Crew CurrentCrew { get; private set; }
 
@@ -21,6 +23,7 @@ namespace ConsoleApp6._1
         {
             KitchenName = "Main Kitchen";
             CurrentCrew = currentCrew;
+            _crewSemaphore = new SemaphoreSlim(currentCrew.Members.Count);
         }
 
         public async Task PrepareOrderAsync(Counter counter)
@@ -44,7 +47,7 @@ namespace ConsoleApp6._1
                 case List<IFoodItem> items when items.Any(item => item is Coffee) && items.Any(item => item is BigMac):
                     var bigmacOrder = ProduceBigMacAsync();
                     var coffeeOrder = ProduceCoffeeAsync();
-                    await Task.WhenAll(bigmacOrder, bigmacOrder);
+                    await Task.WhenAll(bigmacOrder, coffeeOrder);
 
                     Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
                     break;
@@ -79,12 +82,10 @@ namespace ConsoleApp6._1
 
         private async Task ProduceBigMacAsync()
         {
-            var pattyTask = GrillPattyAsync();
-            var baconTask = GrillBaconAsync();
-
-            var topBreadTask = ToastBreadAsync();
-
-            var bottomBreadTask = CoatBreadWithSauceAsync();
+            var pattyTask = RunWithCrewRoleAsync(() => GrillPattyAsync(), Crew.Roles.Chef);
+            var baconTask = RunWithCrewRoleAsync(() => GrillBaconAsync(), Crew.Roles.Chef);
+            var topBreadTask = RunWithCrewRoleAsync(() => ToastBreadAsync(), Crew.Roles.LineCook);
+            var bottomBreadTask = RunWithCrewRoleAsync(() => CoatBreadWithSauceAsync(), Crew.Roles.LineCook);
 
             await Task.WhenAll(pattyTask, baconTask, topBreadTask, bottomBreadTask);
 
@@ -95,16 +96,47 @@ namespace ConsoleApp6._1
 
         private async Task ProduceCoffeeAsync()
         {
-            Cookie bonus = await AddACookie();
+            var bonus = await RunWithCrewRoleAsync(() => AddACookie(), Crew.Roles.LineCook);
             var coffee = new Coffee(bonus);
             Console.WriteLine("Coffee ready!");
         }
 
         private async Task ProduceFriesAsync()
         {
-            Sauce sauce = await PrepareSauseAsync();
+            var sauce = await RunWithCrewRoleAsync(() => PrepareSauseAsync(), Crew.Roles.LineCook);
             var coffee = new Fries(sauce);
             Console.WriteLine("Frie ready!");
+        }
+
+
+        private async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
+        {
+            while(true)
+            {
+                await _crewSemaphore.WaitAsync();
+                try
+                {
+                    // Possible weakness
+                    var availableMember = CurrentCrew.Members.FirstOrDefault(m => m.Role.Equals(requiredRole));
+                    if (availableMember != null)
+                    {
+                        Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
+                        var result = await func();
+                        Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
+                        return result;
+                    }
+                    // No available member with the required role found
+                    else
+                    {
+                        _crewSemaphore.Release();
+                        await Task.Delay(100);
+                    }
+                }
+                finally
+                {
+
+                }
+            }
         }
 
         // The return type must be awaitable type

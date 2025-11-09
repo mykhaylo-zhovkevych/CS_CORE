@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,32 +21,16 @@ namespace ConsoleApp1
             while (true)
             {
                 TcpClient client = await listener.AcceptTcpClientAsync();
-                Task.Run(() => HandleClient(client));
-            }
-        }
+                NetworkStream stream = client.GetStream();
 
-        private async Task HandleClient(TcpClient client)
-        {
-            using NetworkStream stream = client.GetStream();
-            using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                byte[] buffer = new byte[1024];
+                int length = await stream.ReadAsync(buffer, 0, buffer.Length);
 
-            try
-            {
-                // Receive data from Client
-                string? clientMessage = await reader.ReadLineAsync();
-                if (clientMessage == null) return;
-
-                string encrypted = Helper.Encrypt(clientMessage);
-                byte[] data = Encoding.UTF8.GetBytes(encrypted + "\n"); 
-
-                await stream.WriteAsync(data);
+                await stream.WriteAsync(buffer, 0, length);
                 await stream.FlushAsync();
-            }
-            finally
-            {
+
                 client.Close();
             }
-
-        } 
+        }
     }
 }

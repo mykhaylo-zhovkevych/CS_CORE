@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -20,23 +21,23 @@ namespace ConsoleApp1
         public async Task Run(string message)
         {
             using TcpClient client = new TcpClient(_server, _port);
-            using NetworkStream stream = client.GetStream();
-            using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            using CaesarStream caesarStream = new CaesarStream(client.GetStream()) { IsClient = true };
 
-            // Send data to the Server
+
+            // Send data to server
             byte[] data = Encoding.UTF8.GetBytes(message + "\n");
-            await stream.WriteAsync(data);
-            await stream.FlushAsync();
+            await caesarStream.WriteAsync(data, 0, data.Length);
+            await caesarStream.FlushAsync();
 
-            string? line = await reader.ReadLineAsync();
-            if (line != null)
-            {
-                Console.WriteLine("Received data: " + line);
-                string decrypted = Helper.Decrypt(line);
-                Console.WriteLine("Decrypted Data: " + decrypted);
-            }
+            // Read response from server
+            byte[] buffer = new byte[1024];
+            int length = await caesarStream.ReadAsync(buffer, 0, buffer.Length);
+            string response = Encoding.UTF8.GetString(buffer, 0, length);
+
+            Console.WriteLine("Response from Server: " + response);
 
             client.Close();
         }
+
     }
 }

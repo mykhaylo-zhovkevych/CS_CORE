@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\bin\Debug\net8.0\SingletonLoggerApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\bin\Debug\net8.0\SingletonLoggerApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\bin\Debug\net8.0\SingletonLoggerApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\bin\Debug\net8.0\SingletonLoggerApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\bin\Debug\net8.0\SingletonLoggerApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\refint\SingletonLoggerApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\SingletonLoggerApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\SingletonFileReaderApp\obj\Debug\net8.0\ref\SingletonLoggerApp.dll

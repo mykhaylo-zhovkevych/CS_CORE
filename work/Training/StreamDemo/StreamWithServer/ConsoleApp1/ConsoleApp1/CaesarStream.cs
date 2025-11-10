@@ -10,7 +10,6 @@ namespace StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1
     public class CaesarStream : Stream
     {
         private readonly Stream _baseStream;
-        public bool IsClient { get; set; } = false;
 
         public CaesarStream(Stream baseStream)
         {
@@ -58,10 +57,8 @@ namespace StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1
             string encText = Helper.Encrypt(plainText);
             byte[] outBytes = Encoding.UTF8.GetBytes(encText);
 
-            if (IsClient)
-            {
-                Console.WriteLine("[DEBUG] Before encryption: " + encText);
-            }
+
+            Console.WriteLine("[DEBUG] Before encryption: " + encText);
             _baseStream.Write(outBytes, 0, outBytes.Length);
             
         }

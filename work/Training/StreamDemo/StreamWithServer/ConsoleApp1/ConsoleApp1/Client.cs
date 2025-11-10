@@ -21,7 +21,7 @@ namespace ConsoleApp1
         public async Task Run(string message)
         {
             using TcpClient client = new TcpClient(_server, _port);
-            using CaesarStream caesarStream = new CaesarStream(client.GetStream()) { IsClient = true };
+            using CaesarStream caesarStream = new CaesarStream(client.GetStream());
 
 
             // Send data to server

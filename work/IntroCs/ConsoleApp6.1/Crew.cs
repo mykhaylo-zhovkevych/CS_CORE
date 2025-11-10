@@ -15,14 +15,14 @@ namespace ConsoleApp6._1
         public Crew()
         {
             Members = new List<CrewMember>();
-            Members.Add(new CrewMember("Alice", Roles.LineCook));
+            Members.Add(new CrewMember("Alice", Roles.Server));
             Members.Add(new CrewMember("Bob", Roles.Chef));
             //members.Add(new CrewMember("Bob", Roles.Server));
             //members.Add(new CrewMember("Bob", Roles.Host));
             //members.Add(new CrewMember("Bob", Roles.SousChef));
             //members.Add(new CrewMember("Bob", Roles.Dishwasher));
         }
-        
+
         public class CrewMember
         {
             public string Name { get; private set; }

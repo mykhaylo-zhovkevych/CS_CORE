@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\bin\Debug\net8.0\FactoryMethodEshopApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\bin\Debug\net8.0\FactoryMethodEshopApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\bin\Debug\net8.0\FactoryMethodEshopApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\bin\Debug\net8.0\FactoryMethodEshopApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\bin\Debug\net8.0\FactoryMethodEshopApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\refint\FactoryMethodEshopApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\FactoryMethodEshopApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\FactoryMethodEshopApp\obj\Debug\net8.0\ref\FactoryMethodEshopApp.dll

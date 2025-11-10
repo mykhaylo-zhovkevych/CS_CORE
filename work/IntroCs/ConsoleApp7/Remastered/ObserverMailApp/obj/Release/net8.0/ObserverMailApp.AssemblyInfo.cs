@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ObserverMailApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f866257eb984c02f6df31d1c6306770f508601c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b3917881ed83e895a8a53bb59a8ed66e387221b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ObserverMailApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ObserverMailApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

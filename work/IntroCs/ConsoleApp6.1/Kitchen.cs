@@ -24,6 +24,7 @@ namespace ConsoleApp6._1
             KitchenName = "Main Kitchen";
             CurrentCrew = currentCrew;
             _crewSemaphore = new SemaphoreSlim(currentCrew.Members.Count);
+    
         }
 
         public async Task PrepareOrderAsync(Counter counter)
@@ -40,7 +41,7 @@ namespace ConsoleApp6._1
         {
             Console.WriteLine($"Process started your, ID: {order.OrderId}");
 
-            await CheckKitchenCapacity();
+            // await CheckKitchenCapacity();
 
             switch (order.OrderAmount)
             {
@@ -111,30 +112,27 @@ namespace ConsoleApp6._1
 
         private async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
         {
-            while(true)
+            while (true)
             {
                 await _crewSemaphore.WaitAsync();
+                var availableMember = CurrentCrew.Members.FirstOrDefault(m => Equals(m.Role, requiredRole));
+                if (availableMember is null)
+                {
+                    _crewSemaphore.Release();
+                    await Task.Delay(100);
+                    throw new Exception($"No crew member available with role {requiredRole}");
+                }
+
                 try
                 {
-                    // Possible weakness
-                    var availableMember = CurrentCrew.Members.FirstOrDefault(m => m.Role.Equals(requiredRole));
-                    if (availableMember != null)
-                    {
-                        Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
-                        var result = await func();
-                        Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
-                        return result;
-                    }
-                    // No available member with the required role found
-                    else
-                    {
-                        _crewSemaphore.Release();
-                        await Task.Delay(100);
-                    }
+                    Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
+                    T result = await func();
+                    Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
+                    return result;
                 }
                 finally
                 {
-
+                    _crewSemaphore.Release();
                 }
             }
         }

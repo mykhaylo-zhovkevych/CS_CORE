@@ -18,20 +18,6 @@ namespace ConsoleApp6._1
             CounterName = counterName;
         }
 
-        //public void UserInputTerminal()
-        //{
-        //    Console.WriteLine("--- Welcome To Restaurant ---");
-        //    Console.WriteLine("1. Order");
-        //    Console.WriteLine("2. Exit");
-        //    var choice = PromptInt("Choose an option: ", 1, 2);
-        //    switch (choice)
-        //    {
-        //        case 1: OrderFood(); break;
-        //        case 2: Console.WriteLine("Canceled"); break;
-        //    }
-        //}
-
-
         // Reference from the MacDonalds ticket system 
         public Order OrderFood(List<IFoodItem> customerOrder)
         {
@@ -53,17 +39,5 @@ namespace ConsoleApp6._1
             Console.WriteLine($"Your order is being processed, Order number is {order.CustomerOrderNumber}");
             return order;
         }
-
-        //private int PromptInt(string message, int min = int.MinValue, int max = int.MaxValue)
-        //{
-        //    int value;
-        //    do
-        //    {
-        //        Console.WriteLine(message);
-        //    }
-        //    while (!int.TryParse(Console.ReadLine(), out value) || value < min || value > max);
-        //    return value;
-        //}
-
     }
 }

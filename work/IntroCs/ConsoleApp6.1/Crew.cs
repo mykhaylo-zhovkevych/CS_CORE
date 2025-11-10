@@ -15,7 +15,7 @@ namespace ConsoleApp6._1
         public Crew()
         {
             Members = new List<CrewMember>();
-            Members.Add(new CrewMember("Alice", Roles.Server));
+            Members.Add(new CrewMember("Alice", Roles.LineCook));
             Members.Add(new CrewMember("Bob", Roles.Chef));
             //members.Add(new CrewMember("Bob", Roles.Server));
             //members.Add(new CrewMember("Bob", Roles.Host));

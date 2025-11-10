@@ -112,29 +112,20 @@ namespace ConsoleApp6._1
 
         private async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
         {
-            while (true)
+            await _crewSemaphore.WaitAsync();
+            var availableMember = CurrentCrew.Members.FirstOrDefault(m => Equals(m.Role, requiredRole));
+            if (availableMember is null)
             {
-                await _crewSemaphore.WaitAsync();
-                var availableMember = CurrentCrew.Members.FirstOrDefault(m => Equals(m.Role, requiredRole));
-                if (availableMember is null)
-                {
-                    _crewSemaphore.Release();
-                    await Task.Delay(100);
-                    throw new Exception($"No crew member available with role {requiredRole}");
-                }
-
-                try
-                {
-                    Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
-                    T result = await func();
-                    Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
-                    return result;
-                }
-                finally
-                {
-                    _crewSemaphore.Release();
-                }
+                _crewSemaphore.Release();
+                await Task.Delay(100);
+                throw new Exception($"No crew member available with role {requiredRole}");
             }
+
+            Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
+            T result = await func();
+            Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
+            _crewSemaphore.Release();
+            return result;
         }
 
         // The return type must be awaitable type

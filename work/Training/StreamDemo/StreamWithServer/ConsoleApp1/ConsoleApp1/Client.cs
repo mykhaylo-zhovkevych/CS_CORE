@@ -18,26 +18,21 @@ namespace ConsoleApp1
             _port = port;
         }
 
-        public async Task Run(string message)
+        public async Task Run()
         {
-            using TcpClient client = new TcpClient(_server, _port);
+            TcpClient client = new TcpClient(_server, _port);
             using CaesarStream caesarStream = new CaesarStream(client.GetStream());
 
+            while (client.Connected)
+            {
+                byte[] buffer = new byte[1024];
+                int length = await caesarStream.ReadAsync(buffer, 0, buffer.Length);
 
-            // Send data to server
-            byte[] data = Encoding.UTF8.GetBytes(message + "\n");
-            await caesarStream.WriteAsync(data, 0, data.Length);
-            await caesarStream.FlushAsync();
-
-            // Read response from server
-            byte[] buffer = new byte[1024];
-            int length = await caesarStream.ReadAsync(buffer, 0, buffer.Length);
-            string response = Encoding.UTF8.GetString(buffer, 0, length);
-
-            Console.WriteLine("Response from Server: " + response);
+                string response = Encoding.UTF8.GetString(buffer, 0, length);
+                Console.WriteLine("Response from Server: " + response);
+            }
 
             client.Close();
         }
-
     }
 }

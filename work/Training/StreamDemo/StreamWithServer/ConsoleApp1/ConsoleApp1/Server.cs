@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,19 +19,26 @@ namespace ConsoleApp1
             TcpListener listener = new TcpListener(System.Net.IPAddress.Loopback, Port);
             listener.Start();
 
-            while (true)
+            TcpClient client = await listener.AcceptTcpClientAsync();
+            await HandleClientAsync(client);
+            
+        }
+
+        private async Task HandleClientAsync(TcpClient client)
+        {
+            using CaesarStream caesarStream = new CaesarStream(client.GetStream());
+
+            while (client.Connected)
             {
-                TcpClient client = await listener.AcceptTcpClientAsync();
-                NetworkStream stream = client.GetStream();
+                string dateTime = DateTime.Now.ToString("F");
 
-                byte[] buffer = new byte[1024];
-                int length = await stream.ReadAsync(buffer, 0, buffer.Length);
+                byte[] data = Encoding.UTF8.GetBytes(dateTime + "\n");
+                await caesarStream.WriteAsync(data, 0, data.Length);
+                await caesarStream.FlushAsync();
 
-                await stream.WriteAsync(buffer, 0, length);
-                await stream.FlushAsync();
-
-                client.Close();
+                await Task.Delay(1000);
             }
+            client.Close();
         }
     }
 }

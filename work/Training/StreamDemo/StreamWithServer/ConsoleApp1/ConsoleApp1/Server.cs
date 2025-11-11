@@ -2,6 +2,7 @@
 using StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -30,15 +31,9 @@ namespace ConsoleApp1
 
             while (client.Connected)
             {
-                string dateTime = DateTime.Now.ToString("F");
-
-                byte[] data = Encoding.UTF8.GetBytes(dateTime + "\n");
-                await caesarStream.WriteAsync(data, 0, data.Length);
-                await caesarStream.FlushAsync();
-
-                await Task.Delay(1000);
+                await caesarStream.WriteFromServerAsync(DateTime.Now.ToString("F"));
             }
-            client.Close();
+            // client.Close();
         }
     }
 }

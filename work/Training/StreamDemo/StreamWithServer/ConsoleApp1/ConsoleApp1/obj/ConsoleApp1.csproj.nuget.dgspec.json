@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\chmyzh1\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\StreamDemo\\StreamWithServer\\ConsoleApp1\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",

@@ -25,14 +25,9 @@ namespace ConsoleApp1
 
             while (client.Connected)
             {
-                byte[] buffer = new byte[1024];
-                int length = await caesarStream.ReadAsync(buffer, 0, buffer.Length);
-
-                string response = Encoding.UTF8.GetString(buffer, 0, length);
-                Console.WriteLine("Response from Server: " + response);
+                await caesarStream.ReadFromServerAsync();
             }
-
-            client.Close();
+            // client.Close();
         }
     }
 }

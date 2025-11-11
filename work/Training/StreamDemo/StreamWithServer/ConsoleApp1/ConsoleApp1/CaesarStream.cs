@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1
 {
-    public class CaesarStream : Stream
+    public class CaesarStream : Stream, IDisposable
     {
         private readonly Stream _baseStream;
 
@@ -34,6 +36,36 @@ namespace StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1
         {
             _baseStream.Flush();
         }
+
+
+        public async Task<string> WriteFromServerAsync(string data)
+        {
+            try 
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(data + "\n");
+
+                await WriteAsync(bytes, 0, data.Length);
+                await FlushAsync();
+                await Task.Delay(1000);
+
+                return Encoding.UTF8.GetString(bytes); ;
+            }
+            finally
+            {
+                Dispose();
+            }
+            
+        }
+
+        public async Task ReadFromServerAsync()
+        {
+            byte[] buffer = new byte[1024];
+            int length = await ReadAsync(buffer, 0, buffer.Length);
+
+            string response = Encoding.UTF8.GetString(buffer, 0, length);
+            Console.WriteLine("Response from Server: " + response);
+        }
+
 
         public override int Read(byte[] buffer, int offset, int count)
         {

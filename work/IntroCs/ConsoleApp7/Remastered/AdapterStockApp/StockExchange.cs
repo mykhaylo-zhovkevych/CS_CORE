@@ -11,7 +11,7 @@ namespace AdapterStockApp
 
         public void ShowDataFromProvider(IReporter reporter)
         {
-            var data = reporter.GetReport();
+            var data = reporter.CreateReport();
             Console.WriteLine(data);
         }
     }

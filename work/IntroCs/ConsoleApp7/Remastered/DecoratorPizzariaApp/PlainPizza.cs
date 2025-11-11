@@ -2,14 +2,23 @@ namespace DecoratorPizzariaApp
 {
     public class PlainPizza : IPizza
     {
+        public string PlainPizzaDescription { get; private set; }
+        public int PlainPizzaCost { get; private set; }
 
-        public string GetDescription()
+        public PlainPizza()
         {
-            return "This is Plain Pizza";
+            PlainPizzaDescription = "This is Plain Pizza";
+            PlainPizzaCost = 5;
         }
-        public double GetCost()
+
+        public string CurrentInfoInEng()
         {
-            return 5.00f;
+            return $"Info in eng: {PlainPizzaDescription}";
+        }
+
+        public string CurrentCost()
+        {
+            return $"Price: {PlainPizzaCost}";
         }
     }
 }

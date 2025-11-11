@@ -4,8 +4,10 @@ using System;
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Xsl;
@@ -16,6 +18,8 @@ namespace ConsoleApp6._1
     public class Kitchen : ITaskExecutor
     {
         private readonly SemaphoreSlim _crewSemaphore;
+        private readonly ConcurrentDictionary<(Crew.Roles, int), Crew.CrewMember> _activeMembers;
+   
 
         public string KitchenName { get; private set; }
         public Crew CurrentCrew { get; private set; }
@@ -25,6 +29,8 @@ namespace ConsoleApp6._1
             KitchenName = "Main Kitchen";
             CurrentCrew = currentCrew;
             _crewSemaphore = new SemaphoreSlim(currentCrew.Members.Count);
+
+            _activeMembers = new ConcurrentDictionary<(Crew.Roles, int), Crew.CrewMember>();
 
         }
 
@@ -51,7 +57,7 @@ namespace ConsoleApp6._1
         public async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
         {
             await _crewSemaphore.WaitAsync();
-            var availableMember = CurrentCrew.Members.First(n => Equals(n.Role, requiredRole));
+            var availableMember = CurrentCrew.Members.First(n => Equals(n.Role, requiredRole) && !n.IsBusy);
             if (availableMember is null)
             {
                 _crewSemaphore.Release();
@@ -60,11 +66,14 @@ namespace ConsoleApp6._1
             }
 
             Console.WriteLine($"{availableMember.Name} {requiredRole} starts task");
+            availableMember.IsBusy = true;
             var result = await func();
             Console.WriteLine($"{availableMember.Name} {requiredRole} finished task");
+            availableMember.IsBusy = false;
             _crewSemaphore.Release();
             return result;
 
         }
+
     }
 }

@@ -8,10 +8,10 @@ namespace ConsoleApp6._1.Factories
     {
         public async Task<IFoodItem> ProduceAsync(ITaskExecutor worker)
         {
-            var pattyTask = worker.RunWithCrewRoleAsync(() => IngredientFactory.GrillPattyAsync(), Crew.Roles.Chef);
-            var baconTask = worker.RunWithCrewRoleAsync(() => IngredientFactory.GrillBaconAsync(), Crew.Roles.Chef);
-            var topBreadTask = worker.RunWithCrewRoleAsync(() => IngredientFactory.ToastBreadAsync(), Crew.Roles.LineCook);
-            var bottomBreadTask = worker.RunWithCrewRoleAsync(() => IngredientFactory.CoatBreadWithSauceAsync(), Crew.Roles.LineCook);
+            var pattyTask = worker.RunWithCrewRoleAsync(IngredientFactory.GrillPattyAsync, Crew.Roles.Chef);
+            var baconTask = worker.RunWithCrewRoleAsync(IngredientFactory.GrillBaconAsync, Crew.Roles.Chef);
+            var topBreadTask = worker.RunWithCrewRoleAsync(IngredientFactory.ToastBreadAsync, Crew.Roles.LineCook);
+            var bottomBreadTask = worker.RunWithCrewRoleAsync(IngredientFactory.CoatBreadWithSauceAsync, Crew.Roles.LineCook);
 
             await Task.WhenAll(pattyTask, baconTask, topBreadTask, bottomBreadTask);
 

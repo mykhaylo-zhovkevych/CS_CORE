@@ -5,46 +5,42 @@ namespace MementoGameApp
     // this class dont need to know about the saves
     public class Originator
     {
-        private int _health;
-        private int _mana;
-        private int _gold;
+        public int Health { get; private set; }
+        public int Mana { get; private set; }
+        public int Gold { get; private set; }
 
 
         public Originator(int health, int mana, int gold)
         {
-            _health = health;
-            _mana = mana;
-            _gold = gold;
+            Health = health;
+            Mana = mana;
+            Gold = gold;
         }
 
 
         public void FightMonster()
         {
-            _health -= 10;
-            _mana -= 10;
-            _gold += 10;
+            Health -= 10;
+            Mana -= 10;
+            Gold += 10;
         }
 
         public void CastSpell()
         {
-            _mana -= 15;
-            _health += 5;
+            Mana -= 15;
+            Health += 5;
         }
 
         // Save and restore state to the memento
         public Memento SaveState()
         {
-            Console.WriteLine($"{_health}, {_mana}, {_gold}");
-            return new Memento(_health, _mana, _gold);
+            Console.WriteLine($"{Health}, {Mana}, {Gold}");
+            return new Memento(Health, Mana, Gold);
         }
 
         public void RestoreState(Memento memento)
         {
-            _health = memento.GetHealth();
-            _mana = memento.GetMana();
-            _gold = memento.GetGold();
-
-            Console.WriteLine($"{_health}, {_mana}, {_gold}");
+            Console.WriteLine($"{memento.Health.ToString()}, {memento.Mana.ToString()}, {memento.Gold.ToString()}");
         }
     }
 }

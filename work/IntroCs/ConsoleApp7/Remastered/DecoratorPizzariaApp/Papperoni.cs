@@ -2,18 +2,21 @@ namespace DecoratorPizzariaApp
 {
     public class Papperoni : ToppingDecorator
     {
+        private int _extraCost = 2;
+
         public Papperoni(IPizza pizza) : base(pizza)
         {
         }
 
-        public override double GetCost()
+        // Function overriding
+        public override string CurrentCost()
         {
-            return _pizza.GetCost() + 2.00;
+            return $"{_pizza.CurrentCost()} + {_extraCost}";
         }
 
-        public override string GetDescription()
+        public override string CurrentInfoInEng()
         {
-            return _pizza.GetDescription() + ", Papperoni";
+            return _pizza.CurrentInfoInEng() + ", Papperoni";
         }
     }
 }

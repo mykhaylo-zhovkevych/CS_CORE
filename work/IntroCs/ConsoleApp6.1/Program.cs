@@ -18,7 +18,6 @@ namespace ConsoleApp6._1
             Restaurant restaurant = new Restaurant("Restaurant", "Main Station");
 
             var list01 = new List<IFoodItem> {new BigMac(), new Coffee()};
-            // var list01 = new List<IFoodItem> { new BigMac("BigMac", 5.99m), new CheeseBurger("Coffee", 12.9m) };
             var list02 = new List<IFoodItem> {new Fries()};
             var list03 = new List<IFoodItem> {new BigMac()};
 

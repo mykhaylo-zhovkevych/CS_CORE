@@ -9,10 +9,10 @@ namespace DecoratorPizzariaApp
         {
             _pizza = pizza;
         }
+        public abstract string CurrentCost();
 
-        public abstract string GetDescription();
+        public abstract string CurrentInfoInEng();
 
-        public abstract double GetCost();
 
     }
 }

@@ -3,7 +3,7 @@ namespace AdapterStockApp
     public class StockDataProvider : IReporter
     {
         // XML formatted stock data
-        private string _testData = @"<employees>
+        public string Data { get; private set; } = @"<employees>
   <employee>
     <firstName>John</firstName> <lastName>Doe</lastName>
   </employee>
@@ -15,10 +15,11 @@ namespace AdapterStockApp
   </employee>
 </employees>";
 
-        public string GetReport()
+
+        public string CreateReport()
         {
             Console.WriteLine("Getting Stock Data Report...");
-            return _testData;
+            return Data;
         }
     }
 }

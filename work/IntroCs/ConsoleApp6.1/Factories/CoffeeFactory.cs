@@ -11,7 +11,7 @@ namespace ConsoleApp6._1.Factories
     {
         public async Task<IFoodItem> ProduceAsync(ITaskExecutor worker)
         {
-            var cookie = await worker.RunWithCrewRoleAsync(() => IngredientFactory.AddACookie(), Crew.Roles.LineCook);
+            var cookie = await worker.RunWithCrewRoleAsync(IngredientFactory.AddACookie, Crew.Roles.LineCook);
             Console.WriteLine("Coffee ready!");
             return new Coffee(cookie);
         }

@@ -12,7 +12,6 @@ namespace ConsoleApp1
 
             Client client = new Client("localhost", Server.Port);
             client.Run().Wait();
-
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ConsoleApp6._1.Factories
     {
         public async Task<IFoodItem> ProduceAsync(ITaskExecutor worker)
         {
-            var sauce = await worker.RunWithCrewRoleAsync(() => IngredientFactory.PrepareSauceAsync(), Crew.Roles.LineCook);
+            var sauce = await worker.RunWithCrewRoleAsync(IngredientFactory.PrepareSauceAsync, Crew.Roles.Chef);
             Console.WriteLine("Fries ready!");
             return new Fries(sauce);
         }

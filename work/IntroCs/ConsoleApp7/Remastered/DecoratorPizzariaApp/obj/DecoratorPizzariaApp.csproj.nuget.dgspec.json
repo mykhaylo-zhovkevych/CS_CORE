@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj": {}
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj": {
+    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj",
+        "projectUniqueName": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj",
         "projectName": "DecoratorPizzariaApp",
-        "projectPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj",
+        "projectPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\DecoratorPizzariaApp.csproj",
         "packagesPath": "C:\\Users\\chmyzh1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\obj\\",
+        "outputPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\IntroCs\\ConsoleApp7\\Remastered\\DecoratorPizzariaApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

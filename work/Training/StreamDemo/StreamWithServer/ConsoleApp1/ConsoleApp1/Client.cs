@@ -25,7 +25,7 @@ namespace ConsoleApp1
 
             while (client.Connected)
             {
-                await caesarStream.ReadFromServerAsync();
+                await caesarStream.ReadFromClientAsync();
             }
             // client.Close();
         }

@@ -3,8 +3,6 @@ namespace AdapterStockApp
 
     public interface IReporter
     {
-        string GetReport();
+        string CreateReport();
     }
-
-
 }

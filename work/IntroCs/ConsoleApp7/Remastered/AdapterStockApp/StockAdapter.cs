@@ -16,7 +16,7 @@ namespace AdapterStockApp
         }
 
 
-        public string GetReport()
+        public string CreateReport()
         {
             var processedData = _analytics.PreProcessData();
 
@@ -26,7 +26,7 @@ namespace AdapterStockApp
             using (XmlTextWriter writer = new XmlTextWriter(sw) { Formatting = System.Xml.Formatting.Indented })
             {
                 xmlDoc.Save(writer);
-                string formattedXml = sw.ToString();
+                var formattedXml = sw.ToString();
 
                 return formattedXml;
             }

@@ -13,7 +13,7 @@ namespace SingletonLoggerApp.Logger
             program.Run();
         }
 
-        public void Run()
+        private void Run()
         {
             if (ReferenceEquals(singletonOne, singletonTwo))
             {

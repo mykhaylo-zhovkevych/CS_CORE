@@ -12,7 +12,8 @@ using System.Xml.Xsl;
 
 namespace ConsoleApp6._1
 {
-    public class Kitchen
+    // Interface is used for better extensibility like later Italian Kitchen etc
+    public class Kitchen : ITaskExecutor
     {
         private readonly SemaphoreSlim _crewSemaphore;
 
@@ -24,7 +25,7 @@ namespace ConsoleApp6._1
             KitchenName = "Main Kitchen";
             CurrentCrew = currentCrew;
             _crewSemaphore = new SemaphoreSlim(currentCrew.Members.Count);
-    
+
         }
 
         public async Task PrepareOrderAsync(Counter counter)
@@ -32,88 +33,25 @@ namespace ConsoleApp6._1
             while (counter.PendingOrders.TryDequeue(out var order))
             {
                 Console.WriteLine($"Order from: {counter.CounterName}");
-                await ProccessOrderAsync(order);
-                
+                await ProcessAsync(order);
             }
         }
 
-        private async Task ProccessOrderAsync(Order order)
+        private async Task ProcessAsync(Order order)
         {
             Console.WriteLine($"Process started your, ID: {order.OrderId}");
 
-            // await CheckKitchenCapacity();
+            var tasks = order.OrderAmount.Select(item =>
+            item.Factory.ProduceAsync(this)).ToList();
 
-            switch (order.OrderAmount)
-            {
-                case List<IFoodItem> items when items.Any(item => item is Coffee) && items.Any(item => item is BigMac):
-                    var bigmacOrder = ProduceBigMacAsync();
-                    var coffeeOrder = ProduceCoffeeAsync();
-                    await Task.WhenAll(bigmacOrder, coffeeOrder);
-
-                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
-                    break;
-
-                case List<IFoodItem> items when items.Any(item => item is BigMac):
-                    var bigmacOrderSignle = ProduceBigMacAsync();
-                    await Task.WhenAll(bigmacOrderSignle);
-
-                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
-                    break;
-
-                case List<IFoodItem> items when items.Any(item => item is Coffee):
-
-                    var coffeeordeSingle = ProduceCoffeeAsync();
-                    await Task.WhenAll(coffeeordeSingle);
-                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
-                    break;
-
-                case List<IFoodItem> items when items.Any(item => item is Fries):
-
-                    var friesorderSingle = ProduceFriesAsync();
-                    await Task.WhenAll(friesorderSingle);
-                    Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
-                    break;
-
-                default:
-
-                    Console.WriteLine("No valid food items found in the order.");
-                    break;
-            }
+            await Task.WhenAll(tasks);
+            Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
         }
 
-        private async Task ProduceBigMacAsync()
-        {
-            var pattyTask = RunWithCrewRoleAsync(() => GrillPattyAsync(), Crew.Roles.Chef);
-            var baconTask = RunWithCrewRoleAsync(() => GrillBaconAsync(), Crew.Roles.Chef);
-            var topBreadTask = RunWithCrewRoleAsync(() => ToastBreadAsync(), Crew.Roles.LineCook);
-            var bottomBreadTask = RunWithCrewRoleAsync(() => CoatBreadWithSauceAsync(), Crew.Roles.LineCook);
-
-            await Task.WhenAll(pattyTask, baconTask, topBreadTask, bottomBreadTask);
-
-            // Repeat the parallel execution pattern with WhenAll
-            var burger = new BigMac(topBreadTask.Result, bottomBreadTask.Result, baconTask.Result, pattyTask.Result);
-            Console.WriteLine("Bigmac ready!");
-        }
-
-        private async Task ProduceCoffeeAsync()
-        {
-            var bonus = await RunWithCrewRoleAsync(() => AddACookie(), Crew.Roles.LineCook);
-            var coffee = new Coffee(bonus);
-            Console.WriteLine("Coffee ready!");
-        }
-
-        private async Task ProduceFriesAsync()
-        {
-            var sauce = await RunWithCrewRoleAsync(() => PrepareSauseAsync(), Crew.Roles.LineCook);
-            var coffee = new Fries(sauce);
-            Console.WriteLine("Frie ready!");
-        }
-
-
-        private async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
+        public async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
         {
             await _crewSemaphore.WaitAsync();
-            var availableMember = CurrentCrew.Members.FirstOrDefault(m => Equals(m.Role, requiredRole));
+            var availableMember = CurrentCrew.Members.First(n => Equals(n.Role, requiredRole));
             if (availableMember is null)
             {
                 _crewSemaphore.Release();
@@ -121,82 +59,12 @@ namespace ConsoleApp6._1
                 throw new Exception($"No crew member available with role {requiredRole}");
             }
 
-            Console.WriteLine($"{availableMember.Name} with role {requiredRole} satrt task.");
-            T result = await func();
-            Console.WriteLine($"{availableMember.Name} with role {requiredRole} finished task.");
+            Console.WriteLine($"{availableMember.Name} {requiredRole} starts task");
+            var result = await func();
+            Console.WriteLine($"{availableMember.Name} {requiredRole} finished task");
             _crewSemaphore.Release();
             return result;
-        }
 
-        // The return type must be awaitable type
-        private Task CheckKitchenCapacity()
-        {
-            var presentMembers = CurrentCrew.Members.Count;
-
-            // Switch expression   
-            var delay = presentMembers switch
-            {
-                >= 6 => TimeSpan.FromMilliseconds(500),
-                >= 4 and < 6 => TimeSpan.FromMilliseconds(1500),
-                >= 2 and < 4 => TimeSpan.FromMilliseconds(2500),
-                _ => TimeSpan.FromMilliseconds(3500)
-            };
-            Console.WriteLine($"present memebers: {presentMembers}, delay: {delay.TotalMilliseconds} ms");
-            return Task.Delay(delay);
-        }
-
-        private Task CheckOrderSize(List<IFoodItem> orderSize)
-        {
-            var delay = orderSize.Count switch
-            {
-                >= 6 => TimeSpan.FromMilliseconds(3500),
-                >= 4 and < 6 => TimeSpan.FromMilliseconds(2500),
-                >= 2 and < 4 => TimeSpan.FromMilliseconds(1500),
-                _ => TimeSpan.FromMilliseconds(500)
-            };
-            return Task.Delay(delay);
-        }
-
-        private async Task<Patty> GrillPattyAsync()
-        {
-            Console.WriteLine("Grilling patty asynchronously...");
-            await Task.Delay(20_000);
-            return new Patty() { IsGrilled = true };
-        }
-
-        private async Task<Bread> ToastBreadAsync()
-        {
-            Console.WriteLine("Toasting bread asynchronously...");
-            await Task.Delay(5_000);
-            return new Bread() { IsToasted = true };
-        }
-
-        private async Task<Cookie> AddACookie()
-        {
-            Console.WriteLine("Adding a Cookie...");
-            await Task.Delay(5_000);
-            return new Cookie() { IsServed = true };
-        }
-
-        private async Task<Bacon> GrillBaconAsync()
-        {
-            Console.WriteLine("Grilling bacon asynchronously...");
-            await Task.Delay(10_000);
-            return new Bacon() { IsGrilled = true };
-        }
-
-        private async Task<Bread> CoatBreadWithSauceAsync()
-        {
-            Console.WriteLine("Coating bread with sauce asynchronously...");
-            await Task.Delay(2_000);
-            return new Bread() { HasSauce = true };
-        }
-
-        private async Task<Sauce> PrepareSauseAsync()
-        {
-            Console.WriteLine("Preparing sauce asynchronously...");
-            await Task.Delay(3_000);
-            return new Sauce() { IsCoveredOver = true };
         }
     }
 }

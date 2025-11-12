@@ -18,8 +18,7 @@ namespace ConsoleApp6._1
     public class Kitchen : ITaskExecutor
     {
         private readonly SemaphoreSlim _crewSemaphore;
-        private readonly ConcurrentDictionary<(Crew.Roles, int), Crew.CrewMember> _activeMembers;
-   
+        private readonly ConcurrentDictionary<Crew.CrewMember, bool> _reserved = new();
 
         public string KitchenName { get; private set; }
         public Crew CurrentCrew { get; private set; }
@@ -30,7 +29,8 @@ namespace ConsoleApp6._1
             CurrentCrew = currentCrew;
             _crewSemaphore = new SemaphoreSlim(currentCrew.Members.Count);
 
-            _activeMembers = new ConcurrentDictionary<(Crew.Roles, int), Crew.CrewMember>();
+            foreach (var m in CurrentCrew.Members)
+                _reserved[m] = false;
 
         }
 
@@ -54,26 +54,55 @@ namespace ConsoleApp6._1
             Console.WriteLine($"{KitchenName} has finished the process for this {order.OrderId}");
         }
 
+        // Possible solution 
+        // Problem: If 3 memebers and 2 of them chefs than first one will be selected
+        // Create a pool like _reserved where the members will be temp stored/reserved
+
         public async Task<T> RunWithCrewRoleAsync<T>(Func<Task<T>> func, Crew.Roles requiredRole)
         {
             await _crewSemaphore.WaitAsync();
-            var availableMember = CurrentCrew.Members.First(n => Equals(n.Role, requiredRole) && !n.IsBusy);
-            if (availableMember is null)
+
+            // Current Member
+            Crew.CrewMember member = null;
+
+            // Select all members with required role
+            var membersWithRole = CurrentCrew.Members.Where(m => m.Role == requiredRole).ToList();
+
+            // If not found
+            if (membersWithRole.Count == 0)
             {
                 _crewSemaphore.Release();
-                await Task.Delay(100);
-                throw new Exception($"No crew member available with role {requiredRole}");
+                throw new InvalidOperationException($"No crew member with role {requiredRole} is available.");
             }
 
-            Console.WriteLine($"{availableMember.Name} {requiredRole} starts task");
-            availableMember.IsBusy = true;
+            while (member == null)
+            {
+                // If not reserved and if not reserved, reserve one
+                foreach (var m in membersWithRole)
+                {
+                    if (!_reserved[m] && _reserved.TryUpdate(m,true,false))
+                    {
+                        member = m;
+                        break;
+                    }
+                }
+
+                if (member == null)
+                {
+                    await Task.Delay(1000); 
+                 
+                }
+
+            }
+
+            Console.WriteLine($"{member.Name} {requiredRole} starts task");
             var result = await func();
-            Console.WriteLine($"{availableMember.Name} {requiredRole} finished task");
-            availableMember.IsBusy = false;
+            Console.WriteLine($"{member.Name} {requiredRole} finished task");
+
+            _reserved[member] = false;
             _crewSemaphore.Release();
+
             return result;
-
         }
-
     }
 }

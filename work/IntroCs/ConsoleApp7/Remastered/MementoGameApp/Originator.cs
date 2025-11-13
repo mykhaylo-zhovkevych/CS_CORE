@@ -40,6 +40,10 @@ namespace MementoGameApp
 
         public void RestoreState(Memento memento)
         {
+            Health = memento.Health;
+            Mana = memento.Mana;
+            Gold = memento.Gold;
+
             Console.WriteLine($"{memento.Health.ToString()}, {memento.Mana.ToString()}, {memento.Gold.ToString()}");
         }
     }

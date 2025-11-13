@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4._1
 {
-    internal class StackStorage<T> : IEnumerable<T>
+    public class StackStorage<T> : IEnumerable<T>
     {
 
         private T[] _items;
@@ -30,7 +30,6 @@ namespace ConsoleApp4._1
         {
             if(IsFull)
             {
-               
                 throw new StackExceptions.StackFullException("Cellar is full");
             }
 
@@ -48,7 +47,7 @@ namespace ConsoleApp4._1
             _count--;
             T removed = _items[_count];
             // This keyword handels both referance and values types
-            // Not really needed
+            // Not really needed, because sets a value on the previous index, king of overrides the referance
             _items[_count] = default;
 
             return removed;
@@ -64,12 +63,6 @@ namespace ConsoleApp4._1
             }
             return sb.ToString();
         }
-
-
-        //foreach (var item in _items)
-        //{
-        //    Console.WriteLine(item);
-        //}
 
 
         /// <summary>

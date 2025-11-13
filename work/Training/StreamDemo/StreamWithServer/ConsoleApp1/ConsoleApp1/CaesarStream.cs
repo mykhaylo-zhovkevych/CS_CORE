@@ -40,37 +40,31 @@ namespace StreamDemo.StreamWithServer.ConsoleApp1.ConsoleApp1
 
         public async Task<string> WriteFromServerAsync(string data)
         {
-            try 
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(data + "\n");
+            byte[] bytes = Encoding.UTF8.GetBytes(data + "\n");
 
-                await WriteAsync(bytes, 0, data.Length);
-                await FlushAsync();
-                await Task.Delay(1000);
+            await WriteAsync(bytes, 0, data.Length);
+            await FlushAsync();
+            // await Task.Delay(1000);
 
-                return Encoding.UTF8.GetString(bytes); ;
-            }
-            finally
-            {
-                Dispose();
-            }   
+            return Encoding.UTF8.GetString(bytes); ;
+            //finally
+            //{
+            //    Dispose();
+            //}   
         }
 
         public async Task ReadFromClientAsync()
         {
-            try
-            {
-                byte[] buffer = new byte[1024];
-                int length = await ReadAsync(buffer, 0, buffer.Length);
+            byte[] buffer = new byte[1024];
+            int length = await ReadAsync(buffer, 0, buffer.Length);
 
-                string response = Encoding.UTF8.GetString(buffer, 0, length);
-                Console.WriteLine("Response from Server: " + response);
-            }
-            finally
-            {
-                Dispose();
-            }
-        }
+            string response = Encoding.UTF8.GetString(buffer, 0, length);
+            Console.WriteLine("Response from Server: " + response);
+        //    finally
+        //    {
+        //        Dispose();
+        //    }
+        //}
 
 
         public override int Read(byte[] buffer, int offset, int count)

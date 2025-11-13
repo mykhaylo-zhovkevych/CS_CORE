@@ -1,0 +1,12 @@
+
+1. The method can take up to numbers, sparated by comasan will return teri sum.
+for example "1" or, "1,2"^as inputs. (for each ampty string, it will return 0)
+
+
+2. Allow the Add method to handle an unknown amount if numbers 
+
+
+3. Allow the Add method to handle new lines between numbers (instead of commas).
+
+the following input is ok: "1\n2,3" will be 6
+the following input is NOT ok: "1,\n"

@@ -98,27 +98,22 @@ namespace ConsoleAppTest4._1
       
         }
 
-        /*
-         
-         public override string ToString()
-            {
-                StringBuilder sb = new StringBuilder();
-                for (int i = _count - 1; i >= 0; i--)
-                {
-                    sb.Append(_items[i]).Append('\n');
-                }
-                return sb.ToString();
-            }
-         
-         */
-
-
         [TestMethod]
-        public void TestToString()
+        public void TestToString_IfReturnsInReverseOrder()
         {
-            
+            // Arrange
+            var stack = new StackStorage<string>();
+            stack.Push("A");
+            stack.Push("B");
+            stack.Push("C");
+
+            // Act
+            string result = stack.ToString();
+
+            string expected = "C\nB\nA\n";
+
+            // Assert
+            Assert.AreEqual(expected, result);
         }
-
-
     }
 }

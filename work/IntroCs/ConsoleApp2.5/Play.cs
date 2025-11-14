@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class Play
+    public class Play
     {
 
         public int Id { get; private set; }

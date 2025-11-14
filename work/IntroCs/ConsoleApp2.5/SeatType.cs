@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal enum SeatType
+    public enum SeatType
     {
         REGULAR,
         BALCONY,

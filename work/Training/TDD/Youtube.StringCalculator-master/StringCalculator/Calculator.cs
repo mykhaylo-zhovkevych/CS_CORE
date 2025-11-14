@@ -35,9 +35,40 @@ namespace StringCalculator
 
         public int Add(string numbers)
         {
+
+            var delimiters = new List<char>{ ',', '\n' };
+
+            if (numbers.StartsWith("//"))
+            {
+                var splitOnFirstNewLine = numbers.Split(new[] { '\n' }, 2);
+                var customDelimiter = splitOnFirstNewLine[0].Replace("//", string.Empty).Single();
+                delimiters.Add(customDelimiter);
+                numbers = splitOnFirstNewLine[1];
+            }
+
             var splitNumbers = numbers
-                .Split(new []{','}, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse);
+                .Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
+
+
+            var negativeNumbers = splitNumbers.Where(x => x < 0).ToList();
+
+            // 6. Refactoring 
+            //var negativeNumbers = new List<int>();
+            //foreach ( var potentiallyNegativeNumber in splitNumbers)
+            //{
+            //    if (potentiallyNegativeNumber < 0) 
+            //    { 
+                
+            //        negativeNumbers.Add(potentiallyNegativeNumber);
+
+            //    }
+            //}
+
+            if (negativeNumbers.Any())
+            {
+                throw new Exception($"Negatives not allowed: "+string.Join(",",negativeNumbers));
+            }
 
 
             return splitNumbers.Sum();

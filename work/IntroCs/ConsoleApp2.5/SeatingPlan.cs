@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class SeatingPlan
+    public class SeatingPlan
     {
         public int Id { get; set; }
         public List<Seat> Seats { get; set; } = new List<Seat>();
@@ -17,7 +17,7 @@ namespace ConsoleApp2._5
             var availableSeats = Seats.Where(s => s.IsAvailable).ToList();
            
 
-            if (availableSeats.Count <= amount)
+            if (availableSeats.Count < amount)
             {
                 throw new ArgumentException("Not enough seats available.");
             }

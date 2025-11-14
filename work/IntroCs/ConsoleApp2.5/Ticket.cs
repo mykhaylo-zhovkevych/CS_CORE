@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class Ticket
+    public class Ticket
     {
         public int Id { get; private set; }
         public string TicketName { get; private set; }
@@ -17,7 +17,6 @@ namespace ConsoleApp2._5
         public DateTime SaleDate { get; private set; }
         public Play Play { get; set; }
 
-        // later
         public Ticket(int id, string ticketName, int price, int amount, string guestName, DateTime saleDate, Play play)
         {
             Id = id;

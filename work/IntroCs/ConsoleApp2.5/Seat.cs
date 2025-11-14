@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-
-    internal class Seat
+    public class Seat
     {
         public int SeatNumber { get; set; }
         public bool IsAvailable { get; set; }

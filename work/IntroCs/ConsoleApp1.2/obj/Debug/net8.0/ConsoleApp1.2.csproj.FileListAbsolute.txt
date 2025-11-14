@@ -1,5 +1,0 @@
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp1.2\obj\Debug\net8.0\ConsoleApp1.2.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp1.2\obj\Debug\net8.0\ConsoleApp1.2.AssemblyInfoInputs.cache
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp1.2\obj\Debug\net8.0\ConsoleApp1.2.AssemblyInfo.cs
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp1.2\obj\Debug\net8.0\ConsoleApp1.2.csproj.CoreCompileInputs.cache
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp1.2\obj\Debug\net8.0\ConsoleApp1.2.sourcelink.json

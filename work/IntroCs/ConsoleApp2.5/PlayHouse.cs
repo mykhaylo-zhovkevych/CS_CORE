@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class PlayHouse
+    public class PlayHouse
     {
         public string PlayHouseName { get; set; }
         public string Loation { get; set; }

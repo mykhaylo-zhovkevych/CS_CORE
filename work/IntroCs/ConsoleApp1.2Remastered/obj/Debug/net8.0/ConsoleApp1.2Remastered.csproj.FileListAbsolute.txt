@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\bin\Debug\net8.0\ConsoleApp1.2Remastered.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\bin\Debug\net8.0\ConsoleApp1.2Remastered.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\bin\Debug\net8.0\ConsoleApp1.2Remastered.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\bin\Debug\net8.0\ConsoleApp1.2Remastered.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\bin\Debug\net8.0\ConsoleApp1.2Remastered.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\refint\ConsoleApp1.2Remastered.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ConsoleApp1.2Remastered.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp1.2Remastered\obj\Debug\net8.0\ref\ConsoleApp1.2Remastered.dll

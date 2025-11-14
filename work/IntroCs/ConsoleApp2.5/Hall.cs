@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class Hall
+    public class Hall
     {
         public string HallName { get; set; }
         public int Floor { get; set; }

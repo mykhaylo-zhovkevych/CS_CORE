@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal class Triangle : Shape
+    public class Triangle : Shape
     {
         public int SideA { get; private set; }
         public int SideB { get; private set; }

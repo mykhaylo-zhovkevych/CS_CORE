@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal abstract class Shape : IMovable
+    public abstract class Shape : IMovable
     {
         // Abstract properties can not have private setters
         public abstract string Name { get; set; }

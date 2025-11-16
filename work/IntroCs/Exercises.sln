@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest2.5", "MSTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest3.1", "MSTest\ConsoleAppTest3.1\ConsoleAppTest3.1.csproj", "{0E82264A-6F1E-4C18-9456-13332B8DA2A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChatApp", "..\..\prep\projects\Http\ChatApp\WpfChatApp\WpfChatApp.csproj", "{FF709458-DB19-41AE-A582-1083B6AFCECD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{0E82264A-6F1E-4C18-9456-13332B8DA2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E82264A-6F1E-4C18-9456-13332B8DA2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E82264A-6F1E-4C18-9456-13332B8DA2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF709458-DB19-41AE-A582-1083B6AFCECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF709458-DB19-41AE-A582-1083B6AFCECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF709458-DB19-41AE-A582-1083B6AFCECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF709458-DB19-41AE-A582-1083B6AFCECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

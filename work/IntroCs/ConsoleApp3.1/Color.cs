@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal class Color
+    public class Color
     {
 
         public String BLACK { get; private set; } = "#000000";

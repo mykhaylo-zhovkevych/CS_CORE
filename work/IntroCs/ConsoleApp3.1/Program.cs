@@ -3,7 +3,7 @@ using System;
 
 namespace ConsoleApp3._1
 {
-    internal class Program
+    public class Program
     {
         public static void Main(string[] args)
         {

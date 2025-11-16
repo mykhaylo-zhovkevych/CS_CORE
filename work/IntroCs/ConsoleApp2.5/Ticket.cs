@@ -11,21 +11,24 @@ namespace ConsoleApp2._5
         public int Id { get; private set; }
         public string TicketName { get; private set; }
         public int Price { get; private set; }
-        public SeatType Type { get; set; }
-        public int Amount { get; private set; }
+        public List<int> SeatNumbers { get; private set; } = new List<int>();
+        public List<SeatType> SeatTypes { get; private set; } = new List<SeatType>();
+        public int Amount => SeatNumbers.Count;
         public string GuestName { get; private set; }
         public DateTime SaleDate { get; private set; }
         public Play Play { get; set; }
 
-        public Ticket(int id, string ticketName, int price, int amount, string guestName, DateTime saleDate, Play play)
+        public Ticket(int id, string ticketName, int price, IEnumerable<int> seatNumbers, IEnumerable<SeatType> seatTypes, string guestName, DateTime saleDate, Play play)
         {
             Id = id;
             TicketName = ticketName;
             Price = price;
-            Amount = amount;
+            SeatNumbers.AddRange(seatNumbers);
+            SeatTypes.AddRange(seatTypes);
             GuestName = guestName;
             SaleDate = saleDate;
             Play = play;
         }
     }
+
 }

@@ -1,0 +1,14 @@
+2025-11-16T20:06:51.8701877+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.4.3+c252b64ad913ea9411fc5d17bfd5580d2d061497
+2025-11-16T20:06:51.8867313+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-11-16T20:06:51.8876741+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-11-16T20:06:51.8876799+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 20:06:51.842
+2025-11-16T20:06:51.8896621+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 26920
+2025-11-16T20:06:51.8898252+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.19
+2025-11-16T20:06:51.8898385+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.19\System.Private.CoreLib.dll
+2025-11-16T20:06:51.8898520+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-11-16T20:06:51.8898642+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\MSTest\ConsoleAppTest2.5\bin\Debug\net8.0\ConsoleAppTest2.5.dll
+2025-11-16T20:06:51.8901064+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\MSTest\ConsoleAppTest2.5\bin\Debug\net8.0\Log --results-directory C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\TestResults --client-port 53419'
+2025-11-16T20:06:51.8916741+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-11-16T20:06:51.9256393+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-11-16T20:06:51.9297261+00:00 Microsoft.Testing.Platform.Configurations.JsonConfigurationSource+JsonConfigurationProvider INFORMATION Config file 'C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\MSTest\ConsoleAppTest2.5\bin\Debug\net8.0\ConsoleAppTest2.5.testconfig.json' not found.
+2025-11-16T20:06:51.9315303+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable:  VSTest mode: False

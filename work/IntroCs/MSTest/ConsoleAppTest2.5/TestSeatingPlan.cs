@@ -32,14 +32,14 @@ namespace ConsoleAppTest2._5
 
 
         [TestMethod]
-        public void TestBuyTicket_IfIsCorrect()
+        public void TestBuyTicket_AddsTicketsForDifferentUsers()
         {
+            _seatingPlan.BuyTicket("TestUser01", 1, _play02);
+            _seatingPlan.BuyTicket("TestUser02", 1, _play01);
 
-            _seatingPlan.BuyTicket("TestUser01", 2, _play02);
-            _seatingPlan.BuyTicket("TestUser02", 2, _play01);
-
-            Assert.IsTrue(_seatingPlan.Tickets.Any(ticket => ticket.GuestName == "TestUser01" && ticket.GuestName == "TestUser02") );
-
+            Assert.IsTrue(_seatingPlan.Tickets.Any(t => t.GuestName == "TestUser01"));
+            Assert.IsTrue(_seatingPlan.Tickets.Any(t => t.GuestName == "TestUser02"));
+            Assert.AreEqual(2, _seatingPlan.Tickets.Count);
         }
 
 
@@ -57,13 +57,27 @@ namespace ConsoleAppTest2._5
         [TestMethod]
         public void TestBuyTicket_NotEnoughSeatsAvailable_ThrowsException()
         {
- 
+            // Assert & Act
             Assert.ThrowsException<ArgumentException>(() =>
             {
                 _seatingPlan.BuyTicket("TestUser03", 5, _play01);
             });
         }
 
+        [TestMethod]
+        public void TestBuyTicket_SeatTypesMatchSelectedSeats()
+        {
+            // Arrange & Act
+            var ticket = _seatingPlan.BuyTicket("TestUser04", 2, _play01);
+
+            var expected = _seatingPlan.Seats
+                .Where(s => !s.IsAvailable)
+                .Select(s => s.Type)
+                .ToList();
+
+            // Assert
+            CollectionAssert.AreEqual(expected, ticket.SeatTypes);
+        }
 
     }
 }

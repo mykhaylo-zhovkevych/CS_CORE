@@ -34,3 +34,39 @@ C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\WebApplicationExample\obj\De
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.pdb
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.genruntimeconfig.cache
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\WebApplicationExample\obj\Debug\net8.0\ref\WebApplicationExample.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\appsettings.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.staticwebassets.endpoints.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.exe
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.deps.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.runtimeconfig.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\WebApplicationExample.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.csproj.AssemblyReference.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.sourcelink.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\scopedcss\bundle\WebApplicationExample.styles.css
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebAppli.8BDD6F46.Up2Date
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\refint\WebApplicationExample.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\WebApplicationExample.genruntimeconfig.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\WebApplicationExample\obj\Debug\net8.0\ref\WebApplicationExample.dll

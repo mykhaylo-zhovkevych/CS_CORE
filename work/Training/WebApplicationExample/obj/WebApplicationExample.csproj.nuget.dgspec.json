@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj": {}
+    "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj": {
+    "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj",
+        "projectUniqueName": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj",
         "projectName": "WebApplicationExample",
-        "projectPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj",
-        "packagesPath": "C:\\Users\\chmyzh1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chmyzh1\\Source\\Repos\\CS_CORE\\work\\Training\\WebApplicationExample\\obj\\",
+        "projectPath": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\WebApplicationExample\\WebApplicationExample.csproj",
+        "packagesPath": "C:\\Users\\mzovk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mzovk\\Visual Studio\\repos\\C#\\work\\Training\\WebApplicationExample\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\chmyzh1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mzovk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

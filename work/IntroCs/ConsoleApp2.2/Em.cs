@@ -29,37 +29,37 @@ namespace ConsoleApp2._2
         }
 
 
-        public int GetAmountOfTotalIncorrectDecisionsFromAllGames(List<Game> allGames)
-        {
-            foreach (var game in allGames)
-            {
-                if ((DateTime.Now - game.Date).TotalHours >= 48) 
-                {
-                    List<Game> actualGames = new List<Game>();    
-                    actualGames.Add(game);
+        //public int GetAmountOfTotalIncorrectDecisionsFromAllGames(List<Game> allGames)
+        //{
+        //    foreach (var game in allGames)
+        //    {
+        //        if ((DateTime.Now - game.Date).TotalHours >= 48) 
+        //        {
+        //            List<Game> actualGames = new List<Game>();    
+        //            actualGames.Add(game);
 
-                    return actualGames.Sum(g => g.IncidentDecisions.Count(IncidentDecision => IncidentDecision.isWrongDecision));
-                }
+        //            return actualGames.Sum(g => g.IncidentDecisions.Count(IncidentDecision => IncidentDecision.isWrongDecision));
+        //        }
                 
-            }
+        //    }
 
-                //int wrongCount = 0;
+        //        //int wrongCount = 0;
 
-                //foreach (var g in allGames)  
-                //{
-                //    foreach (var decision in g.IncidentDecisions)  
-                //    {
-                //        if (decision.isWrongDecision)
-                //        {
-                //            wrongCount++;
-                //        }
-                //    }
-                //}
+        //        //foreach (var g in allGames)  
+        //        //{
+        //        //    foreach (var decision in g.IncidentDecisions)  
+        //        //    {
+        //        //        if (decision.isWrongDecision)
+        //        //        {
+        //        //            wrongCount++;
+        //        //        }
+        //        //    }
+        //        //}
 
-                //return wrongCount;
+        //        //return wrongCount;
             
-            return 0;
-        }
+        //    return 0;
+        //}
 
         public int GetAmountOfTotalIncorrectDecisionsFromSpecificGame(Game game)
         {

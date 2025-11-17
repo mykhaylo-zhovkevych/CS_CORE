@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousDemo", "Asynchr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDemo", "StreamDemo\StreamDemo.csproj", "{1033F4F3-FF74-4121-8C23-58236FC98838}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIDemo", "WebAPIDemo\WebAPIDemo.csproj", "{1360B997-88FC-432D-A4F8-6FEFC19513F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationExample", "WebApplicationExample\WebApplicationExample.csproj", "{AF9DBDB7-5BFF-4C7F-BFA2-B5C2307188E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +123,14 @@ Global
 		{1033F4F3-FF74-4121-8C23-58236FC98838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1033F4F3-FF74-4121-8C23-58236FC98838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1033F4F3-FF74-4121-8C23-58236FC98838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1360B997-88FC-432D-A4F8-6FEFC19513F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1360B997-88FC-432D-A4F8-6FEFC19513F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1360B997-88FC-432D-A4F8-6FEFC19513F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1360B997-88FC-432D-A4F8-6FEFC19513F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9DBDB7-5BFF-4C7F-BFA2-B5C2307188E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9DBDB7-5BFF-4C7F-BFA2-B5C2307188E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9DBDB7-5BFF-4C7F-BFA2-B5C2307188E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9DBDB7-5BFF-4C7F-BFA2-B5C2307188E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

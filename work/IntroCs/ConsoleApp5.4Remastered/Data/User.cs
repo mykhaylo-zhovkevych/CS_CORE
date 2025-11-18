@@ -1,9 +1,6 @@
 ﻿using ConsoleApp5._4Remastered.Enum;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace ConsoleApp5._4Remastered.Data
 {
@@ -13,11 +10,12 @@ namespace ConsoleApp5._4Remastered.Data
         public string Name { get; set; }
         public UserType UserType { get; set; }
 
-        public User(string name, UserType type)
+        [JsonConstructor]
+        public User(string name, UserType userType)
         {
             Id = Guid.NewGuid();
             Name = name;
-            UserType = type;
+            UserType = userType;
         }
     }
 }

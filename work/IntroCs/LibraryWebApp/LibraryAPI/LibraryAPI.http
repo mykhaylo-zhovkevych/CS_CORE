@@ -1,0 +1,27 @@
+@LibraryAPI_HostAddress = http://localhost:5108
+
+POST {{LibraryAPI_HostAddress}}/api/library/newuser
+Content-Type: application/json
+{
+  "Name": "testname01",
+  "UserType": "ExternalUser"
+}
+###
+POST {{LibraryAPI_HostAddress}}/api/library/newitem
+Content-Type: application/json
+{
+  "Name": "testitem01",
+  "UserType": "Book"
+}
+
+###
+GET {{LibraryAPI_HostAddress}}/api/library/8483ba73-6270-4918-a494-141270ef439b
+Accept: application/json
+
+###
+POST {{LibraryAPI_HostAddress}}/api/library/newborrowing
+Content-Type: application/json
+{
+  "UserId": "8483ba73-6270-4918-a494-141270ef439b",
+  "ItemId": "ed94077f-318e-4c23-a5f6-4cd8666a2ca5"
+}

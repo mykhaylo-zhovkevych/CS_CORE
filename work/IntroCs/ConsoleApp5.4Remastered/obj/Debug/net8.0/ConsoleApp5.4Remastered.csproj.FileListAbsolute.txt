@@ -3,13 +3,10 @@ C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\D
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.AssemblyInfo.cs
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.csproj.CoreCompileInputs.cache
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.sourcelink.json
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\bin\Debug\net8.0\ConsoleApp5.4Remastered.exe
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\bin\Debug\net8.0\ConsoleApp5.4Remastered.deps.json
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\bin\Debug\net8.0\ConsoleApp5.4Remastered.runtimeconfig.json
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\bin\Debug\net8.0\ConsoleApp5.4Remastered.dll
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\bin\Debug\net8.0\ConsoleApp5.4Remastered.pdb
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.dll
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\refint\ConsoleApp5.4Remastered.dll
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.pdb
-C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ConsoleApp5.4Remastered.genruntimeconfig.cache
 C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp5.4Remastered\obj\Debug\net8.0\ref\ConsoleApp5.4Remastered.dll

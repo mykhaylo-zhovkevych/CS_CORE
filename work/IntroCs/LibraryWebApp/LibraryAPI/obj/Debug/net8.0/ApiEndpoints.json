@@ -1,0 +1,96 @@
+[
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "GetBorrowingForUser",
+    "RelativePath": "api/Library/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ConsoleApp5._4Remastered.HelperClasses.Borrowing, ConsoleApp5.4Remastered, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreateNewBorrowing",
+    "RelativePath": "api/Library/newborrowing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "LibraryAPI.Service.LibraryService\u002BCreateBorrowingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreatNewItem",
+    "RelativePath": "api/Library/newitem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newItem",
+        "Type": "ConsoleApp5._4Remastered.Data.Item",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsoleApp5._4Remastered.Data.Item",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreatNewUser",
+    "RelativePath": "api/Library/newuser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "ConsoleApp5._4Remastered.Data.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsoleApp5._4Remastered.Data.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

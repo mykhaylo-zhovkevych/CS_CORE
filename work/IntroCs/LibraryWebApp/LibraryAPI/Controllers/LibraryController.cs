@@ -45,7 +45,7 @@ namespace LibraryAPI.Controllers
                 return BadRequest("User data is null");
             }
 
-            var alreadyExists = LibraryService.CheckIfItemExistsAndHasShelf(newItem);
+            var alreadyExists = LibraryService.CheckIfItemExists(newItem);
             if (alreadyExists)
             {
                 return Conflict("Item already exists");

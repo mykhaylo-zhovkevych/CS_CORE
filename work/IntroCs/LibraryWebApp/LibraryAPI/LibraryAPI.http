@@ -11,17 +11,17 @@ POST {{LibraryAPI_HostAddress}}/api/library/newitem
 Content-Type: application/json
 {
   "Name": "testitem01",
-  "UserType": "Book"
+  "ItemType": "Book"
 }
 
 ###
-GET {{LibraryAPI_HostAddress}}/api/library/8483ba73-6270-4918-a494-141270ef439b
+GET {{LibraryAPI_HostAddress}}/api/library/d01a4ee9-a960-4db6-8963-91629703a4b0
 Accept: application/json
 
 ###
 POST {{LibraryAPI_HostAddress}}/api/library/newborrowing
 Content-Type: application/json
 {
-  "UserId": "8483ba73-6270-4918-a494-141270ef439b",
-  "ItemId": "ed94077f-318e-4c23-a5f6-4cd8666a2ca5"
+  "UserId": "d01a4ee9-a960-4db6-8963-91629703a4b0",
+  "ItemId": "0f508097-ed59-4753-bd38-4a51dcbf7c23"
 }

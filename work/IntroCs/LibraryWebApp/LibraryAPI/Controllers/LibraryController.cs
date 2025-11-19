@@ -2,77 +2,75 @@
 using ConsoleApp5._4Remastered.Data;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.HelperClasses;
+using LibraryAPI.Models;
 using LibraryAPI.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ConstrainedExecution;
-
 namespace LibraryAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LibraryController : ControllerBase
     {
-        private static LibraryService _service;
+        private readonly LibraryService _service;
 
         public LibraryController(LibraryService service)
         {
             _service = service;
         }
 
-        // Data Transfare Object (DTO)
         [HttpPost("newuser")]
-        public ActionResult<User> CreatNewUser([FromBody] User newUser)
+        public ActionResult CreateUser([FromBody] CreateUserDto dto)
         {
-            if (newUser is null)
-            {
-                return BadRequest("User data is null");
-            }
-            var alreadyExists = LibraryService.CheckIfUserExists(newUser);
-            if (alreadyExists)
+            if (_service.UserExists(dto.Name, dto.UserType))
             {
                 return Conflict("User already exists");
             }
 
-            return CreatedAtAction(nameof(CreatNewUser), new { id = newUser.Id }, newUser);
+            var user = _service.AddUser(dto);
+            return CreatedAtAction(nameof(CreateUser), new { id = user.Id }, user);
         }
 
         [HttpPost("newitem")]
-        public ActionResult<Item> CreatNewItem([FromBody] Item newItem)
+        public ActionResult CreateItem([FromBody] CreateItemDto dto)
         {
-            if (newItem is null)
-            {
-                return BadRequest("User data is null");
-            }
-
-            var alreadyExists = LibraryService.CheckIfItemExists(newItem);
-            if (alreadyExists)
+            if (_service.ItemExists(dto.Name, dto.ItemType))
             {
                 return Conflict("Item already exists");
             }
 
-            return CreatedAtAction(nameof(CreatNewItem), new { id = newItem.Id }, newItem);
+            var item = _service.AddItem(dto);
+            return CreatedAtAction(nameof(CreateItem), new { id = item.Id }, item);
         }
 
         [HttpPost("newborrowing")]
-        public ActionResult CreateNewBorrowing([FromBody] LibraryService.CreateBorrowingRequest request)
+        public ActionResult BorrowItem([FromBody] BorrowItemDto dto)
         {
-            var borrowing = LibraryService.CheckIfBorrowingPossible(request);
+            if (!_service.BorrowingIsPossible(dto.UserId, dto.ItemId))
+            {
+                return BadRequest("Borrowing not possible");
+            }
 
-            return CreatedAtAction(nameof(CreateNewBorrowing), new { userId = request.UserId, itemId = request.ItemId }, borrowing);
+            var result = _service.BorrowItem(dto);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Message);
         }
 
         [HttpGet("{id:guid}")]
-        public ActionResult<List<Borrowing>> GetBorrowingForUser([FromRoute] Guid id)
+        public ActionResult GetBorrowings(Guid id)
         {
-            var borrowings = LibraryService.GetActiveBorrowingsForUser(id);
+            var borrowings = _service.GetActiveBorrowingsForUser(id);
             if (borrowings.Count == 0)
             {
-                return NotFound("No active borrowings found for the user");
+                return NotFound("No active borrowings");
             }
-            return Accepted(borrowings);
 
+            return Ok(borrowings);
         }
-
     }
 }

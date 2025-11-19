@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "GetBorrowingForUser",
+    "Method": "GetBorrowings",
     "RelativePath": "api/Library/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -13,29 +13,19 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ConsoleApp5._4Remastered.HelperClasses.Borrowing, ConsoleApp5.4Remastered, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "CreateNewBorrowing",
+    "Method": "BorrowItem",
     "RelativePath": "api/Library/newborrowing",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "LibraryAPI.Service.LibraryService\u002BCreateBorrowingRequest",
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.BorrowItemDto",
         "IsRequired": true
       }
     ],
@@ -43,54 +33,34 @@
   },
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "CreatNewItem",
+    "Method": "CreateItem",
     "RelativePath": "api/Library/newitem",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newItem",
-        "Type": "ConsoleApp5._4Remastered.Data.Item",
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.CreateItemDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "ConsoleApp5._4Remastered.Data.Item",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "CreatNewUser",
+    "Method": "CreateUser",
     "RelativePath": "api/Library/newuser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newUser",
-        "Type": "ConsoleApp5._4Remastered.Data.User",
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.CreateUserDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "ConsoleApp5._4Remastered.Data.User",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   }
 ]

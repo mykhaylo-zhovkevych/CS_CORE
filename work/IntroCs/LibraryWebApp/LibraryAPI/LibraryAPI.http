@@ -11,17 +11,17 @@ POST {{LibraryAPI_HostAddress}}/api/library/newitem
 Content-Type: application/json
 {
   "Name": "testitem01",
-  "ItemType": "Book"
+  "ItemType": "BoardGame"
 }
 
 ###
-GET {{LibraryAPI_HostAddress}}/api/library/d01a4ee9-a960-4db6-8963-91629703a4b0
+GET {{LibraryAPI_HostAddress}}/api/library/b92a260f-db37-4b52-979c-a1cf24dec322
 Accept: application/json
 
 ###
 POST {{LibraryAPI_HostAddress}}/api/library/newborrowing
 Content-Type: application/json
 {
-  "UserId": "d01a4ee9-a960-4db6-8963-91629703a4b0",
-  "ItemId": "0f508097-ed59-4753-bd38-4a51dcbf7c23"
+  "UserId": "b92a260f-db37-4b52-979c-a1cf24dec322",
+  "ItemId": "d74cac45-e18c-4456-9335-1d6765d44d5b"
 }

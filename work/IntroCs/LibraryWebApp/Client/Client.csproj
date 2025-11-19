@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ConsoleApp5.4Remastered\ConsoleApp5.4Remastered.csproj" />
+    <ProjectReference Include="..\LibraryAPI\LibraryAPI.csproj" />
+  </ItemGroup>
+
 </Project>

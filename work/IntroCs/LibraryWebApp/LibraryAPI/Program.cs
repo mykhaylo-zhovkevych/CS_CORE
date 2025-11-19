@@ -26,7 +26,7 @@ namespace LibraryAPI
 
             var library = new Library("Main Library", "123 Main St");
             library.AddShelf(new Shelf(1000));
-            PolicyService.AddPolicy(UserType.ExternalUser, ItemType.BoardGame, new Policy("ExternalUser-Book", extensions: 3, loanFees: 1.50m, loanPeriodInDays: 21));
+            PolicyService.AddPolicy(UserType.ExternalUser, ItemType.BoardGame, new Policy("ExternalUser-BoardGame", extensions: 3, loanFees: 1.50m, loanPeriodInDays: 21));
             PolicyService.AddPolicy(UserType.Teacher, ItemType.Magazine, new Policy("Teacher-Magazine", extensions: 1, loanFees: 3.00m, loanPeriodInDays: 7));
             PolicyService.AddPolicy(UserType.Student, ItemType.Book, new Policy("Student-Book", extensions: 2, loanFees: 0.00m, loanPeriodInDays: 14));
 

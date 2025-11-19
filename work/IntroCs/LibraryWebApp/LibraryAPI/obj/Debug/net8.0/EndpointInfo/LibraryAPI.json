@@ -14,41 +14,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/CreateUserDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/CreateUserDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/CreateUserDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -62,41 +45,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
+                "$ref": "#/components/schemas/CreateItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
+                "$ref": "#/components/schemas/CreateItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
+                "$ref": "#/components/schemas/CreateItemDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -110,17 +76,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateBorrowingRequest"
+                "$ref": "#/components/schemas/BorrowItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateBorrowingRequest"
+                "$ref": "#/components/schemas/BorrowItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateBorrowingRequest"
+                "$ref": "#/components/schemas/BorrowItemDto"
               }
             }
           }
@@ -150,33 +116,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Borrowing"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Borrowing"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Borrowing"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -184,47 +124,7 @@
   },
   "components": {
     "schemas": {
-      "Borrowing": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "item": {
-            "$ref": "#/components/schemas/Item"
-          },
-          "policy": {
-            "$ref": "#/components/schemas/Policy"
-          },
-          "loanDate": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "returnDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true,
-            "readOnly": true
-          },
-          "isReturned": {
-            "type": "boolean",
-            "readOnly": true
-          },
-          "remainingExtensionCredits": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateBorrowingRequest": {
+      "BorrowItemDto": {
         "type": "object",
         "properties": {
           "userId": {
@@ -238,29 +138,28 @@
         },
         "additionalProperties": false
       },
-      "Item": {
+      "CreateItemDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "name": {
             "type": "string",
             "nullable": true
           },
-          "isBorrowed": {
-            "type": "boolean"
-          },
-          "reservedBy": {
-            "$ref": "#/components/schemas/User"
-          },
-          "isReserved": {
-            "type": "boolean",
-            "readOnly": true
-          },
           "itemType": {
             "$ref": "#/components/schemas/ItemType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
           }
         },
         "additionalProperties": false
@@ -273,52 +172,6 @@
           "VideoGame"
         ],
         "type": "string"
-      },
-      "Policy": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "policyName": {
-            "type": "string",
-            "nullable": true
-          },
-          "extensions": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "loanFees": {
-            "type": "number",
-            "format": "double",
-            "readOnly": true
-          },
-          "loanPeriodInDays": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "userType": {
-            "$ref": "#/components/schemas/UserType"
-          }
-        },
-        "additionalProperties": false
       },
       "UserType": {
         "enum": [

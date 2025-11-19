@@ -26,6 +26,8 @@ namespace LibraryAPI.Filters
                 Detail = context.Exception.Message
             };
 
+            // serialize ProblemDetails Object into JSON
+            // Sets the result so the client receives a proper response
             context.Result = new ObjectResult(problem) { StatusCode = status };
             context.ExceptionHandled = true;
         }

@@ -1,6 +1,4 @@
 ﻿using ConsoleApp5._4Remastered;
-using ConsoleApp5._4Remastered;
-using ConsoleApp5._4Remastered.Data;
 using ConsoleApp5._4Remastered.Data;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.HelperClasses;
@@ -53,18 +51,18 @@ namespace LibraryAPI.Service
             return item;
         }
 
-        public bool BorrowingIsPossible(Guid userId, Guid itemId)
-        {
-            var user = _library.Users.FirstOrDefault(u => u.Id == userId);
-            var item = _library.Shelves.SelectMany(s => s.Items).FirstOrDefault(i => i.Id == itemId);
+        //public bool BorrowingIsPossible(Guid userId, Guid itemId)
+        //{
+        //    var user = _library.Users.FirstOrDefault(u => u.Id == userId);
+        //    var item = _library.Shelves.SelectMany(s => s.Items).FirstOrDefault(i => i.Id == itemId);
 
-            if (user == null || item == null || item.IsBorrowed)
-            {
-                return false;
-            }
+        //    if (user == null || item == null || item.IsBorrowed)
+        //    {
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
         public (bool Success, string Message) BorrowItem(BorrowItemDto dto)
         {
@@ -88,6 +86,8 @@ namespace LibraryAPI.Service
             var result = _library.BorrowItem(user, item);
             return result;
         }
+
+
 
         public List<Borrowing> GetActiveBorrowingsForUser(Guid userId)
         {

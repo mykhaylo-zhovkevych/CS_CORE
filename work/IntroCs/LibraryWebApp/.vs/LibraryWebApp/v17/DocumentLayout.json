@@ -1,0 +1,220 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\services\\libraryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\services\\libraryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB832FF7-DA73-EC73-6CF2-96D5CF058A31}|..\\ConsoleApp5.4Remastered\\ConsoleApp5.4Remastered.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\consoleapp5.4remastered\\library.main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\controllers\\librarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\librarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\libraryapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\libraryapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F16819-1859-488E-A05C-FE85352A5CED}|TestTdd\\TestTdd.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\testtdd\\librarymaintest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F16819-1859-488E-A05C-FE85352A5CED}|TestTdd\\TestTdd.csproj|solutionrelative:testtdd\\librarymaintest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\models\\borrowitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\borrowitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\models\\createitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\createitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\models\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09229CAF-390C-48BB-B9CC-04050D9283D7}|Client\\Client.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09229CAF-390C-48BB-B9CC-04050D9283D7}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|c:\\users\\chmyzh1\\source\\repos\\cs_core\\work\\introcs\\librarywebapp\\libraryapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8FDEE3E-4237-432A-BBD8-B957993B5B2E}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 161,
+          "SelectedChildIndex": 14,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LibraryMainTest.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\TestTdd\\LibraryMainTest.cs",
+              "RelativeDocumentMoniker": "TestTdd\\LibraryMainTest.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\TestTdd\\LibraryMainTest.cs",
+              "RelativeToolTip": "TestTdd\\LibraryMainTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:28:17.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\CreateUserDto.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\CreateUserDto.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\CreateUserDto.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\CreateUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:19:32.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateItemDto.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\CreateItemDto.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\CreateItemDto.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\CreateItemDto.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\CreateItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:19:19.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BorrowItemDto.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\BorrowItemDto.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BorrowItemDto.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Models\\BorrowItemDto.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BorrowItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:19:13.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LibraryAPI.http",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\LibraryAPI.http",
+              "RelativeDocumentMoniker": "LibraryAPI\\LibraryAPI.http",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\LibraryAPI.http",
+              "RelativeToolTip": "LibraryAPI\\LibraryAPI.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-11-20T07:15:25.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Library.Main.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp5.4Remastered\\Library.Main.cs",
+              "RelativeDocumentMoniker": "..\\ConsoleApp5.4Remastered\\Library.Main.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\ConsoleApp5.4Remastered\\Library.Main.cs",
+              "RelativeToolTip": "..\\ConsoleApp5.4Remastered\\Library.Main.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIAwwCMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:08:42.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LibraryController.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Controllers\\LibraryController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\LibraryController.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Controllers\\LibraryController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\LibraryController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAwDoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:03:05.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LibraryService.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Services\\LibraryService.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Services\\LibraryService.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Services\\LibraryService.cs",
+              "RelativeToolTip": "LibraryAPI\\Services\\LibraryService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAqwE0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:01:14.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Program.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\LibraryAPI\\Program.cs",
+              "RelativeToolTip": "LibraryAPI\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T07:00:53.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "C:\\Users\\chmyzh1\\source\\repos\\CS_CORE\\work\\IntroCs\\LibraryWebApp\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAIwPgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T06:59:29.936Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 161,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

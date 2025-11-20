@@ -47,10 +47,10 @@ namespace LibraryAPI.Controllers
         [HttpPost("newborrowing")]
         public ActionResult BorrowItem([FromBody] BorrowItemDto dto)
         {
-            if (!_service.BorrowingIsPossible(dto.UserId, dto.ItemId))
-            {
-                return BadRequest("Borrowing not possible");
-            }
+            //if (!_service.BorrowingIsPossible(dto.UserId, dto.ItemId))
+            //{
+            //    return BadRequest("Borrowing not possible");
+            //}
 
             var result = _service.BorrowItem(dto);
             if (!result.Success)

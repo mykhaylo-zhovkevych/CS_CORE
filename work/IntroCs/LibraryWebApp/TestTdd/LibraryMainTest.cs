@@ -8,6 +8,9 @@ namespace TestTdd
     {
 
         // User can change his user profile (type)
+        // Logic transfert to the Libarary Class
+        // make TDD test for new method that is inside of the Libarary class
+
 
         [TestMethod]
         public void TestChangeUserType()

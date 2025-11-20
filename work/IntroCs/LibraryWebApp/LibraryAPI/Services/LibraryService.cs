@@ -93,7 +93,7 @@ namespace LibraryAPI.Service
                 return false;
             }
 
-            borrowings = [.. existing];
+            borrowings = existing.ToList();
             return true;
         }
 
@@ -101,7 +101,7 @@ namespace LibraryAPI.Service
         {
             var existing = _library.Users.FirstOrDefault(u => u.Id == id);
 
-            if (existing.Id == Guid.Empty)
+            if (existing == default)
             {
                 updatedUser = existing;
                 return false;

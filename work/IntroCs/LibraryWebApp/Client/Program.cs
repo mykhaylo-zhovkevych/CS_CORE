@@ -39,6 +39,7 @@ namespace Client
                 Console.WriteLine("2. Create new Item");
                 Console.WriteLine("3. Borrow Item");
                 Console.WriteLine("4. Show active borrowings");
+                Console.WriteLine("5. Change User Profile");
                 Console.WriteLine("0. Exit");
 
                 var key = Console.ReadLine();
@@ -211,33 +212,44 @@ namespace Client
         }
 
 
-        public async Task UpdateUserProfileAsync()
+        static async Task UpdateUserProfileAsync()
         {
-
-            Console.Write("UserId ID: ");
+            Console.Write("UserId: ");
             if (!Guid.TryParse(Console.ReadLine(), out var userId))
             {
                 Console.WriteLine("Invalid ID");
                 return;
             }
 
-            Console.Write("UserType: ");
+            Console.WriteLine("Choose new UserType:");
             foreach (var v in Enum.GetValues(typeof(UserType)))
             {
                 Console.WriteLine($" - {v}");
             }
+            Console.Write("UserType: ");
+            var tInput = Console.ReadLine();
 
-            if (!Enum.TryParse<UserType>(Console.ReadLine(), true, out var UserType))
+            if (!Enum.TryParse<UserType>(tInput, true, out var newUserType))
             {
                 Console.WriteLine("Invalid UserType");
                 return;
             }
 
+            var dto = new ChangeProfileDto(newUserType);
             var url = $"{BaseUrl}/api/library/changeuserprofile/{userId}";
-            var dto = new ChangeProfileDto(UserType);
 
-            var result = await PutJsonAsync<ChangeProfileResponseDto>($"{BaseUrl}/api/library/changeuserprofile{userId}", dto);
+            var result = await PutJsonAsync<User>(url, dto);
 
+            Console.WriteLine($"Status: {result.StatusCode}");
+            if (result.IsSuccess && result.Data is not null)
+            {
+                Console.WriteLine($"Updated User: Id={result.Data.Id}, Name={result.Data.Name}, NewType={result.Data.UserType}");
+            }
+            else
+            {
+                Console.WriteLine("Error during updating");
+                Console.WriteLine(result.RawBody);
+            }
 
         }
 

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\bin\Debug\net8.0\DecoratorPizzariaApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\bin\Debug\net8.0\DecoratorPizzariaApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\bin\Debug\net8.0\DecoratorPizzariaApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\bin\Debug\net8.0\DecoratorPizzariaApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\bin\Debug\net8.0\DecoratorPizzariaApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\refint\DecoratorPizzariaApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\DecoratorPizzariaApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\DecoratorPizzariaApp\obj\Debug\net8.0\ref\DecoratorPizzariaApp.dll

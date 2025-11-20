@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal class Group : IMovable
+    public class Group : IMovable
     {
         public string GroupName { get; set; }
         public List<Shape> Shapes { get; set; } = new List<Shape>();
@@ -39,5 +39,5 @@ namespace ConsoleApp3._1
         }
 
 
-    }
+    } 
 }

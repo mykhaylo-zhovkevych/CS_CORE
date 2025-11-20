@@ -10,5 +10,6 @@ namespace ConsoleApp6._1.Menu
     {
         string Name { get; }
         decimal Price { get; }
+        IFoodFactory Factory { get; }
     }
 }

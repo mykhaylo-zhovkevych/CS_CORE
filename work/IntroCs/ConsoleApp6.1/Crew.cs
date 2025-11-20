@@ -10,24 +10,26 @@ namespace ConsoleApp6._1
 {
     public class Crew
     {
-        public ArrayList members { get; private set; }
+        public List<CrewMember> Members { get; private set; }
 
         public Crew()
         {
-            members = new ArrayList();
-            members.Add(new CrewMember("Alice", Roles.LineCook));
-            members.Add(new CrewMember("Bob", Roles.Chef));
+            Members = new List<CrewMember>();
+            Members.Add(new CrewMember("Steuu", Roles.Chef));
+            Members.Add(new CrewMember("Alice", Roles.LineCook));
+            Members.Add(new CrewMember("Bob", Roles.Chef));
             //members.Add(new CrewMember("Bob", Roles.Server));
             //members.Add(new CrewMember("Bob", Roles.Host));
             //members.Add(new CrewMember("Bob", Roles.SousChef));
             //members.Add(new CrewMember("Bob", Roles.Dishwasher));
         }
-        
-        class CrewMember
+
+        public class CrewMember
         {
             public string Name { get; private set; }
-            public Enum Role { get; private set; }
-            public CrewMember(string name, Enum role)
+            public Roles Role { get; private set; }
+
+            public CrewMember(string name, Roles role)
             {
                 Name = name;
                 Role = role;

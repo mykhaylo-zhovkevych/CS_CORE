@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal class ShapeCanvas
+    public class ShapeCanvas
     {
 
         public List<Shape> Shapes { get; set; } = new List<Shape>();

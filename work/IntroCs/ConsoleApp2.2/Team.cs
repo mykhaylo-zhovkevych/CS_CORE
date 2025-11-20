@@ -11,6 +11,5 @@ namespace ConsoleApp2._2
             TeamName = name;
             Players = players;
         }
-
     }
 }

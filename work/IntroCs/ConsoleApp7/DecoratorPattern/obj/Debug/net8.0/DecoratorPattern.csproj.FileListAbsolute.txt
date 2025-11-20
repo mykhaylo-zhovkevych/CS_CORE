@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\bin\Debug\net8.0\DecoratorPattern.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\bin\Debug\net8.0\DecoratorPattern.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\bin\Debug\net8.0\DecoratorPattern.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\bin\Debug\net8.0\DecoratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\bin\Debug\net8.0\DecoratorPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\refint\DecoratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\DecoratorPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\DecoratorPattern\obj\Debug\net8.0\ref\DecoratorPattern.dll

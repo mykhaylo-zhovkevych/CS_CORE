@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\bin\Debug\net8.0\CompositionPattern.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\bin\Debug\net8.0\CompositionPattern.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\bin\Debug\net8.0\CompositionPattern.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\bin\Debug\net8.0\CompositionPattern.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\bin\Debug\net8.0\CompositionPattern.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\refint\CompositionPattern.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\CompositionPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\CompositionPattern\obj\Debug\net8.0\ref\CompositionPattern.dll

@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\bin\Debug\net8.0\SingletonPattern.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\bin\Debug\net8.0\SingletonPattern.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\bin\Debug\net8.0\SingletonPattern.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\bin\Debug\net8.0\SingletonPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\bin\Debug\net8.0\SingletonPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\refint\SingletonPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\SingletonPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\SingletonPattern\obj\Debug\net8.0\ref\SingletonPattern.dll

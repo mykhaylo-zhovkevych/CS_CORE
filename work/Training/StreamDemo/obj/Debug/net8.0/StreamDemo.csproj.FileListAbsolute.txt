@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\bin\Debug\net8.0\StreamDemo.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\bin\Debug\net8.0\StreamDemo.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\bin\Debug\net8.0\StreamDemo.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\bin\Debug\net8.0\StreamDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\bin\Debug\net8.0\StreamDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\refint\StreamDemo.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\StreamDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\obj\Debug\net8.0\ref\StreamDemo.dll

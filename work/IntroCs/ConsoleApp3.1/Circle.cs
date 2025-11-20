@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3._1
 {
-    internal class Circle : Shape
+    public class Circle : Shape
     {
 
         public double Radius { get; private set; }

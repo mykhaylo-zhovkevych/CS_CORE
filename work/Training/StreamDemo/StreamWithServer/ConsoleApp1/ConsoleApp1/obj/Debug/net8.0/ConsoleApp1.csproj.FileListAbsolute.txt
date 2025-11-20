@@ -1,0 +1,30 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\refint\ConsoleApp1.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\refint\ConsoleApp1.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.exe
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.deps.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.runtimeconfig.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\Training\StreamDemo\StreamWithServer\ConsoleApp1\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll

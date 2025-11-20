@@ -40,20 +40,25 @@ namespace ConsoleApp6
             Client client03 = new Client("IT Desktop", printer);
 
             //client01.PlacePrintOrders(twoOrders);
-
-            //client03.PlacePrintOrders(oneOrder);
             //client02.PlacePrintOrders(threeOrderList);
 
-            //cts.Cancel();
 
             // `await` puases the calling method untill the awaited task completes
-            client03.PlacePrintIntervalOfOrdersAsync(2 ,10, oneOrder, cts.Token);
+            Task interval = client03.PlacePrintIntervalOfOrdersAsync(2 ,10, oneOrder, cts.Token);
+            
+            client03.PlacePrintOrders(threeOrderList);
+
 
             //printer.StopPrinter();
 
             // While it is running, the request cancelationtoken is not checked until the next iteration 
             printer.RequestCancelationAfterSomeTime(5);
+            cts.Cancel();
+         
+
+
             Console.ReadKey();
+
 
             // This is a Background Thread, transforted into foreground thread, makes wait before exiting Main thread
             //await printer._backgroundTask;

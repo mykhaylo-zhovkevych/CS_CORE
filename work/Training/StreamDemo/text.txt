@@ -1,0 +1,1 @@
+This is the encryption data from file text.txt 

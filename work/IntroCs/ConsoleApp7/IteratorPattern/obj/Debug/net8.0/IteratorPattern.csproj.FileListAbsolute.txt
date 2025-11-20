@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\bin\Debug\net8.0\IteratorPattern.exe
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\bin\Debug\net8.0\IteratorPattern.deps.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\bin\Debug\net8.0\IteratorPattern.runtimeconfig.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\bin\Debug\net8.0\IteratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\bin\Debug\net8.0\IteratorPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.AssemblyInfo.cs
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.sourcelink.json
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\refint\IteratorPattern.dll
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.pdb
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\IteratorPattern.genruntimeconfig.cache
+C:\Users\chmyzh1\Source\Repos\CS_CORE\work\IntroCs\ConsoleApp7\IteratorPattern\obj\Debug\net8.0\ref\IteratorPattern.dll

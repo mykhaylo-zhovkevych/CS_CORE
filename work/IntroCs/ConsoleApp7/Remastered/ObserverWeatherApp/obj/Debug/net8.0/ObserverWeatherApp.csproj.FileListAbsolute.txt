@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\bin\Debug\net8.0\ObserverWeatherApp.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\bin\Debug\net8.0\ObserverWeatherApp.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\bin\Debug\net8.0\ObserverWeatherApp.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\bin\Debug\net8.0\ObserverWeatherApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\bin\Debug\net8.0\ObserverWeatherApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\refint\ObserverWeatherApp.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ObserverWeatherApp.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\ConsoleApp7\Remastered\ObserverWeatherApp\obj\Debug\net8.0\ref\ObserverWeatherApp.dll

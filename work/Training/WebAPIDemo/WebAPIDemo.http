@@ -1,0 +1,34 @@
+@rootURL = http://localhost:5293
+
+GET {{WebAPIDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+// seperate http requests
+###
+GET {{rootURL}}/api/books
+Accept: application/json
+
+###
+
+GET {{rootURL}}/api/books/1
+Accept: application/json
+
+###
+POST {{rootURL}}/api/books
+Content-Type:vapplication/json
+{
+  "id":6,
+  "title": "C# Unlocked",
+  "author": "John Doe",
+  "yearPublished": 2024"
+}
+###
+PUT {{rootURL}}/api/books/5
+Content-Type: application/json $
+{
+  "id": 5,
+  "title": "Updated Book Title",
+  "author": "Jane Smith",
+  "yearPublished": 2023
+}
+###
+DELETE {{rootURL}}/api/books/3

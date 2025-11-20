@@ -6,59 +6,54 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2._5
 {
-    internal class SeatingPlan
+    public class SeatingPlan
     {
         public int Id { get; set; }
         public List<Seat> Seats { get; set; } = new List<Seat>();
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
-        public Ticket BuyTicket(string UserName, int amount, Play play)
+        public Ticket BuyTicket(string userName, int amount, Play play)
         {
             var availableSeats = Seats.Where(s => s.IsAvailable).ToList();
            
 
-            if (availableSeats.Count <= amount)
+            if (availableSeats.Count < amount)
             {
                 throw new ArgumentException("Not enough seats available.");
             }
 
-            int totalPrice = 0;
+            var selectedSeats = availableSeats.Take(amount).ToList();
+            var seatNumbers = new List<int>();
+            var seatTypes = new List<SeatType>();
+            var totalPrice = 0;
 
-            for (int i = 0; amount > i; i++) 
+            foreach (var seat in selectedSeats)
             {
-
-                var seat = availableSeats[i];
                 seat.IsAvailable = false;
+                seatNumbers.Add(seat.SeatNumber);
+                seatTypes.Add(seat.Type);
 
                 switch (seat.Type)
                 {
-                    case SeatType.REGULAR:
-                        totalPrice += 51;
-                        break;
-                    case SeatType.BALCONY:
-                        totalPrice += 80;
-                        break;
-                    
-                    case SeatType.WHEELCHAIR:
-                        totalPrice += 30;
-                        break;
+                    case SeatType.REGULAR: totalPrice += 51; break;
+                    case SeatType.BALCONY: totalPrice += 80; break;
+                    case SeatType.WHEELCHAIR: totalPrice += 30; break;
+                    default: break;
                 }
-
             }
 
-
-            Ticket ticket = new Ticket(
+            var ticket = new Ticket(
                 GenerateNewId(),
                 $"Ticket für {play.Title}",
-                price: totalPrice,
-                amount: amount,
-                guestName: UserName,
-                saleDate: DateTime.Now,
-                play: play
-                );
+                totalPrice,
+                seatNumbers,
+                seatTypes,
+                userName,
+                DateTime.Now,
+                play
+            );
 
             Tickets.Add(ticket);
-
             return ticket;
         }
 

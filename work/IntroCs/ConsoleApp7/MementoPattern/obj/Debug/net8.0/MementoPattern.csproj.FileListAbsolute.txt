@@ -1,0 +1,15 @@
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\bin\Debug\net8.0\MementoPattern.exe
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\bin\Debug\net8.0\MementoPattern.deps.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\bin\Debug\net8.0\MementoPattern.runtimeconfig.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\bin\Debug\net8.0\MementoPattern.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\bin\Debug\net8.0\MementoPattern.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.AssemblyInfoInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.AssemblyInfo.cs
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.csproj.CoreCompileInputs.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.sourcelink.json
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\refint\MementoPattern.dll
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.pdb
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\MementoPattern.genruntimeconfig.cache
+C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\ConsoleApp7\MementoPattern\obj\Debug\net8.0\ref\MementoPattern.dll

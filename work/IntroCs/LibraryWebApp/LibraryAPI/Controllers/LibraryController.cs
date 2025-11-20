@@ -23,54 +23,60 @@ namespace LibraryAPI.Controllers
         [HttpPost("newuser")]
         public ActionResult CreateUser([FromBody] CreateUserDto dto)
         {
-            if (_service.UserExists(dto.Name, dto.UserType))
+            bool created = _service.TryAddUser(dto, out var user);
+
+            if (!created)
             {
                 return Conflict("User already exists");
             }
 
-            var user = _service.AddUser(dto);
             return CreatedAtAction(nameof(CreateUser), new { id = user.Id }, user);
         }
 
         [HttpPost("newitem")]
         public ActionResult CreateItem([FromBody] CreateItemDto dto)
         {
-            if (_service.ItemExists(dto.Name, dto.ItemType))
+
+            var item = _service.AddItem(dto);
+
+            if (!item.Item1)
             {
                 return Conflict("Item already exists");
             }
 
-            var item = _service.AddItem(dto);
-            return CreatedAtAction(nameof(CreateItem), new { id = item.Id }, item);
+        
+            return CreatedAtAction(nameof(CreateItem), new { id = item.Item2.Id }, item);
         }
 
-        [HttpPost("newborrowing")]
-        public ActionResult BorrowItem([FromBody] BorrowItemDto dto)
-        {
-            //if (!_service.BorrowingIsPossible(dto.UserId, dto.ItemId))
-            //{
-            //    return BadRequest("Borrowing not possible");
-            //}
+        // temp disabled
 
-            var result = _service.BorrowItem(dto);
-            if (!result.Success)
-            {
-                return BadRequest(result.Message);
-            }
+        //[HttpPost("newborrowing")]
+        //public ActionResult BorrowItem([FromBody] BorrowItemDto dto)
+        //{
+        //    //if (!_service.BorrowingIsPossible(dto.UserId, dto.ItemId))
+        //    //{
+        //    //    return BadRequest("Borrowing not possible");
+        //    //}
 
-            return Ok(result.Message);
-        }
+        //    var result = _service.BorrowItem(dto);
+        //    if (!result.Success)
+        //    {
+        //        return BadRequest(result.Message);
+        //    }
 
-        [HttpGet("{id:guid}")]
-        public ActionResult GetBorrowings(Guid id)
-        {
-            var borrowings = _service.GetActiveBorrowingsForUser(id);
-            if (borrowings.Count == 0)
-            {
-                return NotFound("No active borrowings");
-            }
+        //    return Ok(result.Message);
+        //}
 
-            return Ok(borrowings);
-        }
+        //[HttpGet("{id:guid}")]
+        //public ActionResult GetBorrowings(Guid id)
+        //{
+        //    var borrowings = _service.GetActiveBorrowingsForUser(id);
+        //    if (borrowings.Count == 0)
+        //    {
+        //        return NotFound("No active borrowings");
+        //    }
+
+        //    return Ok(borrowings);
+        //}
     }
 }

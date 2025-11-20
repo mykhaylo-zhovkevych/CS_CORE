@@ -15,13 +15,13 @@ Content-Type: application/json
 }
 
 ###
-GET {{LibraryAPI_HostAddress}}/api/library/8d91aea4-78be-4684-ab74-97c0fc30d40d
+GET {{LibraryAPI_HostAddress}}/api/library/24fda861-7192-4e08-bebb-612a2c8fc059
 Accept: application/json
 
 ###
 POST {{LibraryAPI_HostAddress}}/api/library/newborrowing
 Content-Type: application/json
 {
-  "UserId": "8d91aea4-78be-4684-ab74-97c0fc30d40d",
-  "ItemId": "47722252-7b2d-45c6-a6ee-76bdfacd6478"
+  "UserId": "24fd5861-7192-4e08-bebb-612a2c8fc059",
+  "ItemId": "bf442c52-c01f-4171-b700-1af04220d317"
 }

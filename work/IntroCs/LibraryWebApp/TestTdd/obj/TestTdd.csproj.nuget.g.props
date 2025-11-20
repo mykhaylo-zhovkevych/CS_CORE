@@ -25,6 +25,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.testing.extensions.codecoverage\17.12.6\buildTransitive\net6.0\Microsoft.Testing.Extensions.CodeCoverage.props" Condition="Exists('$(NuGetPackageRoot)microsoft.testing.extensions.codecoverage\17.12.6\buildTransitive\net6.0\Microsoft.Testing.Extensions.CodeCoverage.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\chmyzh1\.nuget\packages\microsoft.extensions.apidescription.server\6.0.5</PkgMicrosoft_Extensions_ApiDescription_Server>
     <PkgMSTest_Analyzers Condition=" '$(PkgMSTest_Analyzers)' == '' ">C:\Users\chmyzh1\.nuget\packages\mstest.analyzers\3.6.4</PkgMSTest_Analyzers>
   </PropertyGroup>
 </Project>

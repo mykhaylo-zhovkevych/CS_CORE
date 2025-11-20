@@ -1,0 +1,15 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\bin\Debug\net8.0\SerializationDeserializationDemo.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\bin\Debug\net8.0\SerializationDeserializationDemo.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\bin\Debug\net8.0\SerializationDeserializationDemo.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\bin\Debug\net8.0\SerializationDeserializationDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\bin\Debug\net8.0\SerializationDeserializationDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\refint\SerializationDeserializationDemo.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.pdb
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\SerializationDeserializationDemo.genruntimeconfig.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\Training\SerializationDeserializationDemo\obj\Debug\net8.0\ref\SerializationDeserializationDemo.dll

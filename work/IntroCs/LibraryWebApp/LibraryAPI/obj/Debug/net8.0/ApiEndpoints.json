@@ -1,6 +1,59 @@
 [
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "GetBorrowings",
+    "RelativePath": "api/Library/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "UpdateUserProfile",
+    "RelativePath": "api/Library/changeuserprofile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedUserProfile",
+        "Type": "LibraryAPI.Models.ChangeProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreateBorrowing",
+    "RelativePath": "api/Library/newborrowing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.BorrowItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
     "Method": "CreateItem",
     "RelativePath": "api/Library/newitem",
     "HttpMethod": "POST",

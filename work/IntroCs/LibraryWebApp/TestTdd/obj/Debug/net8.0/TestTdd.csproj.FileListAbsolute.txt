@@ -256,3 +256,15 @@ C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\obj\Deb
 C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\obj\Debug\net8.0\TestTdd.pdb
 C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\obj\Debug\net8.0\TestTdd.genruntimeconfig.cache
 C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\obj\Debug\net8.0\ref\TestTdd.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.deps.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.runtimeconfig.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\appsettings.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.staticwebassets.endpoints.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.exe
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\TestTdd\bin\Debug\net8.0\LibraryAPI.pdb

@@ -14,34 +14,20 @@ namespace LibraryAPI.Service
     public class LibraryService
     {
         private readonly Library _library;
+        private readonly UserManagmentDepartment _department;
 
         public LibraryService(Library library)
         {
             _library = library;
+            _department = new UserManagmentDepartment(_library);
         }
-
-        // Try Methode, attemp not to pass null value but make it with `out` somehow 
-
-        //public (bool, User?) TryAddUser(CreateUserDto dto)
-        //{
-
-        //    if (_library.UserExists(dto.Name, dto.UserType))
-        //    {
-        //        return (false, null);
-        //    }
-
-        //    var user = new User(dto.Name, dto.UserType);
-        //    _library.Users.Add(user);
-        //    return (true, user);
-        //}
-
 
         public bool TryAddUser(CreateUserDto dto, out User? user)
         {
             // If user exists allready, return false and that user that exist
-            var existing = _library.UserExists(dto.Name, dto.UserType);
+            var existing = _library.GetExistingUser(dto.Name, dto.UserType);
 
-            if (existing != null)
+            if (existing != default)
             {
                 user = existing;
                 return false;
@@ -53,88 +39,76 @@ namespace LibraryAPI.Service
         }
 
 
-        public (bool, Item?) AddItem(CreateItemDto dto)
+        public bool TryAddItem(CreateItemDto dto, out Item? item)
         {
+            var existing = _library.GetExistingItem(dto.Name, dto.ItemType);
 
-            if (_library.ItemExists(dto.Name, dto.ItemType))
+            if (existing != default)
             {
-                return (false, null);
+                item = existing;
+                return false;
             }
 
             var shelf = _library.Shelves.FirstOrDefault(s => s.ShelfId == 1000);
-            if (shelf == null)
+            if (shelf == default)
             {
                 shelf = new Shelf(1000);
                 _library.Shelves.Add(shelf);
             }
 
-            var item = new Item(dto.Name, dto.ItemType);
+            item = new Item(dto.Name, dto.ItemType);
             shelf.AddItemToShelf(item);
-            return (true, item);
+            return true;
         }
 
-        //public bool BorrowingIsPossible(Guid userId, Guid itemId)
-        //{
-        //    var user = _library.Users.FirstOrDefault(u => u.Id == userId);
-        //    var item = _library.Shelves.SelectMany(s => s.Items).FirstOrDefault(i => i.Id == itemId);
+        public (bool Success, string Message) TryBorrowItem(BorrowItemDto dto)
+        {
+            var userData = _library.GetPossibleBorrowing(dto.UserId, dto.ItemId);
 
-        //    if (user == null || item == null || item.IsBorrowed)
-        //    {
-        //        return false;
-        //    }
+            if (userData.Item1 == default)
+            {
+                return (false, "Item not found");
+            }
+            else if (userData.Item2 == default)
+            {
+                return (false, "User not found");
+            }
 
-        //    return true;
-        //}
+            else if (userData == default)
+            {
+                return (false, "Item is already borrowed");
+            }
 
+            var result = _library.BorrowItem(userData.Item2, userData.Item1);
+            return result;
+        }
 
+        public bool TryGetValueOfBorrowings(Guid userId, out List<Borrowing> borrowings)
+        {
+            var existing = _library.GetActiveBorrowings(userId);
 
-        //public (bool Success, string Message) BorrowItem(BorrowItemDto dto)
-        //{
-        //    var user = _library.Users.FirstOrDefault(u => u.Id == dto.UserId);
-        //    var item = _library.Shelves.SelectMany(s => s.Items).FirstOrDefault(i => i.Id == dto.ItemId);
+            if (existing.Count == 0)
+            {
+                borrowings = existing;
+                return false;
+            }
 
-        //    if (user == null)
-        //    {
-        //        return (false, "User not found");
-        //    }
-        //    else if (item == null)
-        //    {
-        //        return (false, "Item not found");
-        //    }
+            borrowings = [.. existing];
+            return true;
+        }
 
-        //    else if (item.IsBorrowed)
-        //    {
-        //        return (false, "Item is already borrowed");
-        //    }
+        public bool TryUpdateUserProfile(Guid id, ChangeProfileDto dto, out User? updatedUser)
+        {
+            var existing = _library.Users.FirstOrDefault(u => u.Id == id);
 
-        //    var result = _library.BorrowItem(user, item);
-        //    return result;
-        //}
+            if (existing.Id == Guid.Empty)
+            {
+                updatedUser = existing;
+                return false;
+            }
 
-        // temp disabled
-
-        //public (bool Success, string Message) BorrowItem(BorrowItemDto dto)
-        //{
-        //    var userData = BorrowingIsPossible(dto.UserId, dto.ItemId);
-
-        //    if (userData.Item1 == null)
-        //    {
-        //        return (false, "User not found");
-        //    }
-        //    else if (userData.Item2 == null)
-        //    {
-        //        return (false, "Item not found");
-        //    }
-
-        //    else if (userData == default)
-        //    {
-        //        return (false, "Item is already borrowed");
-        //    }
-
-        //    var result = _library.BorrowItem(userData.Item2, userData.Item1);
-        //    return result;
-        //}
-
-
+            updatedUser = _department.UpdateUserProfile(existing, dto.UserType);
+            return true;
+        }
     }
 }

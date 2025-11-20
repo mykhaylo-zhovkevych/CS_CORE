@@ -15,13 +15,20 @@ Content-Type: application/json
 }
 
 ###
-GET {{LibraryAPI_HostAddress}}/api/library/24fda861-7192-4e08-bebb-612a2c8fc059
+GET {{LibraryAPI_HostAddress}}/api/library/e1b57e49-ee80-438b-a6a8-3b9922ba3d97
 Accept: application/json
 
 ###
 POST {{LibraryAPI_HostAddress}}/api/library/newborrowing
 Content-Type: application/json
 {
-  "UserId": "24fd5861-7192-4e08-bebb-612a2c8fc059",
-  "ItemId": "bf442c52-c01f-4171-b700-1af04220d317"
+  "UserId": "e1b57e49-ee80-438b-a6a8-3b9922ba3d97",
+  "ItemId": "55ec571c-77db-40fd-9ec0-95d9817f6765"
+}
+
+### 
+PUT {{LibraryAPI_HostAddress}}/api/library/changeuserprofile/88e62d55-9d8d-49dd-94f0-39d8c80310e1
+Content-Type: application/json
+{
+  "userType": "Teaecher"
 }

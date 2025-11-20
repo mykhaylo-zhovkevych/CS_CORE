@@ -1,4 +1,5 @@
-﻿using ConsoleApp5._4Remastered.Enum;
+﻿using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Enum;
 using LibraryAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Client
 {
+    record ChangeProfileResponseDto(User user, UserType UserType);
     record UserResponseDto(Guid Id, string Name, UserType UserType);
     record ItemResponseDto(Guid Id, string Name, ItemType ItemType, bool IsBorrowed);
     record BorrowingResponseDto(Guid UserId, Guid ItemId, string Message);
@@ -56,6 +58,9 @@ namespace Client
                             break;
                         case "4":
                             await GetBorrowingsAsync();
+                            break;
+                        case "5":
+                            await UpdateUserProfileAsync();
                             break;
                         case "0":
                             return;
@@ -206,6 +211,36 @@ namespace Client
         }
 
 
+        public async Task UpdateUserProfileAsync()
+        {
+
+            Console.Write("UserId ID: ");
+            if (!Guid.TryParse(Console.ReadLine(), out var userId))
+            {
+                Console.WriteLine("Invalid ID");
+                return;
+            }
+
+            Console.Write("UserType: ");
+            foreach (var v in Enum.GetValues(typeof(UserType)))
+            {
+                Console.WriteLine($" - {v}");
+            }
+
+            if (!Enum.TryParse<UserType>(Console.ReadLine(), true, out var UserType))
+            {
+                Console.WriteLine("Invalid UserType");
+                return;
+            }
+
+            var url = $"{BaseUrl}/api/library/changeuserprofile/{userId}";
+            var dto = new ChangeProfileDto(UserType);
+
+            var result = await PutJsonAsync<ChangeProfileResponseDto>($"{BaseUrl}/api/library/changeuserprofile{userId}", dto);
+
+
+        }
+
         static async Task<HttpResult<T>> PostJsonAsync<T>(string url, object dto)
         {
             var json = JsonSerializer.Serialize(dto);
@@ -249,5 +284,27 @@ namespace Client
                 RawBody = body
             };
         }
+
+        static async Task<HttpResult<T>> PutJsonAsync <T>(string url, object dto)
+        {
+            var json = JsonSerializer.Serialize(dto);
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            using var response = await http.PutAsync(url, content);
+
+            var body = await response.Content.ReadAsStringAsync();
+            T? data = default;
+            if (response.IsSuccessStatusCode)
+            {
+                data = JsonSerializer.Deserialize<T>(body, jsonOptions);
+            }
+            return new HttpResult<T>
+            {
+                IsSuccess = response.IsSuccessStatusCode,
+                StatusCode = (int)response.StatusCode,
+                Data = data,
+                RawBody = body
+            };
+        }
+
     }
 }

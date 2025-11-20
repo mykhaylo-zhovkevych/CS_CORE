@@ -39,42 +39,41 @@ namespace ConsoleApp5._4Remastered
             return true;
         }
 
-        // From Service Layer
-        public bool ItemExists(string name, ItemType itemType)
+        public Item? GetExistingItem(string name, ItemType itemType)
         {
-            return Shelves.Any(s => s.Items.Any(i => i.Name == name && i.ItemType == itemType));
+            return Shelves
+                .SelectMany(s => s.Items)
+                .FirstOrDefault(i => i.Name == name && i.ItemType == itemType);
         }
 
-        //public bool UserExists(string name, UserType userType)
-        //{
-        //    return Users.Any(u => u.Name == name && u.UserType == userType);
-        //}
-
-        public User UserExists(string name, UserType userType)
+        public User? GetExistingUser(string name, UserType userType)
         {
-            return Users.FirstOrDefault(u => u.Name == name && u.UserType == userType);
+            return Users
+                .FirstOrDefault(u => u.Name == name && u.UserType == userType);
         }
 
-
-        public (Item, User) BorrowingIsPossible(Guid userId, Guid itemId)
+        public (Item?, User?) GetPossibleBorrowing(Guid userId, Guid itemId)
         {
-            var user = Users.FirstOrDefault(u => u.Id == userId);
-            var item = Shelves.SelectMany(s => s.Items).FirstOrDefault(i => i.Id == itemId);
+            var user = Users
+                .FirstOrDefault(u => u.Id == userId);
 
-            if (user == null || item == null || item.IsBorrowed)
-            {
-                return default;
-            }
+            var item = Shelves
+                .SelectMany(s => s.Items)
+                .FirstOrDefault(i => i.Id == itemId);
 
             return (item, user);
         }
 
-        public List<Borrowing> GetActiveBorrowingsForUser(Guid userId)
+        public List<Borrowing> GetActiveBorrowings(Guid userId)
         {
             return Borrowings
                 .Where(b => b.User.Id == userId && !b.IsReturned)
                 .ToList();
         }
+
+
+        private List<Item> GetAllItemsFromShelves()
+            => Shelves.SelectMany(s => s.Items).ToList();
 
         //private List<Item> GetAllItemsFromShelves()
         //{
@@ -86,9 +85,6 @@ namespace ConsoleApp5._4Remastered
 
         //    return allItems;
         //}
-
-        private List<Item> GetAllItemsFromShelves()
-            => Shelves.SelectMany(s => s.Items).ToList();
 
         public void AddShelf(Shelf shelf) => Shelves.Add(shelf);
 

@@ -36,9 +36,9 @@ namespace LibraryAPI.Controllers
         [HttpGet("users/{id}")]
         public ActionResult GetUserById([FromRoute] Guid id)
         {
-            var user = _service.GetUser(id);
+            var receivedUser = _service.TryGetValueOfUser(id, out var user);
 
-            if (user == null)
+            if (receivedUser == null)
             {
                 return NotFound($"User not found with id {id}");
             }
@@ -46,31 +46,6 @@ namespace LibraryAPI.Controllers
             return Ok(user);
         }
 
-        //[HttpDelete("users/{id}")]
-        //public ActionResult X([FromRoute] Guid id)
-        //{
-        //    var user = _service.GetUser(id);
-
-        //    if (user == null)
-        //    {
-        //        return NotFound($"User not found with id {id}");
-        //    }
-
-        //    return Ok(user);
-        //}
-
-        //[HttpPatch("users/{id}")]
-        //public ActionResult Y([FromRoute] Guid id)
-        //{
-        //    var user = _service.GetUser(id);
-
-        //    if (user == null)
-        //    {
-        //        return NotFound($"User not found with id {id}");
-        //    }
-
-        //    return Ok(user);
-        //}
 
         [HttpPost("items")]
         public ActionResult CreateItem([FromBody] CreateItemDto dto)

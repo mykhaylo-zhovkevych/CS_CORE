@@ -135,7 +135,7 @@ namespace Client
             }
 
             var dto = new CreateItemDto(name, itemType);
-            var result = await PostJsonAsync<ItemResponseDto>($"{BaseUrl}/api/library/newitem", dto);
+            var result = await PostJsonAsync<ItemResponseDto>($"{BaseUrl}/api/library/news", dto);
 
             Console.WriteLine($"Status: {result.StatusCode}");
             if (result.IsSuccess && result.Data is not null)
@@ -165,8 +165,8 @@ namespace Client
                 return;
             }
 
-            var dto = new BorrowItemDto(userId, itemId);
-            var result = await PostJsonAsync<BorrowingResponseDto>($"{BaseUrl}/api/library/newborrowing", dto);
+            var dto = new BorrowItemDto(userId, itemId);borrowinsg
+            var result = await PostJsonAsync<BorrowingResponseDto>($"{BaseUrl}/api/library/new", dto);
 
             Console.WriteLine($"Status: {result.StatusCode}");
 

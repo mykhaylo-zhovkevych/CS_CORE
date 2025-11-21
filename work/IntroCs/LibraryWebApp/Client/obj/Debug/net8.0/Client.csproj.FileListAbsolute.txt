@@ -29,3 +29,12 @@ C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\LibraryWebApp\Client\bin\Debu
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\LibraryWebApp\Client\bin\Debug\net8.0\LibraryAPI.pdb
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.csproj.AssemblyReference.cache
 C:\Users\mzovk\Visual Studio\repos\C#\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.csproj.Up2Date
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.csproj.AssemblyReference.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.sourcelink.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\refint\Client.dll
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\Client\obj\Debug\net8.0\Client.pdb

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCRestaurant";
+
+service RestoService {
+  rpc AddCustomerDetails (AddCustomerDetailsRequest) returns (CustomerDetailsResponse);
+  rpc GetCustomerDetails (GetCustomerDetailsRequest) returns (GetCustomerDetailsResponse);
+}
+
+message AddCustomerDetailsRequest {
+  string name = 1;
+  string email = 2;
+  string phoneNumber = 3;
+  int32 tableNumber = 4;
+}
+
+message CustomerDetailsResponse {
+  string message = 1;
+}
+
+message GetCustomerDetailsRequest {
+  int32 tableNumber = 1;
+}
+
+message GetCustomerDetailsResponse {
+  string name = 1;
+  string email = 2;
+  string phoneNumber = 3;
+  int32 tableNumber = 4;
+}

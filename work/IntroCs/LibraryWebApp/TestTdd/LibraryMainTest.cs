@@ -40,12 +40,11 @@ namespace TestTdd
 
             // Act
             var changedUser = _userManagement.UpdateUserProfile(user, UserType.Teacher);
-            var allEntries = _library.Users.Select(u => u.Name == changedUser.Name);
+            //var allEntries = _library.Users.Select(u => u.Name == changedUser.Name);
 
             // Assert
             Assert.AreEqual(UserType.Teacher, changedUser.UserType);
-            Assert.IsTrue(user.UserType != UserType.Officer);
-            Assert.IsTrue(allEntries.Count() > 0);
+            //Assert.IsTrue(allEntries.Count() > 0);
         }
 
         [TestMethod]

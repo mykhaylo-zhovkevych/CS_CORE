@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTdd", "TestTdd\TestTdd.csproj", "{46F16819-1859-488E-A05C-FE85352A5CED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCRestaurant", "gRPCRestaurant\gRPCRestaurant.csproj", "{DADE9ACF-E765-4367-8872-10EE902CBDD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcRestV2", "GrpcRestV2\GrpcRestV2.csproj", "{271A2715-1CE6-4E6A-A3BB-34758D63EB7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{46F16819-1859-488E-A05C-FE85352A5CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F16819-1859-488E-A05C-FE85352A5CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F16819-1859-488E-A05C-FE85352A5CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADE9ACF-E765-4367-8872-10EE902CBDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADE9ACF-E765-4367-8872-10EE902CBDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADE9ACF-E765-4367-8872-10EE902CBDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADE9ACF-E765-4367-8872-10EE902CBDD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271A2715-1CE6-4E6A-A3BB-34758D63EB7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271A2715-1CE6-4E6A-A3BB-34758D63EB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271A2715-1CE6-4E6A-A3BB-34758D63EB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271A2715-1CE6-4E6A-A3BB-34758D63EB7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

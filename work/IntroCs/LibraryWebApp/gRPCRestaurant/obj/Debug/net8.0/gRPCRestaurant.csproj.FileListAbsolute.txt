@@ -1,0 +1,8 @@
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.csproj.AssemblyReference.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.AssemblyInfoInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.AssemblyInfo.cs
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.csproj.CoreCompileInputs.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\chmyzh1\source\repos\CS_CORE\work\IntroCs\LibraryWebApp\gRPCRestaurant\obj\Debug\net8.0\gRPCRestaurant.sourcelink.json

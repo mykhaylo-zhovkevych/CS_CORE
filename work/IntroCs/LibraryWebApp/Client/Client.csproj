@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.23.1" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.57.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.57.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\ConsoleApp5.4Remastered\ConsoleApp5.4Remastered.csproj" />
     <ProjectReference Include="..\LibraryAPI\LibraryAPI.csproj" />
   </ItemGroup>

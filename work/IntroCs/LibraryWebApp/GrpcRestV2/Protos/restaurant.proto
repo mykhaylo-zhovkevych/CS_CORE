@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcRestV2.Protos";
+
+// services
+service RestoService {
+	rpc AddCustomerDetails(CustomerDetailsRequest) returns (CustomerDetailsResponse);
+	rpc GetCustomerDetails(GetCustomerDetailsRequest) returns (GetCustomerDetailsResponse);
+}
+
+// datastrcture
+message CustomerDatailsRequest {
+	string Name = 1;
+	string Email = 2;
+	string PhoneNumber = 3;
+	int32 tableNumber = 4;
+}
+
+message CustomerDetailsResponse {
+	string Message = 1; // Successfully saved or not
+}
+
+message CustomerDetailsRequest {
+	int32 tableNumber = 1; // Successfully saved or not
+}
+
+message GetCustomerDetailsResponse {
+	string Name = 1;
+	string Email = 2;
+	string PhoneNumber = 3;
+	int32 tableNumber = 4;
+}

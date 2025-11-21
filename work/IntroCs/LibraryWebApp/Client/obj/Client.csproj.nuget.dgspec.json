@@ -50,6 +50,20 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.23.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -123,6 +137,20 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.23.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -194,6 +222,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.23.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"

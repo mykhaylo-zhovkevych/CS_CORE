@@ -106,10 +106,18 @@ namespace LibraryAPI.Service
             return true;
         }
 
-        public User? GetUser(Guid id)
+        public bool TryGetValueOfUser(Guid id, out User? user)
         {
-            var user = _inMemoryRepository.GetExistingUserById(id);
-            return user;
+            var existing = _inMemoryRepository.GetExistingUserById(id);
+
+            if (existing == default)
+            {
+                user = null;
+                return false;
+            }
+
+            user = existing;
+            return true;
         }
     }
 }

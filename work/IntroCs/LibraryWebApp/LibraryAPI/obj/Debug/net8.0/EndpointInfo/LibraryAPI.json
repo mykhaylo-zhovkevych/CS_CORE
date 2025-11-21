@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Library/newuser": {
+    "/api/Library/users": {
       "post": {
         "tags": [
           "Library"
@@ -36,7 +36,30 @@
         }
       }
     },
-    "/api/Library/newitem": {
+    "/api/Library/users/{id}": {
+      "get": {
+        "tags": [
+          "Library"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Library/items": {
       "post": {
         "tags": [
           "Library"
@@ -67,7 +90,7 @@
         }
       }
     },
-    "/api/Library/newborrowing": {
+    "/api/Library/borrowings": {
       "post": {
         "tags": [
           "Library"
@@ -121,7 +144,7 @@
         }
       }
     },
-    "/api/Library/changeuserprofile/{id}": {
+    "/api/Library/userprofile/{id}": {
       "put": {
         "tags": [
           "Library"

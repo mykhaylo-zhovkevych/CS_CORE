@@ -1,4 +1,4 @@
-﻿using ConsoleApp5._4Remastered.Data;
+﻿using ConsoleApp5._4Remastered.Storage;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.Exceptions;
 using ConsoleApp5._4Remastered.HelperClasses;
@@ -15,7 +15,7 @@ namespace ConsoleApp5._4Remastered
     {
         public List<Shelf> Shelves { get; private set; }
         public List<Borrowing> Borrowings { get; private set; }
-        public List<User> Users { get; set; }
+        public List<User>? Users { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
 
@@ -32,6 +32,17 @@ namespace ConsoleApp5._4Remastered
             Users = new List<User>();
         }
 
+        public User UpdateUserProfile(Guid id, UserType newType)
+        {
+            var user = Users.FirstOrDefault(u => u.Id == id);
+
+            if (user == null)
+                throw new InvalidOperationException("User not found");
+
+            user.UserType = newType;
+            return user;
+        }
+
 
         public (bool Success, string Message) BorrowItem(User user, Item item)
         {
@@ -43,7 +54,6 @@ namespace ConsoleApp5._4Remastered
          
             var policy = PolicyService.GetPolicy(user.UserType, item.ItemType);
             
-
             var allowedCredits = policy.Extensions;
             var borrowing = new Borrowing(user, item, policy);
             

@@ -1,5 +1,5 @@
 ﻿using ConsoleApp5._4Remastered;
-using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Storage;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.HelperClasses;
 using LibraryAPI.Models;
@@ -20,19 +20,7 @@ namespace LibraryAPI.Controllers
             _service = service;
         }
 
-        //[HttpPost("newuser")]
-        //public ActionResult CreateUser([FromBody] CreateUserDto dto)
-        //{
-        //    if (_service.UserExists(dto.Name, dto.UserType))
-        //    {
-        //        return Conflict("User already exists");
-        //    }
-
-        //    var user = _service.AddUser(dto);
-        //    return CreatedAtAction(nameof(CreateUser), new { id = user.Id }, user);
-        //}
-
-        [HttpPost("newuser")]
+        [HttpPost("users")]
         public ActionResult CreateUser([FromBody] CreateUserDto dto)
         {
             var created = _service.TryAddUser(dto, out var user);
@@ -42,10 +30,49 @@ namespace LibraryAPI.Controllers
                 return Conflict("User already exists");
             }
 
-            return CreatedAtAction(nameof(CreateUser), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(GetUserById), new { id = user!.Id }, user);
         }
 
-        [HttpPost("newitem")]
+        [HttpGet("users/{id}")]
+        public ActionResult GetUserById([FromRoute] Guid id)
+        {
+            var user = _service.GetUser(id);
+
+            if (user == null)
+            {
+                return NotFound($"User not found with id {id}");
+            }
+
+            return Ok(user);
+        }
+
+        //[HttpDelete("users/{id}")]
+        //public ActionResult X([FromRoute] Guid id)
+        //{
+        //    var user = _service.GetUser(id);
+
+        //    if (user == null)
+        //    {
+        //        return NotFound($"User not found with id {id}");
+        //    }
+
+        //    return Ok(user);
+        //}
+
+        //[HttpPatch("users/{id}")]
+        //public ActionResult Y([FromRoute] Guid id)
+        //{
+        //    var user = _service.GetUser(id);
+
+        //    if (user == null)
+        //    {
+        //        return NotFound($"User not found with id {id}");
+        //    }
+
+        //    return Ok(user);
+        //}
+
+        [HttpPost("items")]
         public ActionResult CreateItem([FromBody] CreateItemDto dto)
         {
             var created = _service.TryAddItem(dto, out var item);
@@ -55,11 +82,11 @@ namespace LibraryAPI.Controllers
                 return Conflict("Item already exists");
             }
 
-            return CreatedAtAction(nameof(CreateItem), new { id = item.Id }, item);
+            return CreatedAtAction(nameof(CreateItem), new { id = item!.Id }, item);
         }
 
 
-        [HttpPost("newborrowing")]
+        [HttpPost("borrowings")]
         public ActionResult CreateBorrowing([FromBody] BorrowItemDto dto)
         {
             var result = _service.TryBorrowItem(dto);
@@ -85,7 +112,7 @@ namespace LibraryAPI.Controllers
             return Ok(borrowings);
         }
 
-        [HttpPut("changeuserprofile/{id}")]
+        [HttpPut("userprofile/{id}")]
         public ActionResult UpdateUserProfile(Guid id, [FromBody] ChangeProfileDto updatedUserProfile)
         {
             var result = _service.TryUpdateUserProfile(id,updatedUserProfile, out var updatedUser);

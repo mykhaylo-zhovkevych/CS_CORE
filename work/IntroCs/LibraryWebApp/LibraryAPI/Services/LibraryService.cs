@@ -1,5 +1,5 @@
 ﻿using ConsoleApp5._4Remastered;
-using ConsoleApp5._4Remastered.Data;
+using ConsoleApp5._4Remastered.Storage;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.HelperClasses;
 using LibraryAPI.Models;
@@ -8,54 +8,47 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq;
+using ConsoleApp5._4Remastered.Interfaces;
 
 namespace LibraryAPI.Service
 {
     public class LibraryService
     {
-        private readonly Library _library;
-        private readonly UserManagmentDepartment _department;
+        private readonly InMemoryRepository _inMemoryRepository;
 
-        public LibraryService(Library library)
+        public LibraryService(InMemoryRepository inMemoryRepository)
         {
-            _library = library;
-            _department = new UserManagmentDepartment(_library);
+            _inMemoryRepository = inMemoryRepository;
         }
 
         public bool TryAddUser(CreateUserDto dto, out User? user)
         {
             // If user exists allready, return false and that user that exist
-            var existing = _library.GetExistingUser(dto.Name, dto.UserType);
+            var existing = _inMemoryRepository.GetExistingUser(dto.Name, dto.UserType);
 
             if (existing != default)
             {
-                user = existing;
+                user = null;
                 return false;
             }
 
             user = new User(dto.Name, dto.UserType);
-            _library.Users.Add(user);
+            _inMemoryRepository.AddUserToInMemory(user);
             return true;
         }
 
 
         public bool TryAddItem(CreateItemDto dto, out Item? item)
         {
-            var existing = _library.GetExistingItem(dto.Name, dto.ItemType);
+            var existing = _inMemoryRepository.GetExistingItem(dto.Name, dto.ItemType);
 
             if (existing != default)
             {
-                item = existing;
+                item = null;
                 return false;
             }
 
-            var shelf = _library.Shelves.FirstOrDefault(s => s.ShelfId == 1000);
-            if (shelf == default)
-            {
-                shelf = new Shelf(1000);
-                _library.Shelves.Add(shelf);
-            }
-
+            var shelf = _inMemoryRepository.GetShelfById(1000);
             item = new Item(dto.Name, dto.ItemType);
             shelf.AddItemToShelf(item);
             return true;
@@ -63,7 +56,7 @@ namespace LibraryAPI.Service
 
         public (bool Success, string Message) TryBorrowItem(BorrowItemDto dto)
         {
-            var userData = _library.GetPossibleBorrowing(dto.UserId, dto.ItemId);
+            var userData = _inMemoryRepository.GetPossibleBorrowing(dto.UserId, dto.ItemId);
 
             if (userData.Item1 == default)
             {
@@ -79,17 +72,17 @@ namespace LibraryAPI.Service
                 return (false, "Item is already borrowed");
             }
 
-            var result = _library.BorrowItem(userData.Item2, userData.Item1);
+            var result = _inMemoryRepository.AddBorrowing(userData.Item2, userData.Item1);
             return result;
         }
 
         public bool TryGetValueOfBorrowings(Guid userId, out List<Borrowing> borrowings)
         {
-            var existing = _library.GetActiveBorrowings(userId);
+            var existing = _inMemoryRepository.GetActiveBorrowings(userId);
 
             if (existing.Count == 0)
             {
-                borrowings = existing;
+                borrowings = null;
                 return false;
             }
 
@@ -99,16 +92,24 @@ namespace LibraryAPI.Service
 
         public bool TryUpdateUserProfile(Guid id, ChangeProfileDto dto, out User? updatedUser)
         {
-            var existing = _library.Users.FirstOrDefault(u => u.Id == id);
+            var existing = _inMemoryRepository.GetExistingUserById(id);
 
             if (existing == default)
             {
-                updatedUser = existing;
+                updatedUser = null;
                 return false;
             }
 
-            updatedUser = _department.UpdateUserProfile(existing, dto.UserType);
+            _inMemoryRepository.UpdateUserProfile(existing.Id, dto.UserType);
+            updatedUser = existing;
+
             return true;
+        }
+
+        public User? GetUser(Guid id)
+        {
+            var user = _inMemoryRepository.GetExistingUserById(id);
+            return user;
         }
     }
 }

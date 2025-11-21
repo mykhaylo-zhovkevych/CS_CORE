@@ -1,4 +1,4 @@
-﻿using ConsoleApp5._4Remastered.Data;
+﻿using ConsoleApp5._4Remastered.Storage;
 using ConsoleApp5._4Remastered.Enum;
 using LibraryAPI.Models;
 using System;
@@ -100,7 +100,7 @@ namespace Client
             }
 
             var dto = new CreateUserDto(name, userType);
-            var result = await PostJsonAsync<UserResponseDto>($"{BaseUrl}/api/library/newuser", dto);
+            var result = await PostJsonAsync<UserResponseDto>($"{BaseUrl}/api/library/users", dto);
 
             Console.WriteLine($"Status: {result.StatusCode}");
             if (result.IsSuccess && result.Data is not null)

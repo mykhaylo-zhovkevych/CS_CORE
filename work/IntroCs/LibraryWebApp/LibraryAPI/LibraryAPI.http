@@ -1,13 +1,13 @@
 @LibraryAPI_HostAddress = http://localhost:5108
 
-POST {{LibraryAPI_HostAddress}}/api/library/newuser
+POST {{LibraryAPI_HostAddress}}/api/library/users
 Content-Type: application/json
 {
   "Name": "testname01",
   "UserType": "ExternalUser"
 }
 ###
-POST {{LibraryAPI_HostAddress}}/api/library/newitem
+POST {{LibraryAPI_HostAddress}}/api/library/items
 Content-Type: application/json
 {
   "Name": "testitem01",
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{LibraryAPI_HostAddress}}/api/library/e1b57e49-ee80-438b-a6a8-3b9922ba3d97
+GET {{LibraryAPI_HostAddress}}/api/library/users/780259ce-e7f9-40b4-a7a0-290196396e92
 Accept: application/json
 
 ###

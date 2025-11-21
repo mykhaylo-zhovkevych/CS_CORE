@@ -17,8 +17,40 @@
   },
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreateBorrowing",
+    "RelativePath": "api/Library/borrowings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.BorrowItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "CreateItem",
+    "RelativePath": "api/Library/items",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "LibraryAPI.Models.CreateItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
     "Method": "UpdateUserProfile",
-    "RelativePath": "api/Library/changeuserprofile/{id}",
+    "RelativePath": "api/Library/userprofile/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -38,40 +70,8 @@
   },
   {
     "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "CreateBorrowing",
-    "RelativePath": "api/Library/newborrowing",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "LibraryAPI.Models.BorrowItemDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "LibraryAPI.Controllers.LibraryController",
-    "Method": "CreateItem",
-    "RelativePath": "api/Library/newitem",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "LibraryAPI.Models.CreateItemDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "LibraryAPI.Controllers.LibraryController",
     "Method": "CreateUser",
-    "RelativePath": "api/Library/newuser",
+    "RelativePath": "api/Library/users",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -79,6 +79,22 @@
       {
         "Name": "dto",
         "Type": "LibraryAPI.Models.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryAPI.Controllers.LibraryController",
+    "Method": "GetUserById",
+    "RelativePath": "api/Library/users/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

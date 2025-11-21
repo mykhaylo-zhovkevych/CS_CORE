@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5._4Remastered.Data
+namespace ConsoleApp5._4Remastered.Storage
 {
 
     public class Policy

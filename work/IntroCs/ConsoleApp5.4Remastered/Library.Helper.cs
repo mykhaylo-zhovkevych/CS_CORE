@@ -1,4 +1,4 @@
-﻿using ConsoleApp5._4Remastered.Data;
+﻿using ConsoleApp5._4Remastered.Storage;
 using ConsoleApp5._4Remastered.Enum;
 using ConsoleApp5._4Remastered.HelperClasses;
 using System;
@@ -39,18 +39,26 @@ namespace ConsoleApp5._4Remastered
             return true;
         }
 
-        public Item? GetExistingItem(string name, ItemType itemType)
-        {
-            return Shelves
-                .SelectMany(s => s.Items)
-                .FirstOrDefault(i => i.Name == name && i.ItemType == itemType);
-        }
+        //public Item? GetExistingItem(string name, ItemType itemType)
+        //{
+        //    return Shelves
+        //        .SelectMany(s => s.Items)
+        //        .FirstOrDefault(i => i.Name == name && i.ItemType == itemType);
+        //}
 
-        public User? GetExistingUser(string name, UserType userType)
-        {
-            return Users
-                .FirstOrDefault(u => u.Name == name && u.UserType == userType);
-        }
+        //public User? GetExistingUserById(Guid id)
+        //{
+        //    return Users
+        //        .FirstOrDefault(u => u.Id == id);
+        //}
+
+
+        //public User? GetExistingUser(string name, UserType userType)
+        //{
+        //    return Users
+        //        .FirstOrDefault(u => u.Name == name && u.UserType == userType);
+        //}
+
 
         public (Item?, User?) GetPossibleBorrowing(Guid userId, Guid itemId)
         {
